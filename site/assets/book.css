@@ -97,7 +97,8 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--ring); outline
 .bk-unit-hook { font-family: var(--serif); font-size: 14.5px; line-height: 1.65; color: var(--muted); }
 
 .bk-about p { font-size: 15.5px; line-height: 1.8; color: var(--text); margin: 0 0 1rem; max-width: 65ch; }
-.bk-about p:last-child { margin: 0; font-style: italic; color: var(--muted); }
+.bk-about p:last-child { margin: 0; }
+.bk-about:not(.bk-thanks) p:last-child { font-style: italic; color: var(--muted); }
 
 /* Contents */
 .bk-unit { background: var(--paper); border-radius: 10px; box-shadow: 0 1px 6px rgba(0, 0, 0, .06); padding: 1.6rem 2rem .6rem; }

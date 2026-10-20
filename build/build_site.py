@@ -22,15 +22,17 @@ BOOK = {
     "subtitle": "An Evidence-Based Approach to Educational Psychology",
     "course": "EDCOR 310",
     "school": "Brigham Young University–Idaho",
-    "editors": ["Benjamin Pacini", "Mayleigh Barth", "Emerald Davis", "Jonathan Trujillo"],
+    "authors": ["Benjamin Pacini", "Mayleigh Barth"],
     "year": "2026",
     "license": ("CC BY-SA 4.0", "https://creativecommons.org/licenses/by-sa/4.0/"),
     "cover_design": "Kennadee Cuff",
     "etb": "https://books.byui.edu/science_of_learning",
     "about": [
         "What began as a classroom project to enhance student learning in educational psychology and human development has grown over three years into a rigorous, collaborative textbook. This volume integrates student writing, generative AI assistance, and faculty oversight into a free educational resource.",
-        "Special thanks are due to teaching assistants Skylar Quinton, Sarah Wilkin, Emma Canann, Jalene Rushton, Andres Rodriguez, Kennedee Cuff, and Shannon Steele for their extensive editorial and formatting contributions. Emerald Davis also provided volunteer hours to support this project. We also acknowledge the generations of students whose iterative feedback improved this text. All graphics were created by BYU-Idaho students using Canva Premium or are used by permission.",
         "Ultimately, the authors and editors maintain full responsibility for the accuracy and integrity of the content herein.",
+    ],
+    "thanks": [
+        "Special thanks are due to teaching assistants Skylar Quinton, Sarah Wilkin, Emma Canann, Jalene Rushton, Andres Rodriguez, Kennedee Cuff, and Shannon Steele for their extensive editorial and formatting contributions. Emerald Davis also provided volunteer hours to support this project. We also acknowledge the generations of students whose iterative feedback improved this text. All graphics were created by BYU-Idaho students using Canva Premium or are used by permission.",
     ],
 }
 
@@ -118,13 +120,17 @@ def page(title, body, depth, description):
 </main>
 <footer class="bk-foot">
   <div class="bk-foot-in">
-    <p>© {BOOK['year']} {esc(', '.join(BOOK['editors'][:-1]))}, and {esc(BOOK['editors'][-1])}. Licensed <a href="{BOOK['license'][1]}">{BOOK['license'][0]}</a>. Cover design by {esc(BOOK['cover_design'])}.</p>
+    <p>© {BOOK['year']} {esc(names(BOOK['authors']))}. Licensed <a href="{BOOK['license'][1]}">{BOOK['license'][0]}</a>. Cover design by {esc(BOOK['cover_design'])}.</p>
     <p>{esc(BOOK['course'])} · {esc(BOOK['school'])}</p>
   </div>
 </footer>
 </body>
 </html>
 """
+
+
+def names(people):
+    return people[0] if len(people) == 1 else ", ".join(people[:-1]) + (" and " if len(people) == 2 else ", and ") + people[-1]
 
 
 def chapter_range(unit):
@@ -141,13 +147,14 @@ def build_home(units, chapters):
       <span class="bk-unit-hook">{esc(sentences(u['intro'][0], 2) if u['intro'] else '')}</span>
     </a>""" for i, u in enumerate(units))
     about = "\n".join(f"    <p>{esc(p)}</p>" for p in BOOK["about"])
+    thanks = "\n".join(f"    <p>{esc(p)}</p>" for p in BOOK["thanks"])
     hours = sum(c["minutes"] for c in chapters) / 60
     body = f"""  <section class="bk-card bk-cover">
     <div class="bk-watermark" aria-hidden="true">310</div>
     <p class="bk-kicker">{esc(BOOK['course'])} · {esc(BOOK['school'])}</p>
     <h1 class="bk-title">{esc(BOOK['title'])}</h1>
     <p class="bk-sub">{esc(BOOK['subtitle'])}</p>
-    <p class="bk-meta">Edited by {esc(', '.join(BOOK['editors'][:-1]))}, and {esc(BOOK['editors'][-1])} · {len(chapters)} chapters · about {round(hours)} hours of reading</p>
+    <p class="bk-meta">By {esc(names(BOOK['authors']))} · {len(chapters)} chapters · about {round(hours)} hours of reading</p>
     <div class="bk-actions">
       <a class="bk-btn" href="{esc(first['href'])}">Start with Chapter {first['num']}</a>
       <a class="bk-btn bk-btn-quiet" href="contents/index.html">Table of contents</a>
@@ -164,6 +171,11 @@ def build_home(units, chapters):
   <section class="bk-section bk-about" aria-labelledby="about">
     <h2 class="bk-slbl" id="about">About this book</h2>
 {about}
+  </section>
+
+  <section class="bk-section bk-about bk-thanks" aria-labelledby="thanks">
+    <h2 class="bk-slbl" id="thanks">Acknowledgments</h2>
+{thanks}
   </section>"""
     return page(BOOK["title"], body, 0, BOOK["subtitle"])
 
@@ -329,7 +341,8 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--ring); outline
 .bk-unit-hook { font-family: var(--serif); font-size: 14.5px; line-height: 1.65; color: var(--muted); }
 
 .bk-about p { font-size: 15.5px; line-height: 1.8; color: var(--text); margin: 0 0 1rem; max-width: 65ch; }
-.bk-about p:last-child { margin: 0; font-style: italic; color: var(--muted); }
+.bk-about p:last-child { margin: 0; }
+.bk-about:not(.bk-thanks) p:last-child { font-style: italic; color: var(--muted); }
 
 /* Contents */
 .bk-unit { background: var(--paper); border-radius: 10px; box-shadow: 0 1px 6px rgba(0, 0, 0, .06); padding: 1.6rem 2rem .6rem; }
