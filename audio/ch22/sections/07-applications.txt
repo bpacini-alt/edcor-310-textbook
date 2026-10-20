@@ -1,0 +1,17 @@
+In the classroom.
+
+What this chapter means for your practice.
+
+The chapter comes down to a single design question asked before the lesson: what will students actually think about, and is there enough working memory space to think about it well?
+
+Audit your environment for perceptual competitors. Phones visible on desks, displays unrelated to the current lesson, and visual clutter are not neutral — they are active competitors for the same finite resource learning requires. Remove what doesn’t need to be there right now.
+
+Calibrate task difficulty deliberately. A lesson that is too easy frees perceptual resources for distraction. A lesson that is too hard floods working memory and shuts down germane load. The corridor between them is where the gorilla disappears and flow becomes possible.
+
+Build retrieval practice into every week — low-stakes, ungraded, normalized. Start class with three questions from the last lesson. End with a brain dump. Use index cards. The effort of retrieval is the thing that consolidates memory; passive review produces the illusion of learning, not the thing itself.
+
+Space your reviews deliberately. Build spiral review into lesson planning — return to material from two weeks ago in the warm-up, from last month in an interleaved problem set. The subjective difficulty of spaced practice is the signal it is working.
+
+Identify which of your practices add extraneous load and cut them. Every irrelevant image on a slide, every piece of information students must hold from multiple disconnected sources, every funny tangent — ask whether the working memory it costs is worth paying. Usually it is not.
+
+Replace open choice with structured choice. Two or three meaningful options respect autonomy while keeping cognitive load manageable. Unlimited choice is not generosity — it is a cognitive tax at the decision stage.
