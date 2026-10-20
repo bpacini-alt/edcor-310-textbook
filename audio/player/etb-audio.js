@@ -1,5 +1,5 @@
 /*
- * ETB audio player. Shared by every chapter. See audio/AUDIO-PLAN.md.
+ * ETB audio player. Shared by every chapter. See audio/README.md.
  *
  * Adds a Listen button to the chapter's title card, a Listen link on each
  * section label, a docked player, and a text-only reading view.

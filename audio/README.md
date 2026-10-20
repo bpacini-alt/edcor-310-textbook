@@ -1,8 +1,67 @@
-# Chapter audio: plan
+# Chapter audio
 
-**Status:** draft for discussion. Nothing here touches the live chapters yet.
+**Status:** the player is finished for stage 1 (device voice) and tested in both books. It is not on any live chapter yet. It goes in when the books move to the new website. See "Adding the player to the website" below.
 
-The goal is to replace the current audio version, which reads the HTML along with the prose and often doesn't work. The long-term plan is narration in Benjamin's own voice, generated with ElevenLabs. Until the chapters are polished, the same player reads each chapter with the student's own device voice. That costs nothing, needs no audio files, and always matches the current text.
+This folder replaces the books' old audio version, which read the HTML along with the prose and often didn't work. The long-term plan is narration in Benjamin's own voice, generated with ElevenLabs. Until the chapters are polished, the same player reads each chapter with the student's own device voice. That costs nothing, needs no audio files, and always matches the current text.
+
+## Decisions so far
+
+- **Stage 1 now:** the player reads chapters with the device's built-in voice. No audio files are generated while chapters are still being edited.
+- **Stage 2 later, one chapter at a time:** after a chapter's final edit pass, generate its narration in Benjamin's cloned voice with ElevenLabs.
+- **Recordings live in the book's GitHub repo** next to the chapters, and the website serves them from there.
+- **The player goes in when the books move to the new website**, added by the site's build step. Chapter files on EdTechBooks are not edited by hand.
+- **One player for both books.** EDCOR 310 and Econ 150 use the same etb design system, and the player handles both.
+
+## Adding the player to the website
+
+The player is two files: `player/etb-audio.js` and `player/etb-audio.css`. Nothing inside a chapter file needs to change. The website's build step adds the player when it turns each chapter into a full page.
+
+**1. Copy the two files into the site,** for example to `site/assets/etb-audio.js` and `site/assets/etb-audio.css`. If both books share one copy (for example on benjaminpacini.com), a fix to the player updates both books at once.
+
+**2. On every chapter page, load them after the chapter's HTML:**
+
+```html
+<head>
+  …
+  <link rel="stylesheet" href="/assets/etb-audio.css">
+  <style>.etb{overflow-x:clip}</style>  <!-- phone-width fix, see "Something found along the way" -->
+</head>
+<body>
+  … the chapter's HTML, unchanged …
+  <script src="/assets/etb-audio.js"></script>
+</body>
+```
+
+The script has to come after the chapter (at the end of `<body>`, or in `<head>` with `defer`). It looks for the chapter's `.etb` container and the title card, then adds everything else on its own. A page without an etb chapter is left alone.
+
+**3. That's all for stage 1.** Every chapter gets the Listen button, the section links, the player, and the text-only view.
+
+**4. Stage 2, for a chapter with recordings:** add this block to that chapter's page, before the script tag. The player then plays the MP3s instead of the device voice.
+
+```html
+<script type="application/json" id="etb-audio-data">
+{
+  "book": "edcor310",
+  "book_title": "EDCOR 310 · The Science of Learning",
+  "author": "Benjamin Pacini",
+  "chapter": "22",
+  "base": "/audio/ch22/",
+  "full_url": "/audio/ch22/chapter22-full.mp3",
+  "sections": [
+    { "id": "intro", "title": "Attention, Memory & Cognitive Load", "label": "Introduction", "audio": "01-intro.mp3", "est_seconds": 101 },
+    { "id": "concept-1", "title": "The First Gate", "label": "Concept 1 · Selective Attention", "audio": "02-concept-1.mp3", "est_seconds": 230 }
+  ]
+}
+</script>
+```
+
+The build step can write this block from the chapter's `manifest.json` (see `tools/build_preview.py`, which already does it for the preview). Section `id`s must match the player's: `intro`, `concept-1`, `concept-2`, and so on, then `applications`, `synthesis`, `synth`, `recap`, or `ledger` for closing blocks.
+
+**To try it before the site exists,** open any page in `preview/`, or build one for another chapter:
+
+```
+python3 audio/tools/build_preview.py etb-live/chapter9.html audio/preview/chapter9.html
+```
 
 ## Two stages, one player
 
@@ -19,7 +78,7 @@ The player decides automatically. If the chapter page includes a list of recorde
 | `preview/chapter22.html` | Chapter 22 with the device-voice player. Open it in a browser to try it. |
 | `preview/chapter22-mp3.html` | Chapter 22 in recorded mode, using silent placeholder MP3s, to show how stage 2 behaves. |
 | `preview/econ/chapter15.html` | Econ 150 Chapter 15 with the device-voice player, to confirm it works for both books. |
-| `player/etb-audio.js`, `player/etb-audio.css` | The player. On the website these become two shared files that every chapter loads, so a fix happens in one place. |
+| `player/etb-audio.js`, `player/etb-audio.css` | The player. Every chapter page on the website loads these two files. |
 | `tools/build_preview.py` | Puts a chapter and the player together into one preview page. |
 | `tools/extract_narration.py` | Writes a chapter's narration script and section list for ElevenLabs (stage 2). |
 | `ch22/` | Chapter 22's narration script, section list, and silent placeholder MP3s. |
@@ -108,7 +167,7 @@ On phones, the hidden hover definitions (`data-tip`) make Chapter 22 slightly wi
 
 1. Try the device-voice preview in Edge, Safari, and on a phone. Decide whether it's good enough for now.
 2. Settle the open questions below.
-3. When the site moves to Cloudflare, add the two player files to the site and have every chapter load them.
+3. When the site moves to Cloudflare, add the player as described in "Adding the player to the website."
 4. Later, per chapter: final edit pass, generate recordings, add them to the repo.
 
 ## Open questions
