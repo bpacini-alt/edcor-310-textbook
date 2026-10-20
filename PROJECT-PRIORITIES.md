@@ -168,6 +168,23 @@ The two books should not automatically receive equal attention. Each should be e
 
 The default strategy should be to focus on the book, chapter, or feature with the highest combination of student reach and learning impact—not simply the one that is most fun to build.
 
+## Known problems to fix
+
+These are broken now, so they count as Priority 0. Fix them in the GitHub copies when the chapters move to the new site. Leave the EdTechBooks copies alone for now.
+
+### Econ 150: Broken interactive widgets in Chapters 2 and 4
+
+Four interactive pieces don't run in the current chapter files:
+
+- **Chapter 2:** two graph widgets. One is the "Missing Market" widget (the chapter's first script); the other is the chapter's eighth script.
+- **Chapter 4:** Interactive practice 1 ("Predict the new equilibrium") and Interactive practice 2 ("Binding or not?").
+
+**Cause:** when EdTechBooks squashed each script onto a single line, a `//` comment ended up commenting out everything after it, so the browser stops with "Unexpected end of input."
+
+**How to fix:** in each affected script, change `//` comments to `/* … */` or restore the line breaks. Then load the chapter on the new site and confirm the widgets work.
+
+**Status:** fix on the new site; do not edit in EdTechBooks. Found during the audio-player work, which doesn't affect these widgets. A check of every EDCOR 310 chapter found no similar problems.
+
 ## Deferred structural revisions
 
 ### Econ 150 — Reorder the firm-behavior sequence
