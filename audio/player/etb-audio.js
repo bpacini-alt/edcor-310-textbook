@@ -211,7 +211,7 @@
   [].forEach.call(root.children, function (c) {
     if (c === card || skipEl(c)) return;
     if (c.classList.contains('etb-concept')) {
-      var lb = c.querySelector('.etb-slbl'), h = c.querySelector('h2,h3'), lbt = lb ? textOf(lb) : '';
+      var lb = c.querySelector('.etb-slbl, .etb-kicker'), h = c.querySelector('h2,h3'), lbt = lb ? textOf(lb) : '';
       k++;
       cs = newSec('concept-' + k, h ? squish(h.textContent) : lbt, lbt.replace(/^Major concept/i, 'Concept') || 'Concept ' + k, lb);
       secs[cs].els.push(c);

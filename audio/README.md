@@ -10,7 +10,7 @@ This folder replaces the books' old audio version, which read the HTML along wit
 - **Stage 2 later, one chapter at a time:** after a chapter's final edit pass, generate its narration in Benjamin's cloned voice with ElevenLabs.
 - **Recordings live in the book's GitHub repo** next to the chapters, and the website serves them from there.
 - **The player goes in when the books move to the new website**, added by the site's build step. Chapter files on EdTechBooks are not edited by hand.
-- **One player for both books.** EDCOR 310 and Econ 150 use the same etb design system, and the player handles both.
+- **One player for both books.** EDCOR 310 and Econ 150 use the same etb design system, and the player handles both. This repo and the Econ 150 repo carry identical copies of `player/`. A change to one should be copied to the other, or both books can load a single shared copy once the website exists.
 
 ## Adding the player to the website
 
@@ -77,7 +77,7 @@ The player decides automatically. If the chapter page includes a list of recorde
 |---|---|
 | `preview/chapter22.html` | Chapter 22 with the device-voice player. Open it in a browser to try it. |
 | `preview/chapter22-mp3.html` | Chapter 22 in recorded mode, using silent placeholder MP3s, to show how stage 2 behaves. |
-| `preview/econ/chapter15.html` | Econ 150 Chapter 15 with the device-voice player, to confirm it works for both books. |
+| `preview/econ/chapter15.html` | Econ 150 Chapter 15 with the device-voice player. The Econ repo has its own `audio/` folder with more Econ previews. |
 | `player/etb-audio.js`, `player/etb-audio.css` | The player. Every chapter page on the website loads these two files. |
 | `tools/build_preview.py` | Puts a chapter and the player together into one preview page. |
 | `tools/extract_narration.py` | Writes a chapter's narration script and section list for ElevenLabs (stage 2). |
