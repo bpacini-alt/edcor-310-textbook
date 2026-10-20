@@ -168,6 +168,21 @@ The two books should not automatically receive equal attention. Each should be e
 
 The default strategy should be to focus on the book, chapter, or feature with the highest combination of student reach and learning impact—not simply the one that is most fun to build.
 
+## Deferred structural revisions
+
+### Econ 150 — Reorder the firm-behavior sequence
+
+When we next revise the Econ 150 textbook's firm-behavior unit, change the chapter order to:
+
+9. **Production Decisions**
+10. **Costs**
+11. **Profit Maximization in the Short Run**
+12. **Profit Maximization in the Long Run**
+
+The reasoning is that students should first understand how firms turn inputs into output and make production decisions, then derive and interpret costs, and only afterward apply those ideas to short-run and long-run profit maximization.
+
+**Status:** Record for later; do not implement yet. When this becomes active work, create a GitHub issue to track the structural revision, then use a pull request for the actual chapter and navigation changes.
+
 ## The standing decision protocol
 
 When the author proposes a task, classify it as one of four things:
