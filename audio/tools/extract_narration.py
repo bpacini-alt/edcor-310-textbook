@@ -2,6 +2,10 @@
 """
 extract_narration.py — pull only the narratable prose out of an etb chapter.
 
+Note: the player (audio/player/etb-audio.js) has its own copy of these reading
+rules for the device voice. When the ElevenLabs generation script is written,
+it should take its text from the player instead, so the two never drift apart.
+
 Usage:
     python3 audio/tools/extract_narration.py etb-live/chapter22.html audio/ch22
 
