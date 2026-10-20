@@ -183,6 +183,14 @@ The reasoning is that students should first understand how firms turn inputs int
 
 **Status:** Record for later; do not implement yet. When this becomes active work, create a GitHub issue to track the structural revision, then use a pull request for the actual chapter and navigation changes.
 
+### EDCOR 310: Fix the unit labels on chapter title cards
+
+The small label at the top of each chapter's title card (for example, "Unit 3 · The Developing Learner") doesn't match the book's four units. Chapters 1–8 say "Unit 1 · The Great Adventure" instead of "Unit 1 · Intro to Psychology," Chapter 14 says Unit 3 though it sits in Unit 2, and Chapters 16–24 say Units 4 and 5.
+
+**How to do it:** go chapter by chapter with Benjamin. Show what each label says now, ask what it should say, then make the changes in one batch.
+
+**Status:** Record for later; do not implement yet.
+
 ## The standing decision protocol
 
 When the author proposes a task, classify it as one of four things:
