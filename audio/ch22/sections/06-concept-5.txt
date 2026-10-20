@@ -1,0 +1,29 @@
+Major concept 5: Cognitive Load Theory.
+
+Design for the Brain You Have.
+
+Cognitive Load Theory (CLT), developed by psychologist John Sweller in the late 1980s, is one of the most practically useful frameworks in all of educational psychology. Its central claim is simple: working memory has a fixed capacity, and when that capacity is exceeded, learning stops. Every instructional decision either consumes or conserves that limited space. Poor design wastes it on things that have nothing to do with learning. Good design protects it for the cognitive work that actually matters.
+
+CLT identifies three types of cognitive load that compete for working memory resources simultaneously.
+
+The three types of cognitive load.
+
+Intrinsic Load — The inherent difficulty of the content itself, shaped by complexity and the learner’s prior knowledge. A biology expert finds a cell diagram simple; a first-year student finds it overwhelming. Same content, different intrinsic load. Cannot be eliminated, but can be managed through sequencing and scaffolding.
+
+Extraneous Load — Load caused by poor instructional design: cluttered slides, irrelevant images, confusing directions, or information spread across sources that students must mentally integrate. This is the load teachers are responsible for. Every slide decoration that adds nothing is stolen working memory.
+
+Germane Load — The productive cognitive effort used to build schemas — mental frameworks that organize and connect new information with existing knowledge. This is the “good” load: the actual work of learning. The goal of instruction is to eliminate extraneous load, reduce intrinsic load where possible, and focus working memory on germane load instead.
+
+The practical implication is powerful. A highly decorated, visually busy, activity-packed lesson may feel engaging while simultaneously preventing learning — by consuming all available working memory on things unrelated to the content. Interesting but irrelevant information doesn’t just fail to help — it actively competes. A surprising anecdote, a funny video clip, or a vivid but tangential example can feel like effective teaching while displacing exactly the working memory space the actual content needed. This is the seductive details effect: the more engaging the distraction, the more damage it can do.
+
+This points to a deeper misconception worth naming directly: the engagement trap. Engagement and learning are not the same thing. A student can be highly engaged — hands busy, energy high, genuinely enjoying themselves — while retaining almost nothing. The right question is not “did students enjoy this?” It is “what will they remember in three weeks?” Both matter. But they are not the same measure, and instruction optimized for engagement can actively undermine retention.
+
+The Paradox of Choice — Schwartz and the classroom.
+
+Psychologist Barry Schwartz documented a counterintuitive finding: more options do not produce better decisions — they produce anxiety, indecision, and wasted mental energy. In the classroom, the same dynamic plays out. When students face open-ended choice — any topic, any format, any approach — the decision-making process itself consumes working memory that should be available for learning. Students caught in this are often labeled as avoidant or unmotivated when the real problem is cognitive overload at the decision stage. Structured choice is almost always better than open choice. Two or three meaningful options respect student autonomy while keeping cognitive load manageable.
+
+Before any lesson, ask: Does every element on this slide, handout, or activity directly support what I want students to learn? Are my instructions clear and consolidated, or do students have to hold information from multiple sources in mind at once? Could I break this task into smaller steps to reduce the load at any one moment? These are not aesthetic preferences — they are decisions about whether learning will actually happen.
+
+The through-line of this chapter is simple enough to fit on an index card: learning is effortful, not as a flaw in the system but as a feature of it. The discomfort of retrieval, the frustration of spaced review, the confusion of interleaved practice — these are not signs that something is going wrong. They are signs that the brain is doing the work that actually produces durable knowledge. Teachers who understand those limits design differently — not because they have lower expectations, but because they have a clearer picture of what learning actually requires. Less clutter. More retrieval. Harder practice. Smaller choices. A classroom that earns attention rather than competing with it.
+
+Retrieval practice. A teacher decides to make a lesson more “engaging” by adding a funny viral video clip, several colorful animations on the slides, and a free-choice project option. Using CLT, explain how each of these additions could actually impair learning. Pause the audio and try answering on your own before you go on.

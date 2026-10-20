@@ -1,0 +1,98 @@
+{
+  "chapter": "22",
+  "title": "Attention, Memory and Cognitive Load",
+  "source": "etb-live/chapter22.html",
+  "words_per_minute": 155,
+  "sections": [
+    {
+      "id": "intro",
+      "title": "Attention, Memory and Cognitive Load",
+      "label": "Introduction",
+      "words": 247,
+      "characters": 1522,
+      "est_seconds": 96,
+      "hash": "c684a83c1665afec",
+      "text": "sections/01-intro.txt",
+      "audio": "01-intro.mp3"
+    },
+    {
+      "id": "concept-1",
+      "title": "The First Gate",
+      "label": "Concept 1 · Selective Attention",
+      "words": 567,
+      "characters": 3510,
+      "est_seconds": 219,
+      "hash": "aa98973e61c8aaf5",
+      "text": "sections/02-concept-1.txt",
+      "audio": "02-concept-1.mp3"
+    },
+    {
+      "id": "concept-2",
+      "title": "When Attention Is Too Busy to Wander",
+      "label": "Concept 2 · Perceptual Load",
+      "words": 704,
+      "characters": 4469,
+      "est_seconds": 273,
+      "hash": "6960a962a52e40a3",
+      "text": "sections/03-concept-2.txt",
+      "audio": "03-concept-2.mp3"
+    },
+    {
+      "id": "concept-3",
+      "title": "What Happens After the Gate",
+      "label": "Concept 3 · Memory",
+      "words": 367,
+      "characters": 2418,
+      "est_seconds": 142,
+      "hash": "3fd3b10bf80b82c1",
+      "text": "sections/04-concept-3.txt",
+      "audio": "04-concept-3.mp3"
+    },
+    {
+      "id": "concept-4",
+      "title": "Moving from Working to Long-Term Memory",
+      "label": "Concept 4 · Making It Stick",
+      "words": 1128,
+      "characters": 7149,
+      "est_seconds": 437,
+      "hash": "f12818f2fac575b9",
+      "text": "sections/05-concept-4.txt",
+      "audio": "05-concept-4.mp3"
+    },
+    {
+      "id": "concept-5",
+      "title": "Design for the Brain You Have",
+      "label": "Concept 5 · Cognitive Load Theory",
+      "words": 772,
+      "characters": 5008,
+      "est_seconds": 299,
+      "hash": "f8c829bdddf8853d",
+      "text": "sections/06-concept-5.txt",
+      "audio": "06-concept-5.mp3"
+    },
+    {
+      "id": "applications",
+      "title": "What this chapter means for your practice",
+      "label": "In the classroom",
+      "words": 294,
+      "characters": 1857,
+      "est_seconds": 114,
+      "hash": "7093790688d7551c",
+      "text": "sections/07-applications.txt",
+      "audio": "07-applications.mp3"
+    },
+    {
+      "id": "synthesis",
+      "title": "Chapter Synthesis",
+      "label": "Wrap-up",
+      "words": 281,
+      "characters": 1821,
+      "est_seconds": 109,
+      "hash": "0f52f8451deb5427",
+      "text": "sections/08-synthesis.txt",
+      "audio": "08-synthesis.mp3"
+    }
+  ],
+  "full_audio": "chapter22-full.mp3",
+  "placeholder": true
+}
