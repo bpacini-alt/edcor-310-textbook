@@ -84,3 +84,30 @@ Housekeeping should support the priorities document. It should not become a sour
 - reduces the chance of losing or misusing existing work.
 
 The goal is not a perfectly empty repository. The goal is a repository in which the important work is easy to find, safe to change, and kept current.
+
+
+## Collaborator coordination
+
+These repositories are maintained by Benjamin, Claude, and ChatGPT/Codex. GitHub is the source of truth. A collaborator must never assume that a local copy, an old branch, or a previous conversation reflects the current state.
+
+Before making any change:
+
+1. Inspect the current `main` branch, recent commits, and open pull requests.
+2. Identify whether another collaborator is already working on the same files, feature, build output, or deployment configuration.
+3. Treat open pull requests as work in progress—not as approved changes. Do not duplicate, overwrite, close, or merge them without coordinating with Benjamin.
+4. If work overlaps, pause and report the overlap. Either wait, work on clearly separate files, or ask Benjamin which change should lead.
+5. Use a separate branch and a pull request for every nontrivial change. Do not push directly to `main`.
+6. Integrate only changes Benjamin has approved. An open pull request is not approval; merging is the act that makes a change part of the official source of truth.
+7. After an approved pull request is merged, begin new work from the updated `main`. Do not continue from a stale branch without first comparing it with `main`.
+8. When overlapping work must be combined, preserve both versions until the conflict is understood and explain the resolution in the pull request. Never silently choose one collaborator's work.
+9. When changes affect deployment or generated files, merge and verify one significant change at a time before starting the next overlapping change.
+10. Ask Benjamin before deleting files, branches, or other work, even when the item appears stale or duplicated.
+
+Before handing off a task, report briefly:
+
+- the `main` commit inspected;
+- the relevant open pull requests;
+- the files or areas changed;
+- any overlap, stale branch, failed check, or unresolved decision;
+- the next approval or merge action needed.
+
