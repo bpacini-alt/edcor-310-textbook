@@ -18,7 +18,7 @@ Those two documents are identical in both textbook repositories (`edcor-310-text
 
 ## How this book is built (EDCOR 310)
 
-The website is learning.benjaminpacini.com, served by Cloudflare from the `site/` folder (see `wrangler.jsonc`).
+The website is learning.benjaminpacini.com, served by Cloudflare from the `site/` folder (see `wrangler.jsonc`). Requests to `/api/*` go to `feedback/worker.js` instead.
 
 | Folder | What it is | Edit it? |
 |---|---|---|
@@ -26,6 +26,7 @@ The website is learning.benjaminpacini.com, served by Cloudflare from the `site/
 | `site/` | The published website, **generated** by `build/build_site.py` | **Never by hand.** The next build overwrites hand edits. |
 | `build/` | `build_site.py` and the web version of the cover | Yes |
 | `audio/` | The audio player, narration tools, and previews | Yes (player: see "Shared") |
+| `feedback/` | The Report a problem button and the function that receives reports | Yes (see "Shared") |
 | `original/` | The October 2026 import from Google Drive | No. Archive only. |
 
 After changing anything in `etb-live/`, `build/`, or the player, run `python3 build/build_site.py` from the repository root and commit the regenerated `site/` files in the same pull request.
@@ -33,6 +34,7 @@ After changing anything in `etb-live/`, `build/`, or the player, run `python3 bu
 ## Shared between the two books
 
 - **Audio player:** `audio/player/etb-audio.js` and `audio/player/etb-audio.css` are the one place to edit the player, and both repositories must carry identical copies. Change both in matching pull requests. Never edit the copies the builds place in the published folder.
+- **Report a problem button:** `feedback/report.js` (the button and form) and `feedback/worker.js` (receives reports at `/api/report` and files each one as an issue in the private `bpacini-alt/textbook-feedback` repository) are shared the same way as the audio player: identical copies in both repositories, changed in matching pull requests. The builds copy `report.js` into the published folder; never edit that copy. The function needs a `GITHUB_TOKEN` secret, set in each Worker's settings in Cloudflare. It never goes in the repository.
 - **Covers:** the full-size EdTechBooks cover is archived at `etb-live/cover.png`. The web version, cleaned up for the new site, is `build/cover-web.png`.
 
 ## Known Cloudflare behavior

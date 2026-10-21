@@ -1,8 +1,13 @@
-// Cloudflare Worker settings: publish only the site/ folder as a static website.
+// Cloudflare Worker settings.
+// Serves the site folder as the website. Requests to /api/* go to feedback/worker.js first,
+// which handles the Report a problem button (it needs the GITHUB_TOKEN secret, set in Cloudflare).
 {
   "name": "science-of-learning",
   "compatibility_date": "2026-09-01",
+  "main": "feedback/worker.js",
   "assets": {
-    "directory": "./site"
+    "directory": "./site",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
   }
 }

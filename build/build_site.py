@@ -500,6 +500,7 @@ body {{ margin: 0; }}
 {fragment}
 </main>
 {nav}
+<script src="/assets/report.js" data-book="EDCOR 310" defer></script>
 <script src="/assets/etb-audio.js"></script>
 </body>
 </html>
@@ -514,6 +515,8 @@ def publish_chapters():
             (ROOT / "audio" / "player" / name).read_text(),
             encoding="utf-8",
         )
+    # The Report a problem button; feedback/report.js is the one place to edit it.
+    (OUT / "assets" / "report.js").write_text((ROOT / "feedback" / "report.js").read_text(), encoding="utf-8")
     # Previous / Next run through the numbered chapters in book order. Unit pages and
     # supplements get the bar too, with only the Contents button active.
     sequence = [e for e in manifest if html.unescape(e["title"]).startswith("Chapter ")]
