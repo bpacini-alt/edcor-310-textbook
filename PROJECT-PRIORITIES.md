@@ -222,6 +222,21 @@ Full details, costs, and file-size limits are in `audio/README.md` under "Stage 
 
 **Status:** Record for later; do not start until the chapters are done being edited. Then go chapter by chapter, starting with the chapters students will be assigned first.
 
+### Loose ends from the move to the new sites (recorded October 20, 2026)
+
+Small items found while moving both books off EdTechBooks. Most are quick. Items marked **(Benjamin)** need his decision or his account first.
+
+1. **Images still load from EdTechBooks.** 5 images in EDCOR 310 and 10 in Econ 150 are still served from books.byui.edu. Copy them into each repository and point the pages at the copies **before** EdTechBooks is retired, or they will break.
+2. **Switching students to the new sites (Benjamin).** Decide when students move over (a unit boundary or next semester), make the old-to-new address list for updating I-Learn links, and decide what happens to the EdTechBooks versions afterward.
+3. **EDCOR 310 reading times disagree.** The contents page estimates reading time from word counts (Chapter 22: 26 min), but each chapter's title card states its own estimate (~50 min). Use the chapter's own number, in `build/build_site.py`.
+4. **Typo in Econ 150 Chapter 16:** "argu e" should be "argue."
+5. **Leftover branches (Benjamin).** About 29 branches across both repositories belong to pull requests that are already merged or closed. Delete them once Benjamin approves. One of them, `docs/collaborator-coordination` (in both repositories), is the broken version that deleted nearly every file. It must never be merged.
+6. **Econ 150 `site/` folder (Benjamin).** It holds an old placeholder page that Cloudflare does not serve. Keep or remove.
+7. **Protect `main` (Benjamin).** In each repository's Settings → Branches, add a rule for `main` that requires a pull request and blocks deletion and force-pushes.
+8. **Cloudflare preview builds (Benjamin).** Every branch shows a red X. Either turn off branch builds, or turn on preview links, so each pull request gets a test address to click before merging.
+9. **The professional website (Benjamin).** benjaminpacini.com is registered, and the old Google Site is archived in the `benjaminpacini-site` repository, but the new site isn't built or connected to Cloudflare yet. benpacini.com, the short version to redirect, is not registered yet.
+10. **Renew the report button's GitHub token (Benjamin), by October 2027.** See "Report a problem button" in `AGENTS.md`.
+
 ## The standing decision protocol
 
 When the author proposes a task, classify it as one of four things:
