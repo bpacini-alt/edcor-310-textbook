@@ -61,6 +61,13 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--ring); outline
 .bk-meta { font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--muted); margin: 0 0 1.5rem; border-top: 1px solid var(--line); padding-top: 1rem; }
 .bk-note { font-family: var(--sans); font-size: 13px; line-height: 1.55; color: var(--muted); margin: 0; border-top: 1px solid var(--line); padding-top: .9rem; }
 .bk-cover-small { padding: 2rem 2rem 1.6rem; }
+.bk-hero { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 2rem; align-items: center; }
+.bk-hero .bk-watermark { left: auto; }
+.bk-cover-img {
+  display: block; width: 100%; height: auto; border-radius: 3px 6px 6px 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .12), 0 8px 22px rgba(26, 58, 92, .22);
+}
+.bk-hero-text { min-width: 0; }
 .bk-cover-small .bk-title { font-size: clamp(26px, 5vw, 32px); }
 
 .bk-actions { display: flex; flex-wrap: wrap; gap: .65rem; }
@@ -138,6 +145,8 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--ring); outline
   .bk-unit-grid { grid-template-columns: minmax(0, 1fr); }
   .bk-card { padding: 2rem 1.25rem 1.6rem; }
   .bk-watermark { font-size: 130px; top: -18px; }
+  .bk-hero { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; }
+  .bk-cover-img { width: 150px; }
   .bk-unit { padding: 1.3rem 1.25rem .4rem; }
   .bk-chapters { margin: 0 -.6rem; }
   .bk-ch { grid-template-columns: 2rem minmax(0, 1fr); gap: .7rem; padding: .85rem .6rem; }

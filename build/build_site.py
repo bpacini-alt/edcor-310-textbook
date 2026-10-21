@@ -13,6 +13,8 @@ import json
 import re
 from pathlib import Path
 
+from PIL import Image
+
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "etb-live"
 OUT = ROOT / "site"
@@ -27,6 +29,8 @@ BOOK = {
     "license": ("CC BY-SA 4.0", "https://creativecommons.org/licenses/by-sa/4.0/"),
     "cover_design": "Kennadee Cuff",
     "etb": "https://books.byui.edu/science_of_learning",
+    "site": "https://learning.benjaminpacini.com",
+    "cover_alt": "Book cover: a smiling baby plays with a wooden toy train beneath a sketched light bulb.",
     "about": [
         "What began as a classroom project to enhance student learning in educational psychology and human development has grown over three years into a rigorous, collaborative textbook. This volume integrates student writing, generative AI assistance, and faculty oversight into a free educational resource.",
         "Ultimately, the authors and editors maintain full responsibility for the accuracy and integrity of the content herein.",
@@ -106,6 +110,9 @@ def page(title, body, depth, description):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(description)}">
+<meta property="og:image" content="{BOOK['site']}/assets/cover.jpg">
 <link rel="stylesheet" href="{up}assets/book.css">
 </head>
 <body>
@@ -149,8 +156,9 @@ def build_home(units, chapters):
     about = "\n".join(f"    <p>{esc(p)}</p>" for p in BOOK["about"])
     thanks = "\n".join(f"    <p>{esc(p)}</p>" for p in BOOK["thanks"])
     hours = sum(c["minutes"] for c in chapters) / 60
-    body = f"""  <section class="bk-card bk-cover">
-    <div class="bk-watermark" aria-hidden="true">310</div>
+    body = f"""  <section class="bk-card bk-cover bk-hero">
+    <img class="bk-cover-img" src="assets/cover.jpg" width="{COVER_SIZE[0]}" height="{COVER_SIZE[1]}" alt="{esc(BOOK['cover_alt'])}">
+    <div class="bk-hero-text">
     <p class="bk-kicker">{esc(BOOK['course'])} · {esc(BOOK['school'])}</p>
     <h1 class="bk-title">{esc(BOOK['title'])}</h1>
     <p class="bk-sub">{esc(BOOK['subtitle'])}</p>
@@ -158,6 +166,7 @@ def build_home(units, chapters):
     <div class="bk-actions">
       <a class="bk-btn" href="{esc(first['href'])}">Start with Chapter {first['num']}</a>
       <a class="bk-btn bk-btn-quiet" href="contents/index.html">Table of contents</a>
+    </div>
     </div>
   </section>
 
@@ -305,6 +314,13 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--ring); outline
 .bk-meta { font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--muted); margin: 0 0 1.5rem; border-top: 1px solid var(--line); padding-top: 1rem; }
 .bk-note { font-family: var(--sans); font-size: 13px; line-height: 1.55; color: var(--muted); margin: 0; border-top: 1px solid var(--line); padding-top: .9rem; }
 .bk-cover-small { padding: 2rem 2rem 1.6rem; }
+.bk-hero { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 2rem; align-items: center; }
+.bk-hero .bk-watermark { left: auto; }
+.bk-cover-img {
+  display: block; width: 100%; height: auto; border-radius: 3px 6px 6px 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .12), 0 8px 22px rgba(26, 58, 92, .22);
+}
+.bk-hero-text { min-width: 0; }
 .bk-cover-small .bk-title { font-size: clamp(26px, 5vw, 32px); }
 
 .bk-actions { display: flex; flex-wrap: wrap; gap: .65rem; }
@@ -382,6 +398,8 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--ring); outline
   .bk-unit-grid { grid-template-columns: minmax(0, 1fr); }
   .bk-card { padding: 2rem 1.25rem 1.6rem; }
   .bk-watermark { font-size: 130px; top: -18px; }
+  .bk-hero { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; }
+  .bk-cover-img { width: 150px; }
   .bk-unit { padding: 1.3rem 1.25rem .4rem; }
   .bk-chapters { margin: 0 -.6rem; }
   .bk-ch { grid-template-columns: 2rem minmax(0, 1fr); gap: .7rem; padding: .85rem .6rem; }
@@ -390,10 +408,24 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--ring); outline
 """
 
 
+COVER_SIZE = (600, 926)
+
+
+def build_cover():
+    """Web-sized copy of the EdTechBooks cover (etb-live/cover.png, kept at full size)."""
+    global COVER_SIZE
+    im = Image.open(SRC / "cover.png").convert("RGB")
+    w = 600
+    im = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
+    COVER_SIZE = im.size
+    im.save(OUT / "assets" / "cover.jpg", "JPEG", quality=84, optimize=True, progressive=True)
+
+
 def main():
     units, chapters, supplements = load_book()
     (OUT / "contents").mkdir(parents=True, exist_ok=True)
     (OUT / "assets").mkdir(parents=True, exist_ok=True)
+    build_cover()
     (OUT / "index.html").write_text(build_home(units, chapters))
     (OUT / "contents" / "index.html").write_text(build_contents(units, chapters, supplements))
     (OUT / "assets" / "book.css").write_text(CSS)
