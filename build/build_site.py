@@ -426,7 +426,37 @@ def build_cover():
     im.save(OUT / "assets" / "cover.jpg", "JPEG", quality=84, optimize=True, progressive=True)
 
 
-def wrap_chapter_page(title, fragment):
+# The floating Previous / Contents / Next bar at the bottom of each page: the same look as Econ 150's.
+NAV_CSS = """
+.etb-nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000; background: rgba(255,255,255,.97); border-top: 1px solid #dce3ea; box-shadow: 0 -1px 5px rgba(26,58,92,.12); backdrop-filter: blur(8px); font-family: Arial, sans-serif; }
+body { padding-bottom: 60px; }
+.etb-nav-inner { max-width: 740px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 12px; }
+.etb-nav a, .etb-nav span { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 11px; border: 1px solid #d6e0e8; border-radius: 6px; color: #1a3a5c; background: #fff; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.etb-nav a:hover, .etb-nav a:focus { background: #eef4fb; border-color: #9aaebe; outline: none; }
+.etb-nav a:focus-visible { outline: 3px solid #8fb3d9; outline-offset: 2px; }
+.etb-nav .etb-nav-home { border-color: #1a3a5c; background: #1a3a5c; color: #fff; }
+.etb-nav .etb-nav-home:hover, .etb-nav .etb-nav-home:focus { background: #274e70; color: #fff; }
+.etb-nav .etb-nav-disabled { color: #aab4bd; background: #f7f9fb; border-color: #e5eaee; }
+/* When the audio player is open, it docks just above this bar instead of covering it. */
+body:has(.etb-nav) .etb-ap { bottom: 51px; }
+@media (max-width: 620px) { .etb-nav-inner { padding: 7px 8px; gap: 6px; } .etb-nav a, .etb-nav span { min-height: 32px; padding: 0 8px; font-size: 11px; } }
+"""
+
+
+def nav_bar(prev, nxt):
+    """prev and nxt are manifest entries (or None at the ends of the book)."""
+    def link(entry, text):
+        if not entry:
+            return f'<span class="etb-nav-disabled" aria-disabled="true">{text}</span>'
+        label = esc(html.unescape(entry["title"]))
+        return f'<a href="/{esc(entry["file"])}" aria-label="Go to {label}">{text}</a>'
+    return ('<nav class="etb-nav" aria-label="Chapter navigation"><div class="etb-nav-inner">'
+            f'{link(prev, "← Previous")}'
+            '<a class="etb-nav-home" href="/contents/index.html" aria-label="Table of contents">Contents</a>'
+            f'{link(nxt, "Next →")}</div></nav>')
+
+
+def wrap_chapter_page(title, fragment, nav=""):
     """Wrap a captured EdTechBooks fragment as a complete site page."""
     fragment = fragment.replace(
         "https://books.byui.edu/science_of_learning/sup1",
@@ -453,6 +483,7 @@ body {{ margin: 0; }}
 .etb-site-nav-title {{ color: #1a1a1a !important; font-family: Georgia, "Times New Roman", serif; font-size: 15px !important; }}
 .etb-site-nav-links {{ display: flex; gap: 1rem; }}
 .etb {{ overflow-x: clip; }}
+{NAV_CSS.strip()}
 </style>
 </head>
 <body>
@@ -466,8 +497,9 @@ body {{ margin: 0; }}
   </div>
 </header>
 <main>
-{{fragment}}
+{fragment}
 </main>
+{nav}
 <script src="/assets/etb-audio.js"></script>
 </body>
 </html>
@@ -482,11 +514,18 @@ def publish_chapters():
             (ROOT / "audio" / "player" / name).read_text(),
             encoding="utf-8",
         )
+    # Previous / Next run through the numbered chapters in book order. Unit pages and
+    # supplements get the bar too, with only the Contents button active.
+    sequence = [e for e in manifest if html.unescape(e["title"]).startswith("Chapter ")]
+    position = {e["file"]: i for i, e in enumerate(sequence)}
     for entry in manifest:
         title = html.unescape(entry["title"])
         fragment = (SRC / entry["file"]).read_text(encoding="utf-8")
+        i = position.get(entry["file"])
+        prev = sequence[i - 1] if i is not None and i > 0 else None
+        nxt = sequence[i + 1] if i is not None and i + 1 < len(sequence) else None
         (OUT / entry["file"]).write_text(
-            wrap_chapter_page(title, fragment),
+            wrap_chapter_page(title, fragment, nav_bar(prev, nxt)),
             encoding="utf-8",
         )
 
