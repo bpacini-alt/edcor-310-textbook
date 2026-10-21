@@ -94,6 +94,7 @@ Before making any change:
 
 1. Inspect the current `main` branch, recent commits, and open pull requests.
 2. Identify whether another collaborator is already working on the same files, feature, build output, or deployment configuration.
+   - Claim new work by opening a draft pull request titled with the task as soon as you start, so other collaborators can see it.
 3. Treat open pull requests as work in progress—not as approved changes. Do not duplicate, overwrite, close, or merge them without coordinating with Benjamin.
 4. If work overlaps, pause and report the overlap. Either wait, work on clearly separate files, or ask Benjamin which change should lead.
 5. Use a separate branch and a pull request for every nontrivial change. Do not push directly to `main`.
@@ -102,6 +103,16 @@ Before making any change:
 8. When overlapping work must be combined, preserve both versions until the conflict is understood and explain the resolution in the pull request. Never silently choose one collaborator's work.
 9. When changes affect deployment or generated files, merge and verify one significant change at a time before starting the next overlapping change.
 10. Ask Benjamin before deleting files, branches, or other work, even when the item appears stale or duplicated.
+
+### Before opening or merging a pull request
+
+On October 20, 2026, a pull request meant only to add a documentation section also deleted almost every file in both repositories, and it was merged. It was restored within minutes, but these checks exist so it doesn't happen again:
+
+- Create the branch from the current `main`, never from an empty or unrelated starting point.
+- Open the pull request's **Files changed** tab. The number of files and the additions and deletions must match what the title describes. A documentation change that touches dozens of files, or that deletes thousands of lines, is wrong. Don't merge it.
+- The red Cloudflare check on branches is a known preview-build setting, not a sign the change is broken. After merging, check the live site.
+
+Each repository's `AGENTS.md` describes how that book is built and which files are generated. Read it before touching build output.
 
 Before handing off a task, report briefly:
 
