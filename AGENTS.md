@@ -22,7 +22,7 @@ The website is learning.benjaminpacini.com, served by Cloudflare from the `site/
 
 | Folder | What it is | Edit it? |
 |---|---|---|
-| `etb-live/` | The chapter source: every page as captured from EdTechBooks, plus `manifest.json` (book order and titles) | Yes. Chapter content changes go here. |
+| `etb-live/` | The chapter source: every page as captured from EdTechBooks, plus `manifest.json` (book order and titles). Chapter images are in `etb-live/images/`, at the same paths the pages use (`/images/content_images/…`); the build copies them into `site/images/`. | Yes. Chapter content changes go here. |
 | `site/` | The published website, **generated** by `build/build_site.py` | **Never by hand.** The next build overwrites hand edits. |
 | `build/` | `build_site.py` and the web version of the cover | Yes |
 | `audio/` | The audio player, narration tools, and previews | Yes (player: see "Shared") |

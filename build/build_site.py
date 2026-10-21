@@ -11,6 +11,7 @@ Run from the repo root:  python3 build/build_site.py
 import html
 import json
 import re
+import shutil
 from pathlib import Path
 
 from PIL import Image
@@ -58,6 +59,14 @@ def first_match(pattern, source):
 
 
 def reading_minutes(page_html):
+    """The chapter's own estimate from its title card ("~ 50 min read").
+
+    Falls back to a word-count estimate only for a chapter whose title card states none.
+    """
+    meta = re.search(r'class="etb-title-meta"[^>]*>(.*?)</div>', page_html, re.S)
+    stated = re.search(r"~\s*(\d+)\s*min read", text(meta.group(1))) if meta else None
+    if stated:
+        return int(stated.group(1))
     body = re.sub(r"<(style|script)[^>]*>.*?</\1>", " ", page_html, flags=re.S)
     return max(1, round(len(text(body).split()) / WORDS_PER_MINUTE))
 
@@ -462,10 +471,8 @@ def wrap_chapter_page(title, fragment, nav=""):
         "https://books.byui.edu/science_of_learning/sup1",
         "/sup1.html",
     )
-    fragment = fragment.replace(
-        'src="/images/content_images/',
-        'src="https://books.byui.edu/images/content_images/',
-    )
+    # Images keep their EdTechBooks paths (/images/content_images/...). The files are
+    # in etb-live/images/ and publish_chapters() copies them into site/images/.
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -517,6 +524,9 @@ def publish_chapters():
         )
     # The Report a problem button; feedback/report.js is the one place to edit it.
     (OUT / "assets" / "report.js").write_text((ROOT / "feedback" / "report.js").read_text(), encoding="utf-8")
+    # The chapters' images, copied from EdTechBooks into etb-live/images/ so the site doesn't depend on it.
+    if (SRC / "images").is_dir():
+        shutil.copytree(SRC / "images", OUT / "images", dirs_exist_ok=True)
     # Previous / Next run through the numbered chapters in book order. Unit pages and
     # supplements get the bar too, with only the Contents button active.
     sequence = [e for e in manifest if html.unescape(e["title"]).startswith("Chapter ")]
