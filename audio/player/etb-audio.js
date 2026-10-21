@@ -199,6 +199,7 @@
   /* Sections: the opening, each major concept, and the closing blocks */
   var card = root.querySelector('.etb-title-card');
   var num = squish((root.querySelector('.etb-title-watermark') || {}).textContent);
+  if (!/^\d+$/.test(num)) num = ''; /* the introduction's watermark is a symbol, not a chapter number */
   var titleEl = card && (card.querySelector('.etb-title-main') || card.querySelector('h1,h2'));
   var subEl = card && card.querySelector('.etb-title-sub');
   var chapTitle = titleEl ? squish(titleEl.textContent) : squish(document.title);
@@ -487,12 +488,21 @@
   var userScrolled = 0;
   ['wheel', 'touchmove'].forEach(function (ev) { window.addEventListener(ev, function () { userScrolled = Date.now(); }, { passive: true }); });
   window.addEventListener('keydown', function (e) { if (/^(Arrow(Up|Down)|Page(Up|Down)|Home|End| )$/.test(e.key) && !ap.contains(e.target)) userScrolled = Date.now(); });
+  /* Height of a sticky bar at the top of the page (such as chapter navigation), so text isn't scrolled under it */
+  function topInset() {
+    var bars = document.querySelectorAll('.etb-nav, [data-etb-sticky]'), inset = 0;
+    for (var i = 0; i < bars.length; i++) {
+      var r = bars[i].getBoundingClientRect(), pos = getComputedStyle(bars[i]).position;
+      if ((pos === 'sticky' || pos === 'fixed') && r.top < 20) inset = Math.max(inset, r.bottom);
+    }
+    return inset;
+  }
   function follow(u) {
     if (Date.now() - userScrolled < 6000 || reader.open) return;
     var target = u.range || u.el;
     if (!target) return;
-    var r = target.getBoundingClientRect(), bottom = window.innerHeight - ap.offsetHeight - 24;
-    if (r.top < 48 || r.bottom > bottom) window.scrollBy({ top: r.top - window.innerHeight * 0.3, behavior: reduceMotion ? 'auto' : 'smooth' });
+    var r = target.getBoundingClientRect(), top = topInset() + 24, bottom = window.innerHeight - ap.offsetHeight - 24;
+    if (r.top < top || r.bottom > bottom) window.scrollBy({ top: r.top - Math.max(top + 24, window.innerHeight * 0.3), behavior: reduceMotion ? 'auto' : 'smooth' });
   }
 
   function ttsEngine() {
@@ -643,7 +653,7 @@
   q('.etb-ap-now').addEventListener('click', function () {
     var s = SEC[E.cur() < 0 ? shown : E.cur()], e = s && s.els[0];
     userScrolled = 0;
-    if (e) e.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    if (e) window.scrollTo({ top: e.getBoundingClientRect().top + window.pageYOffset - topInset() - 12, behavior: reduceMotion ? 'auto' : 'smooth' });
   });
   range.addEventListener('input', function () { dragging = true; track.classList.add('is-drag'); paint(range.value / 1000 * total); });
   range.addEventListener('change', function () { dragging = false; track.classList.remove('is-drag'); userScrolled = 0; E.seek(range.value / 1000 * total); paint(); });
