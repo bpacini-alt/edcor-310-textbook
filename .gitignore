@@ -1,0 +1,3 @@
+# Local files from running Cloudflare's tools; never commit them.
+.wrangler/
+node_modules/
