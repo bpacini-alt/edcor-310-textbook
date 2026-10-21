@@ -5,12 +5,14 @@ and writes:
   site/index.html            the landing page
   site/contents/index.html   the table of contents
   site/assets/book.css       shared styles for the book's own pages
+  site/<chapter>.html        each chapter and supplement, with chapter navigation and the audio player
 
 Run from the repo root:  python3 build/build_site.py
 """
 import html
 import json
 import re
+import shutil
 from pathlib import Path
 
 from PIL import Image
@@ -58,6 +60,10 @@ def first_match(pattern, source):
 
 
 def reading_minutes(page_html):
+    """The chapter's own estimate from its title card ("~50 min read") when it has one; otherwise a word count."""
+    stated = re.search(r'etb-title-meta.*?~?\s*(\d+)\s*min read', page_html, re.S)
+    if stated:
+        return int(stated.group(1))
     body = re.sub(r"<(style|script)[^>]*>.*?</\1>", " ", page_html, flags=re.S)
     return max(1, round(len(text(body).split()) / WORDS_PER_MINUTE))
 
@@ -93,9 +99,11 @@ def load_book():
             # manifest.json lists pages in book order; a chapter belongs to the Part page before it.
             chapters.append({"num": int(m.group(1)), "title": m.group(2).strip(), "parent": units[-1]["id"],
                              "sub": first_match(r'class="etb-title-sub"[^>]*>(.*?)</p>', page),
-                             "minutes": reading_minutes(page), "href": f"{BOOK['etb']}/{entry['short']}"})
+                             "minutes": reading_minutes(page), "short": entry["short"], "file": entry["file"],
+                             "full": title, "href": f"{entry['short']}.html"})
         elif title.startswith("Supplemental"):
-            supplements.append({"title": title.split(":", 1)[-1].strip(), "href": f"{BOOK['etb']}/{entry['short']}"})
+            supplements.append({"title": title.split(":", 1)[-1].strip(), "short": entry["short"], "file": entry["file"],
+                                "full": title, "href": f"{entry['short']}.html"})
     for ch in chapters:
         by_id[ch["parent"]]["chapters"].append(ch)
     return units, chapters, supplements
@@ -196,7 +204,7 @@ def build_contents(units, chapters, supplements):
         outcomes = "\n".join(
             f"""          <li><span>{esc(o)}</span>{''.join(f' <span class="bk-clo">{esc(c)}</span>' for c in clos)}</li>"""
             for o, clos in u["outcomes"])
-        rows = "\n".join(f"""      <li><a class="bk-ch" href="{esc(c['href'])}">
+        rows = "\n".join(f"""      <li><a class="bk-ch" href="../{esc(c['href'])}">
         <span class="bk-ch-num">{c['num']}</span>
         <span class="bk-ch-body"><span class="bk-ch-title">{esc(c['title'])}</span><span class="bk-ch-sub">{esc(c['sub'])}</span></span>
         <span class="bk-ch-time">{c['minutes']} min</span>
@@ -222,7 +230,7 @@ def build_contents(units, chapters, supplements):
 {rows}
     </ol>
   </section>""")
-    supp = "\n".join(f"""      <li><a class="bk-ch bk-ch-supp" href="{esc(s['href'])}">
+    supp = "\n".join(f"""      <li><a class="bk-ch bk-ch-supp" href="../{esc(s['href'])}">
         <span class="bk-ch-num" aria-hidden="true">+</span>
         <span class="bk-ch-body"><span class="bk-ch-title">{esc(s['title'])}</span><span class="bk-ch-sub">Quick reference</span></span>
       </a></li>""" for s in supplements)
@@ -232,7 +240,6 @@ def build_contents(units, chapters, supplements):
     <p class="bk-kicker">Table of contents</p>
     <h1 class="bk-title">{esc(BOOK['title'])}</h1>
     <p class="bk-sub">{len(chapters)} chapters in {len(units)} units, about {round(hours)} hours of reading</p>
-    <p class="bk-note">While the book finishes moving to this site, chapters open on EdTechBooks.</p>
   </section>
 
 {chr(10).join(blocks)}
@@ -426,11 +433,83 @@ def build_cover():
     im.save(OUT / "assets" / "cover.jpg", "JPEG", quality=84, optimize=True, progressive=True)
 
 
+# Chapter pages: the chapter's own HTML, unchanged, inside a page header, the
+# shared chapter navigation bar (same look as Econ 150's), and the audio player.
+NAV_CSS = (".etb-nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);border-bottom:1px solid #dce3ea;"
+           "box-shadow:0 1px 5px rgba(26,58,92,.08);backdrop-filter:blur(8px);font-family:Arial,sans-serif}"
+           ".etb-nav-inner{max-width:740px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px}"
+           ".etb-nav a,.etb-nav span{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:0 11px;"
+           "border:1px solid #d6e0e8;border-radius:6px;color:#1a3a5c;background:#fff;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap}"
+           ".etb-nav a:hover,.etb-nav a:focus{background:#eef4fb;border-color:#9aaebe;outline:none}"
+           ".etb-nav a:focus-visible{outline:3px solid #8fb3d9;outline-offset:2px}"
+           ".etb-nav .etb-nav-home{border-color:#1a3a5c;background:#1a3a5c;color:#fff}"
+           ".etb-nav .etb-nav-home:hover,.etb-nav .etb-nav-home:focus{background:#274e70;color:#fff}"
+           ".etb-nav .etb-nav-disabled{color:#aab4bd;background:#f7f9fb;border-color:#e5eaee}"
+           "@media(max-width:620px){.etb-nav-inner{padding:7px 8px;gap:6px}.etb-nav a,.etb-nav span{min-height:32px;padding:0 8px;font-size:11px}}")
+
+
+def nav_link(target, text, label):
+    if not target:
+        return f'<span class="etb-nav-disabled" aria-disabled="true">{text}</span>'
+    return f'<a href="{esc(target["href"])}" aria-label="Go to {esc(label(target))}">{text}</a>'
+
+
+def chapter_page(entry, prev, nxt, local_links):
+    body = (SRC / entry["file"]).read_text()
+    for old, new in local_links.items():           # links that still point at EdTechBooks pages of this book
+        body = body.replace(old, new)
+    label = lambda c: c["full"]
+    nav = (f'<nav class="etb-nav" aria-label="Chapter navigation"><div class="etb-nav-inner">'
+           f'{nav_link(prev, "← Previous", label)}'
+           f'<a class="etb-nav-home" href="contents/index.html" aria-label="Table of contents">Contents</a>'
+           f'{nav_link(nxt, "Next →", label)}</div></nav>')
+    title = f"{entry['full']} · {BOOK['title']}"
+    desc = entry.get("sub") or BOOK["subtitle"]
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(desc)}">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(desc)}">
+<meta property="og:image" content="{BOOK['site']}/assets/cover.jpg">
+<link rel="stylesheet" href="assets/etb-audio.css">
+<style>
+{NAV_CSS}
+/* Keeps hidden hover definitions from making the page wider than a phone screen. */
+.etb{{overflow-x:clip}}
+</style>
+</head>
+<body>
+{nav}
+{body}
+<script src="assets/etb-audio.js"></script>
+</body>
+</html>
+"""
+
+
+def build_chapters(chapters, supplements):
+    local_links = {f"{BOOK['etb']}/{e['short']}\"": f"{e['short']}.html\"" for e in chapters + supplements}
+    order = sorted(chapters, key=lambda c: c["num"])
+    for i, ch in enumerate(order):
+        prev = order[i - 1] if i > 0 else None
+        nxt = order[i + 1] if i + 1 < len(order) else None
+        (OUT / f"{ch['short']}.html").write_text(chapter_page(ch, prev, nxt, local_links))
+    for s in supplements:
+        (OUT / f"{s['short']}.html").write_text(chapter_page(s, None, None, local_links))
+    for name in ("etb-audio.js", "etb-audio.css"):   # audio/player/ stays the one place to edit the player
+        shutil.copyfile(ROOT / "audio" / "player" / name, OUT / "assets" / name)
+
+
 def main():
     units, chapters, supplements = load_book()
     (OUT / "contents").mkdir(parents=True, exist_ok=True)
     (OUT / "assets").mkdir(parents=True, exist_ok=True)
     build_cover()
+    build_chapters(chapters, supplements)
     (OUT / "index.html").write_text(build_home(units, chapters))
     (OUT / "contents" / "index.html").write_text(build_contents(units, chapters, supplements))
     (OUT / "assets" / "book.css").write_text(CSS)
