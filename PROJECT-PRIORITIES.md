@@ -208,6 +208,20 @@ The small label at the top of each chapter's title card (for example, "Unit 3 ·
 
 **Status:** Record for later; do not implement yet.
 
+### Both books: Add recorded narration in Benjamin's voice (ElevenLabs)
+
+Right now every chapter is read aloud by the student's own device voice. That's a stopgap while chapters are still being edited, so no money is spent on audio that would have to be regenerated. Once editing is done, replace it with narration in Benjamin's cloned voice.
+
+**How to do it:**
+
+1. Set up the voice: an ElevenLabs plan with Professional Voice Cloning (Creator or higher), then record clean voice samples and create the clone.
+2. Write the generation script. It should take each chapter's text from the player's own reading rules, so the recording says exactly what the device voice says. It generates one file per section, and it keeps a fingerprint of each section's text so later edits only regenerate the sections that changed. Save at 64 kbps mono.
+3. For each chapter, after its final edit pass, generate the audio and add the MP3s and section list to that book's repo. The player switches that chapter from the device voice to the recording on its own.
+
+Full details, costs, and file-size limits are in `audio/README.md` under "Stage 2: recordings."
+
+**Status:** Record for later; do not start until the chapters are done being edited. Then go chapter by chapter, starting with the chapters students will be assigned first.
+
 ## The standing decision protocol
 
 When the author proposes a task, classify it as one of four things:
