@@ -1,0 +1,51 @@
+Major concept 4: Making It Stick.
+
+Moving from Working to Long-Term Memory.
+
+In 2009, cognitive scientist Daniel Willingham published an article that became an instant sensation among educators: Why Don’t Students Like School? The answer? Because learning is effortful — and the brain, given the choice, prefers not to think hard. Two principles from that work sit underneath nearly everything in this section.
+
+First: memory is the residue of thought. What a student remembers is determined not by what they were exposed to, but by what they actually thought about. A student who spends a class period coloring a diagram is thinking about color choices. A student asked to explain the diagram from memory is thinking about the content. Second: the strategies that feel most productive — re-reading, highlighting, cramming — produce the weakest long-term memories. The strategies that feel harder — retrieval practice, spaced review, interleaving — produce the strongest. The discomfort is often the signal that learning is actually happening.
+
+Both principles raise an immediate practical question: if what students remember is determined by what they think about, what controls how much they can think about at one time? The answer is working memory — and its limits turn out to be far more severe than most teachers intuitively assume.
+
+Chunking: The Brain’s Workaround.
+
+In 1956, psychologist George Miller published one of the most cited papers in cognitive science: “The Magical Number Seven, Plus or Minus Two.” Miller’s claim was that working memory could hold approximately seven chunks of information at once. The estimate has since been revised downward: more recent research, particularly work by Nelson Cowan, suggests the true limit is closer to four chunks under controlled conditions. The exact number is less important than the implication: working memory is not just limited — it is surprisingly limited. A space that small is not a comfortable workspace. It is a bottleneck.
+
+Miller’s deeper insight wasn’t just that working memory is small — it was that the brain has a workaround: chunking. A chunk is any unit of information the brain can retrieve and manipulate as a single piece. Letters chunk into words; words chunk into phrases; math facts chunk into procedures; chord shapes chunk into songs. Expert chess players don’t see thirty-two individual pieces — they see recognizable formations. The chunk, not the component, occupies the working memory slot, which means chunking effectively expands working memory’s usable capacity.
+
+This is why fluency matters beyond speed. When a skill is well-practiced enough to run from long-term memory automatically, it stops competing for working memory at all. A student who hasn’t automated multiplication facts must use working memory to compute them mid-problem — leaving less capacity for the reasoning the lesson is about. Every skill that reaches automaticity is a skill that stops competing with everything else. Practice to fluency, not just to accuracy.
+
+Retrieval Practice.
+
+Retrieval practice is the act of deliberately pulling information from memory without consulting notes or materials. The effort of retrieval — even when difficult, even when the student gets it wrong — strengthens the memory trace more than any amount of passive review. This is called the testing effect, and it has been replicated hundreds of times across age groups and subject areas. In Roediger and Karpicke’s landmark 2006 study, students who practiced retrieval retained roughly 50% more material a week later than those who restudied the same content. That gap, produced by a strategy requiring no extra resources and almost no preparation time, is difficult to overstate.
+
+Classroom tool — low-stakes quizzes.
+
+Brief, ungraded quizzes at the start or end of class activate retrieval practice for the entire room at once. Students should know these don’t affect their grade — the goal is practice, not performance. Digital tools like Kahoot or Gimkit work, but index cards work just as well. Example: Begin every class with three questions about the previous lesson — no notes allowed. Review answers together immediately after.
+
+Classroom tool — brain dumps.
+
+Ask students to write down everything they know about a topic from memory — unfiltered, in any order. Afterward, they compare with peers or review their notes to find gaps. The gap-finding is as valuable as the recall itself. Example: At the end of a unit, give students five minutes to list the key concepts from memory. What they can’t write down reveals exactly where re-teaching is needed.
+
+Classroom tool — Two Things.
+
+A minimal-prep retrieval tool: ask every student to write two things they remember from the last class, last week, or the last unit. Fast, flexible, and effective as a warm-up, exit ticket, or topic transition. Example: “Before we start — write two things you remember from Monday’s lesson. No notes.”
+
+Spaced Practice.
+
+Spaced practice means spreading review across time rather than massing it into a single session. A student who reviews material for one hour across five days will remember dramatically more than one who reviews for five hours the night before a test. The catch is that spaced practice feels harder and less productive in the moment — which is exactly why students and teachers so often avoid it. The subjective feeling of learning is not a reliable guide to actual learning.
+
+Interleaving.
+
+Interleaving is most effective once students have reached fluency: mixing related problem types or topics during practice, rather than blocking all of one type before moving to the next. When students must discriminate among similar problems — choosing the right approach rather than simply repeating one procedure — transfer and flexible application improve significantly. What interleaving is actually training is the ability to identify what kind of problem you are facing before you solve it. In blocked practice, that decision is already made. In interleaved practice, the student must first ask “what type of problem is this, and what does it call for?” — and that skill of problem identification is exactly what transfers to real-world contexts, where problems do not arrive pre-sorted by type.
+
+Short-term performance. Spaced / Interleaved Practice: Often feels harder and slower. Massed / Blocked Practice: Feels productive and smooth.
+
+Long-term retention. Spaced / Interleaved Practice: Strong and durable. Massed / Blocked Practice: Weak — rapid forgetting after the test.
+
+Transfer to new contexts. Spaced / Interleaved Practice: High. Massed / Blocked Practice: Low.
+
+Best use. Spaced / Interleaved Practice: Consolidation, review, flexible application. Massed / Blocked Practice: Initial acquisition, early fluency-building.
+
+Retrieval practice. A student says: “I study better when I do all the math first and then all the science.” Using the blocked vs. interleaved distinction, evaluate this claim — and predict how their performance on a test covering both subjects would differ from a student who mixed them. Pause the audio and try answering on your own before you go on.
