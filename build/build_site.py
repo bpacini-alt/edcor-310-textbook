@@ -412,9 +412,14 @@ COVER_SIZE = (600, 926)
 
 
 def build_cover():
-    """Web-sized copy of the EdTechBooks cover (etb-live/cover.png, kept at full size)."""
+    """Web-sized copy of the cover.
+
+    build/cover-web.png is the EdTechBooks cover with the old books.byui.edu address removed;
+    the untouched original stays in etb-live/cover.png.
+    """
     global COVER_SIZE
-    im = Image.open(SRC / "cover.png").convert("RGB")
+    src = ROOT / "build" / "cover-web.png"
+    im = Image.open(src if src.exists() else SRC / "cover.png").convert("RGB")
     w = 600
     im = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
     COVER_SIZE = im.size
