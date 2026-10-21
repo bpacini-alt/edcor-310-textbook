@@ -93,9 +93,9 @@ def load_book():
             # manifest.json lists pages in book order; a chapter belongs to the Part page before it.
             chapters.append({"num": int(m.group(1)), "title": m.group(2).strip(), "parent": units[-1]["id"],
                              "sub": first_match(r'class="etb-title-sub"[^>]*>(.*?)</p>', page),
-                             "minutes": reading_minutes(page), "href": f"{BOOK['etb']}/{entry['short']}"})
+                             "minutes": reading_minutes(page), "href": entry["file"]})
         elif title.startswith("Supplemental"):
-            supplements.append({"title": title.split(":", 1)[-1].strip(), "href": f"{BOOK['etb']}/{entry['short']}"})
+            supplements.append({"title": title.split(":", 1)[-1].strip(), "href": entry["file"]})
     for ch in chapters:
         by_id[ch["parent"]]["chapters"].append(ch)
     return units, chapters, supplements
@@ -196,7 +196,7 @@ def build_contents(units, chapters, supplements):
         outcomes = "\n".join(
             f"""          <li><span>{esc(o)}</span>{''.join(f' <span class="bk-clo">{esc(c)}</span>' for c in clos)}</li>"""
             for o, clos in u["outcomes"])
-        rows = "\n".join(f"""      <li><a class="bk-ch" href="{esc(c['href'])}">
+        rows = "\n".join(f"""      <li><a class="bk-ch" href="../{esc(c['href'])}">
         <span class="bk-ch-num">{c['num']}</span>
         <span class="bk-ch-body"><span class="bk-ch-title">{esc(c['title'])}</span><span class="bk-ch-sub">{esc(c['sub'])}</span></span>
         <span class="bk-ch-time">{c['minutes']} min</span>
@@ -222,7 +222,7 @@ def build_contents(units, chapters, supplements):
 {rows}
     </ol>
   </section>""")
-    supp = "\n".join(f"""      <li><a class="bk-ch bk-ch-supp" href="{esc(s['href'])}">
+    supp = "\n".join(f"""      <li><a class="bk-ch bk-ch-supp" href="../{esc(s['href'])}">
         <span class="bk-ch-num" aria-hidden="true">+</span>
         <span class="bk-ch-body"><span class="bk-ch-title">{esc(s['title'])}</span><span class="bk-ch-sub">Quick reference</span></span>
       </a></li>""" for s in supplements)
@@ -232,7 +232,7 @@ def build_contents(units, chapters, supplements):
     <p class="bk-kicker">Table of contents</p>
     <h1 class="bk-title">{esc(BOOK['title'])}</h1>
     <p class="bk-sub">{len(chapters)} chapters in {len(units)} units, about {round(hours)} hours of reading</p>
-    <p class="bk-note">While the book finishes moving to this site, chapters open on EdTechBooks.</p>
+    <p class="bk-note">The chapters are now published on this site.</p>
   </section>
 
 {chr(10).join(blocks)}
@@ -426,11 +426,76 @@ def build_cover():
     im.save(OUT / "assets" / "cover.jpg", "JPEG", quality=84, optimize=True, progressive=True)
 
 
+def wrap_chapter_page(title, fragment):
+    """Wrap a captured EdTechBooks fragment as a complete site page."""
+    fragment = fragment.replace(
+        "https://books.byui.edu/science_of_learning/sup1",
+        "/sup1.html",
+    )
+    fragment = fragment.replace(
+        'src="/images/content_images/',
+        'src="https://books.byui.edu/images/content_images/',
+    )
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{esc(title)} · The Science of Learning</title>
+<link rel="stylesheet" href="/assets/etb-audio.css">
+<style>
+html {{ background: #f6f7f9; }}
+body {{ margin: 0; }}
+.etb-site-nav {{ background: #fff; border-bottom: 1px solid #e8ebef; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }}
+.etb-site-nav-in {{ max-width: 740px; margin: 0 auto; padding: .8rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }}
+.etb-site-nav a {{ color: #1a3a5c; text-decoration: none; font-size: 13px; font-weight: 600; }}
+.etb-site-nav a:hover {{ text-decoration: underline; }}
+.etb-site-nav-title {{ color: #1a1a1a !important; font-family: Georgia, "Times New Roman", serif; font-size: 15px !important; }}
+.etb-site-nav-links {{ display: flex; gap: 1rem; }}
+.etb {{ overflow-x: clip; }}
+</style>
+</head>
+<body>
+<header class="etb-site-nav">
+  <div class="etb-site-nav-in">
+    <a class="etb-site-nav-title" href="/index.html">The Science of Learning</a>
+    <nav class="etb-site-nav-links" aria-label="Book navigation">
+      <a href="/contents/index.html">Contents</a>
+      <a href="/index.html">Home</a>
+    </nav>
+  </div>
+</header>
+<main>
+{{fragment}}
+</main>
+<script src="/assets/etb-audio.js"></script>
+</body>
+</html>
+"""
+
+
+def publish_chapters():
+    manifest = json.loads((SRC / "manifest.json").read_text())["chapters"]
+    (OUT / "assets").mkdir(parents=True, exist_ok=True)
+    for name in ("etb-audio.js", "etb-audio.css"):
+        (OUT / "assets" / name).write_text(
+            (ROOT / "audio" / "player" / name).read_text(),
+            encoding="utf-8",
+        )
+    for entry in manifest:
+        title = html.unescape(entry["title"])
+        fragment = (SRC / entry["file"]).read_text(encoding="utf-8")
+        (OUT / entry["file"]).write_text(
+            wrap_chapter_page(title, fragment),
+            encoding="utf-8",
+        )
+
 def main():
     units, chapters, supplements = load_book()
     (OUT / "contents").mkdir(parents=True, exist_ok=True)
     (OUT / "assets").mkdir(parents=True, exist_ok=True)
     build_cover()
+    publish_chapters()
     (OUT / "index.html").write_text(build_home(units, chapters))
     (OUT / "contents" / "index.html").write_text(build_contents(units, chapters, supplements))
     (OUT / "assets" / "book.css").write_text(CSS)
