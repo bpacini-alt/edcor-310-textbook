@@ -61,20 +61,34 @@ Before expanding the books, make sure the basic system is dependable.
 
 **Why this comes first:** Every later feature is less valuable if students cannot reliably access or use the books.
 
-### Priority 1 — Polish and stabilize the student-facing books
+### Priority 1 — Polish and standardize each book
 
-Make the existing learning experience clear, coherent, and trustworthy before adding substantial new functionality.
+Make each book clear, coherent, accessible, and trustworthy before adding substantial new functionality.
 
+- Standardize formatting **within each book**: headings, terminology, examples, figures, exercises, answer/review patterns, and page conventions. Do not force EDCOR 310 and Econ 150 into identical presentation when their audiences or content call for different choices.
 - Improve chapter organization and navigation.
-- Standardize headings, terminology, examples, figures, exercises, and answer/review patterns.
 - Remove confusing or redundant material.
 - Repair technical rough edges and inconsistent presentation.
-- Check mobile readability, accessibility, page load, and basic usability.
+- Conduct a dedicated readability and accessibility pass: plain language, heading hierarchy, link text, alt text, contrast, keyboard navigation, focus states, screen-reader labels, mobile layout, and basic usability.
+- Put reference lists in expandable/drop-down sections so sources remain available without interrupting the reading flow. Treat this as a substantial evidence-and-sourcing pass: transparency must not become a way to hide inconvenient evidence, and design choices must not reinforce confirmation bias.
 - Identify the chapters where students are most likely to get lost or misunderstand the central idea.
 
-**Why this is high priority:** Better presentation and fewer points of friction benefit every student immediately and multiply the value of every later feature.
+**Why this is high priority:** Better presentation, trustworthy sourcing, and fewer points of friction benefit every student immediately and multiply the value of every later feature.
 
-### Priority 2 — Add a small number of high-yield interactives/manipulatives
+### Priority 2 — Make every chapter practice-heavy
+
+Revise both books chapter by chapter so students regularly retrieve, predict, explain, apply, and receive feedback—not merely read and then answer a few questions at the end.
+
+- Build frequent, purposeful practice into the chapter flow rather than treating practice as an appendix.
+- Use a mix of recognition, understanding, prediction, explanation, application, and simple transfer, with difficulty increasing as the chapter develops.
+- Use practice to surface common misconceptions, not just to reward recall.
+- Provide answers, explanations, or feedback where appropriate so students can learn from the attempt.
+- Prefer a manageable number of high-quality tasks over busywork or question volume for its own sake.
+- Keep the practice aligned with the chapter's central ideas and learning outcomes.
+
+**Why this is high priority:** Practice is where students turn exposure into durable understanding. A practice-heavy chapter can improve learning more directly than adding another presentation feature.
+
+### Priority 3 — Add a small number of high-yield interactives/manipulatives
 
 Build simple, reusable interactives that let students see a concept change when they change an input.
 
@@ -88,7 +102,7 @@ Start with concepts where a visual or manipulable model is substantially better 
 
 **Why this comes before larger AI features:** A well-designed manipulative can directly improve conceptual understanding with modest technical complexity.
 
-### Priority 3 — Add chapter audio
+### Priority 4 — Add chapter audio
 
 Continue the audio work already underway, beginning with the chapters where audio will most help students.
 
@@ -100,7 +114,7 @@ Continue the audio work already underway, beginning with the chapters where audi
 
 **Why this matters:** Audio improves access and gives students another way to review, but it should not outrank core content repair or the highest-value interactives.
 
-### Priority 4 — Build a reliable PDF export/compiler
+### Priority 5 — Build a reliable PDF export/compiler
 
 Create a polished way for students to download or print a coherent PDF of a book or selected chapters.
 
@@ -111,7 +125,7 @@ Create a polished way for students to download or print a coherent PDF of a book
 
 **Why this matters:** A dependable PDF gives students a familiar, portable, printable format and may be relatively high leverage if the existing publishing system supports it cleanly.
 
-### Priority 5 — Add an AI/notebook export workflow
+### Priority 6 — Add an AI/notebook export workflow
 
 Investigate an export that lets students use approved chapter materials in an AI notebook or study environment—for example, to summarize, ask questions, review vocabulary, and quiz themselves.
 
@@ -125,7 +139,7 @@ The first version should be simple and controlled:
 
 **Why this is not first:** It could be powerful, but its value depends on clean content, stable exports, and careful attention to student privacy, accuracy, and platform changes.
 
-### Priority 6 — Develop real-time policy analysis practice
+### Priority 7 — Develop real-time policy analysis practice
 
 Explore a later-stage system in which students analyze a policy in real time, using their notes while responding to probing questions.
 
@@ -145,12 +159,13 @@ Possible components include:
 | Rank | Initiative | Immediate student value | Effort/risk | Recommended posture |
 |---:|---|---|---|---|
 | 0 | Fix core apps, builds, navigation, and access | Very high | Low–medium | Do first and continuously |
-| 1 | Polish and improve the books | Very high | Medium | Main ongoing focus |
-| 2 | Small, high-yield interactives | High | Medium | Build selectively |
-| 3 | Chapter audio | Medium–high | Medium | Continue in a repeatable workflow |
-| 4 | PDF compiler/export | Medium–high | Low–medium | Build once the pipeline is understood |
-| 5 | AI/notebook export | Potentially high | Medium–high | Prototype after content/export foundations |
-| 6 | Real-time policy analysis coach | Potentially very high | Very high | Strategic later project |
+| 1 | Polish and standardize each book | Very high | Medium | Main ongoing focus |
+| 2 | Practice-heavy chapters | Very high | Medium–high | Build into every chapter |
+| 3 | Small, high-yield interactives/manipulables | High | Medium | Build selectively |
+| 4 | Chapter audio | Medium–high | Medium | Continue in a repeatable workflow |
+| 5 | PDF compiler/export | Medium–high | Low–medium | Build once the pipeline is understood |
+| 6 | AI/notebook export | Potentially high | Medium–high | Prototype after content/export foundations |
+| 7 | Real-time policy analysis coach | Potentially very high | Very high | Strategic later project |
 
 This ranking is provisional. A concrete task can move upward if it solves an urgent student problem, unlocks several other projects, or is dramatically easier than expected.
 
