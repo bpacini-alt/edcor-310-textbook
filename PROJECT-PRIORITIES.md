@@ -294,6 +294,20 @@ The mockups are in Benjamin's Claude canvas "BenjaminPacini.com Landing Page": t
 
 13. **A simple landing page at benjaminpacini.com,** so Benjamin can tell students "go to benjaminpacini.com" and they find their textbook right away. It has his photo, a card for each book, and a short "More from me" list (professional site, Substack, LinkedIn). It belongs in the `benjaminpacini-site` repository and connects to loose end 9. **Waiting on:** Benjamin's photo.
 
+## Cool ideas for later
+
+These are promising possibilities, but they are intentionally near the bottom of the backlog. They should not displace the current work on content quality, practice, accessibility, interactives, audio, exports, or the series/front-matter system.
+
+### Student sign-in and lightweight progress tracking
+
+Explore a simple Google sign-in system for students, ideally restricted to verified `@byui.edu` accounts. The first useful version would not attempt to replace Canvas or become a full learning-management system. It would provide a shared identity across both books and optionally record low-stakes activity such as reading-check scores, practice scores, and completion dates.
+
+A student dashboard could eventually show a student's own progress, but that is secondary. Instructor dashboards, grade passback, homework management, roster synchronization, and Canvas integration are explicitly out of scope for the first experiment.
+
+**Possible first experiment:** a hidden preview page with Google sign-in and one saved sample score. Test whether BYU-Idaho accounts work cleanly, whether scores persist across devices, and whether the experience is worth maintaining before expanding it.
+
+**Status:** Interesting but deferrable; revisit later. Do not begin until the higher-priority textbook work is in good shape.
+
 ## The standing decision protocol
 
 When the author proposes a task, classify it as one of four things:
