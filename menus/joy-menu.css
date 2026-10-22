@@ -158,12 +158,6 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 .jm-source, .jm-alt, .jm-pairs { font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 0 0 .35rem; }
 .jm-alt a, .jm-pairs a { font-weight: 600; }
 .jm-actions { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .75rem; }
-.jm-notes { margin-top: .6rem; }
-.jm-notes label { display: block; font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin-bottom: .25rem; }
-.jm-notes textarea {
-  width: 100%; min-height: 84px; font: 15px/1.45 var(--serif); padding: .55rem .65rem;
-  border: 1px solid var(--line); border-radius: 7px; resize: vertical;
-}
 .jm-hidden { display: none !important; }
 
 /* Appendix */
@@ -191,7 +185,7 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 @media print {
-  .jm-bar, .jm-filters, .jm-actions, .jm-notes, .jm-top nav, .jm-units-nav { display: none !important; }
+  .jm-bar, .jm-filters, .jm-actions, .jm-top nav, .jm-units-nav { display: none !important; }
   .jm-entry { break-inside: avoid; }
   .jm-hidden { display: block !important; }
   body { background: #fff; }

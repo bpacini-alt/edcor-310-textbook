@@ -190,7 +190,7 @@ def build(data):
 </section>
 {chr(10).join(units_html)}
 {appendix}
-<p class="jm-foot">{esc(c['menuTitle'])} · {esc(c['course'])} · Your picks and notes are saved in this browser only. They don't reach your instructor or your group.</p>
+<p class="jm-foot">{esc(c['menuTitle'])} · {esc(c['course'])} · Your picks are saved in this browser only. They don't reach your instructor or your group.</p>
 </main>
 <script type="application/json" id="jm-config">{json.dumps(config)}</script>
 <script>

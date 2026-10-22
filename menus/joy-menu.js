@@ -3,8 +3,8 @@
    Change both in matching pull requests. The builder inlines this file into each page.
 
    What it does: lets a student mark readings "I'll read this" or "My group has it",
-   keep private notes, see minutes chosen against the requirement, filter the menu,
-   and copy their list. Everything is saved in this browser only (localStorage).
+   see minutes chosen against the requirement, filter the menu, and copy their list.
+   Students submit their notes separately, so the page deliberately has no notes box. Everything is saved in this browser only (localStorage).
    The page works without this script; it just has no buttons. */
 (function () {
   "use strict";
@@ -15,14 +15,13 @@
   function targetOf(scopeId) { var s = scopeById[scopeId]; return s ? Number(s.dataset.target) || 60 : 60; }
 
   // ---------- saved state ----------
-  var state = { mine: {}, group: {}, notes: {} };
+  var state = { mine: {}, group: {} };
   try {
     var raw = window.localStorage.getItem(KEY);
     if (raw) {
       var parsed = JSON.parse(raw);
       state.mine = parsed.mine || {};
       state.group = parsed.group || {};
-      state.notes = parsed.notes || {};
     }
   } catch (e) { /* storage blocked or empty: start fresh */ }
   // Returning students already know how it works: start with the instructions folded.
@@ -42,7 +41,7 @@
   var byId = {};
   entries.forEach(function (el) { byId[el.dataset.id] = el; });
   // Drop saved ids that no longer exist in the menu.
-  ["mine", "group", "notes"].forEach(function (k) {
+  ["mine", "group"].forEach(function (k) {
     Object.keys(state[k]).forEach(function (id) { if (!byId[id]) delete state[k][id]; });
   });
 
@@ -72,23 +71,10 @@
     var bar = document.createElement("div"); bar.className = "jm-actions";
     var mine = makeBtn("jm-btn-mine", "I’ll read this");
     var group = makeBtn("jm-btn-group", "My group has it");
-    var noteBtn = makeBtn("jm-btn-note", "My notes");
     mine.setAttribute("aria-label", "I’ll read this: " + title);
     group.setAttribute("aria-label", "My group has it: " + title);
-    noteBtn.setAttribute("aria-label", "My notes on " + title);
-    bar.appendChild(mine); bar.appendChild(group); bar.appendChild(noteBtn);
-
-    var notes = document.createElement("div"); notes.className = "jm-notes jm-hidden";
-    var nid = "jm-n-" + id;
-    var lab = document.createElement("label"); lab.setAttribute("for", nid);
-    lab.textContent = "Notes for your group and slides (saved in this browser only)";
-    var ta = document.createElement("textarea"); ta.id = nid;
-    ta.placeholder = "Main claim, best evidence, what surprised you, your rating…";
-    ta.value = state.notes[id] || "";
-    notes.appendChild(lab); notes.appendChild(ta);
-    noteBtn.setAttribute("aria-expanded", "false"); noteBtn.setAttribute("aria-controls", nid);
-
-    el.appendChild(bar); el.appendChild(notes);
+    bar.appendChild(mine); bar.appendChild(group);
+    el.appendChild(bar);
 
     function paint() {
       var m = !!state.mine[id], g = !!state.group[id];
@@ -96,7 +82,6 @@
       mine.textContent = m ? "✓ I’m reading this" : "I’ll read this";
       group.textContent = g ? "✓ My group has it" : "My group has it";
       el.classList.toggle("is-mine", m); el.classList.toggle("is-group", g);
-      noteBtn.textContent = state.notes[id] ? "My notes •" : "My notes";
     }
     paint();
     mine.addEventListener("click", function () {
@@ -106,16 +91,6 @@
     group.addEventListener("click", function () {
       if (state.group[id]) delete state.group[id]; else state.group[id] = true;
       paint(); save(); applyFilters();
-    });
-    noteBtn.addEventListener("click", function () {
-      var open = notes.classList.toggle("jm-hidden") === false;
-      noteBtn.setAttribute("aria-expanded", String(open));
-      if (open) ta.focus();
-    });
-    ta.addEventListener("input", function () {
-      var v = ta.value;
-      if (v.trim()) state.notes[id] = v; else delete state.notes[id];
-      save(); paint();
     });
   });
 
@@ -228,15 +203,14 @@
     var lines = [cfg.menuTitle + " — my readings", ""];
     var any = false;
     scopes.forEach(function (s) {
-      var picked = entries.filter(function (el) { return el.dataset.scopeId === s.dataset.scope && (state.mine[el.dataset.id] || state.notes[el.dataset.id]); });
+      var picked = entries.filter(function (el) { return el.dataset.scopeId === s.dataset.scope && state.mine[el.dataset.id]; });
       if (!picked.length) return;
       any = true;
       lines.push(s.dataset.scopeLabel + " (" + fmt(minutesIn(s.dataset.scope)) + " picked)");
       picked.forEach(function (el) {
         var a = el.querySelector(".jm-entry-title a");
-        lines.push("• " + a.textContent.trim() + " (~" + el.dataset.min + " min)" + (state.mine[el.dataset.id] ? "" : " [notes only]"));
+        lines.push("• " + a.textContent.trim() + " (~" + el.dataset.min + " min)");
         lines.push("  " + a.href);
-        if (state.notes[el.dataset.id]) lines.push("  Notes: " + state.notes[el.dataset.id].replace(/\s*\n\s*/g, " / "));
       });
       lines.push("");
     });
@@ -247,10 +221,10 @@
       t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
       var ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
       document.body.removeChild(t);
-      say(ok ? "Copied. Paste it into your slides or notes." : "Couldn’t copy here. Try another browser.");
+      say(ok ? "Copied. Paste it wherever you need it." : "Couldn’t copy here. Try another browser.");
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function () { say("Copied. Paste it into your slides or notes."); }, fallback);
+      navigator.clipboard.writeText(text).then(function () { say("Copied. Paste it wherever you need it."); }, fallback);
     } else fallback();
   });
 
@@ -273,7 +247,7 @@
       el.querySelector(".jm-btn-group").textContent = "My group has it";
     });
     updateMeters(); applyFilters();
-    say("Picks cleared. Your notes are still saved.");
+    say("Picks cleared.");
   });
 
   document.documentElement.classList.add("jm-js");

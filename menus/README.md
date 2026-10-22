@@ -37,7 +37,7 @@ Each reading looks like this:
 }
 ```
 
-- `id` is permanent. Students' saved picks and notes, and the planned Reading Return ratings, attach to it. Keep it when you retitle a reading. A new reading needs a new, unique id (lowercase words joined by hyphens).
+- `id` is permanent. Students' saved picks, and the planned Reading Return ratings, attach to it. Keep it when you retitle a reading. A new reading needs a new, unique id (lowercase words joined by hyphens).
 - `minutes` is the stop point the hour meter counts, not necessarily the full runtime. Keep it equal to the number in `source`.
 - `format` is `watch`, `listen`, or `read`.
 - `topic` (EDCOR 310) or `stance` (Econ 150: `Pro-market` or `Market-critique`) is optional.
@@ -48,7 +48,7 @@ A week can carry content notes in its `notes` list. The requirement (an hour a w
 
 ## What the page does
 
-Students can mark readings "I'll read this" or "My group has it," keep private notes, filter by format, length, and viewpoint, and copy their list for slides or prep checks. A meter shows the minutes picked against each unit's requirement. All of it is saved in the student's browser only. Nothing is sent anywhere, and the page still lists every reading if the script fails.
+Students can mark readings "I'll read this" or "My group has it," filter by format, length, and viewpoint, and copy their list for slides or prep checks. A meter shows the minutes picked against each unit's requirement. All of it is saved in the student's browser only. Nothing is sent anywhere, and the page still lists every reading if the script fails. There is deliberately no notes box: students submit their notes separately.
 
 ## History
 

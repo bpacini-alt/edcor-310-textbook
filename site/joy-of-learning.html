@@ -168,12 +168,6 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 .jm-source, .jm-alt, .jm-pairs { font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 0 0 .35rem; }
 .jm-alt a, .jm-pairs a { font-weight: 600; }
 .jm-actions { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .75rem; }
-.jm-notes { margin-top: .6rem; }
-.jm-notes label { display: block; font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin-bottom: .25rem; }
-.jm-notes textarea {
-  width: 100%; min-height: 84px; font: 15px/1.45 var(--serif); padding: .55rem .65rem;
-  border: 1px solid var(--line); border-radius: 7px; resize: vertical;
-}
 .jm-hidden { display: none !important; }
 
 /* Appendix */
@@ -201,7 +195,7 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 @media print {
-  .jm-bar, .jm-filters, .jm-actions, .jm-notes, .jm-top nav, .jm-units-nav { display: none !important; }
+  .jm-bar, .jm-filters, .jm-actions, .jm-top nav, .jm-units-nav { display: none !important; }
   .jm-entry { break-inside: avoid; }
   .jm-hidden { display: block !important; }
   body { background: #fff; }
@@ -228,7 +222,7 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 <p><strong>Keep an open mind. </strong>Some readings are compelling, intriguing, controversial, or even divisive. You do not have to agree with everything you read. Your job is to understand the argument fairly, evaluate it thoughtfully, and add something worthwhile to the conversation.</p>
 <p><strong>Extra credit. </strong>One hour is required. Each extra hour of real engagement earns extra credit worth half as much as the hour before: 2 hours → 15/10, 3 hours → 17.5/10, and so on, up to a maximum of 20/10.</p>
 <p><strong>AI and the other readings. </strong>The Joy of Learning readings are separate from the Applied Readings and the course textbook. You may use AI to clarify a difficult idea after you have engaged with the material yourself, but your group should hear your understanding of the reading, not an AI-generated substitute for it.</p>
-<p><strong>Using this page. </strong>Press “I’ll read this” to track your minutes against the unit’s requirement, and “My group has it” for readings a groupmate has claimed. Your picks and notes are saved in this browser only. “Copy my list” gives you your readings, links, and notes to paste into your slides or prep check.</p>
+<p><strong>Using this page. </strong>Press “I’ll read this” to track your minutes against the unit’s requirement, and “My group has it” for readings a groupmate has claimed. Your picks are saved in this browser only. “Copy my list” gives you your readings and links to paste wherever you need them.</p>
 </div></details>
 </section>
 <nav aria-label="Units"><ul class="jm-units-nav"><li><a href="#unit-1">Unit 1: Introduction to Psychology</a></li><li><a href="#unit-2">Unit 2: Developmental Psychology</a></li><li><a href="#unit-3">Unit 3: Motivational Psychology</a></li><li><a href="#unit-4">Unit 4: Cognitive Psychology</a></li></ul></nav>
@@ -1206,7 +1200,7 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 </section>
 </section>
 
-<p class="jm-foot">The Joy of Learning · EDCOR 310 · Your picks and notes are saved in this browser only. They don't reach your instructor or your group.</p>
+<p class="jm-foot">The Joy of Learning · EDCOR 310 · Your picks are saved in this browser only. They don't reach your instructor or your group.</p>
 </main>
 <script type="application/json" id="jm-config">{"storageKey": "joy-of-learning-edcor310-v1", "menuTitle": "The Joy of Learning"}</script>
 <script>
@@ -1215,8 +1209,8 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
    Change both in matching pull requests. The builder inlines this file into each page.
 
    What it does: lets a student mark readings "I'll read this" or "My group has it",
-   keep private notes, see minutes chosen against the requirement, filter the menu,
-   and copy their list. Everything is saved in this browser only (localStorage).
+   see minutes chosen against the requirement, filter the menu, and copy their list.
+   Students submit their notes separately, so the page deliberately has no notes box. Everything is saved in this browser only (localStorage).
    The page works without this script; it just has no buttons. */
 (function () {
   "use strict";
@@ -1227,14 +1221,13 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
   function targetOf(scopeId) { var s = scopeById[scopeId]; return s ? Number(s.dataset.target) || 60 : 60; }
 
   // ---------- saved state ----------
-  var state = { mine: {}, group: {}, notes: {} };
+  var state = { mine: {}, group: {} };
   try {
     var raw = window.localStorage.getItem(KEY);
     if (raw) {
       var parsed = JSON.parse(raw);
       state.mine = parsed.mine || {};
       state.group = parsed.group || {};
-      state.notes = parsed.notes || {};
     }
   } catch (e) { /* storage blocked or empty: start fresh */ }
   // Returning students already know how it works: start with the instructions folded.
@@ -1254,7 +1247,7 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
   var byId = {};
   entries.forEach(function (el) { byId[el.dataset.id] = el; });
   // Drop saved ids that no longer exist in the menu.
-  ["mine", "group", "notes"].forEach(function (k) {
+  ["mine", "group"].forEach(function (k) {
     Object.keys(state[k]).forEach(function (id) { if (!byId[id]) delete state[k][id]; });
   });
 
@@ -1284,23 +1277,10 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
     var bar = document.createElement("div"); bar.className = "jm-actions";
     var mine = makeBtn("jm-btn-mine", "I’ll read this");
     var group = makeBtn("jm-btn-group", "My group has it");
-    var noteBtn = makeBtn("jm-btn-note", "My notes");
     mine.setAttribute("aria-label", "I’ll read this: " + title);
     group.setAttribute("aria-label", "My group has it: " + title);
-    noteBtn.setAttribute("aria-label", "My notes on " + title);
-    bar.appendChild(mine); bar.appendChild(group); bar.appendChild(noteBtn);
-
-    var notes = document.createElement("div"); notes.className = "jm-notes jm-hidden";
-    var nid = "jm-n-" + id;
-    var lab = document.createElement("label"); lab.setAttribute("for", nid);
-    lab.textContent = "Notes for your group and slides (saved in this browser only)";
-    var ta = document.createElement("textarea"); ta.id = nid;
-    ta.placeholder = "Main claim, best evidence, what surprised you, your rating…";
-    ta.value = state.notes[id] || "";
-    notes.appendChild(lab); notes.appendChild(ta);
-    noteBtn.setAttribute("aria-expanded", "false"); noteBtn.setAttribute("aria-controls", nid);
-
-    el.appendChild(bar); el.appendChild(notes);
+    bar.appendChild(mine); bar.appendChild(group);
+    el.appendChild(bar);
 
     function paint() {
       var m = !!state.mine[id], g = !!state.group[id];
@@ -1308,7 +1288,6 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
       mine.textContent = m ? "✓ I’m reading this" : "I’ll read this";
       group.textContent = g ? "✓ My group has it" : "My group has it";
       el.classList.toggle("is-mine", m); el.classList.toggle("is-group", g);
-      noteBtn.textContent = state.notes[id] ? "My notes •" : "My notes";
     }
     paint();
     mine.addEventListener("click", function () {
@@ -1318,16 +1297,6 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
     group.addEventListener("click", function () {
       if (state.group[id]) delete state.group[id]; else state.group[id] = true;
       paint(); save(); applyFilters();
-    });
-    noteBtn.addEventListener("click", function () {
-      var open = notes.classList.toggle("jm-hidden") === false;
-      noteBtn.setAttribute("aria-expanded", String(open));
-      if (open) ta.focus();
-    });
-    ta.addEventListener("input", function () {
-      var v = ta.value;
-      if (v.trim()) state.notes[id] = v; else delete state.notes[id];
-      save(); paint();
     });
   });
 
@@ -1440,15 +1409,14 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
     var lines = [cfg.menuTitle + " — my readings", ""];
     var any = false;
     scopes.forEach(function (s) {
-      var picked = entries.filter(function (el) { return el.dataset.scopeId === s.dataset.scope && (state.mine[el.dataset.id] || state.notes[el.dataset.id]); });
+      var picked = entries.filter(function (el) { return el.dataset.scopeId === s.dataset.scope && state.mine[el.dataset.id]; });
       if (!picked.length) return;
       any = true;
       lines.push(s.dataset.scopeLabel + " (" + fmt(minutesIn(s.dataset.scope)) + " picked)");
       picked.forEach(function (el) {
         var a = el.querySelector(".jm-entry-title a");
-        lines.push("• " + a.textContent.trim() + " (~" + el.dataset.min + " min)" + (state.mine[el.dataset.id] ? "" : " [notes only]"));
+        lines.push("• " + a.textContent.trim() + " (~" + el.dataset.min + " min)");
         lines.push("  " + a.href);
-        if (state.notes[el.dataset.id]) lines.push("  Notes: " + state.notes[el.dataset.id].replace(/\s*\n\s*/g, " / "));
       });
       lines.push("");
     });
@@ -1459,10 +1427,10 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
       t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
       var ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
       document.body.removeChild(t);
-      say(ok ? "Copied. Paste it into your slides or notes." : "Couldn’t copy here. Try another browser.");
+      say(ok ? "Copied. Paste it wherever you need it." : "Couldn’t copy here. Try another browser.");
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function () { say("Copied. Paste it into your slides or notes."); }, fallback);
+      navigator.clipboard.writeText(text).then(function () { say("Copied. Paste it wherever you need it."); }, fallback);
     } else fallback();
   });
 
@@ -1485,7 +1453,7 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
       el.querySelector(".jm-btn-group").textContent = "My group has it";
     });
     updateMeters(); applyFilters();
-    say("Picks cleared. Your notes are still saved.");
+    say("Picks cleared.");
   });
 
   document.documentElement.classList.add("jm-js");
