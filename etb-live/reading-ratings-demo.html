@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading Return Prototype · The Science of Learning</title>
+<style>
+:root {
+  --paper: #ffffff;
+  --ink: #1a1a1a;
+  --muted: #6b7079;
+  --navy: #1a3a5c;
+  --gold: #6f879f;
+  --line: #e8ebef;
+  --card: #ffffff;
+  --green: #2d7550;
+  --blue: #547c9f;
+  --orange: #b06c32;
+  --red: #9f4e45;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.55;
+}
+main { max-width: 980px; margin: 0 auto; padding: 3.5rem 1.25rem 5rem; }
+.kicker {
+  color: var(--gold);
+  font: 700 .78rem/1.2 Arial, sans-serif;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+h1 { color: var(--navy); font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.05; margin: .65rem 0 .8rem; }
+.lede { color: var(--muted); font-size: 1.17rem; max-width: 760px; margin: 0; }
+.notice {
+  background: var(--navy);
+  color: #fff;
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  margin: 1.8rem 0 2.5rem;
+  font: .94rem/1.5 Arial, sans-serif;
+}
+h2 { color: var(--navy); font-size: 1.65rem; margin: 2.5rem 0 .7rem; }
+.subtle { color: var(--muted); font: .92rem/1.5 Arial, sans-serif; }
+.reading-list { display: grid; gap: 1rem; margin-top: 1.25rem; }
+.reading {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--gold);
+  border-radius: 10px;
+  padding: 1.15rem 1.25rem 1.25rem;
+}
+.reading.selected { box-shadow: 0 5px 20px rgba(25,50,74,.13); }
+.reading-top { display: flex; gap: 1rem; align-items: flex-start; justify-content: space-between; }
+.reading h3 { color: var(--navy); font-size: 1.22rem; line-height: 1.25; margin: 0 0 .3rem; }
+.meta { color: var(--muted); font: .78rem Arial, sans-serif; text-transform: uppercase; letter-spacing: .05em; }
+.description { margin: .45rem 0 .9rem; }
+.rating-prompt { color: var(--muted); font: .88rem Arial, sans-serif; margin: .8rem 0 .55rem; }
+.buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: .45rem; }
+button {
+  font: 600 .82rem/1.2 Arial, sans-serif;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: .62rem .45rem;
+  cursor: pointer;
+  background: #fff;
+  color: var(--ink);
+}
+button:hover, button:focus-visible { outline: 3px solid rgba(84,124,159,.3); outline-offset: 1px; }
+.rating-button[data-rating="4"] { border-color: #b8d0bb; }
+.rating-button[data-rating="3"] { border-color: #b9cfe0; }
+.rating-button[data-rating="2"] { border-color: #e1c3a6; }
+.rating-button[data-rating="1"] { border-color: #dfb9b5; }
+.rating-button.active[data-rating="4"] { background: #dceee0; border-color: var(--green); color: #1f5839; }
+.rating-button.active[data-rating="3"] { background: #e3eef6; border-color: var(--blue); color: #274f70; }
+.rating-button.active[data-rating="2"] { background: #faeadb; border-color: var(--orange); color: #7b471f; }
+.rating-button.active[data-rating="1"] { background: #f7dfdd; border-color: var(--red); color: #783a35; }
+.result { margin-top: 1rem; padding-top: .9rem; border-top: 1px solid var(--line); display: none; }
+.result.visible { display: block; }
+.result-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .55rem; }
+.result-heading strong { color: var(--navy); }
+.total { color: var(--muted); font: .78rem Arial, sans-serif; white-space: nowrap; }
+.bar-row { display: grid; grid-template-columns: 115px 1fr 42px; gap: .55rem; align-items: center; margin: .36rem 0; font: .78rem Arial, sans-serif; }
+.bar-label { color: var(--muted); }
+.bar-track { height: 12px; border-radius: 999px; background: #eef1f4; overflow: hidden; }
+.bar { height: 100%; width: 0; border-radius: inherit; transition: width .35s ease; }
+.bar-4 { background: var(--green); }
+.bar-3 { background: var(--blue); }
+.bar-2 { background: var(--orange); }
+.bar-1 { background: var(--red); }
+.count { color: var(--muted); text-align: right; }
+.your-rating { color: var(--muted); font: .8rem Arial, sans-serif; margin: .7rem 0 0; }
+footer { border-top: 1px solid var(--line); color: var(--muted); font: .8rem/1.5 Arial, sans-serif; margin-top: 3rem; padding-top: 1.25rem; }
+@media (max-width: 620px) {
+  main { padding-top: 2.4rem; }
+  .buttons { grid-template-columns: 1fr 1fr; }
+  .bar-row { grid-template-columns: 102px 1fr 32px; gap: .35rem; }
+  .reading-top { display: block; }
+}
+</style>
+</head>
+<body>
+<main>
+  <div class="kicker">The Science of Learning · Prototype</div>
+  <h1>Reading Return</h1>
+  <p class="lede">A reading can be enjoyable without being worth assigning. It can also be difficult without being a waste of time. Help us judge each reading by its return: what you learned, how you grew, how much you enjoyed it, and the time it required.</p>
+
+  <div class="notice">
+    <strong>Prototype only:</strong> These results are sample data for Fall 2026. In the live version, your rating would be added to the current semester’s totals.
+  </div>
+
+  <h2>How should we treat this reading?</h2>
+  <p class="subtle">Vote after you have finished the reading. You will be able to see how other students rated it, and you may change your rating later.</p>
+
+  <section class="reading-list" aria-label="Reading return ratings">
+    <article class="reading" data-id="helping-people">
+      <div class="reading-top">
+        <div>
+          <div class="meta">Learning Science · Sample reading</div>
+          <h3>The Myth of Learning Styles</h3>
+        </div>
+      </div>
+      <p class="description">A familiar idea, a surprising evidence base, and what happens when a plausible teaching practice outruns the research.</p>
+      <div class="rating-prompt">What was the return on this reading?</div>
+      <div class="buttons">
+        <button class="rating-button" data-rating="4">4 · Celebrate</button>
+        <button class="rating-button" data-rating="3">3 · Keep</button>
+        <button class="rating-button" data-rating="2">2 · Reconsider</button>
+        <button class="rating-button" data-rating="1">1 · Replace</button>
+      </div>
+      <div class="result" aria-live="polite">
+        <div class="result-heading"><strong>This semester’s ratings</strong><span class="total"></span></div>
+        <div class="bar-row"><span class="bar-label">Celebrate</span><div class="bar-track"><div class="bar bar-4"></div></div><span class="count count-4"></span></div>
+        <div class="bar-row"><span class="bar-label">Keep</span><div class="bar-track"><div class="bar bar-3"></div></div><span class="count count-3"></span></div>
+        <div class="bar-row"><span class="bar-label">Reconsider</span><div class="bar-track"><div class="bar bar-2"></div></div><span class="count count-2"></span></div>
+        <div class="bar-row"><span class="bar-label">Replace</span><div class="bar-track"><div class="bar bar-1"></div></div><span class="count count-1"></span></div>
+        <p class="your-rating"></p>
+      </div>
+    </article>
+
+    <article class="reading" data-id="tragedy-commons">
+      <div class="reading-top">
+        <div>
+          <div class="meta">Learning Science · Sample reading</div>
+          <h3>The Replication Crisis</h3>
+        </div>
+      </div>
+      <p class="description">A cautionary story about what happens when a finding seems persuasive before the evidence has earned that confidence.</p>
+      <div class="rating-prompt">What was the return on this reading?</div>
+      <div class="buttons">
+        <button class="rating-button" data-rating="4">4 · Celebrate</button>
+        <button class="rating-button" data-rating="3">3 · Keep</button>
+        <button class="rating-button" data-rating="2">2 · Reconsider</button>
+        <button class="rating-button" data-rating="1">1 · Replace</button>
+      </div>
+      <div class="result" aria-live="polite">
+        <div class="result-heading"><strong>This semester’s ratings</strong><span class="total"></span></div>
+        <div class="bar-row"><span class="bar-label">Celebrate</span><div class="bar-track"><div class="bar bar-4"></div></div><span class="count count-4"></span></div>
+        <div class="bar-row"><span class="bar-label">Keep</span><div class="bar-track"><div class="bar bar-3"></div></div><span class="count count-3"></span></div>
+        <div class="bar-row"><span class="bar-label">Reconsider</span><div class="bar-track"><div class="bar bar-2"></div></div><span class="count count-2"></span></div>
+        <div class="bar-row"><span class="bar-label">Replace</span><div class="bar-track"><div class="bar bar-1"></div></div><span class="count count-1"></span></div>
+        <p class="your-rating"></p>
+      </div>
+    </article>
+
+    <article class="reading" data-id="elasticity">
+      <div class="reading-top">
+        <div>
+          <div class="meta">Learning Science · Sample reading</div>
+          <h3>What Practice Actually Does</h3>
+        </div>
+      </div>
+      <p class="description">A short application-focused reading about practice, feedback, memory, and the design of learning.</p>
+      <div class="rating-prompt">What was the return on this reading?</div>
+      <div class="buttons">
+        <button class="rating-button" data-rating="4">4 · Celebrate</button>
+        <button class="rating-button" data-rating="3">3 · Keep</button>
+        <button class="rating-button" data-rating="2">2 · Reconsider</button>
+        <button class="rating-button" data-rating="1">1 · Replace</button>
+      </div>
+      <div class="result" aria-live="polite">
+        <div class="result-heading"><strong>This semester’s ratings</strong><span class="total"></span></div>
+        <div class="bar-row"><span class="bar-label">Celebrate</span><div class="bar-track"><div class="bar bar-4"></div></div><span class="count count-4"></span></div>
+        <div class="bar-row"><span class="bar-label">Keep</span><div class="bar-track"><div class="bar bar-3"></div></div><span class="count count-3"></span></div>
+        <div class="bar-row"><span class="bar-label">Reconsider</span><div class="bar-track"><div class="bar bar-2"></div></div><span class="count count-2"></span></div>
+        <div class="bar-row"><span class="bar-label">Replace</span><div class="bar-track"><div class="bar bar-1"></div></div><span class="count count-1"></span></div>
+        <p class="your-rating"></p>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    The live version will keep semester results separate and will never show student names.
+  </footer>
+</main>
+
+<script>
+(function () {
+  const sample = {
+    "helping-people": [2, 24, 8, 1],
+    "tragedy-commons": [5, 19, 7, 2],
+    "elasticity": [1, 18, 11, 6]
+  };
+  const labels = { 4: "Celebrate", 3: "Keep", 2: "Reconsider", 1: "Replace" };
+
+  function render(card, counts, selected) {
+    const total = counts.reduce((a, b) => a + b, 0);
+    card.querySelector(".result").classList.add("visible");
+    card.querySelector(".total").textContent = total + " student" + (total === 1 ? "" : "s");
+    [4, 3, 2, 1].forEach(function (rating, index) {
+      const count = counts[index];
+      const pct = total ? Math.round(count / total * 100) : 0;
+      card.querySelector(".bar-" + rating).style.width = pct + "%";
+      card.querySelector(".count-" + rating).textContent = count + " (" + pct + "%)";
+    });
+    card.querySelector(".your-rating").textContent = selected
+      ? "Your rating: " + selected + " · " + labels[selected] + ". Click another choice to change it."
+      : "";
+  }
+
+  document.querySelectorAll(".reading").forEach(function (card) {
+    const id = card.dataset.id;
+    let counts = sample[id].slice();
+    let selected = null;
+    card.querySelectorAll(".rating-button").forEach(function (button) {
+      button.addEventListener("click", function () {
+        const next = Number(button.dataset.rating);
+        if (selected) counts[4 - selected] -= 1;
+        counts[4 - next] += 1;
+        selected = next;
+        card.querySelectorAll(".rating-button").forEach(function (b) {
+          b.classList.toggle("active", b === button);
+        });
+        card.classList.add("selected");
+        render(card, counts, selected);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

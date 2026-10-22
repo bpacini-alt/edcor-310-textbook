@@ -515,6 +515,10 @@ body {{ margin: 0; }}
 
 
 def publish_chapters():
+    demo = SRC / "reading-ratings-demo.html"
+    if demo.exists():
+        shutil.copyfile(demo, OUT / "reading-ratings-demo.html")
+
     manifest = json.loads((SRC / "manifest.json").read_text())["chapters"]
     (OUT / "assets").mkdir(parents=True, exist_ok=True)
     for name in ("etb-audio.js", "etb-audio.css"):
