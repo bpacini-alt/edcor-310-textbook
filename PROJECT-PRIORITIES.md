@@ -306,7 +306,7 @@ The Joy of Learning and Joy of Econ menus moved from Word into `menus/` (see `me
     - *The Success Paradox* (Joy of Learning, Week 8): the link plays Veritasium's "Why Being Delusional Is a Superpower." Confirm it's the intended video.
     - *The Scandal That Shook Psychology to Its Core* (Joy of Learning, Week 3): the video runs about 30 minutes. The menu keeps ~10 as a stop point.
     - Nine YouTube videos, mostly John List's UChicago series, don't allow embedding. They play fine on YouTube. This matters only if the menus ever embed videos.
-16. **One rating scale.** The Joy of Econ instructions ask students to rate readings S-, A-, or F-tier at the end of each unit, while the Reading Return prototype uses 1–4 (Replace, Reconsider, Keep, Celebrate). Pick one before the ratings go live. Every menu reading has a permanent `id` the ratings can attach to.
+16. **One rating scale (decided October 22, 2026).** Reading ratings use the Reading Return four-point scale: 4 · Celebrate (S-tier), 3 · Keep, 2 · Reconsider, 1 · Replace (F-tier). The Joy of Econ instructions now say so. Every menu reading has a permanent `id` the ratings can attach to.
 
 ## Cool ideas for later
 

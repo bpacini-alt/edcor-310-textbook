@@ -52,4 +52,4 @@ Students can mark readings "I'll read this" or "My group has it," keep private n
 
 ## History
 
-These menus were moved here in October 2026 from two Word documents: *ECON 150 Pacini Joy of Econ Menu* and the Joy of Learning section of *EDCOR 310 Reading Calendar and Study Guide*. The data files are now the source of truth. Bundled entries were split so that every reading has its own heading, link, and time.
+These menus were moved here in October 2026 from two Word documents: *ECON 150 Pacini Joy of Econ Menu* and the Joy of Learning section of *EDCOR 310 Reading Calendar and Study Guide*. Each repository keeps its own course's original in `menus/original/` for reference. The data files are now the source of truth. Bundled entries were split so that every reading has its own heading, link, and time.
