@@ -98,6 +98,26 @@ button {
   white-space: normal;
   pointer-events: none;
 }
+.rating-prompt { position: relative; cursor: help; }
+.rating-prompt:hover::after, .rating-prompt:focus-visible::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  bottom: calc(100% + .45rem);
+  width: max-content;
+  max-width: 310px;
+  padding: .5rem .65rem;
+  border-radius: 5px;
+  background: var(--navy);
+  color: #fff;
+  font: 600 .72rem/1.35 Arial, sans-serif;
+  letter-spacing: normal;
+  text-align: left;
+  text-transform: none;
+  white-space: normal;
+  pointer-events: none;
+}
 button:hover, button:focus-visible { outline: 3px solid rgba(84,124,159,.3); outline-offset: 1px; }
 .rating-button[data-rating="4"] { border-color: #b8d0bb; }
 .rating-button[data-rating="3"] { border-color: #b9cfe0; }
@@ -159,12 +179,12 @@ footer { border-top: 1px solid var(--line); color: var(--muted); font: .8rem/1.5
       <p class="description">A familiar idea, a surprising evidence base, and what happens when a plausible teaching practice outruns the research.</p>
       <div class="reading-actions">
         <div class="rating-control">
-          <span class="rating-prompt">Return</span>
+          <span class="rating-prompt" tabindex="0" title="The question isn't whether the reading was easy. It's about bang-for-buck: what did you learn, how did you grow, and how much did you gain for the time it took?" data-tooltip="The question isn't whether the reading was easy. It's about bang-for-buck: what did you learn, how did you grow, and how much did you gain for the time it took?">Return</span>
           <div class="buttons" role="group" aria-label="Rate the return on this reading">
-            <button class="rating-button" data-rating="1" title="Replace — not worth the time" data-tooltip="1 · Replace — not worth the time">1</button>
-            <button class="rating-button" data-rating="2" title="Reconsider — some value, but consider something else" data-tooltip="2 · Reconsider — some value, but consider something else">2</button>
-            <button class="rating-button" data-rating="3" title="Keep — a solid return for the time" data-tooltip="3 · Keep — a solid return for the time">3</button>
-            <button class="rating-button" data-rating="4" title="Celebrate — an exceptional return" data-tooltip="4 · Celebrate — an exceptional return">4</button>
+            <button class="rating-button" data-rating="1" title="F-tier · Replace — not worth the time" data-tooltip="1 · F-tier · Replace — not worth the time">1</button>
+            <button class="rating-button" data-rating="2" title="B-tier · Reconsider — some value, but consider something else" data-tooltip="2 · B-tier · Reconsider — some value, but consider something else">2</button>
+            <button class="rating-button" data-rating="3" title="A-tier · Keep — a solid return for the time" data-tooltip="3 · A-tier · Keep — a solid return for the time">3</button>
+            <button class="rating-button" data-rating="4" title="S-tier · Life-changing · Celebrate — an exceptional return" data-tooltip="4 · S-tier · Life-changing · Celebrate — an exceptional return">4</button>
           </div>
         </div>
       </div>
@@ -189,12 +209,12 @@ footer { border-top: 1px solid var(--line); color: var(--muted); font: .8rem/1.5
       <p class="description">A cautionary story about what happens when a finding seems persuasive before the evidence has earned that confidence.</p>
       <div class="reading-actions">
         <div class="rating-control">
-          <span class="rating-prompt">Return</span>
+          <span class="rating-prompt" tabindex="0" title="The question isn't whether the reading was easy. It's about bang-for-buck: what did you learn, how did you grow, and how much did you gain for the time it took?" data-tooltip="The question isn't whether the reading was easy. It's about bang-for-buck: what did you learn, how did you grow, and how much did you gain for the time it took?">Return</span>
           <div class="buttons" role="group" aria-label="Rate the return on this reading">
-            <button class="rating-button" data-rating="1" title="Replace — not worth the time" data-tooltip="1 · Replace — not worth the time">1</button>
-            <button class="rating-button" data-rating="2" title="Reconsider — some value, but consider something else" data-tooltip="2 · Reconsider — some value, but consider something else">2</button>
-            <button class="rating-button" data-rating="3" title="Keep — a solid return for the time" data-tooltip="3 · Keep — a solid return for the time">3</button>
-            <button class="rating-button" data-rating="4" title="Celebrate — an exceptional return" data-tooltip="4 · Celebrate — an exceptional return">4</button>
+            <button class="rating-button" data-rating="1" title="F-tier · Replace — not worth the time" data-tooltip="1 · F-tier · Replace — not worth the time">1</button>
+            <button class="rating-button" data-rating="2" title="B-tier · Reconsider — some value, but consider something else" data-tooltip="2 · B-tier · Reconsider — some value, but consider something else">2</button>
+            <button class="rating-button" data-rating="3" title="A-tier · Keep — a solid return for the time" data-tooltip="3 · A-tier · Keep — a solid return for the time">3</button>
+            <button class="rating-button" data-rating="4" title="S-tier · Life-changing · Celebrate — an exceptional return" data-tooltip="4 · S-tier · Life-changing · Celebrate — an exceptional return">4</button>
           </div>
         </div>
       </div>
@@ -219,12 +239,12 @@ footer { border-top: 1px solid var(--line); color: var(--muted); font: .8rem/1.5
       <p class="description">A short application-focused reading about practice, feedback, memory, and the design of learning.</p>
       <div class="reading-actions">
         <div class="rating-control">
-          <span class="rating-prompt">Return</span>
+          <span class="rating-prompt" tabindex="0" title="The question isn't whether the reading was easy. It's about bang-for-buck: what did you learn, how did you grow, and how much did you gain for the time it took?" data-tooltip="The question isn't whether the reading was easy. It's about bang-for-buck: what did you learn, how did you grow, and how much did you gain for the time it took?">Return</span>
           <div class="buttons" role="group" aria-label="Rate the return on this reading">
-            <button class="rating-button" data-rating="1" title="Replace — not worth the time" data-tooltip="1 · Replace — not worth the time">1</button>
-            <button class="rating-button" data-rating="2" title="Reconsider — some value, but consider something else" data-tooltip="2 · Reconsider — some value, but consider something else">2</button>
-            <button class="rating-button" data-rating="3" title="Keep — a solid return for the time" data-tooltip="3 · Keep — a solid return for the time">3</button>
-            <button class="rating-button" data-rating="4" title="Celebrate — an exceptional return" data-tooltip="4 · Celebrate — an exceptional return">4</button>
+            <button class="rating-button" data-rating="1" title="F-tier · Replace — not worth the time" data-tooltip="1 · F-tier · Replace — not worth the time">1</button>
+            <button class="rating-button" data-rating="2" title="B-tier · Reconsider — some value, but consider something else" data-tooltip="2 · B-tier · Reconsider — some value, but consider something else">2</button>
+            <button class="rating-button" data-rating="3" title="A-tier · Keep — a solid return for the time" data-tooltip="3 · A-tier · Keep — a solid return for the time">3</button>
+            <button class="rating-button" data-rating="4" title="S-tier · Life-changing · Celebrate — an exceptional return" data-tooltip="4 · S-tier · Life-changing · Celebrate — an exceptional return">4</button>
           </div>
         </div>
       </div>
