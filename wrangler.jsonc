@@ -1,4 +1,5 @@
 // Cloudflare Worker settings.
+// Before testing Bang for Buck, bind a D1 database named RATINGS_DB to this Worker. Both book Workers should use the same database.
 // Serves the site folder as the website. Requests to /api/* go to feedback/worker.js first,
 // which handles the Report a problem button (it needs the GITHUB_TOKEN secret, set in Cloudflare).
 {
