@@ -58,16 +58,45 @@ h2 { color: var(--navy); font-size: 1.65rem; margin: 2.5rem 0 .7rem; }
 .reading h3 { color: var(--navy); font-size: 1.22rem; line-height: 1.25; margin: 0 0 .3rem; }
 .meta { color: var(--muted); font: .78rem Arial, sans-serif; text-transform: uppercase; letter-spacing: .05em; }
 .description { margin: .45rem 0 .9rem; }
-.rating-prompt { color: var(--muted); font: .88rem Arial, sans-serif; margin: .8rem 0 .55rem; }
-.buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: .45rem; }
+.reading-actions { display: flex; justify-content: flex-end; align-items: center; gap: 1rem; margin-top: 1.1rem; }
+.read-link {
+  color: var(--navy);
+  font: 700 .82rem Arial, sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.read-link:hover, .read-link:focus-visible { text-decoration: underline; }
+.rating-control { display: flex; align-items: center; gap: .65rem; margin-left: auto; }
+.rating-prompt { color: var(--muted); font: 700 .72rem Arial, sans-serif; letter-spacing: .06em; margin: 0; text-transform: uppercase; white-space: nowrap; }
+.buttons { display: flex; gap: .3rem; }
 button {
-  font: 600 .82rem/1.2 Arial, sans-serif;
+  font: 700 .75rem/1 Arial, sans-serif;
   border: 1px solid var(--line);
-  border-radius: 7px;
-  padding: .62rem .45rem;
+  border-radius: 999px;
+  padding: 0;
+  width: 1.8rem;
+  height: 1.8rem;
   cursor: pointer;
-  background: #fff;
+  background: #ffffff;
   color: var(--ink);
+}
+.rating-button { position: relative; }
+.rating-button:hover::after, .rating-button:focus-visible::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: calc(100% + .45rem);
+  width: max-content;
+  max-width: 220px;
+  padding: .45rem .6rem;
+  border-radius: 5px;
+  background: var(--navy);
+  color: #fff;
+  font: 600 .72rem/1.3 Arial, sans-serif;
+  text-align: left;
+  white-space: normal;
+  pointer-events: none;
 }
 button:hover, button:focus-visible { outline: 3px solid rgba(84,124,159,.3); outline-offset: 1px; }
 .rating-button[data-rating="4"] { border-color: #b8d0bb; }
@@ -99,6 +128,9 @@ footer { border-top: 1px solid var(--line); color: var(--muted); font: .8rem/1.5
   .buttons { grid-template-columns: 1fr 1fr; }
   .bar-row { grid-template-columns: 102px 1fr 32px; gap: .35rem; }
   .reading-top { display: block; }
+  .read-link { margin-top: .45rem; }
+  .reading-actions { align-items: flex-start; }
+  .rating-control { margin-left: 0; }
 }
 </style>
 </head>
@@ -122,14 +154,19 @@ footer { border-top: 1px solid var(--line); color: var(--muted); font: .8rem/1.5
           <div class="meta">Learning Science · Sample reading</div>
           <h3>The Myth of Learning Styles</h3>
         </div>
+        <a class="read-link" href="#reading-preview" aria-label="Open this reading">Read the reading <span aria-hidden="true">↗</span></a>
       </div>
       <p class="description">A familiar idea, a surprising evidence base, and what happens when a plausible teaching practice outruns the research.</p>
-      <div class="rating-prompt">What was the return on this reading?</div>
-      <div class="buttons">
-        <button class="rating-button" data-rating="4">4 · Celebrate</button>
-        <button class="rating-button" data-rating="3">3 · Keep</button>
-        <button class="rating-button" data-rating="2">2 · Reconsider</button>
-        <button class="rating-button" data-rating="1">1 · Replace</button>
+      <div class="reading-actions">
+        <div class="rating-control">
+          <span class="rating-prompt">Return</span>
+          <div class="buttons" role="group" aria-label="Rate the return on this reading">
+            <button class="rating-button" data-rating="1" title="Replace — not worth the time" data-tooltip="1 · Replace — not worth the time">1</button>
+            <button class="rating-button" data-rating="2" title="Reconsider — some value, but consider something else" data-tooltip="2 · Reconsider — some value, but consider something else">2</button>
+            <button class="rating-button" data-rating="3" title="Keep — a solid return for the time" data-tooltip="3 · Keep — a solid return for the time">3</button>
+            <button class="rating-button" data-rating="4" title="Celebrate — an exceptional return" data-tooltip="4 · Celebrate — an exceptional return">4</button>
+          </div>
+        </div>
       </div>
       <div class="result" aria-live="polite">
         <div class="result-heading"><strong>This semester’s ratings</strong><span class="total"></span></div>
@@ -147,14 +184,19 @@ footer { border-top: 1px solid var(--line); color: var(--muted); font: .8rem/1.5
           <div class="meta">Learning Science · Sample reading</div>
           <h3>The Replication Crisis</h3>
         </div>
+        <a class="read-link" href="#reading-preview" aria-label="Open this reading">Read the reading <span aria-hidden="true">↗</span></a>
       </div>
       <p class="description">A cautionary story about what happens when a finding seems persuasive before the evidence has earned that confidence.</p>
-      <div class="rating-prompt">What was the return on this reading?</div>
-      <div class="buttons">
-        <button class="rating-button" data-rating="4">4 · Celebrate</button>
-        <button class="rating-button" data-rating="3">3 · Keep</button>
-        <button class="rating-button" data-rating="2">2 · Reconsider</button>
-        <button class="rating-button" data-rating="1">1 · Replace</button>
+      <div class="reading-actions">
+        <div class="rating-control">
+          <span class="rating-prompt">Return</span>
+          <div class="buttons" role="group" aria-label="Rate the return on this reading">
+            <button class="rating-button" data-rating="1" title="Replace — not worth the time" data-tooltip="1 · Replace — not worth the time">1</button>
+            <button class="rating-button" data-rating="2" title="Reconsider — some value, but consider something else" data-tooltip="2 · Reconsider — some value, but consider something else">2</button>
+            <button class="rating-button" data-rating="3" title="Keep — a solid return for the time" data-tooltip="3 · Keep — a solid return for the time">3</button>
+            <button class="rating-button" data-rating="4" title="Celebrate — an exceptional return" data-tooltip="4 · Celebrate — an exceptional return">4</button>
+          </div>
+        </div>
       </div>
       <div class="result" aria-live="polite">
         <div class="result-heading"><strong>This semester’s ratings</strong><span class="total"></span></div>
@@ -172,14 +214,19 @@ footer { border-top: 1px solid var(--line); color: var(--muted); font: .8rem/1.5
           <div class="meta">Learning Science · Sample reading</div>
           <h3>What Practice Actually Does</h3>
         </div>
+        <a class="read-link" href="#reading-preview" aria-label="Open this reading">Read the reading <span aria-hidden="true">↗</span></a>
       </div>
       <p class="description">A short application-focused reading about practice, feedback, memory, and the design of learning.</p>
-      <div class="rating-prompt">What was the return on this reading?</div>
-      <div class="buttons">
-        <button class="rating-button" data-rating="4">4 · Celebrate</button>
-        <button class="rating-button" data-rating="3">3 · Keep</button>
-        <button class="rating-button" data-rating="2">2 · Reconsider</button>
-        <button class="rating-button" data-rating="1">1 · Replace</button>
+      <div class="reading-actions">
+        <div class="rating-control">
+          <span class="rating-prompt">Return</span>
+          <div class="buttons" role="group" aria-label="Rate the return on this reading">
+            <button class="rating-button" data-rating="1" title="Replace — not worth the time" data-tooltip="1 · Replace — not worth the time">1</button>
+            <button class="rating-button" data-rating="2" title="Reconsider — some value, but consider something else" data-tooltip="2 · Reconsider — some value, but consider something else">2</button>
+            <button class="rating-button" data-rating="3" title="Keep — a solid return for the time" data-tooltip="3 · Keep — a solid return for the time">3</button>
+            <button class="rating-button" data-rating="4" title="Celebrate — an exceptional return" data-tooltip="4 · Celebrate — an exceptional return">4</button>
+          </div>
+        </div>
       </div>
       <div class="result" aria-live="polite">
         <div class="result-heading"><strong>This semester’s ratings</strong><span class="total"></span></div>
