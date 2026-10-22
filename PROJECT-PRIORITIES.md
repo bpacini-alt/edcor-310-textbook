@@ -294,6 +294,20 @@ The mockups are in Benjamin's Claude canvas "BenjaminPacini.com Landing Page": t
 
 13. **A simple landing page at benjaminpacini.com,** so Benjamin can tell students "go to benjaminpacini.com" and they find their textbook right away. It has his photo, a card for each book, and a short "More from me" list (professional site, Substack, LinkedIn). It belongs in the `benjaminpacini-site` repository and connects to loose end 9. **Waiting on:** Benjamin's photo.
 
+### The Joy reading menus (recorded October 22, 2026)
+
+The Joy of Learning and Joy of Econ menus moved from Word into `menus/` (see `menus/README.md`). These items are deliberately low on the list.
+
+14. **Uneven weeks (Benjamin, later).** Some weeks offer far more than others. Joy of Econ: Weeks 9 and 12 have 2 readings each and Week 5 has 3, while Week 13 has 32. Joy of Learning, now that bundles are split: Week 1 has 3 readings and Week 12 has 19. Students choose from the whole unit, so no one is short of options, but a 32-reading week is a wall to scroll through. No good answer yet. Ideas to weigh: move some Week 13 pieces into earlier weeks, group Week 13 by subtopic (inequality, capitalism debates, debt, happiness), or leave it.
+15. **Readings whose links need a look (Benjamin).**
+    - *Emotional intelligence* (Joy of Learning, Week 12): the YouTube video is gone. It was dropped from the menu and needs a replacement.
+    - *How to Think About Trade Deficits* (Joy of Econ, Week 3): the link is a 33-second clip, but the menu promises a ~25-minute EconTalk segment.
+    - *The Moral Obligation of Self Worth* (Joy of Learning, Week 8): the link is a 7-minute clip ("Rule 2," JBProbe), but the menu says ~50 minutes.
+    - *The Success Paradox* (Joy of Learning, Week 8): the link plays Veritasium's "Why Being Delusional Is a Superpower." Confirm it's the intended video.
+    - *The Scandal That Shook Psychology to Its Core* (Joy of Learning, Week 3): the video runs about 30 minutes. The menu keeps ~10 as a stop point.
+    - Nine YouTube videos, mostly John List's UChicago series, don't allow embedding. They play fine on YouTube. This matters only if the menus ever embed videos.
+16. **One rating scale.** The Joy of Econ instructions ask students to rate readings S-, A-, or F-tier at the end of each unit, while the Reading Return prototype uses 1–4 (Replace, Reconsider, Keep, Celebrate). Pick one before the ratings go live. Every menu reading has a permanent `id` the ratings can attach to.
+
 ## Cool ideas for later
 
 These are promising possibilities, but they are intentionally near the bottom of the backlog. They should not displace the current work on content quality, practice, accessibility, interactives, audio, exports, or the series/front-matter system.

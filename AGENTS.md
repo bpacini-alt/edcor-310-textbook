@@ -27,9 +27,10 @@ The website is learning.benjaminpacini.com, served by Cloudflare from the `site/
 | `build/` | `build_site.py` and the web version of the cover | Yes |
 | `audio/` | The audio player, narration tools, and previews | Yes (player: see "Shared") |
 | `feedback/` | The Report a problem button and the function that receives reports | Yes (see "Shared") |
+| `menus/` | The Joy of Learning reading menu: `joy-of-learning.json` holds every reading. `build/build_site.py` turns it into `site/joy-of-learning.html` | Yes, the data file (see `menus/README.md` and "Shared") |
 | `original/` | The October 2026 import from Google Drive | No. Archive only. |
 
-After changing anything in `etb-live/`, `build/`, or the player, run `python3 build/build_site.py` from the repository root and commit the regenerated `site/` files in the same pull request.
+After changing anything in `etb-live/`, `build/`, `menus/`, or the player, run `python3 build/build_site.py` from the repository root and commit the regenerated `site/` files in the same pull request.
 
 ## Shared between the two books
 
@@ -37,6 +38,7 @@ After changing anything in `etb-live/`, `build/`, or the player, run `python3 bu
 - **Report a problem button:** `feedback/report.js` (the button and form) and `feedback/worker.js` (receives reports at `/api/report` and files each one as an issue in the private `bpacini-alt/textbook-feedback` repository) are shared the same way as the audio player: identical copies in both repositories, changed in matching pull requests. The builds copy `report.js` into the published folder; never edit that copy. The function needs a `GITHUB_TOKEN` secret, set in each Worker's settings in Cloudflare. It never goes in the repository.
   - **Where it goes:** Worker → **Settings** → the top-level **Variables and Secrets** section → **Add variable**, Type **Secret**, then **Deploy**. Not the "Variables and secrets" box inside the **Build** section: that one is only available while the site builds, and the button can't see it. A plain **Text** variable gets wiped by the next deploy, so it must be a Secret.
   - **The token:** a fine-grained GitHub token limited to `textbook-feedback`, with Issues: Read and write. It expires yearly. To renew, regenerate it on GitHub and click **Rotate** on the secret in both Workers. If the button says "That didn't send," a missing or expired token is the first thing to check (the function answers `not_configured` when it has none).
+- **Joy reading menus:** `menus/build_menu.py`, `menus/joy-menu.css`, and `menus/joy-menu.js` are identical in both repositories and change in matching pull requests. Each repository keeps its own menu data (`menus/joy-of-learning.json` here in EDCOR 310, `menus/joy-of-econ.json` in Econ 150). See `menus/README.md`.
 - **Covers:** the full-size EdTechBooks cover is archived at `etb-live/cover.png`. The web version, cleaned up for the new site, is `build/cover-web.png`.
 
 ## Known Cloudflare behavior
