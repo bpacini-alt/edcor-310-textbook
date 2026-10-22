@@ -261,6 +261,39 @@ Small items found while moving both books off EdTechBooks. Most are quick. Items
     - **Econ 150 empty unit pages (Benjamin):** `cvjsuukrox.html` (Unit 1: Markets in Perfect Competition), `PartII.html` (Unit II: The Firm in Perfect Competition), `PartIII.html` (Part II: The Critique of the Market), and `PartIV.html` (Unit IV: The Firm in Imperfect Competition) are empty files, so each shows a blank page on the live site. They were empty on EdTechBooks too, and nothing on the site links to them. Decide whether to write these unit pages (`PartI.html` is the model) or remove them and their `manifest.json` entries.
 13. **EDCOR 310 reading times: consider the audio player's length (Benjamin, later).** The contents page now shows each chapter title card's "~N min read," but those numbers were typed by hand and don't track the text well (Chapter 7: card 55 min, player 67; Chapter 11: card 60, player 33; whole book: 21 hours on the cards, 15 by the player). The player measures what it actually reads aloud: 155 words a minute plus short pauses. That number is listening time, so label it "min listen," or note that silent reading is faster. To use it, either run the player in a headless browser during the build (exact, but the build needs a browser) or repeat its word count in Python (simpler, but the two could drift apart). Update the title cards at the same time, so the contents page and the chapter agree. Once the ElevenLabs recordings exist, use the real file lengths instead. Not urgent.
 
+### The series look and front matter (recorded October 22, 2026)
+
+**Benjamin's decision:** the two books should look like two books in a series. They don't have to be identical, but the front matter, the page framing, and the navigation should be built the same way in both unless a real student need calls for a difference. Students who take both courses will know what to expect, and so will anyone working on either book. This settles part of the "Open decision" in each `AGENTS.md`: front matter and page framing will be shared. Whether the chapters themselves are built the same way is still open.
+
+The mockups are in Benjamin's Claude canvas "BenjaminPacini.com Landing Page": the hub, plus a cover page and a contents page for each book. Ask Benjamin for access; it is private.
+
+**Ready to build once preview links work (Priority 1: navigation and access)**
+
+1. **A cover page for each book.** The cover art, title, subtitle, authors, and course, with an "Open the book" button (to the contents) and one quick-start button. EDCOR 310's current home page becomes this page. Econ 150 has no cover page yet; its cover is `build/cover-web.png`.
+2. **A contents page for each book, in the same design.** A "Start here" group of front matter numbered i, ii, iii. Then each unit with its Roman-numeral badge, a one- or two-sentence hook, and its chapters (number, title, subtitle, reading time). Then back matter, such as EDCOR 310's quick references. Keep EDCOR 310's unit outcomes as a collapsible line under each unit.
+3. **The same top bar on every page of both books:** "Benjamin Pacini" (a link to benjaminpacini.com) / the book's title / Contents. Students should always have a way back.
+4. **Each book takes its accent color from its cover:** EDCOR 310 uses the cover's blue (#145d90). Econ 150 uses the cover's night navy (#1b2430) with gold numerals (#a87d32). Everything else follows the styles the chapters already use (Georgia, white title cards, the uppercase labels), as in EDCOR 310's `site/assets/book.css`.
+5. **Build the front matter from one template,** kept identical in both repositories and changed in matching pull requests, the same way as the audio player.
+
+**Do first:** loose end 8 (Cloudflare preview links), so Benjamin can look at the new pages before anything is merged.
+
+**Writing for Benjamin to do later (Priority 1: content)**
+
+6. **"How to Get the Most Out of This Book," the opening chapter of both books.** Benjamin wants to keep this idea. It sits at ii in "Start here."
+7. **An Introduction for EDCOR 310,** at iii in "Start here." Econ 150 already has one ("The Wealth of Nations").
+8. **An "About this book" page for each book,** at i in "Start here": authors, how the book was made, acknowledgments, and license. EDCOR 310's version is on its home page now and would move here. Econ 150 needs one.
+9. **One- or two-sentence hooks for Econ 150's four units,** for the contents page. This connects to loose end 12 (Econ 150's empty unit pages).
+
+**Decisions and quick fixes (Benjamin decides; Priority 1)**
+
+10. **Econ 150 chapter titles disagree** between the home page and the chapters' own title cards in Chapters 7, 11, 12, 14, 19, and 26. Chapter 24's title card says "Imperfect Competition I" instead of II, and Chapter 10's subtitle says "fim" for "firm." Decide which titles win, then make the two match. Pull request #22 (the TA's updates to Chapters 13–26) may change some of these, so check after it is settled.
+11. **Econ 150 reading times.** The chapters don't state a reading time the way EDCOR 310's do. Word-count estimates put Chapters 17–26 at 10 to 20 minutes, far shorter than the earlier chapters. Recheck after #22, and use the same approach as loose end 13.
+12. **Econ 150's license and cover credit** aren't stated on the new site. EDCOR 310 uses CC BY-SA 4.0.
+
+**The hub at benjaminpacini.com (Priority 0: student access)**
+
+13. **A simple landing page at benjaminpacini.com,** so Benjamin can tell students "go to benjaminpacini.com" and they find their textbook right away. It has his photo, a card for each book, and a short "More from me" list (professional site, Substack, LinkedIn). It belongs in the `benjaminpacini-site` repository and connects to loose end 9. **Waiting on:** Benjamin's photo.
+
 ## The standing decision protocol
 
 When the author proposes a task, classify it as one of four things:
