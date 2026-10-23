@@ -5,6 +5,7 @@ and writes:
   site/index.html            the landing page
   site/contents/index.html   the table of contents
   site/assets/book.css       shared styles for the book's own pages
+  site/joy-of-learning.html  the Joy of Learning reading menu (from menus/joy-of-learning.json)
 
 Run from the repo root:  python3 build/build_site.py
 """
@@ -546,12 +547,24 @@ def publish_chapters():
             encoding="utf-8",
         )
 
+def publish_menu():
+    """The Joy of Learning reading menu. menus/joy-of-learning.json is the one place to edit it."""
+    import subprocess
+    import sys
+    subprocess.run(
+        [sys.executable, str(ROOT / "menus" / "build_menu.py"),
+         str(ROOT / "menus" / "joy-of-learning.json"), str(OUT / "joy-of-learning.html")],
+        check=True,
+    )
+
+
 def main():
     units, chapters, supplements = load_book()
     (OUT / "contents").mkdir(parents=True, exist_ok=True)
     (OUT / "assets").mkdir(parents=True, exist_ok=True)
     build_cover()
     publish_chapters()
+    publish_menu()
     (OUT / "index.html").write_text(build_home(units, chapters))
     (OUT / "contents" / "index.html").write_text(build_contents(units, chapters, supplements))
     (OUT / "assets" / "book.css").write_text(CSS)

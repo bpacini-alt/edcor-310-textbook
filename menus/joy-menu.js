@@ -1,0 +1,257 @@
+/* Joy reading menus (Joy of Learning, Joy of Econ): shared behavior.
+   Identical copies live in both textbook repositories (menus/joy-menu.js).
+   Change both in matching pull requests. The builder inlines this file into each page.
+
+   What it does: lets a student mark readings "I'll read this" or "My group has it",
+   see minutes chosen against the requirement, filter the menu, and copy their list.
+   Students submit their notes separately, so the page deliberately has no notes box. Everything is saved in this browser only (localStorage).
+   The page works without this script; it just has no buttons. */
+(function () {
+  "use strict";
+  var cfgEl = document.getElementById("jm-config");
+  if (!cfgEl) return;
+  var cfg = JSON.parse(cfgEl.textContent);
+  var KEY = cfg.storageKey;
+  function targetOf(scopeId) { var s = scopeById[scopeId]; return s ? Number(s.dataset.target) || 60 : 60; }
+
+  // ---------- saved state ----------
+  var state = { mine: {}, group: {} };
+  try {
+    var raw = window.localStorage.getItem(KEY);
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      state.mine = parsed.mine || {};
+      state.group = parsed.group || {};
+    }
+  } catch (e) { /* storage blocked or empty: start fresh */ }
+  // Returning students already know how it works: start with the instructions folded.
+  if (Object.keys(state.mine).length || Object.keys(state.group).length) {
+    var howto = document.querySelector(".jm-howto");
+    if (howto) howto.open = false;
+  }
+  var saveTimer = null;
+  function save() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () {
+      try { window.localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* not saved; page still works */ }
+    }, 150);
+  }
+
+  var entries = Array.prototype.slice.call(document.querySelectorAll(".jm-entry"));
+  var byId = {};
+  entries.forEach(function (el) { byId[el.dataset.id] = el; });
+  // Drop saved ids that no longer exist in the menu.
+  ["mine", "group"].forEach(function (k) {
+    Object.keys(state[k]).forEach(function (id) { if (!byId[id]) delete state[k][id]; });
+  });
+
+  var scopes = Array.prototype.slice.call(document.querySelectorAll("[data-scope]"));
+  var scopeById = {};
+  scopes.forEach(function (s) { scopeById[s.dataset.scope] = s; });
+
+  // ---------- toast ----------
+  var toast = document.createElement("div");
+  toast.className = "jm-toast"; toast.setAttribute("role", "status"); toast.setAttribute("aria-live", "polite");
+  document.body.appendChild(toast);
+  var toastTimer = null;
+  function say(msg) {
+    toast.textContent = msg; toast.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 2200);
+  }
+
+  // ---------- per-entry controls ----------
+  function makeBtn(cls, label) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "jm-btn " + cls; b.textContent = label;
+    return b;
+  }
+  entries.forEach(function (el) {
+    var id = el.dataset.id;
+    var title = el.querySelector(".jm-entry-title a").textContent.trim();
+    var bar = document.createElement("div"); bar.className = "jm-actions";
+    var mine = makeBtn("jm-btn-mine", "I’ll read this");
+    var group = makeBtn("jm-btn-group", "My group has it");
+    mine.setAttribute("aria-label", "I’ll read this: " + title);
+    group.setAttribute("aria-label", "My group has it: " + title);
+    bar.appendChild(mine); bar.appendChild(group);
+    el.appendChild(bar);
+
+    function paint() {
+      var m = !!state.mine[id], g = !!state.group[id];
+      mine.setAttribute("aria-pressed", String(m)); group.setAttribute("aria-pressed", String(g));
+      mine.textContent = m ? "✓ I’m reading this" : "I’ll read this";
+      group.textContent = g ? "✓ My group has it" : "My group has it";
+      el.classList.toggle("is-mine", m); el.classList.toggle("is-group", g);
+    }
+    paint();
+    mine.addEventListener("click", function () {
+      if (state.mine[id]) delete state.mine[id]; else state.mine[id] = true;
+      paint(); save(); updateMeters(); applyFilters();
+    });
+    group.addEventListener("click", function () {
+      if (state.group[id]) delete state.group[id]; else state.group[id] = true;
+      paint(); save(); applyFilters();
+    });
+  });
+
+  // ---------- meters ----------
+  var barText = document.getElementById("jm-meter-text");
+  var barFill = document.getElementById("jm-meter-fill");
+  var scopeSelect = document.getElementById("jm-scope");
+  function minutesIn(scopeId) {
+    var total = 0;
+    entries.forEach(function (el) {
+      if (el.dataset.scopeId === scopeId && state.mine[el.dataset.id]) total += Number(el.dataset.min) || 0;
+    });
+    return total;
+  }
+  function fmt(m) {
+    if (m < 60) return m + " min";
+    var h = Math.floor(m / 60), r = m % 60;
+    return h + " hr" + (r ? " " + r + " min" : "");
+  }
+  function updateMeters() {
+    scopes.forEach(function (s) {
+      var m = minutesIn(s.dataset.scope), t = targetOf(s.dataset.scope);
+      var out = s.querySelector("[data-meter]");
+      if (!out) return;
+      out.textContent = m ? "You’ve picked " + fmt(m) + " of about " + fmt(t) + (m >= t ? " ✓" : "")
+        : "Requirement: about " + fmt(t) + ". Nothing picked yet.";
+      out.classList.toggle("met", m >= t);
+    });
+    if (scopeSelect && barText) {
+      var cur = scopeSelect.value, m = minutesIn(cur), t = targetOf(cur);
+      barText.textContent = fmt(m) + " of " + fmt(t) + (m >= t ? " ✓" : "");
+      barText.classList.toggle("met", m >= t);
+      barFill.style.width = Math.min(100, Math.round(m / t * 100)) + "%";
+    }
+  }
+  if (scopeSelect) {
+    scopeSelect.addEventListener("change", function () {
+      updateMeters();
+      var target = scopeById[scopeSelect.value];
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    // Follow the reader: the bar shows whichever week/unit is on screen.
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (items) {
+        items.forEach(function (it) {
+          if (it.isIntersecting && scopeSelect.value !== it.target.dataset.scope) {
+            scopeSelect.value = it.target.dataset.scope; updateMeters();
+          }
+        });
+      }, { rootMargin: "-80px 0px -70% 0px" });
+      scopes.forEach(function (s) { io.observe(s); });
+    }
+  }
+
+  // ---------- filters ----------
+  var search = document.getElementById("jm-search");
+  var countEl = document.getElementById("jm-count");
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".jm-chip"));
+  function pressed(group) {
+    return chips.filter(function (c) { return c.dataset.group === group && c.getAttribute("aria-pressed") === "true"; })
+      .map(function (c) { return c.dataset.value; });
+  }
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      var on = c.getAttribute("aria-pressed") !== "true";
+      if (c.dataset.single) {
+        chips.forEach(function (o) { if (o.dataset.group === c.dataset.group) o.setAttribute("aria-pressed", "false"); });
+      }
+      c.setAttribute("aria-pressed", String(on));
+      applyFilters();
+    });
+  });
+  if (search) search.addEventListener("input", applyFilters);
+  function lengthOk(min, band) {
+    if (band === "short") return min <= 10;
+    if (band === "medium") return min > 10 && min <= 25;
+    if (band === "long") return min > 25;
+    return true;
+  }
+  function applyFilters() {
+    var q = search ? search.value.trim().toLowerCase() : "";
+    var formats = pressed("format"), lengths = pressed("length"), stances = pressed("stance"), views = pressed("view");
+    var shown = 0;
+    entries.forEach(function (el) {
+      var id = el.dataset.id, ok = true;
+      if (q && el.dataset.search.indexOf(q) === -1) ok = false;
+      if (ok && formats.length && formats.indexOf(el.dataset.format) === -1) ok = false;
+      if (ok && lengths.length && !lengths.some(function (b) { return lengthOk(Number(el.dataset.min), b); })) ok = false;
+      if (ok && stances.length && stances.indexOf(el.dataset.stance || "none") === -1) ok = false;
+      if (ok && views.indexOf("mine") !== -1 && !state.mine[id]) ok = false;
+      if (ok && views.indexOf("open") !== -1 && (state.group[id] || state.mine[id])) ok = false;
+      el.classList.toggle("jm-hidden", !ok);
+      if (ok) shown++;
+    });
+    document.querySelectorAll(".jm-week").forEach(function (w) {
+      w.classList.toggle("jm-hidden", !w.querySelector(".jm-entry:not(.jm-hidden)"));
+    });
+    document.querySelectorAll(".jm-unit").forEach(function (u) {
+      u.classList.toggle("jm-hidden", !u.querySelector(".jm-entry:not(.jm-hidden)"));
+    });
+    if (countEl) {
+      countEl.textContent = shown === entries.length ? "Showing all " + entries.length + " readings"
+        : "Showing " + shown + " of " + entries.length + " readings";
+    }
+  }
+
+  // ---------- copy my list ----------
+  var copyBtn = document.getElementById("jm-copy");
+  if (copyBtn) copyBtn.addEventListener("click", function () {
+    var lines = [cfg.menuTitle + " — my readings", ""];
+    var any = false;
+    scopes.forEach(function (s) {
+      var picked = entries.filter(function (el) { return el.dataset.scopeId === s.dataset.scope && state.mine[el.dataset.id]; });
+      if (!picked.length) return;
+      any = true;
+      lines.push(s.dataset.scopeLabel + " (" + fmt(minutesIn(s.dataset.scope)) + " picked)");
+      picked.forEach(function (el) {
+        var a = el.querySelector(".jm-entry-title a");
+        lines.push("• " + a.textContent.trim() + " (~" + el.dataset.min + " min)");
+        lines.push("  " + a.href);
+      });
+      lines.push("");
+    });
+    if (!any) { say("Pick a reading first, then copy your list."); return; }
+    var text = lines.join("\n");
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text; t.setAttribute("readonly", "");
+      t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
+      var ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(t);
+      say(ok ? "Copied. Paste it wherever you need it." : "Couldn’t copy here. Try another browser.");
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { say("Copied. Paste it wherever you need it."); }, fallback);
+    } else fallback();
+  });
+
+  // ---------- clear (two clicks, no pop-up) ----------
+  var clearBtn = document.getElementById("jm-clear");
+  var armed = null;
+  if (clearBtn) clearBtn.addEventListener("click", function () {
+    if (!armed) {
+      clearBtn.textContent = "Click again to clear";
+      armed = setTimeout(function () { clearBtn.textContent = "Clear my picks"; armed = null; }, 4000);
+      return;
+    }
+    clearTimeout(armed); armed = null; clearBtn.textContent = "Clear my picks";
+    state.mine = {}; state.group = {};
+    save();
+    entries.forEach(function (el) {
+      el.classList.remove("is-mine", "is-group");
+      el.querySelectorAll(".jm-btn-mine, .jm-btn-group").forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+      el.querySelector(".jm-btn-mine").textContent = "I’ll read this";
+      el.querySelector(".jm-btn-group").textContent = "My group has it";
+    });
+    updateMeters(); applyFilters();
+    say("Picks cleared.");
+  });
+
+  document.documentElement.classList.add("jm-js");
+  var tools = document.querySelectorAll(".jm-needs-js");
+  Array.prototype.forEach.call(tools, function (t) { t.classList.remove("jm-hidden"); });
+  updateMeters(); applyFilters();
+})();
