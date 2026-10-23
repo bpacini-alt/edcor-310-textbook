@@ -239,6 +239,16 @@ def build_contents(units, chapters, supplements):
         <span class="bk-ch-body"><span class="bk-ch-title">{esc(s['title'])}</span><span class="bk-ch-sub">Quick reference</span></span>
       </a></li>""" for s in supplements)
     hours = sum(c["minutes"] for c in chapters) / 60
+    tools = """  <section class="bk-unit" aria-labelledby="reading-tools">
+    <div class="bk-unit-head"><div>
+      <p class="bk-kicker">Reading tools</p>
+      <h2 class="bk-unit-title" id="reading-tools">Joy of Learning and Bang for Buck</h2>
+    </div></div>
+    <ol class="bk-chapters">
+      <li><a class="bk-ch" href="../joy-of-learning.html"><span class="bk-ch-num" aria-hidden="true">+</span><span class="bk-ch-body"><span class="bk-ch-title">The Joy of Learning</span><span class="bk-ch-sub">Choose from the reading menu</span></span></a></li>
+      <li><a class="bk-ch" href="../bang-for-buck.html"><span class="bk-ch-num" aria-hidden="true">+</span><span class="bk-ch-body"><span class="bk-ch-title">Bang for Buck</span><span class="bk-ch-sub">Rate the reading value</span></span></a></li>
+    </ol>
+  </section>"""
     body = f"""  <section class="bk-card bk-cover bk-cover-small">
     <div class="bk-watermark" aria-hidden="true">{len(chapters)}</div>
     <p class="bk-kicker">Table of contents</p>
@@ -250,6 +260,8 @@ def build_contents(units, chapters, supplements):
       <a class="bk-btn bk-btn-quiet" href="../bang-for-buck.html">Bang for Buck</a>
     </div>
   </section>
+
+{tools}
 
 {chr(10).join(blocks)}
 

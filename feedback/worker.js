@@ -154,6 +154,15 @@ function validRatingTarget(book, reading) {
   return RATING_BOOKS.has(book) && /^[a-z0-9][a-z0-9-]{0,80}$/.test(reading);
 }
 
+async function ratingMine(db, book, semester, clientId) {
+  const rows = await db.prepare(
+    'SELECT reading_id, rating FROM reading_ratings WHERE book = ? AND semester = ? AND client_id = ?'
+  ).bind(book, semester, clientId).all();
+  const ratings = {};
+  for (const row of rows.results || []) ratings[row.reading_id] = Number(row.rating);
+  return { ok: true, book, semester, ratings };
+}
+
 async function ratingSummary(db, book, reading, semester, clientId) {
   const results = await db.batch([
     db.prepare('SELECT rating, COUNT(*) AS count FROM reading_ratings WHERE book = ? AND reading_id = ? AND semester = ? GROUP BY rating').bind(book, reading, semester),
@@ -184,6 +193,7 @@ async function handleRatings(request, env) {
   let book = clean(url.searchParams.get('book'), 60);
   let reading = clean(url.searchParams.get('reading'), 100);
   let rating = null;
+  const mineRequest = request.method === 'GET' && url.searchParams.get('mine') === '1';
 
   if (request.method === 'POST') {
     const raw = await request.text();
@@ -195,7 +205,9 @@ async function handleRatings(request, env) {
     rating = Number(data && data.rating);
   }
 
-  if (!validRatingTarget(book, reading)) return ratingJson(400, { error: 'bad_target' });
+  if (mineRequest) {
+    if (!RATING_BOOKS.has(book)) return ratingJson(400, { error: 'bad_target' });
+  } else if (!validRatingTarget(book, reading)) return ratingJson(400, { error: 'bad_target' });
   if (request.method === 'POST' && (!Number.isInteger(rating) || rating < 1 || rating > 4)) {
     return ratingJson(400, { error: 'bad_rating' });
   }
@@ -218,6 +230,8 @@ async function handleRatings(request, env) {
   await env.RATINGS_DB.prepare(
     'CREATE INDEX IF NOT EXISTS idx_reading_ratings_lookup ON reading_ratings (book, reading_id, semester)'
   ).run();
+
+  if (mineRequest) return ratingJson(200, await ratingMine(env.RATINGS_DB, book, semester, clientId), clientId);
 
   if (request.method === 'POST') {
     await env.RATINGS_DB.batch([

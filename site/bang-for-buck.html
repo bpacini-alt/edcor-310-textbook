@@ -16,6 +16,9 @@ h2{color:var(--navy);font-size:1.7rem;line-height:1.15;margin:0}
 h3{color:var(--navy);font-size:1.2rem;line-height:1.22;margin:.25rem 0 0}
 .lede{color:var(--muted);font-size:1.12rem;max-width:820px;margin:0}
 .notice{background:var(--navy);color:#fff;border-radius:10px;padding:1rem 1.15rem;margin:1.6rem 0 1.5rem;font: .92rem/1.5 Arial,sans-serif}
+.intro{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:1rem 1.15rem;margin:1.6rem 0 1.5rem;font:.92rem/1.55 Arial,sans-serif}
+.intro p{margin:0 0 .7rem}.intro p:last-child{margin-bottom:0}.intro strong{color:var(--navy)}
+.intro .status-line{border-top:1px solid var(--line);padding-top:.7rem;color:var(--muted);font-size:.82rem}
 #connection-status.error{color:#ffd9d4}
 .reading-tools{display:flex;justify-content:space-between;gap:1rem;margin:0 0 1rem;font:600 .76rem Arial,sans-serif}
 .reading-tools a{color:var(--navy);text-decoration:none}
@@ -23,15 +26,24 @@ h3{color:var(--navy);font-size:1.2rem;line-height:1.22;margin:.25rem 0 0}
 .filters{display:grid;grid-template-columns:minmax(220px,2fr) repeat(3,minmax(130px,1fr));gap:.7rem;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.85rem;margin:1rem 0 2.3rem;position:sticky;top:0;z-index:5;box-shadow:0 3px 12px rgba(25,50,74,.06)}
 .filters label{color:var(--muted);font:700 .7rem Arial,sans-serif;letter-spacing:.05em;text-transform:uppercase}
 .filters input,.filters select{display:block;width:100%;margin-top:.35rem;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);font: .88rem Arial,sans-serif;padding:.55rem}
+.filter-toggle{grid-column:1/-1;justify-self:start;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--navy);cursor:pointer;font:600 .78rem Arial,sans-serif;padding:.42rem .75rem}
+.filter-toggle:hover,.filter-toggle:focus-visible{border-color:var(--navy);outline:3px solid rgba(84,124,159,.2);outline-offset:1px}
+.filter-toggle[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
 .toolbar-note{color:var(--muted);font: .78rem Arial,sans-serif;margin:-1.75rem 0 1.5rem}
 .unit{margin:2.8rem 0}
-.unit-heading{display:grid;grid-template-columns:2.8rem 1fr;gap:.8rem;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:1.2rem}
+.unit-heading{position:relative;display:grid;grid-template-columns:2.8rem 1fr;gap:.8rem;border-bottom:1px solid var(--line);padding:0 2.2rem 1rem 0;margin-bottom:1.2rem;cursor:pointer;list-style:none}
+.unit-heading::-webkit-details-marker{display:none}
+.unit-heading::after{content:"+";position:absolute;right:.15rem;top:.1rem;color:var(--navy);font:700 1.5rem/1 Arial,sans-serif}
+.unit[open] .unit-heading::after{content:"−"}
+.unit:not([open]){margin-bottom:1rem}
 .unit-heading p{color:var(--muted);max-width:800px;margin:.45rem 0 0}
 .unit-number{width:2.8rem;height:2.8rem;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:700 1.1rem Arial,sans-serif}
 .week{margin:1.4rem 0 2rem}
 .week>h3{font-size:1rem;color:var(--muted);font:700 .78rem Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin:0 0 .65rem}
 .reading-list{display:grid;gap:.8rem}
 .reading-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:9px;padding:1rem 1.1rem}
+.reading-card.is-mine{border-left-color:#2a7a4f;background:linear-gradient(90deg,#e9f5ee,var(--card) 42%)}
+.reading-card.is-group:not(.is-mine){border-left-color:var(--navy);background:linear-gradient(90deg,rgba(25,50,74,.06),var(--card) 42%)}
 .reading-card[hidden],.unit[hidden]{display:none}
 .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
 .primary-link{color:var(--navy);font:700 .78rem Arial,sans-serif;text-decoration:none;white-space:nowrap;margin-top:.15rem}
@@ -71,22 +83,26 @@ footer{border-top:1px solid var(--line);color:var(--muted);font:.78rem/1.5 Arial
     <a href="index.html">Book home</a>
   </nav>
 
-  <div class="kicker">The Joy of Learning · Live ratings</div>
-  <h1>Bang for Buck</h1>
-  <p class="lede">Choose from the full 138-reading menu. The question is not whether a reading was easy or whether you liked it. It is what you learned, how you grew, how much you enjoyed it, and what you gained for the time it took.</p>
-  <div class="notice"><strong>Live semester test:</strong> Rate a reading after you finish it. Your rating is stored for the current semester, and the results update as students vote. No names are collected. <span id="connection-status" role="status">Ratings are saved when you make a choice.</span></div>
-  <div class="filters" aria-label="Filter readings">
+  <div class="kicker">The Joy of Learning · Reading feedback</div>
+  <h1>Joy of Learning</h1>
+  <p class="lede">These readings are meant to be a joy: to get you excited about learning and help you explore beyond the textbook.</p>
+  <section class="intro" aria-label="About the readings and ratings">
+    <p><strong>Readings.</strong> These readings are meant to be a joy: choose something that catches your interest, then read, watch, or listen at the link.</p>
+    <p><strong>Ratings.</strong> After you finish, give us feedback on the bang for buck: what you learned, how you grew, how much you enjoyed it, and what you gained for the time it took. Your feedback helps us improve the menu.</p>
+    <p class="status-line">Ratings are saved for the current semester, results update as students vote, and no names are collected. <span id="connection-status" role="status">Ratings are saved when you make a choice.</span></p>
+  </section>  <div class="filters" aria-label="Filter readings">
     <label>Search<input id="search" type="search" placeholder="Search titles, ideas, or descriptions"></label>
     <label>Unit<select id="unit-filter"><option value="">All units</option><option value="unit-1">Unit 1 · Introduction to Psychology</option><option value="unit-2">Unit 2 · Developmental Psychology</option><option value="unit-3">Unit 3 · Motivational Psychology</option><option value="unit-4">Unit 4 · Cognitive Psychology</option></select></label>
     <label>Format<select id="format-filter"><option value="">All formats</option><option value="read">Read</option><option value="watch">Watch</option><option value="listen">Listen</option></select></label>
     <label>Topic<select id="category-filter"><option value="">All topics</option><option value="ADHD / classroom practice">ADHD / classroom practice</option><option value="ADHD / controversy">ADHD / controversy</option><option value="ADHD / inhibition">ADHD / inhibition</option><option value="ADHD / motivation">ADHD / motivation</option><option value="Adolescence / technology">Adolescence / technology</option><option value="Agency / biology">Agency / biology</option><option value="Agency / identity">Agency / identity</option><option value="Anthropology / perspective">Anthropology / perspective</option><option value="Behaviorism / learning">Behaviorism / learning</option><option value="Belonging / community">Belonging / community</option><option value="Belonging / conversation">Belonging / conversation</option><option value="Belonging / discipleship">Belonging / discipleship</option><option value="Belonging / teaching">Belonging / teaching</option><option value="Belonging / truth">Belonging / truth</option><option value="Conflict / charity">Conflict / charity</option><option value="Controversy / evidence">Controversy / evidence</option><option value="Courage / controversy">Courage / controversy</option><option value="Culture / conformity">Culture / conformity</option><option value="Engagement / learning">Engagement / learning</option><option value="Evidence / epistemology">Evidence / epistemology</option><option value="Evidence / impact">Evidence / impact</option><option value="Evidence / institutions">Evidence / institutions</option><option value="Evidence / professional practice">Evidence / professional practice</option><option value="Executive function / school">Executive function / school</option><option value="Family / covenant">Family / covenant</option><option value="Family / social structure">Family / social structure</option><option value="Flourishing / application">Flourishing / application</option><option value="Flourishing / judgment">Flourishing / judgment</option><option value="Flourishing / mindset">Flourishing / mindset</option><option value="Flourishing / values">Flourishing / values</option><option value="Gender / character">Gender / character</option><option value="Gender / culture">Gender / culture</option><option value="Gender / responsibility">Gender / responsibility</option><option value="Group psychology / polarization">Group psychology / polarization</option><option value="Growth / divine potential">Growth / divine potential</option><option value="Growth / faith">Growth / faith</option><option value="Happiness / flourishing">Happiness / flourishing</option><option value="Intelligence / measurement">Intelligence / measurement</option><option value="Intelligence / theory">Intelligence / theory</option><option value="Judgment / intuition">Judgment / intuition</option><option value="Learning / imitation">Learning / imitation</option><option value="Learning / persistence">Learning / persistence</option><option value="Media / identity">Media / identity</option><option value="Mental health / technology">Mental health / technology</option><option value="Morality / intuition">Morality / intuition</option><option value="Morality / politics">Morality / politics</option><option value="Morality / reasoning">Morality / reasoning</option><option value="Motivation / biology">Motivation / biology</option><option value="Motivation / rewards">Motivation / rewards</option><option value="Needs / flourishing">Needs / flourishing</option><option value="Parenting / leverage">Parenting / leverage</option><option value="Parenting / nature and nurture">Parenting / nature and nurture</option><option value="Personality / evidence">Personality / evidence</option><option value="Personality / measurement">Personality / measurement</option><option value="Play / development">Play / development</option><option value="Play / schooling">Play / schooling</option><option value="Politics / perspective">Politics / perspective</option><option value="Purpose / challenge">Purpose / challenge</option><option value="Purpose / discipleship">Purpose / discipleship</option><option value="Purpose / service">Purpose / service</option><option value="Reality / parenting">Reality / parenting</option><option value="Research / evidence">Research / evidence</option><option value="Research / institutions">Research / institutions</option><option value="Research / replication">Research / replication</option><option value="Research to practice">Research to practice</option><option value="Resilience / coping">Resilience / coping</option><option value="Resilience / risk / development">Resilience / risk / development</option><option value="Science / institutions">Science / institutions</option><option value="Science / limits">Science / limits</option><option value="Science / public claims">Science / public claims</option><option value="Science / uncertainty">Science / uncertainty</option><option value="Self-worth / growth">Self-worth / growth</option><option value="Shame / moral formation">Shame / moral formation</option><option value="Shame / social life">Shame / social life</option><option value="Skepticism / childhood">Skepticism / childhood</option><option value="Social media / moral psychology">Social media / moral psychology</option><option value="Social media / reinforcement">Social media / reinforcement</option><option value="Sociology / belonging">Sociology / belonging</option><option value="Success / motivation / well-being">Success / motivation / well-being</option><option value="Teacher development / personality">Teacher development / personality</option><option value="Teaching / evidence-informed practice">Teaching / evidence-informed practice</option><option value="Worldview / identity">Worldview / identity</option></select></label>
+    <button type="button" class="filter-toggle" id="my-ratings-filter" aria-pressed="false">Show only my ratings</button>
   </div>
   <p class="toolbar-note" id="visible-count"></p>
-  <section class="unit" id="unit-1" data-unit="unit-1">
-  <div class="unit-heading">
+  <details class="unit" id="unit-1" data-unit="unit-1">
+  <summary class="unit-heading">
     <div class="unit-number">1</div>
     <div><div class="eyebrow">Unit 1</div><h2>Introduction to Psychology</h2><p>Where educational psychology begins: what education is for, why human judgment needs help, how evidence improves professional practice, why science has limits, and what it might mean to build a life and classroom that flourish.</p></div>
-  </div>
+  </summary>
   <section class="week" data-unit="unit-1">
   <h3>Week 1</h3>
   <div class="reading-list"><article class="reading-card" data-reading-id="coddling-vs-strengthening-university" data-unit="unit-1" data-category="Purpose / challenge" data-format="watch" data-search="coddling vs. strengthening university should education protect students from difficulty? jonathan haidt argues that students become stronger when education exposes them to challenge, disagreement, and the possibility of being wrong. a lively opening argument about what college is supposed to do and what kind of person learning should form. youtube — watch about 30 minutes. introduction to psychology week 1 purpose / challenge">
@@ -867,12 +883,12 @@ footer{border-top:1px solid var(--line);color:var(--muted);font:.78rem/1.5 Arial
   </div>
 </article></div>
 </section>
-</section>
-<section class="unit" id="unit-2" data-unit="unit-2">
-  <div class="unit-heading">
+</details>
+<details class="unit" id="unit-2" data-unit="unit-2">
+  <summary class="unit-heading">
     <div class="unit-number">2</div>
     <div><div class="eyebrow">Unit 2</div><h2>Developmental Psychology</h2><p>What shapes a person? Unit 2 moves from the early environment of parenting and play through sex, gender, adolescence, morality, mindset, personality, and agency. These readings ask not only what develops, but how much our choices and circumstances can change us.</p></div>
-  </div>
+  </summary>
   <section class="week" data-unit="unit-2">
   <h3>Week 5</h3>
   <div class="reading-list"><article class="reading-card" data-reading-id="does-parenting-matter" data-unit="unit-2" data-category="Parenting / nature and nurture" data-format="listen" data-search="does parenting matter? if parenting shapes children, how much does it shape them? the intelligence squared debate puts competing interpretations of behavioral-genetic and developmental evidence into direct conversation. listen for what each side means by matter, what counts as evidence, and where a useful conclusion might be more modest than either opening position. intelligence squared debate — listen for about 45 minutes. developmental psychology week 5 parenting / nature and nurture">
@@ -2002,12 +2018,12 @@ footer{border-top:1px solid var(--line);color:var(--muted);font:.78rem/1.5 Arial
   </div>
 </article></div>
 </section>
-</section>
-<section class="unit" id="unit-3" data-unit="unit-3">
-  <div class="unit-heading">
+</details>
+<details class="unit" id="unit-3" data-unit="unit-3">
+  <summary class="unit-heading">
     <div class="unit-number">3</div>
     <div><div class="eyebrow">Unit 3</div><h2>Motivational Psychology</h2><p>By what are we motivated? Unit 3 is about what moves us: personality, culture, community, and finally, agency. These readings ask whether we choose to move or whether our biology moves us. They also build a foundation for a future teacher&#39;s work in managing classroom behavior and sculpting souls: character development and effective classroom culture.</p></div>
-  </div>
+  </summary>
   <section class="week" data-unit="unit-3">
   <h3>Week 8</h3>
   <div class="reading-list"><article class="reading-card" data-reading-id="the-moral-obligation-of-self-worth" data-unit="unit-3" data-category="Self-worth / growth" data-format="watch" data-search="the moral obligation of self worth treat yourself like someone you are responsible for helping. jordan peterson explains why we often fail to care for ourselves properly, and why responsible self-respect may be the beginning of genuine self-care and growth. jordan peterson — watch the video. motivational psychology week 8 self-worth / growth">
@@ -3201,12 +3217,12 @@ footer{border-top:1px solid var(--line);color:var(--muted);font:.78rem/1.5 Arial
   </div>
 </article></div>
 </section>
-</section>
-<section class="unit" id="unit-4" data-unit="unit-4">
-  <div class="unit-heading">
+</details>
+<details class="unit" id="unit-4" data-unit="unit-4">
+  <summary class="unit-heading">
     <div class="unit-number">4</div>
     <div><div class="eyebrow">Unit 4</div><h2>Cognitive Psychology</h2><p>How does the brain learn? Unit 4 is true educational psychology: memory, learning, attention, and how to change minds that want to stay stubborn. These readings are essential for anyone engaged in the business of soulcraft, beginning with how to capture attention and ending with protecting yourself from the pressures of the school you will end up in.</p></div>
-  </div>
+  </summary>
   <section class="week" data-unit="unit-4">
   <h3>Week 11</h3>
   <div class="reading-list"><article class="reading-card" data-reading-id="adhd-inhibition-impulsivity-and-emotion" data-unit="unit-4" data-category="ADHD / inhibition" data-format="watch" data-search="adhd: inhibition, impulsivity, and emotion what looks like a lack of effort may be a problem of inhibition. from russell barkley&#39;s “30 essential ideas” series: how adhd affects inhibition, impulse control, and emotion. bring back one misconception it corrects. russell barkley lecture — watch the whole thing. cognitive psychology week 11 adhd / inhibition">
@@ -4560,7 +4576,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font:.78rem/1.5 Arial
   </div>
 </article></div>
 </section>
-</section>
+</details>
   <footer>This page uses the current Joy menu data. Ratings are separated by book and semester, and each browser can update its own rating for a reading.</footer>
 </main>
 <script>
@@ -4572,6 +4588,9 @@ footer{border-top:1px solid var(--line);color:var(--muted);font:.78rem/1.5 Arial
   const cards = Array.from(document.querySelectorAll(".reading-card"));
   const status = document.querySelector("#connection-status");
   const count = document.querySelector("#visible-count");
+  const myFilter = document.querySelector("#my-ratings-filter");
+  const myRatings = new Set();
+  let myRatingsLoaded = false;
   const CHOICE_KEY = main.dataset.choiceKey;
   const choiceState = { mine: {}, group: {} };
   try {
@@ -4613,6 +4632,8 @@ footer{border-top:1px solid var(--line);color:var(--muted);font:.78rem/1.5 Arial
       const groupOn = !!choiceState.group[id];
       mine.classList.toggle("active", mineOn);
       group.classList.toggle("active", groupOn);
+      card.classList.toggle("is-mine", mineOn);
+      card.classList.toggle("is-group", groupOn);
       mine.setAttribute("aria-pressed", String(mineOn));
       group.setAttribute("aria-pressed", String(groupOn));
       mine.textContent = mineOn ? "✓ I’m reading this" : "I’ll read this";
@@ -4648,9 +4669,39 @@ footer{border-top:1px solid var(--line);color:var(--muted);font:.78rem/1.5 Arial
     card.querySelectorAll(".rating-button").forEach(function (button) {
       button.classList.toggle("active", Number(button.dataset.rating) === data.yourRating);
     });
+    if (data.yourRating) {
+      myRatings.add(card.dataset.readingId);
+      card.dataset.myRating = String(data.yourRating);
+    } else {
+      myRatings.delete(card.dataset.readingId);
+      delete card.dataset.myRating;
+    }
     card.querySelector(".your-rating").textContent = data.yourRating
       ? "Your rating: " + data.yourRating + " · " + labels[data.yourRating] + ". Click another choice to change it."
       : "You have not rated this reading yet.";
+  }
+  async function loadMyRatings() {
+    if (myRatingsLoaded) return true;
+    try {
+      const response = await fetch(ENDPOINT + "?book=" + encodeURIComponent(BOOK) + "&mine=1", {credentials:"same-origin", cache:"no-store"});
+      const raw = await response.text();
+      let data = {};
+      try { data = raw ? JSON.parse(raw) : {}; } catch (error) { throw new Error("HTTP " + response.status + " · non-JSON response"); }
+      if (!response.ok || !data.ok) throw new Error("HTTP " + response.status + " · " + (data.error || "ratings_not_loaded"));
+      Object.keys(data.ratings || {}).forEach(function (id) {
+        const rating = Number(data.ratings[id]);
+        const card = cards.find(function (item) { return item.dataset.readingId === id; });
+        if (!card) return;
+        myRatings.add(id);
+        card.dataset.myRating = String(rating);
+        card.querySelectorAll(".rating-button").forEach(function (button) { button.classList.toggle("active", Number(button.dataset.rating) === rating); });
+      });
+      myRatingsLoaded = true;
+      return true;
+    } catch (error) {
+      setStatus("Your saved ratings could not be loaded yet (" + error.message + ").", true);
+      return false;
+    }
   }
   async function submit(card, button) {
     const buttons = Array.from(card.querySelectorAll(".rating-button"));
@@ -4671,6 +4722,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font:.78rem/1.5 Arial
       if (!response.ok) throw new Error("HTTP " + response.status + " · " + (data.error || "rating_not_saved") + (data.message ? " · " + data.message : ""));
       if (!data.ok) throw new Error(data.error || "rating_not_saved");
       render(card, data);
+      applyFilters();
       setStatus("Ratings database connected. Your rating was saved.", false);
     } catch (error) {
       setStatus("The rating could not be saved yet (" + error.message + ").", true);
@@ -4683,17 +4735,21 @@ footer{border-top:1px solid var(--line);color:var(--muted);font:.78rem/1.5 Arial
     const unit = document.querySelector("#unit-filter").value;
     const format = document.querySelector("#format-filter").value;
     const category = document.querySelector("#category-filter")?.value || "";
+    const mineOnly = myFilter?.getAttribute("aria-pressed") === "true";
     let visible = 0;
     cards.forEach(function (card) {
       const matches = (!query || card.dataset.search.includes(query))
         && (!unit || card.dataset.unit === unit)
         && (!format || card.dataset.format === format)
-        && (!category || card.dataset.category === category);
+        && (!category || card.dataset.category === category)
+        && (!mineOnly || myRatings.has(card.dataset.readingId));
       card.hidden = !matches;
       if (matches) visible++;
     });
     document.querySelectorAll(".unit").forEach(function (section) {
-      section.hidden = !Array.from(section.querySelectorAll(".reading-card")).some(card => !card.hidden);
+      const hasVisible = Array.from(section.querySelectorAll(".reading-card")).some(card => !card.hidden);
+      section.hidden = !hasVisible;
+      if (hasVisible && (query || unit || format || category || mineOnly)) section.open = true;
     });
     count.textContent = visible + " of " + cards.length + " readings shown";
   }
@@ -4701,6 +4757,21 @@ footer{border-top:1px solid var(--line);color:var(--muted);font:.78rem/1.5 Arial
     card.querySelectorAll(".rating-button").forEach(function (button) {
       button.addEventListener("click", function (event) { event.preventDefault(); submit(card, button); });
     });
+  });
+  if (myFilter) myFilter.addEventListener("click", async function () {
+    const next = myFilter.getAttribute("aria-pressed") !== "true";
+    myFilter.setAttribute("aria-pressed", String(next));
+    myFilter.textContent = next ? "Showing my ratings" : "Show only my ratings";
+    if (next) {
+      myFilter.disabled = true;
+      const loaded = await loadMyRatings();
+      myFilter.disabled = false;
+      if (!loaded) {
+        myFilter.setAttribute("aria-pressed", "false");
+        myFilter.textContent = "Show only my ratings";
+      }
+    }
+    applyFilters();
   });
   ["#search","#unit-filter","#format-filter","#category-filter"].forEach(function (selector) {
     const element = document.querySelector(selector);
