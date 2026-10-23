@@ -55,7 +55,7 @@ def entry_html(e, scope_id, titles):
         % (esc(e["id"]), esc(e["id"]), e["minutes"], e["format"], stance_key, scope_id, esc(search)),
         '<summary class="jm-entry-summary">',
         '<span class="jm-entry-title"><a href="%s" target="_blank" rel="noopener" title="%s">%s</a><span class="jm-sr"> (opens in a new tab)</span></span>'
-        % (esc(e["url"]), esc(e["title"])),
+        % (esc(e["url"]), esc(e["title"]), esc(e["title"])),
         '<span class="jm-entry-meta">%s</span>' % "".join(meta),
         '<span class="jm-entry-time">~%d min</span>' % e["minutes"],
         plan,
@@ -153,7 +153,12 @@ def build(data):
             groups.append("<h3>%s</h3><ul>%s</ul>" % (esc(g["title"]), items))
         appendix = '<details class="jm-appendix"><summary>%s</summary><p>%s</p>%s</details>' % (esc(a["title"]), esc(a["intro"]), "".join(groups))
 
-    config = {\n        "storageKey": c["storageKey"],\n        "menuTitle": c["menuTitle"],\n        "ratingsBook": c.get("ratingsBook"),\n        "ratingsEndpoint": "/api/ratings",\n    }
+    config = {
+        "storageKey": c["storageKey"],
+        "menuTitle": c["menuTitle"],
+        "ratingsBook": c.get("ratingsBook"),
+        "ratingsEndpoint": "/api/ratings",
+    }
     css = (HERE / "joy-menu.css").read_text(encoding="utf-8")
     js = (HERE / "joy-menu.js").read_text(encoding="utf-8")
     total = len(titles)
