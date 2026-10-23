@@ -678,6 +678,51 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   }
 }
 
+
+/* Filter grid: a clear 2x2 control panel without adding visual bulk. */
+.jm-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: .45rem .9rem;
+  padding: .65rem .8rem;
+}
+.jm-filters input[type="search"] {
+  grid-column: 1 / -1;
+  width: auto;
+  min-width: 0;
+  margin-bottom: .05rem;
+}
+.jm-chiprow {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 0;
+  gap: .25rem;
+}
+.jm-chiprow > span {
+  flex: 0 0 auto;
+  min-width: auto;
+  margin-right: .1rem;
+  color: var(--ink);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+.jm-chip {
+  font-size: 11.5px;
+  padding: .22rem .5rem;
+}
+.jm-count {
+  grid-column: 1 / -1;
+  font-size: 11.5px;
+}
+@media (max-width: 460px) {
+  .jm-filters { grid-template-columns: 1fr; }
+  .jm-filters input[type="search"],
+  .jm-count { grid-column: auto; }
+}
+
 @media print {
   .jm-bar, .jm-filters, .jm-actions, .jm-top nav, .jm-units-nav { display: none !important; }
   .jm-entry { break-inside: avoid; }
