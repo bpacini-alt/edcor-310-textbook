@@ -178,6 +178,12 @@ def build(data):
 <a class="jm-top-name" href="https://benjaminpacini.com">Benjamin Pacini</a>
 <nav aria-label="Book"><a href="{esc(c['bookHome'])}">{esc(c['bookTitle'])}</a><a href="{esc(c['contents'])}">Contents</a></nav>
 </div></header>
+<div class="jm-bar jm-needs-js jm-hidden"><div class="jm-wrap jm-bar-in">
+<label for="jm-scope">Your picks for</label>
+<select id="jm-scope">{scope_opts}</select>
+<div class="jm-meter"><div class="jm-meter-track" aria-hidden="true"><div class="jm-meter-fill" id="jm-meter-fill"></div></div><span class="jm-meter-text" id="jm-meter-text" aria-live="polite"></span></div>
+<div class="jm-bar-actions"><button type="button" class="jm-btn jm-btn-strong" id="jm-copy">Copy my list</button><button type="button" class="jm-btn" id="jm-clear">Clear my picks</button></div>
+</div></div>
 <div class="jm-wrap" style="padding-top:2rem">
 <section class="jm-card" aria-labelledby="jm-title">
 <p class="jm-kicker">{esc(c['course'])} · Reading Menu</p>
@@ -189,12 +195,6 @@ def build(data):
 </section>
 <nav aria-label="Units"><ul class="jm-units-nav">{units_nav}</ul></nav>
 </div>
-<div class="jm-bar jm-needs-js jm-hidden"><div class="jm-wrap jm-bar-in">
-<label for="jm-scope">Your picks for</label>
-<select id="jm-scope">{scope_opts}</select>
-<div class="jm-meter"><div class="jm-meter-track" aria-hidden="true"><div class="jm-meter-fill" id="jm-meter-fill"></div></div><span class="jm-meter-text" id="jm-meter-text" aria-live="polite"></span></div>
-<div class="jm-bar-actions"><button type="button" class="jm-btn jm-btn-strong" id="jm-copy">Copy my list</button><button type="button" class="jm-btn" id="jm-clear">Clear my picks</button></div>
-</div></div>
 <main class="jm-wrap">
 <section class="jm-filters jm-needs-js jm-hidden" aria-label="Find readings">
 <label class="jm-sr" for="jm-search">Search the readings</label>
