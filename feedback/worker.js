@@ -202,13 +202,32 @@ async function handleRatings(request, env) {
 
   const clientId = getCookie(request, 'bb_client') || crypto.randomUUID();
   const semester = semesterKey(env);
-  await env.RATINGS_DB.exec(RATINGS_SCHEMA);
+  await env.RATINGS_DB.prepare(
+    'CREATE TABLE IF NOT EXISTS reading_ratings (' +
+    'id INTEGER PRIMARY KEY AUTOINCREMENT,' +
+    'book TEXT NOT NULL,' +
+    'reading_id TEXT NOT NULL,' +
+    'semester TEXT NOT NULL,' +
+    'rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 4),' +
+    'client_id TEXT NOT NULL,' +
+    'created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,' +
+    'updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,' +
+    'UNIQUE (book, reading_id, semester, client_id)' +
+    ')'
+  ).run();
+  await env.RATINGS_DB.prepare(
+    'CREATE INDEX IF NOT EXISTS idx_reading_ratings_lookup ON reading_ratings (book, reading_id, semester)'
+  ).run();
 
   if (request.method === 'POST') {
-    await env.RATINGS_DB.prepare(
-      'INSERT INTO reading_ratings (book, reading_id, semester, rating, client_id) VALUES (?, ?, ?, ?, ?)' +
-      ' ON CONFLICT(book, reading_id, semester, client_id) DO UPDATE SET rating = excluded.rating, updated_at = CURRENT_TIMESTAMP'
-    ).bind(book, reading, semester, rating, clientId).run();
+    await env.RATINGS_DB.batch([
+      env.RATINGS_DB.prepare(
+        'DELETE FROM reading_ratings WHERE book = ? AND reading_id = ? AND semester = ? AND client_id = ?'
+      ).bind(book, reading, semester, clientId),
+      env.RATINGS_DB.prepare(
+        'INSERT INTO reading_ratings (book, reading_id, semester, rating, client_id) VALUES (?, ?, ?, ?, ?)'
+      ).bind(book, reading, semester, rating, clientId),
+    ]);
   }
 
   return ratingJson(200, await ratingSummary(env.RATINGS_DB, book, reading, semester, clientId), clientId);  } catch (error) {
