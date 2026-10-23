@@ -25,6 +25,7 @@ The website is learning.benjaminpacini.com, served by Cloudflare from the `site/
 | `etb-live/` | The chapter source: every page as captured from EdTechBooks, plus `manifest.json` (book order and titles). Chapter images are in `etb-live/images/`, at the same paths the pages use (`/images/content_images/…`); the build copies them into `site/images/`. | Yes. Chapter content changes go here. |
 | `site/` | The published website, **generated** by `build/build_site.py` | **Never by hand.** The next build overwrites hand edits. |
 | `build/` | `build_site.py` and the web version of the cover | Yes |
+| `frontmatter/` | The cover, contents, and About page design, shared with Econ 150 (see "Shared") | Yes, in matching pull requests |
 | `audio/` | The audio player, narration tools, and previews | Yes (player: see "Shared") |
 | `feedback/` | The Report a problem button and the function that receives reports | Yes (see "Shared") |
 | `menus/` | The Joy of Learning reading menu: `joy-of-learning.json` holds every reading. `build/build_site.py` turns it into `site/joy-of-learning.html` | Yes, the data file (see `menus/README.md` and "Shared") |
@@ -39,6 +40,7 @@ After changing anything in `etb-live/`, `build/`, `menus/`, or the player, run `
   - **Where it goes:** Worker → **Settings** → the top-level **Variables and Secrets** section → **Add variable**, Type **Secret**, then **Deploy**. Not the "Variables and secrets" box inside the **Build** section: that one is only available while the site builds, and the button can't see it. A plain **Text** variable gets wiped by the next deploy, so it must be a Secret.
   - **The token:** a fine-grained GitHub token limited to `textbook-feedback`, with Issues: Read and write. It expires yearly. To renew, regenerate it on GitHub and click **Rotate** on the secret in both Workers. If the button says "That didn't send," a missing or expired token is the first thing to check (the function answers `not_configured` when it has none).
 - **Joy reading menus:** `menus/build_menu.py`, `menus/joy-menu.css`, and `menus/joy-menu.js` are identical in both repositories and change in matching pull requests. Each repository keeps its own menu data (`menus/joy-of-learning.json` here in EDCOR 310, `menus/joy-of-econ.json` in Econ 150). See `menus/README.md`.
+- **Front pages:** `frontmatter/frontmatter.py` draws both books' cover, contents, and About pages from one design. Both repositories carry identical copies; change it in matching pull requests. Each book passes its own titles, chapters, and colors from its build script (EDCOR 310: `build/build_site.py`; Econ 150: `build/build_front.py`). Never edit the generated pages by hand.
 - **Covers:** the full-size EdTechBooks cover is archived at `etb-live/cover.png`. The web version, cleaned up for the new site, is `build/cover-web.png`.
 
 ## Known Cloudflare behavior
