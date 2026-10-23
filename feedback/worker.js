@@ -174,6 +174,7 @@ async function ratingSummary(db, book, reading, semester, clientId) {
 }
 
 async function handleRatings(request, env) {
+  try {
   if (!['GET', 'POST'].includes(request.method)) return ratingJson(405, { error: 'method' });
   const origin = request.headers.get('Origin');
   if (origin && origin !== new URL(request.url).origin) return ratingJson(403, { error: 'origin' });
@@ -210,7 +211,12 @@ async function handleRatings(request, env) {
     ).bind(book, reading, semester, rating, clientId).run();
   }
 
-  return ratingJson(200, await ratingSummary(env.RATINGS_DB, book, reading, semester, clientId), clientId);
+  return ratingJson(200, await ratingSummary(env.RATINGS_DB, book, reading, semester, clientId), clientId);  } catch (error) {
+    return ratingJson(500, {
+      error: 'ratings_database_error',
+      message: error instanceof Error ? error.message : String(error),
+    });
+  }
 }
 
 export default {
