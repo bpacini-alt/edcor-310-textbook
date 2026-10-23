@@ -5,7 +5,15 @@
 {
   "name": "science-of-learning",
   "compatibility_date": "2026-09-01",
-  "previews": {},
+  "previews": {
+    "d1_databases": [
+      {
+        "binding": "RATINGS_DB",
+        "database_name": "textbook-reading-ratings",
+        "database_id": "596def74-d651-4f4c-a473-b7e52beaa03d"
+      }
+    ]
+  },
   "main": "feedback/worker.js",
   "assets": {
     "directory": "./site",
