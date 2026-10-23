@@ -60,40 +60,136 @@
   }
 
   // ---------- per-entry controls ----------
-  function makeBtn(cls, label) {
-    var b = document.createElement("button");
-    b.type = "button"; b.className = "jm-btn " + cls; b.textContent = label;
-    return b;
+  function ratingName(n) {
+    return ({
+      1: "F-tier · Replace",
+      2: "B-tier · Reconsider",
+      3: "A-tier · Keep",
+      4: "S-tier · Life-changing · Celebrate"
+    })[n] || "";
   }
+  function parseRatingResponse(response) {
+    return response.text().then(function (raw) {
+      var data = {};
+      try { data = raw ? JSON.parse(raw) : {}; } catch (e) {
+        throw new Error("non-JSON response");
+      }
+      if (!response.ok || !data.ok) throw new Error(data.error || ("HTTP " + response.status));
+      return data;
+    });
+  }
+  function paintRatingButtons(buttons, value) {
+    buttons.forEach(function (button) {
+      button.setAttribute("aria-pressed", String(Number(button.dataset.rating) === Number(value)));
+    });
+  }
+  function renderRatingSummary(summaryEl, data) {
+    while (summaryEl.firstChild) summaryEl.removeChild(summaryEl.firstChild);
+    if (!data || !data.total) {
+      summaryEl.textContent = "No semester ratings yet.";
+      return;
+    }
+    var count = document.createElement("span");
+    count.textContent = data.total + (data.total === 1 ? " response" : " responses");
+    summaryEl.appendChild(count);
+    var chart = document.createElement("span");
+    chart.className = "jm-rating-chart";
+    var labels = [];
+    [1, 2, 3, 4].forEach(function (rating) {
+      var segment = document.createElement("span");
+      var n = Number(data.counts && data.counts[rating]) || 0;
+      var pct = Number(data.percentages && data.percentages[rating]) || 0;
+      segment.className = "jm-rating-segment jm-rating-" + rating;
+      segment.style.width = pct + "%";
+      segment.title = ratingName(rating) + ": " + n;
+      chart.appendChild(segment);
+      labels.push(rating + ": " + n);
+    });
+    chart.setAttribute("role", "img");
+    chart.setAttribute("aria-label", labels.join(", "));
+    summaryEl.appendChild(chart);
+    if (data.yourRating) {
+      var yours = document.createElement("span");
+      yours.className = "jm-rating-yours";
+      yours.textContent = "You: " + data.yourRating;
+      summaryEl.appendChild(yours);
+    }
+  }
+
   entries.forEach(function (el) {
     var id = el.dataset.id;
-    var title = el.querySelector(".jm-entry-title a").textContent.trim();
-    var bar = document.createElement("div"); bar.className = "jm-actions";
-    var mine = makeBtn("jm-btn-mine", "I’ll read this");
-    var group = makeBtn("jm-btn-group", "My group has it");
-    mine.setAttribute("aria-label", "I’ll read this: " + title);
-    group.setAttribute("aria-label", "My group has it: " + title);
-    bar.appendChild(mine); bar.appendChild(group);
-    el.appendChild(bar);
+    var titleLink = el.querySelector(".jm-entry-title a");
+    var title = titleLink ? titleLink.textContent.trim() : id;
+    var plan = el.querySelector("[data-actions]");
+    var mine = plan && plan.querySelector('[data-choice="mine"]');
+    var group = plan && plan.querySelector('[data-choice="group"]');
+    var ratingCell = el.querySelector("[data-ratings]");
+    var ratingButtons = ratingCell ? Array.prototype.slice.call(ratingCell.querySelectorAll("[data-rating]")) : [];
+    var ratingSummaryEl = ratingCell ? ratingCell.querySelector(".jm-rating-summary") : null;
+    if (!plan || !mine || !group || !ratingCell || ratingButtons.length !== 4 || !ratingSummaryEl) return;
 
+    function keepSummaryStill(event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     function paint() {
       var m = !!state.mine[id], g = !!state.group[id];
-      mine.setAttribute("aria-pressed", String(m)); group.setAttribute("aria-pressed", String(g));
-      mine.textContent = m ? "✓ I’m reading this" : "I’ll read this";
-      group.textContent = g ? "✓ My group has it" : "My group has it";
-      el.classList.toggle("is-mine", m); el.classList.toggle("is-group", g);
+      mine.setAttribute("aria-pressed", String(m));
+      group.setAttribute("aria-pressed", String(g));
+      mine.textContent = "mine";
+      group.textContent = "group";
+      mine.title = m ? "Remove from my readings" : "Add to my readings";
+      group.title = g ? "Remove from my group’s readings" : "My group has it";
+      el.classList.toggle("is-mine", m);
+      el.classList.toggle("is-group", g);
     }
     paint();
-    mine.addEventListener("click", function () {
+    if (titleLink) titleLink.addEventListener("click", function (event) { event.stopPropagation(); });
+    mine.addEventListener("click", function (event) {
+      keepSummaryStill(event);
       if (state.mine[id]) delete state.mine[id]; else state.mine[id] = true;
       paint(); save(); updateMeters(); applyFilters();
     });
-    group.addEventListener("click", function () {
+    group.addEventListener("click", function (event) {
+      keepSummaryStill(event);
       if (state.group[id]) delete state.group[id]; else state.group[id] = true;
       paint(); save(); applyFilters();
     });
-  });
 
+    var ratingBusy = false;
+    ratingButtons.forEach(function (button) {
+      button.addEventListener("click", function (event) {
+        keepSummaryStill(event);
+        saveRating(button.dataset.rating);
+      });
+    });
+    function saveRating(value) {
+      if (ratingBusy) return;
+      ratingBusy = true;
+      ratingButtons.forEach(function (button) { button.disabled = true; });
+      ratingSummaryEl.textContent = "Saving…";
+      fetch(cfg.ratingsEndpoint || "/api/ratings", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ book: cfg.ratingsBook, reading: id, rating: Number(value) })
+      })
+        .then(parseRatingResponse)
+        .then(function (data) {
+          renderRatingSummary(ratingSummaryEl, data);
+          paintRatingButtons(ratingButtons, data.yourRating);
+          say("Saved. Thanks for the feedback.");
+        })
+        .catch(function () {
+          ratingSummaryEl.textContent = "Ratings are unavailable right now.";
+          say("Ratings are unavailable right now.");
+        })
+        .then(function () {
+          ratingBusy = false;
+          ratingButtons.forEach(function (button) { button.disabled = false; });
+        });
+    }
+  });
   // ---------- meters ----------
   var barText = document.getElementById("jm-meter-text");
   var barFill = document.getElementById("jm-meter-fill");
@@ -164,6 +260,15 @@
     });
   });
   if (search) search.addEventListener("input", applyFilters);
+  document.querySelectorAll(".jm-units-nav a").forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      var target = document.getElementById(link.getAttribute("href").slice(1));
+      if (!target) return;
+      event.preventDefault();
+      target.open = true;
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
   function lengthOk(min, band) {
     if (band === "short") return min <= 10;
     if (band === "medium") return min > 10 && min <= 25;
@@ -189,7 +294,9 @@
       w.classList.toggle("jm-hidden", !w.querySelector(".jm-entry:not(.jm-hidden)"));
     });
     document.querySelectorAll(".jm-unit").forEach(function (u) {
-      u.classList.toggle("jm-hidden", !u.querySelector(".jm-entry:not(.jm-hidden)"));
+      var hasVisible = !!u.querySelector(".jm-entry:not(.jm-hidden)");
+      u.classList.toggle("jm-hidden", !hasVisible);
+      if (hasVisible && (q || formats.length || lengths.length || stances.length || views.length)) u.open = true;
     });
     if (countEl) {
       countEl.textContent = shown === entries.length ? "Showing all " + entries.length + " readings"
@@ -243,8 +350,10 @@
     entries.forEach(function (el) {
       el.classList.remove("is-mine", "is-group");
       el.querySelectorAll(".jm-btn-mine, .jm-btn-group").forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
-      el.querySelector(".jm-btn-mine").textContent = "I’ll read this";
-      el.querySelector(".jm-btn-group").textContent = "My group has it";
+      el.querySelector(".jm-btn-mine").textContent = "mine";
+      el.querySelector(".jm-btn-mine").title = "Add to my readings";
+      el.querySelector(".jm-btn-group").textContent = "group";
+      el.querySelector(".jm-btn-group").title = "My group has it";
     });
     updateMeters(); applyFilters();
     say("Picks cleared.");

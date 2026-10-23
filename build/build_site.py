@@ -176,6 +176,7 @@ def build_home(units, chapters):
     <div class="bk-actions">
       <a class="bk-btn" href="{esc(first['href'])}">Start with Chapter {first['num']}</a>
       <a class="bk-btn bk-btn-quiet" href="contents/index.html">Table of contents</a>
+      <a class="bk-btn bk-btn-quiet" href="joy-of-learning.html">Joy of Learning</a>
     </div>
     </div>
   </section>
@@ -237,13 +238,27 @@ def build_contents(units, chapters, supplements):
         <span class="bk-ch-body"><span class="bk-ch-title">{esc(s['title'])}</span><span class="bk-ch-sub">Quick reference</span></span>
       </a></li>""" for s in supplements)
     hours = sum(c["minutes"] for c in chapters) / 60
+    tools = """  <section class="bk-unit" aria-labelledby="reading-tools">
+    <div class="bk-unit-head"><div>
+      <p class="bk-kicker">Reading tools</p>
+      <h2 class="bk-unit-title" id="reading-tools">Joy of Learning</h2>
+    </div></div>
+    <ol class="bk-chapters">
+      <li><a class="bk-ch" href="../joy-of-learning.html"><span class="bk-ch-num" aria-hidden="true">+</span><span class="bk-ch-body"><span class="bk-ch-title">Joy of Learning</span><span class="bk-ch-sub">Choose from the reading menu and quietly rate what helped most</span></span></a></li>
+    </ol>
+  </section>"""
     body = f"""  <section class="bk-card bk-cover bk-cover-small">
     <div class="bk-watermark" aria-hidden="true">{len(chapters)}</div>
     <p class="bk-kicker">Table of contents</p>
     <h1 class="bk-title">{esc(BOOK['title'])}</h1>
     <p class="bk-sub">{len(chapters)} chapters in {len(units)} units, about {round(hours)} hours of reading</p>
     <p class="bk-note">The chapters are now published on this site.</p>
+    <div class="bk-actions">
+      <a class="bk-btn" href="../joy-of-learning.html">Joy of Learning</a>
+    </div>
   </section>
+
+{tools}
 
 {chr(10).join(blocks)}
 
@@ -516,9 +531,10 @@ body {{ margin: 0; }}
 
 
 def publish_chapters():
-    demo = SRC / "reading-ratings-demo.html"
-    if demo.exists():
-        shutil.copyfile(demo, OUT / "reading-ratings-demo.html")
+    for name in ("reading-ratings-demo.html", "bang-for-buck.html"):
+        demo = SRC / name
+        if demo.exists():
+            shutil.copyfile(demo, OUT / name)
 
     manifest = json.loads((SRC / "manifest.json").read_text())["chapters"]
     (OUT / "assets").mkdir(parents=True, exist_ok=True)

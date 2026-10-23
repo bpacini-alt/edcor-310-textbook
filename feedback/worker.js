@@ -102,10 +102,161 @@ export async function handleReport(request, env) {
   return json(200, { ok: true, number: made.number });
 }
 
+
+const RATINGS_SCHEMA = [
+  'CREATE TABLE IF NOT EXISTS reading_ratings (',
+  '  id INTEGER PRIMARY KEY AUTOINCREMENT,',
+  '  book TEXT NOT NULL,',
+  '  reading_id TEXT NOT NULL,',
+  '  semester TEXT NOT NULL,',
+  '  rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 4),',
+  '  client_id TEXT NOT NULL,',
+  '  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,',
+  '  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,',
+  '  UNIQUE (book, reading_id, semester, client_id)',
+  ');',
+  'CREATE INDEX IF NOT EXISTS idx_reading_ratings_lookup ON reading_ratings (book, reading_id, semester);',
+].join('\n');
+
+const RATING_BOOKS = new Set(['econ-150', 'science-of-learning']);
+
+function ratingJson(status, data, clientId) {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Cache-Control': 'no-store',
+  };
+  if (clientId) {
+    headers['Set-Cookie'] = 'bb_client=' + encodeURIComponent(clientId) + '; Max-Age=31536000; Path=/; SameSite=Lax; Secure; HttpOnly';
+  }
+  return new Response(JSON.stringify(data), { status, headers });
+}
+
+function getCookie(request, name) {
+  const header = request.headers.get('Cookie') || '';
+  const item = header.split(';').map(part => part.trim()).find(part => part.startsWith(name + '='));
+  return item ? decodeURIComponent(item.slice(name.length + 1)) : '';
+}
+
+function semesterKey(env) {
+  if (env.RATINGS_SEMESTER) return clean(env.RATINGS_SEMESTER, 60);
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Denver',
+    year: 'numeric',
+    month: 'numeric',
+  }).formatToParts(new Date());
+  const year = parts.find(part => part.type === 'year').value;
+  const month = Number(parts.find(part => part.type === 'month').value);
+  const term = month <= 4 ? 'Winter' : month <= 7 ? 'Spring' : 'Fall';
+  return term + ' ' + year;
+}
+
+function validRatingTarget(book, reading) {
+  return RATING_BOOKS.has(book) && /^[a-z0-9][a-z0-9-]{0,80}$/.test(reading);
+}
+
+async function ratingMine(db, book, semester, clientId) {
+  const rows = await db.prepare(
+    'SELECT reading_id, rating FROM reading_ratings WHERE book = ? AND semester = ? AND client_id = ?'
+  ).bind(book, semester, clientId).all();
+  const ratings = {};
+  for (const row of rows.results || []) ratings[row.reading_id] = Number(row.rating);
+  return { ok: true, book, semester, ratings };
+}
+
+async function ratingSummary(db, book, reading, semester, clientId) {
+  const results = await db.batch([
+    db.prepare('SELECT rating, COUNT(*) AS count FROM reading_ratings WHERE book = ? AND reading_id = ? AND semester = ? GROUP BY rating').bind(book, reading, semester),
+    db.prepare('SELECT rating FROM reading_ratings WHERE book = ? AND reading_id = ? AND semester = ? AND client_id = ? LIMIT 1').bind(book, reading, semester, clientId),
+  ]);
+  const counts = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  for (const row of results[0].results || []) counts[Number(row.rating)] = Number(row.count);
+  const total = Object.values(counts).reduce((sum, count) => sum + count, 0);
+  const percentages = {};
+  for (const rating of [1, 2, 3, 4]) {
+    percentages[rating] = total ? Math.round((counts[rating] / total) * 1000) / 10 : 0;
+  }
+  const mine = results[1].results && results[1].results[0];
+  return {
+    ok: true, book, reading, semester, counts, total, percentages,
+    yourRating: mine ? Number(mine.rating) : null,
+  };
+}
+
+async function handleRatings(request, env) {
+  try {
+  if (!['GET', 'POST'].includes(request.method)) return ratingJson(405, { error: 'method' });
+  const origin = request.headers.get('Origin');
+  if (origin && origin !== new URL(request.url).origin) return ratingJson(403, { error: 'origin' });
+  if (!env.RATINGS_DB) return ratingJson(503, { error: 'ratings_not_configured' });
+
+  const url = new URL(request.url);
+  let book = clean(url.searchParams.get('book'), 60);
+  let reading = clean(url.searchParams.get('reading'), 100);
+  let rating = null;
+  const mineRequest = request.method === 'GET' && url.searchParams.get('mine') === '1';
+
+  if (request.method === 'POST') {
+    const raw = await request.text();
+    if (raw.length > 2000) return ratingJson(413, { error: 'too_large' });
+    let data;
+    try { data = JSON.parse(raw); } catch { return ratingJson(400, { error: 'bad_json' }); }
+    book = clean(data && data.book, 60);
+    reading = clean(data && data.reading, 100);
+    rating = Number(data && data.rating);
+  }
+
+  if (mineRequest) {
+    if (!RATING_BOOKS.has(book)) return ratingJson(400, { error: 'bad_target' });
+  } else if (!validRatingTarget(book, reading)) return ratingJson(400, { error: 'bad_target' });
+  if (request.method === 'POST' && (!Number.isInteger(rating) || rating < 1 || rating > 4)) {
+    return ratingJson(400, { error: 'bad_rating' });
+  }
+
+  const clientId = getCookie(request, 'bb_client') || crypto.randomUUID();
+  const semester = semesterKey(env);
+  await env.RATINGS_DB.prepare(
+    'CREATE TABLE IF NOT EXISTS reading_ratings (' +
+    'id INTEGER PRIMARY KEY AUTOINCREMENT,' +
+    'book TEXT NOT NULL,' +
+    'reading_id TEXT NOT NULL,' +
+    'semester TEXT NOT NULL,' +
+    'rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 4),' +
+    'client_id TEXT NOT NULL,' +
+    'created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,' +
+    'updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,' +
+    'UNIQUE (book, reading_id, semester, client_id)' +
+    ')'
+  ).run();
+  await env.RATINGS_DB.prepare(
+    'CREATE INDEX IF NOT EXISTS idx_reading_ratings_lookup ON reading_ratings (book, reading_id, semester)'
+  ).run();
+
+  if (mineRequest) return ratingJson(200, await ratingMine(env.RATINGS_DB, book, semester, clientId), clientId);
+
+  if (request.method === 'POST') {
+    await env.RATINGS_DB.batch([
+      env.RATINGS_DB.prepare(
+        'DELETE FROM reading_ratings WHERE book = ? AND reading_id = ? AND semester = ? AND client_id = ?'
+      ).bind(book, reading, semester, clientId),
+      env.RATINGS_DB.prepare(
+        'INSERT INTO reading_ratings (book, reading_id, semester, rating, client_id) VALUES (?, ?, ?, ?, ?)'
+      ).bind(book, reading, semester, rating, clientId),
+    ]);
+  }
+
+  return ratingJson(200, await ratingSummary(env.RATINGS_DB, book, reading, semester, clientId), clientId);  } catch (error) {
+    return ratingJson(500, {
+      error: 'ratings_database_error',
+      message: error instanceof Error ? error.message : String(error),
+    });
+  }
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === '/api/report') return handleReport(request, env);
+    if (url.pathname === '/api/ratings') return handleRatings(request, env);
     if (url.pathname.startsWith('/api/')) return json(404, { error: 'not_found' });
     return env.ASSETS.fetch(request);
   },

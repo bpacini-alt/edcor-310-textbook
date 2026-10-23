@@ -33,13 +33,36 @@ def entry_html(e, scope_id, titles):
         meta.append('<span class="jm-topic">%s</span>' % esc(e["topic"]))
     if e.get("stance"):
         meta.append('<span class="jm-stance %s">%s</span>' % (stance_cls, esc(e["stance"])))
-    meta.append('<span class="jm-min">~%d min</span>' % e["minutes"])
+    plan = (
+        '<span class="jm-plan" data-actions aria-label="Reading plan">'
+        '<button type="button" class="jm-btn jm-btn-mine" data-choice="mine" aria-pressed="false" aria-label="Add to my readings" title="I’ll read this">mine</button>'
+        '<button type="button" class="jm-btn jm-btn-group" data-choice="group" aria-pressed="false" aria-label="My group has it" title="My group has it">group</button>'
+        '</span>'
+    )
+    ratings = (
+        '<span class="jm-rating-cell" data-ratings>'
+        '<span class="jm-rating-buttons" role="group" aria-label="Bang for buck">'
+        '<button type="button" class="jm-btn jm-rating-btn" data-rating="1" aria-pressed="false" aria-label="F-tier · Replace" title="F-tier · Replace">1</button>'
+        '<button type="button" class="jm-btn jm-rating-btn" data-rating="2" aria-pressed="false" aria-label="B-tier · Reconsider" title="B-tier · Reconsider">2</button>'
+        '<button type="button" class="jm-btn jm-rating-btn" data-rating="3" aria-pressed="false" aria-label="A-tier · Keep" title="A-tier · Keep">3</button>'
+        '<button type="button" class="jm-btn jm-rating-btn" data-rating="4" aria-pressed="false" aria-label="S-tier · Life-changing · Celebrate" title="S-tier · Life-changing · Celebrate">4</button>'
+        '</span>'
+        '<span class="jm-rating-summary" aria-live="polite"></span>'
+        '</span>'
+    )
     out = [
-        '<article class="jm-entry" id="r-%s" data-id="%s" data-min="%d" data-format="%s" data-stance="%s" data-scope-id="%s" data-search="%s">'
+        '<details class="jm-entry" id="r-%s" data-id="%s" data-min="%d" data-format="%s" data-stance="%s" data-scope-id="%s" data-search="%s">'
         % (esc(e["id"]), esc(e["id"]), e["minutes"], e["format"], stance_key, scope_id, esc(search)),
-        '<div class="jm-entry-meta">%s</div>' % "".join(meta),
-        '<h4 class="jm-entry-title"><a href="%s" target="_blank" rel="noopener">%s</a><span class="jm-sr"> (opens in a new tab)</span></h4>'
+        '<summary class="jm-entry-summary">',
+        '<span class="jm-entry-title"><a href="%s" target="_blank" rel="noopener" title="%s">%s</a><span class="jm-sr"> (opens in a new tab)</span></span>'
         % (esc(e["url"]), esc(e["title"])),
+        '<span class="jm-entry-meta">%s</span>' % "".join(meta),
+        '<span class="jm-entry-time">~%d min</span>' % e["minutes"],
+        plan,
+        ratings,
+        '<span class="jm-entry-chevron" aria-hidden="true">+</span>',
+        '</summary>',
+        '<div class="jm-entry-detail">',
     ]
     blurb = esc(e.get("blurb"))
     if e.get("hook"):
@@ -54,7 +77,8 @@ def entry_html(e, scope_id, titles):
     if e.get("pairs"):
         links = " · ".join('<a href="#r-%s">%s</a>' % (esc(p), esc(titles[p])) for p in e["pairs"])
         out.append('<p class="jm-pairs">Pairs with: %s</p>' % links)
-    out.append("</article>")
+    out.append('</div>')
+    out.append('</details>')
     return "\n".join(out)
 
 
@@ -88,16 +112,17 @@ def build(data):
             body = "\n".join(entry_html(e, scope_id, titles) for e in w["entries"])
             mins = sum(e["minutes"] for e in w["entries"])
             weeks_html.append(
-                '<section class="jm-week" id="%s" aria-labelledby="%s-h">\n<div class="jm-week-head"><h3 id="%s-h">%s</h3><span class="jm-week-meter">%d readings · %s of options</span></div>\n%s<div class="jm-list">\n%s\n</div>\n</section>'
+                '<section class="jm-week" id="%s" aria-labelledby="%s-h">\n<div class="jm-week-head"><h3 id="%s-h">%s</h3><span class="jm-week-meter">%d readings · %s of options</span></div>\n%s<div class="jm-list">\n<div class="jm-list-head" aria-hidden="true"><span>Reading</span><span>Format / lens</span><span>Time</span><span>Plan</span><span>Bang for buck</span></div>\n%s\n</div>\n</section>'
                 % (w["id"], w["id"], w["id"], esc(w["title"]), len(w["entries"]), hours(mins), note, body)
             )
         target = 60 * (len(u["weeks"]) if per_week else 1)
         scopes.append((u["id"], "%s (%s)" % (u["label"], hours(target))))
         uattrs = ' data-scope="%s" data-scope-label="%s" data-target="%d"' % (u["id"], esc(u["label"] + ": " + u["title"]), target)
         umeter = '<p class="jm-unit-meter" data-meter aria-live="polite"></p>'
+        open_attr = " open" if not units_html else ""
         units_html.append(
-            '<section class="jm-unit" id="%s"%s aria-labelledby="%s-h">\n<header class="jm-unit-head"><p class="jm-unit-label">%s</p><h2 id="%s-h">%s</h2><p class="jm-unit-meta">%s</p><p class="jm-unit-blurb">%s</p>%s</header>\n%s\n</section>'
-            % (u["id"], uattrs, u["id"], esc(u["label"]), u["id"], esc(u["title"]), esc(u["meta"]), esc(u["blurb"]), umeter, "\n".join(weeks_html))
+            '<details class="jm-unit" id="%s"%s%s aria-labelledby="%s-h">\n<summary class="jm-unit-head"><p class="jm-unit-label">%s</p><h2 id="%s-h">%s</h2><p class="jm-unit-meta">%s</p><p class="jm-unit-blurb">%s</p>%s</summary>\n%s\n</details>'
+            % (u["id"], open_attr, uattrs, u["id"], esc(u["label"]), u["id"], esc(u["title"]), esc(u["meta"]), esc(u["blurb"]), umeter, "\n".join(weeks_html))
         )
 
     howto = "\n".join(
@@ -112,8 +137,8 @@ def build(data):
         stance_row = (
             '<div class="jm-chiprow" role="group" aria-label="Viewpoint"><span>Viewpoint</span>'
             '<button type="button" class="jm-chip" data-group="stance" data-value="pro" aria-pressed="false">Pro-market</button>'
-            '<button type="button" class="jm-chip" data-group="stance" data-value="crit" aria-pressed="false">Market-critique</button>'
-            '<button type="button" class="jm-chip" data-group="stance" data-value="none" aria-pressed="false">Untagged</button></div>'
+            '<button type="button" class="jm-chip" data-group="stance" data-value="crit" aria-pressed="false">Market critique</button>'
+            '<button type="button" class="jm-chip" data-group="stance" data-value="none" aria-pressed="false">Other</button></div>'
         )
 
     appendix = ""
@@ -128,7 +153,7 @@ def build(data):
             groups.append("<h3>%s</h3><ul>%s</ul>" % (esc(g["title"]), items))
         appendix = '<details class="jm-appendix"><summary>%s</summary><p>%s</p>%s</details>' % (esc(a["title"]), esc(a["intro"]), "".join(groups))
 
-    config = {"storageKey": c["storageKey"], "menuTitle": c["menuTitle"]}
+    config = {\n        "storageKey": c["storageKey"],\n        "menuTitle": c["menuTitle"],\n        "ratingsBook": c.get("ratingsBook"),\n        "ratingsEndpoint": "/api/ratings",\n    }
     css = (HERE / "joy-menu.css").read_text(encoding="utf-8")
     js = (HERE / "joy-menu.js").read_text(encoding="utf-8")
     total = len(titles)
@@ -153,6 +178,12 @@ def build(data):
 <a class="jm-top-name" href="https://benjaminpacini.com">Benjamin Pacini</a>
 <nav aria-label="Book"><a href="{esc(c['bookHome'])}">{esc(c['bookTitle'])}</a><a href="{esc(c['contents'])}">Contents</a></nav>
 </div></header>
+<div class="jm-bar jm-needs-js jm-hidden"><div class="jm-wrap jm-bar-in">
+<label for="jm-scope">Your picks for</label>
+<select id="jm-scope">{scope_opts}</select>
+<div class="jm-meter"><div class="jm-meter-track" aria-hidden="true"><div class="jm-meter-fill" id="jm-meter-fill"></div></div><span class="jm-meter-text" id="jm-meter-text" aria-live="polite"></span></div>
+<div class="jm-bar-actions"><button type="button" class="jm-btn jm-btn-strong" id="jm-copy">Copy my list</button><button type="button" class="jm-btn" id="jm-clear">Clear my picks</button></div>
+</div></div>
 <div class="jm-wrap" style="padding-top:2rem">
 <section class="jm-card" aria-labelledby="jm-title">
 <p class="jm-kicker">{esc(c['course'])} · Reading Menu</p>
@@ -164,12 +195,6 @@ def build(data):
 </section>
 <nav aria-label="Units"><ul class="jm-units-nav">{units_nav}</ul></nav>
 </div>
-<div class="jm-bar jm-needs-js jm-hidden"><div class="jm-wrap jm-bar-in">
-<label for="jm-scope">Your picks for</label>
-<select id="jm-scope">{scope_opts}</select>
-<div class="jm-meter"><div class="jm-meter-track" aria-hidden="true"><div class="jm-meter-fill" id="jm-meter-fill"></div></div><span class="jm-meter-text" id="jm-meter-text" aria-live="polite"></span></div>
-<div class="jm-bar-actions"><button type="button" class="jm-btn jm-btn-strong" id="jm-copy">Copy my list</button><button type="button" class="jm-btn" id="jm-clear">Clear my picks</button></div>
-</div></div>
 <main class="jm-wrap">
 <section class="jm-filters jm-needs-js jm-hidden" aria-label="Find readings">
 <label class="jm-sr" for="jm-search">Search the readings</label>
@@ -179,13 +204,13 @@ def build(data):
 <button type="button" class="jm-chip" data-group="format" data-value="listen" aria-pressed="false">Listen</button>
 <button type="button" class="jm-chip" data-group="format" data-value="read" aria-pressed="false">Read</button></div>
 <div class="jm-chiprow" role="group" aria-label="Length"><span>Length</span>
-<button type="button" class="jm-chip" data-group="length" data-value="short" aria-pressed="false">10 min or less</button>
+<button type="button" class="jm-chip" data-group="length" data-value="short" aria-pressed="false">≤10 min</button>
 <button type="button" class="jm-chip" data-group="length" data-value="medium" aria-pressed="false">11–25 min</button>
-<button type="button" class="jm-chip" data-group="length" data-value="long" aria-pressed="false">Over 25 min</button></div>
+<button type="button" class="jm-chip" data-group="length" data-value="long" aria-pressed="false">25+ min</button></div>
 {stance_row}
 <div class="jm-chiprow" role="group" aria-label="Show"><span>Show</span>
-<button type="button" class="jm-chip" data-group="view" data-value="mine" aria-pressed="false">Only my picks</button>
-<button type="button" class="jm-chip" data-group="view" data-value="open" aria-pressed="false">Hide what my group has</button></div>
+<button type="button" class="jm-chip" data-group="view" data-value="mine" aria-pressed="false">Mine only</button>
+<button type="button" class="jm-chip" data-group="view" data-value="open" aria-pressed="false">Hide group</button></div>
 <p class="jm-count" id="jm-count" aria-live="polite">Showing all {total} readings</p>
 </section>
 {chr(10).join(units_html)}

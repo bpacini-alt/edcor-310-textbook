@@ -1,7 +1,7 @@
 {
  "course": {
   "course": "EDCOR 310",
-  "menuTitle": "The Joy of Learning",
+  "menuTitle": "Joy of Learning",
   "bookTitle": "The Science of Learning",
   "bookHome": "/",
   "contents": "/contents/",
@@ -12,7 +12,8 @@
   "storageKey": "joy-of-learning-edcor310-v1",
   "stanceFilter": false,
   "description": "The Joy of Learning reading menu for EDCOR 310: talks, essays, podcasts, and debates beyond the textbook, about an hour a week.",
-  "reportScript": "/assets/report.js"
+  "reportScript": "/assets/report.js",
+  "ratingsBook": "science-of-learning"
  },
  "intro": {
   "lede": "The Joy of Learning readings are where you get to follow a question, meet a compelling idea, or explore a debate beyond the course textbook.",
