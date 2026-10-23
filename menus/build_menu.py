@@ -128,7 +128,7 @@ def build(data):
             groups.append("<h3>%s</h3><ul>%s</ul>" % (esc(g["title"]), items))
         appendix = '<details class="jm-appendix"><summary>%s</summary><p>%s</p>%s</details>' % (esc(a["title"]), esc(a["intro"]), "".join(groups))
 
-    config = {"storageKey": c["storageKey"], "menuTitle": c["menuTitle"]}
+    config = {\n        "storageKey": c["storageKey"],\n        "menuTitle": c["menuTitle"],\n        "ratingsBook": c.get("ratingsBook"),\n        "ratingsEndpoint": "/api/ratings",\n    }
     css = (HERE / "joy-menu.css").read_text(encoding="utf-8")
     js = (HERE / "joy-menu.js").read_text(encoding="utf-8")
     total = len(titles)

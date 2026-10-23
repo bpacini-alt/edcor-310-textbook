@@ -177,7 +177,6 @@ def build_home(units, chapters):
       <a class="bk-btn" href="{esc(first['href'])}">Start with Chapter {first['num']}</a>
       <a class="bk-btn bk-btn-quiet" href="contents/index.html">Table of contents</a>
       <a class="bk-btn bk-btn-quiet" href="joy-of-learning.html">Joy of Learning</a>
-      <a class="bk-btn bk-btn-quiet" href="bang-for-buck.html">Bang for Buck</a>
     </div>
     </div>
   </section>
@@ -242,11 +241,10 @@ def build_contents(units, chapters, supplements):
     tools = """  <section class="bk-unit" aria-labelledby="reading-tools">
     <div class="bk-unit-head"><div>
       <p class="bk-kicker">Reading tools</p>
-      <h2 class="bk-unit-title" id="reading-tools">Joy of Learning and Bang for Buck</h2>
+      <h2 class="bk-unit-title" id="reading-tools">Joy of Learning</h2>
     </div></div>
     <ol class="bk-chapters">
-      <li><a class="bk-ch" href="../joy-of-learning.html"><span class="bk-ch-num" aria-hidden="true">+</span><span class="bk-ch-body"><span class="bk-ch-title">The Joy of Learning</span><span class="bk-ch-sub">Choose from the reading menu</span></span></a></li>
-      <li><a class="bk-ch" href="../bang-for-buck.html"><span class="bk-ch-num" aria-hidden="true">+</span><span class="bk-ch-body"><span class="bk-ch-title">Bang for Buck</span><span class="bk-ch-sub">Rate the reading value</span></span></a></li>
+      <li><a class="bk-ch" href="../joy-of-learning.html"><span class="bk-ch-num" aria-hidden="true">+</span><span class="bk-ch-body"><span class="bk-ch-title">Joy of Learning</span><span class="bk-ch-sub">Choose from the reading menu and quietly rate what helped most</span></span></a></li>
     </ol>
   </section>"""
     body = f"""  <section class="bk-card bk-cover bk-cover-small">
@@ -257,7 +255,6 @@ def build_contents(units, chapters, supplements):
     <p class="bk-note">The chapters are now published on this site.</p>
     <div class="bk-actions">
       <a class="bk-btn" href="../joy-of-learning.html">Joy of Learning</a>
-      <a class="bk-btn bk-btn-quiet" href="../bang-for-buck.html">Bang for Buck</a>
     </div>
   </section>
 

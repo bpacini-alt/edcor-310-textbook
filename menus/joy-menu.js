@@ -60,11 +60,62 @@
   }
 
   // ---------- per-entry controls ----------
-  function makeBtn(cls, label) {
-    var b = document.createElement("button");
-    b.type = "button"; b.className = "jm-btn " + cls; b.textContent = label;
-    return b;
+  function ratingName(n) {
+    return ({
+      1: "F-tier · Replace",
+      2: "B-tier · Reconsider",
+      3: "A-tier · Keep",
+      4: "S-tier · Life-changing · Celebrate"
+    })[n] || "";
   }
+  function parseRatingResponse(response) {
+    return response.text().then(function (raw) {
+      var data = {};
+      try { data = raw ? JSON.parse(raw) : {}; } catch (e) {
+        throw new Error("non-JSON response");
+      }
+      if (!response.ok || !data.ok) throw new Error(data.error || ("HTTP " + response.status));
+      return data;
+    });
+  }
+  function paintRatingButtons(buttons, value) {
+    buttons.forEach(function (button) {
+      button.setAttribute("aria-pressed", String(Number(button.dataset.rating) === Number(value)));
+    });
+  }
+  function renderRatingSummary(summaryEl, data) {
+    while (summaryEl.firstChild) summaryEl.removeChild(summaryEl.firstChild);
+    if (!data || !data.total) {
+      summaryEl.textContent = "No semester ratings yet.";
+      return;
+    }
+    var count = document.createElement("span");
+    count.textContent = data.total + (data.total === 1 ? " response" : " responses");
+    summaryEl.appendChild(count);
+    var chart = document.createElement("span");
+    chart.className = "jm-rating-chart";
+    var labels = [];
+    [1, 2, 3, 4].forEach(function (rating) {
+      var segment = document.createElement("span");
+      var n = Number(data.counts && data.counts[rating]) || 0;
+      var pct = Number(data.percentages && data.percentages[rating]) || 0;
+      segment.className = "jm-rating-segment jm-rating-" + rating;
+      segment.style.width = pct + "%";
+      segment.title = ratingName(rating) + ": " + n;
+      chart.appendChild(segment);
+      labels.push(rating + ": " + n);
+    });
+    chart.setAttribute("role", "img");
+    chart.setAttribute("aria-label", labels.join(", "));
+    summaryEl.appendChild(chart);
+    if (data.yourRating) {
+      var yours = document.createElement("span");
+      yours.className = "jm-rating-yours";
+      yours.textContent = "You: " + data.yourRating;
+      summaryEl.appendChild(yours);
+    }
+  }
+
   entries.forEach(function (el) {
     var id = el.dataset.id;
     var title = el.querySelector(".jm-entry-title a").textContent.trim();
@@ -74,7 +125,6 @@
     mine.setAttribute("aria-label", "I’ll read this: " + title);
     group.setAttribute("aria-label", "My group has it: " + title);
     bar.appendChild(mine); bar.appendChild(group);
-    el.appendChild(bar);
 
     function paint() {
       var m = !!state.mine[id], g = !!state.group[id];
@@ -92,8 +142,87 @@
       if (state.group[id]) delete state.group[id]; else state.group[id] = true;
       paint(); save(); applyFilters();
     });
-  });
 
+    // Ratings stay quiet until a student asks for them.
+    var rating = document.createElement("div"); rating.className = "jm-rating";
+    var toggle = makeBtn("jm-rating-toggle", "Bang for buck");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Rate the bang for buck for " + title);
+    toggle.title = "The question is not whether it was easy; it is how much you learned, grew, and enjoyed for the time it took.";
+    var panel = document.createElement("div"); panel.className = "jm-rating-panel jm-hidden";
+    var hint = document.createElement("span"); hint.className = "jm-rating-hint";
+    hint.textContent = "What did you get for the time?";
+    panel.appendChild(hint);
+    var ratingButtonsWrap = document.createElement("span"); ratingButtonsWrap.className = "jm-rating-buttons";
+    var ratingButtons = [];
+    [1, 2, 3, 4].forEach(function (ratingValue) {
+      var ratingButton = makeBtn("jm-rating-btn", String(ratingValue));
+      ratingButton.dataset.rating = String(ratingValue);
+      ratingButton.title = ratingName(ratingValue);
+      ratingButton.setAttribute("aria-label", ratingName(ratingValue));
+      ratingButton.setAttribute("aria-pressed", "false");
+      ratingButtons.push(ratingButton);
+      ratingButtonsWrap.appendChild(ratingButton);
+    });
+    panel.appendChild(ratingButtonsWrap);
+    var ratingSummaryEl = document.createElement("span"); ratingSummaryEl.className = "jm-rating-summary";
+    panel.appendChild(ratingSummaryEl);
+    rating.appendChild(toggle); rating.appendChild(panel); bar.appendChild(rating);
+
+    var summaryLoaded = false;
+    var ratingBusy = false;
+    function loadRatingSummary() {
+      ratingSummaryEl.textContent = "Loading…";
+      var url = (cfg.ratingsEndpoint || "/api/ratings")
+        + "?book=" + encodeURIComponent(cfg.ratingsBook)
+        + "&reading=" + encodeURIComponent(id);
+      fetch(url, { credentials: "same-origin", cache: "no-store" })
+        .then(parseRatingResponse)
+        .then(function (data) {
+          summaryLoaded = true;
+          renderRatingSummary(ratingSummaryEl, data);
+          paintRatingButtons(ratingButtons, data.yourRating);
+        })
+        .catch(function () {
+          ratingSummaryEl.textContent = "Ratings are unavailable right now.";
+        });
+    }
+    function saveRating(value) {
+      if (ratingBusy) return;
+      ratingBusy = true;
+      ratingButtons.forEach(function (button) { button.disabled = true; });
+      fetch(cfg.ratingsEndpoint || "/api/ratings", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ book: cfg.ratingsBook, reading: id, rating: Number(value) })
+      })
+        .then(parseRatingResponse)
+        .then(function (data) {
+          summaryLoaded = true;
+          renderRatingSummary(ratingSummaryEl, data);
+          paintRatingButtons(ratingButtons, data.yourRating);
+          say("Saved. Thanks for the feedback.");
+        })
+        .catch(function () {
+          ratingSummaryEl.textContent = "Ratings are unavailable right now.";
+          say("Ratings are unavailable right now.");
+        })
+        .then(function () {
+          ratingBusy = false;
+          ratingButtons.forEach(function (button) { button.disabled = false; });
+        });
+    }
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") !== "true";
+      toggle.setAttribute("aria-expanded", String(open));
+      panel.classList.toggle("jm-hidden", !open);
+      if (open && !summaryLoaded) loadRatingSummary();
+    });
+    ratingButtons.forEach(function (button) {
+      button.addEventListener("click", function () { saveRating(button.dataset.rating); });
+    });
+  });
   // ---------- meters ----------
   var barText = document.getElementById("jm-meter-text");
   var barFill = document.getElementById("jm-meter-fill");

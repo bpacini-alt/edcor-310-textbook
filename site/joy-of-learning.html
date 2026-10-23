@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Joy of Learning · EDCOR 310</title>
-<meta name="description" content="The Joy of Learning reading menu for EDCOR 310: talks, essays, podcasts, and debates beyond the textbook, about an hour a week.">
+<title>Joy of Learning · EDCOR 310</title>
+<meta name="description" content="Joy of Learning reading menu for EDCOR 310: talks, essays, podcasts, and debates beyond the textbook, about an hour a week.">
 <style>:root{--acc:#145d90;--acc2:#145d90;--ring:#8fb3d9;}</style>
 <style>
 /* Joy reading menus (Joy of Learning, Joy of Econ): shared styles.
@@ -167,7 +167,36 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 .jm-hook { color: var(--ink); }
 .jm-source, .jm-alt, .jm-pairs { font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 0 0 .35rem; }
 .jm-alt a, .jm-pairs a { font-weight: 600; }
-.jm-actions { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .75rem; }
+.jm-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin-top: .75rem; }
+.jm-rating { margin-left: auto; position: relative; font-family: var(--sans); }
+.jm-rating-toggle {
+  border: 0; background: transparent; color: var(--faint); cursor: pointer;
+  font: 600 11px/1.2 var(--sans); padding: .15rem .2rem;
+}
+.jm-rating-toggle:hover, .jm-rating-toggle[aria-expanded="true"] { color: var(--acc); text-decoration: underline; }
+.jm-rating-panel {
+  display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center;
+  gap: .35rem .5rem; margin-top: .35rem;
+}
+.jm-rating-hint { color: var(--faint); font-size: 11px; white-space: nowrap; }
+.jm-rating-buttons { display: inline-flex; gap: .2rem; }
+.jm-rating-btn {
+  width: 1.55rem; height: 1.45rem; padding: 0; border-radius: 4px;
+  font-size: 11px; line-height: 1; color: var(--muted);
+}
+.jm-rating-btn:hover { border-color: var(--acc); color: var(--acc); }
+.jm-rating-btn[aria-pressed="true"] { background: var(--acc); border-color: var(--acc); color: #fff; }
+.jm-rating-summary {
+  flex-basis: 100%; display: inline-flex; align-items: center; justify-content: flex-end;
+  gap: .4rem; color: var(--faint); font-size: 10.5px; white-space: nowrap;
+}
+.jm-rating-chart { display: inline-flex; width: 5.5rem; height: .35rem; overflow: hidden; border-radius: 99px; background: var(--line); }
+.jm-rating-segment { height: 100%; min-width: 0; }
+.jm-rating-1 { background: var(--crit); }
+.jm-rating-2 { background: var(--acc2, var(--acc)); }
+.jm-rating-3 { background: var(--mine); }
+.jm-rating-4 { background: #c09135; }
+.jm-rating-yours { color: var(--text); }
 .jm-hidden { display: none !important; }
 
 /* Appendix */
@@ -211,8 +240,8 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 <div class="jm-wrap" style="padding-top:2rem">
 <section class="jm-card" aria-labelledby="jm-title">
 <p class="jm-kicker">EDCOR 310 · Reading Menu</p>
-<h1 class="jm-title" id="jm-title">The Joy of Learning</h1>
-<p class="jm-lede">The Joy of Learning readings are where you get to follow a question, meet a compelling idea, or explore a debate beyond the course textbook.</p>
+<h1 class="jm-title" id="jm-title">Joy of Learning</h1>
+<p class="jm-lede">Joy of Learning readings are where you get to follow a question, meet a compelling idea, or explore a debate beyond the course textbook.</p>
 <details class="jm-howto" open><summary>How this works</summary><div class="jm-howto-body">
 <p><strong>The requirement. </strong>Each week, spend about one hour with readings from the current unit&#x27;s menu: articles, talks, podcasts, videos, essays, and more.</p>
 <p><strong>Choose your path. </strong>Pick the readings that genuinely interest you. The times are rough stopping points, not always the full runtime. When a reading says “~20 min,” spend about 20 minutes with it and then move on. If you want to keep going, see extra credit below.</p>
@@ -221,7 +250,7 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 <p><strong>Make it useful. </strong>In your prep checks, explain what you read and show your notes. If you read extra for extra credit, provide slides that cover all of your sources (not just the first hour) and a short video recording explaining what you read and what you learned. Name your favorite ideas, explain how they will change you, and connect the material to educational psychology, teaching, human development, or your own life.</p>
 <p><strong>Keep an open mind. </strong>Some readings are compelling, intriguing, controversial, or even divisive. You do not have to agree with everything you read. Your job is to understand the argument fairly, evaluate it thoughtfully, and add something worthwhile to the conversation.</p>
 <p><strong>Extra credit. </strong>One hour is required. Each extra hour of real engagement earns extra credit worth half as much as the hour before: 2 hours → 15/10, 3 hours → 17.5/10, and so on, up to a maximum of 20/10.</p>
-<p><strong>AI and the other readings. </strong>The Joy of Learning readings are separate from the Applied Readings and the course textbook. You may use AI to clarify a difficult idea after you have engaged with the material yourself, but your group should hear your understanding of the reading, not an AI-generated substitute for it.</p>
+<p><strong>AI and the other readings. </strong>Joy of Learning readings are separate from the Applied Readings and the course textbook. You may use AI to clarify a difficult idea after you have engaged with the material yourself, but your group should hear your understanding of the reading, not an AI-generated substitute for it.</p>
 <p><strong>Using this page. </strong>Press “I’ll read this” to track your minutes against the unit’s requirement, and “My group has it” for readings a groupmate has claimed. Your picks are saved in this browser only. “Copy my list” gives you your readings and links to paste wherever you need them.</p>
 </div></details>
 </section>
@@ -1200,9 +1229,9 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 </section>
 </section>
 
-<p class="jm-foot">The Joy of Learning · EDCOR 310 · Your picks are saved in this browser only. They don't reach your instructor or your group.</p>
+<p class="jm-foot">Joy of Learning · EDCOR 310 · Your picks are saved in this browser only. They don't reach your instructor or your group.</p>
 </main>
-<script type="application/json" id="jm-config">{"storageKey": "joy-of-learning-edcor310-v1", "menuTitle": "The Joy of Learning"}</script>
+<script type="application/json" id="jm-config">{"storageKey":"joy-of-learning-edcor310-v1","menuTitle":"Joy of Learning","ratingsBook":"science-of-learning","ratingsEndpoint":"/api/ratings"}</script>
 <script>
 /* Joy reading menus (Joy of Learning, Joy of Econ): shared behavior.
    Identical copies live in both textbook repositories (menus/joy-menu.js).
@@ -1266,11 +1295,62 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
   }
 
   // ---------- per-entry controls ----------
-  function makeBtn(cls, label) {
-    var b = document.createElement("button");
-    b.type = "button"; b.className = "jm-btn " + cls; b.textContent = label;
-    return b;
+  function ratingName(n) {
+    return ({
+      1: "F-tier · Replace",
+      2: "B-tier · Reconsider",
+      3: "A-tier · Keep",
+      4: "S-tier · Life-changing · Celebrate"
+    })[n] || "";
   }
+  function parseRatingResponse(response) {
+    return response.text().then(function (raw) {
+      var data = {};
+      try { data = raw ? JSON.parse(raw) : {}; } catch (e) {
+        throw new Error("non-JSON response");
+      }
+      if (!response.ok || !data.ok) throw new Error(data.error || ("HTTP " + response.status));
+      return data;
+    });
+  }
+  function paintRatingButtons(buttons, value) {
+    buttons.forEach(function (button) {
+      button.setAttribute("aria-pressed", String(Number(button.dataset.rating) === Number(value)));
+    });
+  }
+  function renderRatingSummary(summaryEl, data) {
+    while (summaryEl.firstChild) summaryEl.removeChild(summaryEl.firstChild);
+    if (!data || !data.total) {
+      summaryEl.textContent = "No semester ratings yet.";
+      return;
+    }
+    var count = document.createElement("span");
+    count.textContent = data.total + (data.total === 1 ? " response" : " responses");
+    summaryEl.appendChild(count);
+    var chart = document.createElement("span");
+    chart.className = "jm-rating-chart";
+    var labels = [];
+    [1, 2, 3, 4].forEach(function (rating) {
+      var segment = document.createElement("span");
+      var n = Number(data.counts && data.counts[rating]) || 0;
+      var pct = Number(data.percentages && data.percentages[rating]) || 0;
+      segment.className = "jm-rating-segment jm-rating-" + rating;
+      segment.style.width = pct + "%";
+      segment.title = ratingName(rating) + ": " + n;
+      chart.appendChild(segment);
+      labels.push(rating + ": " + n);
+    });
+    chart.setAttribute("role", "img");
+    chart.setAttribute("aria-label", labels.join(", "));
+    summaryEl.appendChild(chart);
+    if (data.yourRating) {
+      var yours = document.createElement("span");
+      yours.className = "jm-rating-yours";
+      yours.textContent = "You: " + data.yourRating;
+      summaryEl.appendChild(yours);
+    }
+  }
+
   entries.forEach(function (el) {
     var id = el.dataset.id;
     var title = el.querySelector(".jm-entry-title a").textContent.trim();
@@ -1280,7 +1360,6 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
     mine.setAttribute("aria-label", "I’ll read this: " + title);
     group.setAttribute("aria-label", "My group has it: " + title);
     bar.appendChild(mine); bar.appendChild(group);
-    el.appendChild(bar);
 
     function paint() {
       var m = !!state.mine[id], g = !!state.group[id];
@@ -1298,8 +1377,87 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
       if (state.group[id]) delete state.group[id]; else state.group[id] = true;
       paint(); save(); applyFilters();
     });
-  });
 
+    // Ratings stay quiet until a student asks for them.
+    var rating = document.createElement("div"); rating.className = "jm-rating";
+    var toggle = makeBtn("jm-rating-toggle", "Bang for buck");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Rate the bang for buck for " + title);
+    toggle.title = "The question is not whether it was easy; it is how much you learned, grew, and enjoyed for the time it took.";
+    var panel = document.createElement("div"); panel.className = "jm-rating-panel jm-hidden";
+    var hint = document.createElement("span"); hint.className = "jm-rating-hint";
+    hint.textContent = "What did you get for the time?";
+    panel.appendChild(hint);
+    var ratingButtonsWrap = document.createElement("span"); ratingButtonsWrap.className = "jm-rating-buttons";
+    var ratingButtons = [];
+    [1, 2, 3, 4].forEach(function (ratingValue) {
+      var ratingButton = makeBtn("jm-rating-btn", String(ratingValue));
+      ratingButton.dataset.rating = String(ratingValue);
+      ratingButton.title = ratingName(ratingValue);
+      ratingButton.setAttribute("aria-label", ratingName(ratingValue));
+      ratingButton.setAttribute("aria-pressed", "false");
+      ratingButtons.push(ratingButton);
+      ratingButtonsWrap.appendChild(ratingButton);
+    });
+    panel.appendChild(ratingButtonsWrap);
+    var ratingSummaryEl = document.createElement("span"); ratingSummaryEl.className = "jm-rating-summary";
+    panel.appendChild(ratingSummaryEl);
+    rating.appendChild(toggle); rating.appendChild(panel); bar.appendChild(rating);
+
+    var summaryLoaded = false;
+    var ratingBusy = false;
+    function loadRatingSummary() {
+      ratingSummaryEl.textContent = "Loading…";
+      var url = (cfg.ratingsEndpoint || "/api/ratings")
+        + "?book=" + encodeURIComponent(cfg.ratingsBook)
+        + "&reading=" + encodeURIComponent(id);
+      fetch(url, { credentials: "same-origin", cache: "no-store" })
+        .then(parseRatingResponse)
+        .then(function (data) {
+          summaryLoaded = true;
+          renderRatingSummary(ratingSummaryEl, data);
+          paintRatingButtons(ratingButtons, data.yourRating);
+        })
+        .catch(function () {
+          ratingSummaryEl.textContent = "Ratings are unavailable right now.";
+        });
+    }
+    function saveRating(value) {
+      if (ratingBusy) return;
+      ratingBusy = true;
+      ratingButtons.forEach(function (button) { button.disabled = true; });
+      fetch(cfg.ratingsEndpoint || "/api/ratings", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ book: cfg.ratingsBook, reading: id, rating: Number(value) })
+      })
+        .then(parseRatingResponse)
+        .then(function (data) {
+          summaryLoaded = true;
+          renderRatingSummary(ratingSummaryEl, data);
+          paintRatingButtons(ratingButtons, data.yourRating);
+          say("Saved. Thanks for the feedback.");
+        })
+        .catch(function () {
+          ratingSummaryEl.textContent = "Ratings are unavailable right now.";
+          say("Ratings are unavailable right now.");
+        })
+        .then(function () {
+          ratingBusy = false;
+          ratingButtons.forEach(function (button) { button.disabled = false; });
+        });
+    }
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") !== "true";
+      toggle.setAttribute("aria-expanded", String(open));
+      panel.classList.toggle("jm-hidden", !open);
+      if (open && !summaryLoaded) loadRatingSummary();
+    });
+    ratingButtons.forEach(function (button) {
+      button.addEventListener("click", function () { saveRating(button.dataset.rating); });
+    });
+  });
   // ---------- meters ----------
   var barText = document.getElementById("jm-meter-text");
   var barFill = document.getElementById("jm-meter-fill");

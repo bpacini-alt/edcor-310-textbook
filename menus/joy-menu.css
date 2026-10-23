@@ -157,7 +157,36 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 .jm-hook { color: var(--ink); }
 .jm-source, .jm-alt, .jm-pairs { font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 0 0 .35rem; }
 .jm-alt a, .jm-pairs a { font-weight: 600; }
-.jm-actions { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .75rem; }
+.jm-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin-top: .75rem; }
+.jm-rating { margin-left: auto; position: relative; font-family: var(--sans); }
+.jm-rating-toggle {
+  border: 0; background: transparent; color: var(--faint); cursor: pointer;
+  font: 600 11px/1.2 var(--sans); padding: .15rem .2rem;
+}
+.jm-rating-toggle:hover, .jm-rating-toggle[aria-expanded="true"] { color: var(--acc); text-decoration: underline; }
+.jm-rating-panel {
+  display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center;
+  gap: .35rem .5rem; margin-top: .35rem;
+}
+.jm-rating-hint { color: var(--faint); font-size: 11px; white-space: nowrap; }
+.jm-rating-buttons { display: inline-flex; gap: .2rem; }
+.jm-rating-btn {
+  width: 1.55rem; height: 1.45rem; padding: 0; border-radius: 4px;
+  font-size: 11px; line-height: 1; color: var(--muted);
+}
+.jm-rating-btn:hover { border-color: var(--acc); color: var(--acc); }
+.jm-rating-btn[aria-pressed="true"] { background: var(--acc); border-color: var(--acc); color: #fff; }
+.jm-rating-summary {
+  flex-basis: 100%; display: inline-flex; align-items: center; justify-content: flex-end;
+  gap: .4rem; color: var(--faint); font-size: 10.5px; white-space: nowrap;
+}
+.jm-rating-chart { display: inline-flex; width: 5.5rem; height: .35rem; overflow: hidden; border-radius: 99px; background: var(--line); }
+.jm-rating-segment { height: 100%; min-width: 0; }
+.jm-rating-1 { background: var(--crit); }
+.jm-rating-2 { background: var(--acc2, var(--acc)); }
+.jm-rating-3 { background: var(--mine); }
+.jm-rating-4 { background: #c09135; }
+.jm-rating-yours { color: var(--text); }
 .jm-hidden { display: none !important; }
 
 /* Appendix */
