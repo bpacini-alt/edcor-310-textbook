@@ -176,6 +176,8 @@ def build_home(units, chapters):
     <div class="bk-actions">
       <a class="bk-btn" href="{esc(first['href'])}">Start with Chapter {first['num']}</a>
       <a class="bk-btn bk-btn-quiet" href="contents/index.html">Table of contents</a>
+      <a class="bk-btn bk-btn-quiet" href="joy-of-learning.html">Joy of Learning</a>
+      <a class="bk-btn bk-btn-quiet" href="bang-for-buck.html">Bang for Buck</a>
     </div>
     </div>
   </section>
@@ -243,6 +245,10 @@ def build_contents(units, chapters, supplements):
     <h1 class="bk-title">{esc(BOOK['title'])}</h1>
     <p class="bk-sub">{len(chapters)} chapters in {len(units)} units, about {round(hours)} hours of reading</p>
     <p class="bk-note">The chapters are now published on this site.</p>
+    <div class="bk-actions">
+      <a class="bk-btn" href="../joy-of-learning.html">Joy of Learning</a>
+      <a class="bk-btn bk-btn-quiet" href="../bang-for-buck.html">Bang for Buck</a>
+    </div>
   </section>
 
 {chr(10).join(blocks)}
@@ -516,9 +522,10 @@ body {{ margin: 0; }}
 
 
 def publish_chapters():
-    demo = SRC / "reading-ratings-demo.html"
-    if demo.exists():
-        shutil.copyfile(demo, OUT / "reading-ratings-demo.html")
+    for name in ("reading-ratings-demo.html", "bang-for-buck.html"):
+        demo = SRC / name
+        if demo.exists():
+            shutil.copyfile(demo, OUT / name)
 
     manifest = json.loads((SRC / "manifest.json").read_text())["chapters"]
     (OUT / "assets").mkdir(parents=True, exist_ok=True)

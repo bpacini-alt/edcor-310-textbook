@@ -1,4 +1,5 @@
 // Cloudflare Worker settings.
+// The Bang for Buck ratings API uses the shared D1 database through the RATINGS_DB binding.
 // Serves the site folder as the website. Requests to /api/* go to feedback/worker.js first,
 // which handles the Report a problem button (it needs the GITHUB_TOKEN secret, set in Cloudflare).
 {
@@ -10,5 +11,12 @@
     "directory": "./site",
     "binding": "ASSETS",
     "run_worker_first": ["/api/*"]
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "RATINGS_DB",
+      "database_name": "textbook-reading-ratings",
+      "database_id": "596def74-d651-4f4c-a473-b7e52beaa03d"
+    }
+  ]
 }
