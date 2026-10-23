@@ -118,59 +118,57 @@
 
   entries.forEach(function (el) {
     var id = el.dataset.id;
-    var title = el.querySelector(".jm-entry-title a").textContent.trim();
-    var bar = document.createElement("div"); bar.className = "jm-actions";
-    var mine = makeBtn("jm-btn-mine", "I’ll read this");
-    var group = makeBtn("jm-btn-group", "My group has it");
-    mine.setAttribute("aria-label", "I’ll read this: " + title);
-    group.setAttribute("aria-label", "My group has it: " + title);
-    bar.appendChild(mine); bar.appendChild(group);
+    var titleLink = el.querySelector(".jm-entry-title a");
+    var title = titleLink ? titleLink.textContent.trim() : id;
+    var bar = el.querySelector("[data-actions]");
+    var mine = bar && bar.querySelector('[data-choice="mine"]');
+    var group = bar && bar.querySelector('[data-choice="group"]');
+    var toggle = bar && bar.querySelector("[data-rating-toggle]");
+    var panel = el.querySelector("[data-rating-panel]");
+    var ratingButtons = panel ? Array.prototype.slice.call(panel.querySelectorAll("[data-rating]")) : [];
+    var ratingSummaryEl = panel ? panel.querySelector(".jm-rating-summary") : null;
+    if (!bar || !mine || !group || !toggle || !panel || !ratingSummaryEl) return;
 
+    function keepSummaryStill(event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     function paint() {
       var m = !!state.mine[id], g = !!state.group[id];
-      mine.setAttribute("aria-pressed", String(m)); group.setAttribute("aria-pressed", String(g));
+      mine.setAttribute("aria-pressed", String(m));
+      group.setAttribute("aria-pressed", String(g));
       mine.textContent = m ? "✓ I’m reading this" : "I’ll read this";
       group.textContent = g ? "✓ My group has it" : "My group has it";
-      el.classList.toggle("is-mine", m); el.classList.toggle("is-group", g);
+      el.classList.toggle("is-mine", m);
+      el.classList.toggle("is-group", g);
     }
     paint();
-    mine.addEventListener("click", function () {
+    if (titleLink) titleLink.addEventListener("click", function (event) { event.stopPropagation(); });
+    mine.addEventListener("click", function (event) {
+      keepSummaryStill(event);
       if (state.mine[id]) delete state.mine[id]; else state.mine[id] = true;
       paint(); save(); updateMeters(); applyFilters();
     });
-    group.addEventListener("click", function () {
+    group.addEventListener("click", function (event) {
+      keepSummaryStill(event);
       if (state.group[id]) delete state.group[id]; else state.group[id] = true;
       paint(); save(); applyFilters();
     });
 
-    // Ratings stay quiet until a student asks for them.
-    var rating = document.createElement("div"); rating.className = "jm-rating";
-    var toggle = makeBtn("jm-rating-toggle", "Bang for buck");
-    toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", "Rate the bang for buck for " + title);
-    toggle.title = "The question is not whether it was easy; it is how much you learned, grew, and enjoyed for the time it took.";
-    var panel = document.createElement("div"); panel.className = "jm-rating-panel jm-hidden";
-    var hint = document.createElement("span"); hint.className = "jm-rating-hint";
-    hint.textContent = "What did you get for the time?";
-    panel.appendChild(hint);
-    var ratingButtonsWrap = document.createElement("span"); ratingButtonsWrap.className = "jm-rating-buttons";
-    var ratingButtons = [];
-    [1, 2, 3, 4].forEach(function (ratingValue) {
-      var ratingButton = makeBtn("jm-rating-btn", String(ratingValue));
-      ratingButton.dataset.rating = String(ratingValue);
-      ratingButton.title = ratingName(ratingValue);
-      ratingButton.setAttribute("aria-label", ratingName(ratingValue));
-      ratingButton.setAttribute("aria-pressed", "false");
-      ratingButtons.push(ratingButton);
-      ratingButtonsWrap.appendChild(ratingButton);
-    });
-    panel.appendChild(ratingButtonsWrap);
-    var ratingSummaryEl = document.createElement("span"); ratingSummaryEl.className = "jm-rating-summary";
-    panel.appendChild(ratingSummaryEl);
-    rating.appendChild(toggle); rating.appendChild(panel); bar.appendChild(rating);
-
     var summaryLoaded = false;
     var ratingBusy = false;
+    toggle.addEventListener("click", function (event) {
+      keepSummaryStill(event);
+      var open = toggle.getAttribute("aria-expanded") !== "true";
+      toggle.setAttribute("aria-expanded", String(open));
+      el.open = true;
+      panel.classList.toggle("jm-hidden", !open);
+      if (open && !summaryLoaded) loadRatingSummary();
+    });
+    ratingButtons.forEach(function (button) {
+      button.addEventListener("click", function () { saveRating(button.dataset.rating); });
+    });
+
     function loadRatingSummary() {
       ratingSummaryEl.textContent = "Loading…";
       var url = (cfg.ratingsEndpoint || "/api/ratings")
@@ -213,15 +211,6 @@
           ratingButtons.forEach(function (button) { button.disabled = false; });
         });
     }
-    toggle.addEventListener("click", function () {
-      var open = toggle.getAttribute("aria-expanded") !== "true";
-      toggle.setAttribute("aria-expanded", String(open));
-      panel.classList.toggle("jm-hidden", !open);
-      if (open && !summaryLoaded) loadRatingSummary();
-    });
-    ratingButtons.forEach(function (button) {
-      button.addEventListener("click", function () { saveRating(button.dataset.rating); });
-    });
   });
   // ---------- meters ----------
   var barText = document.getElementById("jm-meter-text");

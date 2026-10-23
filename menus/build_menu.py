@@ -34,12 +34,36 @@ def entry_html(e, scope_id, titles):
     if e.get("stance"):
         meta.append('<span class="jm-stance %s">%s</span>' % (stance_cls, esc(e["stance"])))
     meta.append('<span class="jm-min">~%d min</span>' % e["minutes"])
+    actions = (
+        '<div class="jm-actions" data-actions>'
+        '<button type="button" class="jm-btn jm-btn-mine" data-choice="mine" aria-pressed="false">I’ll read this</button>'
+        '<button type="button" class="jm-btn jm-btn-group" data-choice="group" aria-pressed="false">My group has it</button>'
+        '<button type="button" class="jm-rating-toggle" data-rating-toggle aria-expanded="false" aria-label="Rate the bang for buck" title="The question is not whether it was easy; it is the bang-for-buck of what you learned, grew, and enjoyed for the time it took.">Bang for buck</button>'
+        '</div>'
+    )
+    rating_panel = (
+        '<div class="jm-rating-panel jm-hidden" data-rating-panel>'
+        '<span class="jm-rating-hint">What did you get for the time?</span>'
+        '<span class="jm-rating-buttons">'
+        '<button type="button" class="jm-btn jm-rating-btn" data-rating="1" aria-pressed="false" aria-label="F-tier · Replace" title="F-tier · Replace">1</button>'
+        '<button type="button" class="jm-btn jm-rating-btn" data-rating="2" aria-pressed="false" aria-label="B-tier · Reconsider" title="B-tier · Reconsider">2</button>'
+        '<button type="button" class="jm-btn jm-rating-btn" data-rating="3" aria-pressed="false" aria-label="A-tier · Keep" title="A-tier · Keep">3</button>'
+        '<button type="button" class="jm-btn jm-rating-btn" data-rating="4" aria-pressed="false" aria-label="S-tier · Life-changing · Celebrate" title="S-tier · Life-changing · Celebrate">4</button>'
+        '</span>'
+        '<span class="jm-rating-summary" aria-live="polite"></span>'
+        '</div>'
+    )
     out = [
-        '<article class="jm-entry" id="r-%s" data-id="%s" data-min="%d" data-format="%s" data-stance="%s" data-scope-id="%s" data-search="%s">'
+        '<details class="jm-entry" id="r-%s" data-id="%s" data-min="%d" data-format="%s" data-stance="%s" data-scope-id="%s" data-search="%s">'
         % (esc(e["id"]), esc(e["id"]), e["minutes"], e["format"], stance_key, scope_id, esc(search)),
-        '<div class="jm-entry-meta">%s</div>' % "".join(meta),
-        '<h4 class="jm-entry-title"><a href="%s" target="_blank" rel="noopener">%s</a><span class="jm-sr"> (opens in a new tab)</span></h4>'
+        '<summary class="jm-entry-summary">',
+        '<span class="jm-entry-title"><a href="%s" target="_blank" rel="noopener">%s</a><span class="jm-sr"> (opens in a new tab)</span></span>'
         % (esc(e["url"]), esc(e["title"])),
+        '<div class="jm-entry-meta">%s</div>' % "".join(meta),
+        actions,
+        '<span class="jm-entry-chevron" aria-hidden="true">+</span>',
+        '</summary>',
+        '<div class="jm-entry-detail">',
     ]
     blurb = esc(e.get("blurb"))
     if e.get("hook"):
@@ -54,7 +78,9 @@ def entry_html(e, scope_id, titles):
     if e.get("pairs"):
         links = " · ".join('<a href="#r-%s">%s</a>' % (esc(p), esc(titles[p])) for p in e["pairs"])
         out.append('<p class="jm-pairs">Pairs with: %s</p>' % links)
-    out.append("</article>")
+    out.append(rating_panel)
+    out.append('</div>')
+    out.append('</details>')
     return "\n".join(out)
 
 
