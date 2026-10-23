@@ -54,7 +54,7 @@ def entry_html(e, scope_id, titles):
         '<details class="jm-entry" id="r-%s" data-id="%s" data-min="%d" data-format="%s" data-stance="%s" data-scope-id="%s" data-search="%s">'
         % (esc(e["id"]), esc(e["id"]), e["minutes"], e["format"], stance_key, scope_id, esc(search)),
         '<summary class="jm-entry-summary">',
-        '<span class="jm-entry-title"><a href="%s" target="_blank" rel="noopener">%s</a><span class="jm-sr"> (opens in a new tab)</span></span>'
+        '<span class="jm-entry-title"><a href="%s" target="_blank" rel="noopener" title="%s">%s</a><span class="jm-sr"> (opens in a new tab)</span></span>'
         % (esc(e["url"]), esc(e["title"])),
         '<span class="jm-entry-meta">%s</span>' % "".join(meta),
         '<span class="jm-entry-time">~%d min</span>' % e["minutes"],
@@ -137,8 +137,8 @@ def build(data):
         stance_row = (
             '<div class="jm-chiprow" role="group" aria-label="Viewpoint"><span>Viewpoint</span>'
             '<button type="button" class="jm-chip" data-group="stance" data-value="pro" aria-pressed="false">Pro-market</button>'
-            '<button type="button" class="jm-chip" data-group="stance" data-value="crit" aria-pressed="false">Market-critique</button>'
-            '<button type="button" class="jm-chip" data-group="stance" data-value="none" aria-pressed="false">Untagged</button></div>'
+            '<button type="button" class="jm-chip" data-group="stance" data-value="crit" aria-pressed="false">Market critique</button>'
+            '<button type="button" class="jm-chip" data-group="stance" data-value="none" aria-pressed="false">Other</button></div>'
         )
 
     appendix = ""
@@ -204,13 +204,13 @@ def build(data):
 <button type="button" class="jm-chip" data-group="format" data-value="listen" aria-pressed="false">Listen</button>
 <button type="button" class="jm-chip" data-group="format" data-value="read" aria-pressed="false">Read</button></div>
 <div class="jm-chiprow" role="group" aria-label="Length"><span>Length</span>
-<button type="button" class="jm-chip" data-group="length" data-value="short" aria-pressed="false">10 min or less</button>
+<button type="button" class="jm-chip" data-group="length" data-value="short" aria-pressed="false">≤10 min</button>
 <button type="button" class="jm-chip" data-group="length" data-value="medium" aria-pressed="false">11–25 min</button>
-<button type="button" class="jm-chip" data-group="length" data-value="long" aria-pressed="false">Over 25 min</button></div>
+<button type="button" class="jm-chip" data-group="length" data-value="long" aria-pressed="false">25+ min</button></div>
 {stance_row}
 <div class="jm-chiprow" role="group" aria-label="Show"><span>Show</span>
-<button type="button" class="jm-chip" data-group="view" data-value="mine" aria-pressed="false">Only my picks</button>
-<button type="button" class="jm-chip" data-group="view" data-value="open" aria-pressed="false">Hide what my group has</button></div>
+<button type="button" class="jm-chip" data-group="view" data-value="mine" aria-pressed="false">Mine only</button>
+<button type="button" class="jm-chip" data-group="view" data-value="open" aria-pressed="false">Hide group</button></div>
 <p class="jm-count" id="jm-count" aria-live="polite">Showing all {total} readings</p>
 </section>
 {chr(10).join(units_html)}
