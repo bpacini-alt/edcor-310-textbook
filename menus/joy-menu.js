@@ -120,14 +120,13 @@
     var id = el.dataset.id;
     var titleLink = el.querySelector(".jm-entry-title a");
     var title = titleLink ? titleLink.textContent.trim() : id;
-    var bar = el.querySelector("[data-actions]");
-    var mine = bar && bar.querySelector('[data-choice="mine"]');
-    var group = bar && bar.querySelector('[data-choice="group"]');
-    var toggle = bar && bar.querySelector("[data-rating-toggle]");
-    var panel = el.querySelector("[data-rating-panel]");
-    var ratingButtons = panel ? Array.prototype.slice.call(panel.querySelectorAll("[data-rating]")) : [];
-    var ratingSummaryEl = panel ? panel.querySelector(".jm-rating-summary") : null;
-    if (!bar || !mine || !group || !toggle || !panel || !ratingSummaryEl) return;
+    var plan = el.querySelector("[data-actions]");
+    var mine = plan && plan.querySelector('[data-choice="mine"]');
+    var group = plan && plan.querySelector('[data-choice="group"]');
+    var ratingCell = el.querySelector("[data-ratings]");
+    var ratingButtons = ratingCell ? Array.prototype.slice.call(ratingCell.querySelectorAll("[data-rating]")) : [];
+    var ratingSummaryEl = ratingCell ? ratingCell.querySelector(".jm-rating-summary") : null;
+    if (!plan || !mine || !group || !ratingCell || ratingButtons.length !== 4 || !ratingSummaryEl) return;
 
     function keepSummaryStill(event) {
       event.preventDefault();
@@ -137,8 +136,10 @@
       var m = !!state.mine[id], g = !!state.group[id];
       mine.setAttribute("aria-pressed", String(m));
       group.setAttribute("aria-pressed", String(g));
-      mine.textContent = m ? "✓ I’m reading this" : "I’ll read this";
-      group.textContent = g ? "✓ My group has it" : "My group has it";
+      mine.textContent = "mine";
+      group.textContent = "group";
+      mine.title = m ? "Remove from my readings" : "Add to my readings";
+      group.title = g ? "Remove from my group’s readings" : "My group has it";
       el.classList.toggle("is-mine", m);
       el.classList.toggle("is-group", g);
     }
@@ -155,40 +156,18 @@
       paint(); save(); applyFilters();
     });
 
-    var summaryLoaded = false;
     var ratingBusy = false;
-    toggle.addEventListener("click", function (event) {
-      keepSummaryStill(event);
-      var open = toggle.getAttribute("aria-expanded") !== "true";
-      toggle.setAttribute("aria-expanded", String(open));
-      el.open = true;
-      panel.classList.toggle("jm-hidden", !open);
-      if (open && !summaryLoaded) loadRatingSummary();
-    });
     ratingButtons.forEach(function (button) {
-      button.addEventListener("click", function () { saveRating(button.dataset.rating); });
+      button.addEventListener("click", function (event) {
+        keepSummaryStill(event);
+        saveRating(button.dataset.rating);
+      });
     });
-
-    function loadRatingSummary() {
-      ratingSummaryEl.textContent = "Loading…";
-      var url = (cfg.ratingsEndpoint || "/api/ratings")
-        + "?book=" + encodeURIComponent(cfg.ratingsBook)
-        + "&reading=" + encodeURIComponent(id);
-      fetch(url, { credentials: "same-origin", cache: "no-store" })
-        .then(parseRatingResponse)
-        .then(function (data) {
-          summaryLoaded = true;
-          renderRatingSummary(ratingSummaryEl, data);
-          paintRatingButtons(ratingButtons, data.yourRating);
-        })
-        .catch(function () {
-          ratingSummaryEl.textContent = "Ratings are unavailable right now.";
-        });
-    }
     function saveRating(value) {
       if (ratingBusy) return;
       ratingBusy = true;
       ratingButtons.forEach(function (button) { button.disabled = true; });
+      ratingSummaryEl.textContent = "Saving…";
       fetch(cfg.ratingsEndpoint || "/api/ratings", {
         method: "POST",
         credentials: "same-origin",
@@ -197,7 +176,6 @@
       })
         .then(parseRatingResponse)
         .then(function (data) {
-          summaryLoaded = true;
           renderRatingSummary(ratingSummaryEl, data);
           paintRatingButtons(ratingButtons, data.yourRating);
           say("Saved. Thanks for the feedback.");
@@ -372,8 +350,10 @@
     entries.forEach(function (el) {
       el.classList.remove("is-mine", "is-group");
       el.querySelectorAll(".jm-btn-mine, .jm-btn-group").forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
-      el.querySelector(".jm-btn-mine").textContent = "I’ll read this";
-      el.querySelector(".jm-btn-group").textContent = "My group has it";
+      el.querySelector(".jm-btn-mine").textContent = "mine";
+      el.querySelector(".jm-btn-mine").title = "Add to my readings";
+      el.querySelector(".jm-btn-group").textContent = "group";
+      el.querySelector(".jm-btn-group").title = "My group has it";
     });
     updateMeters(); applyFilters();
     say("Picks cleared.");
