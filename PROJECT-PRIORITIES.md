@@ -72,6 +72,7 @@ Make each book clear, coherent, accessible, and trustworthy before adding substa
 - Conduct a dedicated readability and accessibility pass: plain language, heading hierarchy, link text, alt text, contrast, keyboard navigation, focus states, screen-reader labels, mobile layout, and basic usability.
 - Put reference lists in expandable/drop-down sections so sources remain available without interrupting the reading flow. Treat this as a substantial evidence-and-sourcing pass: transparency must not become a way to hide inconvenient evidence, and design choices must not reinforce confirmation bias.
 - Identify the chapters where students are most likely to get lost or misunderstand the central idea.
+- Integrate the chapter-fit readings removed from the student-facing Joy of Econ menu into the relevant Econ 150 chapters. Use the [Joy of Econ chapter-addition backlog](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/menus/joy-of-econ-chapter-additions.md) and classify each item as **add**, **companion**, or **discard**. This is a mid-level quality pass to complete alongside normal chapter revisions.
 
 **Why this is high priority:** Better presentation, trustworthy sourcing, and fewer points of friction benefit every student immediately and multiply the value of every later feature.
 
