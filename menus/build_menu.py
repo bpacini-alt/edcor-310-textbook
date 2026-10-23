@@ -95,9 +95,10 @@ def build(data):
         scopes.append((u["id"], "%s (%s)" % (u["label"], hours(target))))
         uattrs = ' data-scope="%s" data-scope-label="%s" data-target="%d"' % (u["id"], esc(u["label"] + ": " + u["title"]), target)
         umeter = '<p class="jm-unit-meter" data-meter aria-live="polite"></p>'
+        open_attr = " open" if not units_html else ""
         units_html.append(
-            '<section class="jm-unit" id="%s"%s aria-labelledby="%s-h">\n<header class="jm-unit-head"><p class="jm-unit-label">%s</p><h2 id="%s-h">%s</h2><p class="jm-unit-meta">%s</p><p class="jm-unit-blurb">%s</p>%s</header>\n%s\n</section>'
-            % (u["id"], uattrs, u["id"], esc(u["label"]), u["id"], esc(u["title"]), esc(u["meta"]), esc(u["blurb"]), umeter, "\n".join(weeks_html))
+            '<details class="jm-unit" id="%s"%s%s aria-labelledby="%s-h">\n<summary class="jm-unit-head"><p class="jm-unit-label">%s</p><h2 id="%s-h">%s</h2><p class="jm-unit-meta">%s</p><p class="jm-unit-blurb">%s</p>%s</summary>\n%s\n</details>'
+            % (u["id"], open_attr, uattrs, u["id"], esc(u["label"]), u["id"], esc(u["title"]), esc(u["meta"]), esc(u["blurb"]), umeter, "\n".join(weeks_html))
         )
 
     howto = "\n".join(

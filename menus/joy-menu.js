@@ -293,6 +293,15 @@
     });
   });
   if (search) search.addEventListener("input", applyFilters);
+  document.querySelectorAll(".jm-units-nav a").forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      var target = document.getElementById(link.getAttribute("href").slice(1));
+      if (!target) return;
+      event.preventDefault();
+      target.open = true;
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
   function lengthOk(min, band) {
     if (band === "short") return min <= 10;
     if (band === "medium") return min > 10 && min <= 25;
@@ -318,7 +327,9 @@
       w.classList.toggle("jm-hidden", !w.querySelector(".jm-entry:not(.jm-hidden)"));
     });
     document.querySelectorAll(".jm-unit").forEach(function (u) {
-      u.classList.toggle("jm-hidden", !u.querySelector(".jm-entry:not(.jm-hidden)"));
+      var hasVisible = !!u.querySelector(".jm-entry:not(.jm-hidden)");
+      u.classList.toggle("jm-hidden", !hasVisible);
+      if (hasVisible && (q || formats.length || lengths.length || stances.length || views.length)) u.open = true;
     });
     if (countEl) {
       countEl.textContent = shown === entries.length ? "Showing all " + entries.length + " readings"
