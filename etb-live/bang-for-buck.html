@@ -4660,7 +4660,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font:.78rem/1.5 Arial
       let data = {};
       try { data = raw ? JSON.parse(raw) : {}; }
       catch (error) { throw new Error("HTTP " + response.status + " · non-JSON response"); }
-      if (!response.ok) throw new Error("HTTP " + response.status + " · " + (data.error || "rating_not_saved"));
+      if (!response.ok) throw new Error("HTTP " + response.status + " · " + (data.error || "rating_not_saved") + (data.message ? " · " + data.message : ""));
       if (!data.ok) throw new Error(data.error || "rating_not_saved");
       render(card, data);
       setStatus("Ratings database connected. Your rating was saved.", false);
