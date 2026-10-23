@@ -284,7 +284,7 @@ The mockups are in Benjamin's Claude canvas "BenjaminPacini.com Landing Page": t
 
 6. **"How to Get the Most Out of This Book," the opening chapter of both books.** Benjamin wants to keep this idea. It sits at ii in "Start here."
 7. **An Introduction for EDCOR 310,** at iii in "Start here." Econ 150 already has one ("The Wealth of Nations").
-8. **An "About this book" page for each book,** at i in "Start here": authors, how the book was made, acknowledgments, and license. EDCOR 310's version is on its home page now and would move here. Econ 150 needs one.
+8. **An "About this book" page for each book,** at i in "Start here". EDCOR 310 has a simple version now (`about.html`, built October 23). Benjamin wants it built deliberately, later, as one page with four sections: the book (how it was made), **the authors** (a photo and short bio for each: Benjamin and Mayleigh Barth for EDCOR 310, Benjamin for Econ 150), acknowledgments, and license and how to cite. **Waiting on:** bios (Benjamin's can start from his BYU-Idaho directory bio; Mayleigh's from her), photos, Econ 150's license choice, and a few sentences on how Econ 150 came to be. Build it together with item 3, the shared top bar on chapter pages, which Benjamin approved October 23, and give the About pages the Previous / Contents / Next bar.
 9. **One- or two-sentence hooks for Econ 150's four units,** for the contents page. This connects to loose end 12 (Econ 150's empty unit pages).
 
 **Decisions and quick fixes (Benjamin decides; Priority 1)**
