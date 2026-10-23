@@ -270,6 +270,8 @@ The mockups are in Benjamin's Claude canvas "BenjaminPacini.com Landing Page": t
 
 **Ready to build once preview links work (Priority 1: navigation and access)**
 
+*Status, October 23, 2026: items 1, 2, 4, and 5 are built (pull requests "Cover and contents pages (shared design)" in both repositories). Benjamin chose the two-page version, a cover and then a contents page, over a one-page front, and the plain white Econ look with navy and light brass accents over the darker Canvas-course colors. Still open: item 3 (the shared top bar on chapter pages), Econ 150's unit hooks and reading times, and EDCOR 310's "How to Get the Most Out of This Book" and Introduction.*
+
 1. **A cover page for each book.** The cover art, title, subtitle, authors, and course, with an "Open the book" button (to the contents) and one quick-start button. EDCOR 310's current home page becomes this page. Econ 150 has no cover page yet; its cover is `build/cover-web.png`.
 2. **A contents page for each book, in the same design.** A "Start here" group of front matter numbered i, ii, iii. Then each unit with its Roman-numeral badge, a one- or two-sentence hook, and its chapters (number, title, subtitle, reading time). Then back matter, such as EDCOR 310's quick references. Keep EDCOR 310's unit outcomes as a collapsible line under each unit.
 3. **The same top bar on every page of both books:** "Benjamin Pacini" (a link to benjaminpacini.com) / the book's title / Contents. Students should always have a way back.
