@@ -94,7 +94,19 @@ Revise both books chapter by chapter so students regularly retrieve, predict, ex
   - a clear distinction between low-stakes learning practice, preparation for course assessments, and formative work that develops professional judgment;
   - sample items from several chapters, plus a rubric or checklist for evaluating whether a proposed activity builds understanding, leadership, discipleship, or evidence-based practice.
 
-  A useful first draft might organize the practice arc as **Retrieve → Explain → Evaluate evidence → Apply → Reflect and transfer**. Treat that as a design hypothesis to test, not a decision that prevents a better framework.
+  A useful first draft of the recurring practice arc is a five-move framework:
+
+  1. **Understand the tool:** retrieve, define, explain, and distinguish the idea; identify relevant evidence and limits.
+  2. **Perform the tool:** use it in a relatively clear, blocked example with feedback.
+  3. **Choose the tool:** use mixed, spiral, and interleaved practice to decide which framework or strategy fits a new situation.
+  4. **Judge the use:** evaluate whether the tool is being used appropriately, proportionately, and in an evidence-aligned way. Ask what it helps us see, what it leaves out, and what unintended consequences might follow. For theories and frameworks, treat them as evidence-informed interpretive lenses—not definitive explanations or guaranteed prescriptions.
+  5. **Transfer and act:** adapt the tool to an unfamiliar classroom, leadership, discipleship, or professional situation; propose a modest next step and identify what evidence would show whether it helped.
+
+  The central distinction is: **choosing asks, “Is this the right tool?” Judging asks, “Is this a good use of the tool?”**
+
+  The framework should include a recurring **Evidence-Based Practice Response**: an AP-FRQ-like case with a short scenario, several directed tasks, and a rubric rewarding accurate reasoning, evidence, limits, judgment, and application. Students should not receive full credit merely for naming a framework; they should connect it to the case, judge its fit and limits, and recommend an action that can be observed and revised.
+
+  Treat this as a design hypothesis to test, not a decision that prevents a better framework.
 
 **Why this is high priority:** Practice is where students turn exposure into durable understanding. A practice-heavy chapter can improve learning more directly than adding another presentation feature.
 
