@@ -86,6 +86,15 @@ Revise both books chapter by chapter so students regularly retrieve, predict, ex
 - Provide answers, explanations, or feedback where appropriate so students can learn from the attempt.
 - Prefer a manageable number of high-quality tasks over busywork or question volume for its own sake.
 - Keep the practice aligned with the chapter's central ideas and learning outcomes.
+- For EDCOR 310, design the practice system before scaling up chapter-by-chapter implementation. The goal is not simply to imitate AP question formats: EDCOR 310 is meant to help students become disciples, leaders, and evidence-based practitioners. Write a short practice specification, create several representative examples, and identify a repeatable framework that gives the course an AP-like scaffold without reducing the course to test preparation. The design should include:
+  - a progression from retrieval and explanation to evidence interpretation, judgment, application to teaching and discipleship, and transfer to real practice;
+  - recurring task types and feedback expectations so students know what good practice looks like from chapter to chapter;
+  - prompts that surface misconceptions and require students to explain why an answer is right, not merely select it;
+  - opportunities to choose a meaningful application or presentation, adapting the strongest parts of the Joy of Econ choice-based, high-level assignment model where appropriate;
+  - a clear distinction between low-stakes learning practice, preparation for course assessments, and formative work that develops professional judgment;
+  - sample items from several chapters, plus a rubric or checklist for evaluating whether a proposed activity builds understanding, leadership, discipleship, or evidence-based practice.
+
+  A useful first draft might organize the practice arc as **Retrieve → Explain → Evaluate evidence → Apply → Reflect and transfer**. Treat that as a design hypothesis to test, not a decision that prevents a better framework.
 
 **Why this is high priority:** Practice is where students turn exposure into durable understanding. A practice-heavy chapter can improve learning more directly than adding another presentation feature.
 
