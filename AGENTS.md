@@ -11,7 +11,7 @@ Those two documents are identical in both textbook repositories (`edcor-310-text
 
 1. Start from the current `main`. Check open pull requests and the last few merges for the same task.
 2. Claim the work: open a draft pull request titled with the task as soon as you start.
-3. Every change goes through a branch and a pull request. Never push directly to `main`.
+3. Every collaborator change goes through a branch and a pull request. The private prose editor is the documented exception: Benjamin's Save and publish action commits chapter prose directly to `main`.
 4. Before you ask for review, open the pull request's **Files changed** tab and confirm it touches only the files you meant to change.
 5. Merging is Benjamin's approval. Don't merge, close, or overwrite someone else's pull request.
 6. Ask Benjamin before deleting files or branches.
@@ -23,7 +23,7 @@ The website is learning.benjaminpacini.com, served by Cloudflare from the `site/
 | Folder | What it is | Edit it? |
 |---|---|---|
 | `etb-live/` | The chapter source: every page as captured from EdTechBooks, plus `manifest.json` (book order and titles). Chapter images are in `etb-live/images/`, at the same paths the pages use (`/images/content_images/…`); the build copies them into `site/images/`. | Yes. Chapter content changes go here. |
-| `site/` | The published website, **generated** by `build/build_site.py` | **Never by hand.** The next build overwrites hand edits. |
+| `site/` | The published website, **generated** by `build/build_site.py` | **Never by hand**, except for the private editor's paired update when it saves chapter prose. The next build overwrites other hand edits. |
 | `build/` | `build_site.py` and the web version of the cover | Yes |
 | `frontmatter/` | The cover, contents, and About page design, shared with Econ 150 (see "Shared") | Yes, in matching pull requests |
 | `audio/` | The audio player, narration tools, and previews | Yes (player: see "Shared") |
@@ -33,6 +33,22 @@ The website is learning.benjaminpacini.com, served by Cloudflare from the `site/
 | `workbook/` | The printed course workbook: the finished PDF and the scripts that build it (see `workbook/README.md`) | Yes. Rebuild the PDF in the same pull request. |
 
 After changing anything in `etb-live/`, `build/`, `menus/`, or the player, run `python3 build/build_site.py` from the repository root and commit the regenerated `site/` files in the same pull request.
+
+## Private prose editor
+
+# Private prose editor
+
+The book pages include an **Edit** link for the content pages listed in `etb-live/manifest.json`. The editor is served at `/editor/`; Cloudflare Access must protect `learning.benjaminpacini.com/editor/*`. The Worker also validates the Access JWT and allows only the three email addresses in `feedback/worker.js`.
+
+For each Worker, set these top-level Worker variables and secrets in Cloudflare:
+
+- Text variable `ACCESS_TEAM_DOMAIN`: the full Access team origin, such as `https://your-team.cloudflareaccess.com`.
+- Text variable `ACCESS_AUD`: the Application Audience tag for that book's `/editor/*` Access application.
+- Secret `EDITOR_GITHUB_TOKEN`: a fine-grained token with Contents: Read and write for this textbook repository only.
+
+The two repositories use the same `feedback/worker.js` and `editor/index.html`, but each has its own Access application audience and its own Worker secret. The token is never stored in Git or sent to the browser.
+
+The editor writes to `main` when Benjamin selects **Save and publish**. EDCOR's Worker updates both `etb-live/<page>.html` and its generated `site/<page>.html` in one Git commit. Cloudflare deploys the commit through the repository's existing deployment connection.
 
 ## Shared between the two books
 

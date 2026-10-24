@@ -17,6 +17,7 @@ import json
 import re
 import shutil
 import sys
+import urllib.parse
 from pathlib import Path
 
 from PIL import Image
@@ -220,7 +221,7 @@ def nav_bar(prev, nxt):
             f'{link(nxt, "Next →")}</div></nav>')
 
 
-def wrap_chapter_page(title, fragment, nav=""):
+def wrap_chapter_page(title, fragment, nav="", source_path=""):
     """Wrap a captured EdTechBooks fragment as a complete site page."""
     fragment = fragment.replace(
         "https://books.byui.edu/science_of_learning/sup1",
@@ -228,6 +229,10 @@ def wrap_chapter_page(title, fragment, nav=""):
     )
     # Images keep their EdTechBooks paths (/images/content_images/...). The files are
     # in etb-live/images/ and publish_chapters() copies them into site/images/.
+    edit_link = ""
+    if source_path and fragment.strip():
+        edit_path = urllib.parse.quote("etb-live/" + source_path, safe="/")
+        edit_link = f'<a href="/editor/?book=science-of-learning&amp;path={edit_path}">Edit</a>'
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -255,6 +260,7 @@ body {{ margin: 0; }}
     <nav class="etb-site-nav-links" aria-label="Book navigation">
       <a href="/contents/index.html">Contents</a>
       <a href="/index.html">Home</a>
+      {edit_link}
     </nav>
   </div>
 </header>
@@ -270,6 +276,9 @@ body {{ margin: 0; }}
 
 
 def publish_chapters():
+    (OUT / "editor").mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(ROOT / "editor" / "index.html", OUT / "editor" / "index.html")
+
     for name in ("reading-ratings-demo.html", "bang-for-buck.html"):
         demo = SRC / name
         if demo.exists():
@@ -298,7 +307,7 @@ def publish_chapters():
         prev = sequence[i - 1] if i is not None and i > 0 else None
         nxt = sequence[i + 1] if i is not None and i + 1 < len(sequence) else None
         (OUT / entry["file"]).write_text(
-            wrap_chapter_page(title, fragment, nav_bar(prev, nxt)),
+            wrap_chapter_page(title, fragment, nav_bar(prev, nxt), entry["file"]),
             encoding="utf-8",
         )
 
