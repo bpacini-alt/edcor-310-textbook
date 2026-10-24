@@ -15,6 +15,9 @@ Those two documents are identical in both textbook repositories (`edcor-310-text
 4. Before you ask for review, open the pull request's **Files changed** tab and confirm it touches only the files you meant to change.
 5. Merging is Benjamin's approval. Don't merge, close, or overwrite someone else's pull request.
 6. Ask Benjamin before deleting files or branches.
+## Review packets before approval
+
+For student-facing pull requests, use the repository's [pull-request review-packet protocol](review/README.md) before requesting Benjamin's approval. The packet must show both additions and removals, identify each change by a human-readable chapter or section anchor, link directly to the rendered preview, and use focused before/after screenshots only when the change is visual.
 
 ## How this book is built (EDCOR 310)
 
