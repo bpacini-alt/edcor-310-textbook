@@ -46,6 +46,22 @@ Safe reversible improvements—such as fixing links, clarifying documentation, s
 
 When Claude or another collaborator has recently worked in the repository, first inspect the current state and recent history before cleaning up. Do not mistake unfamiliarity for obsolescence, and do not delete work simply because it is not part of the current preferred workflow.
 
+### Priority 0.5 — Learn and apply GitHub security controls
+
+Before placing course-source material or AI-facing working files in GitHub, learn the repository controls that keep them safe while preserving useful collaboration:
+
+- Decide which repositories should be public and which should be private. The student-facing textbooks can remain public; raw course exports, unpublished slides, student information, credentials, and other working material should not go in them.
+- Protect `main` with pull requests, required checks, no force-push, and no deletion.
+- Use least-privilege access for TAs and AI agents: read access by default; write access only when an agent needs to propose changes through a branch and pull request; never share personal tokens or secrets.
+- Learn how to audit collaborators, deploy keys, Actions secrets, branch rules, and access logs.
+
+**Why this matters:** The repositories should be open enough for collaboration and review without turning unpublished course material or student data into public material.
+
+**Deferred course-source work:**
+
+- **EDCOR 310:** obtain a fresh Canvas LMS export in a later pass, keep it private, and use it alongside the reading calendar and slide decks to make the course easier to improve and maintain for future semesters.
+- **EDCOR 200:** before teaching it again, gather the current course materials into a separate private course archive/repository. This is a future planning item, not current implementation work.
+
 ## Strategic order of work
 
 ### Priority 0 — Establish the source of truth and working system
