@@ -16,7 +16,8 @@ def layout():
     """Every numbered page in order, as (pdf, page index, key). Drives page numbers and build order.
     Week 1 is class notes only; later weeks add 99 Studies and Paper of the Week; a two-page
     Unit Review follows weeks 4, 7, 10, and 13; the Course Synthesis closes the book.
-    Every section has an even page count so each front/back pair shares a printed sheet."""
+    Every section has an even page count, and the purpose page after the cover shifts the book by one,
+    so each two-page section opens as a facing spread (A on the left, B on the right)."""
     seq = []
     for w in WEEKS:
         for d in (1, 2):
@@ -222,10 +223,10 @@ def back(week, day, ex=None):
   </section>
 
   <section class="box" style="height:1.42in; flex:none">
-    <div class="bar"><div class="tab">48-HOUR CHECK</div><div class="hint">Two days later. Cover both sides of this page first.</div>
+    <div class="bar"><div class="tab">48-HOUR CHECK</div><div class="hint">Two days later. Cover both pages first.</div>
       <div class="date">Date:{h48date or '<span></span>'}</div></div>
     <div class="cols" style="grid-template-columns: 1fr">
-      <div class="cell"><div class="q">What can I still remember? Then cover the answers on the front and retry my tricky questions.</div>{lines(e.get("h48", ""))}</div>
+      <div class="cell"><div class="q">What can I still remember? Then cover the answers on the left page and retry my tricky questions.</div>{lines(e.get("h48", ""))}</div>
     </div>
   </section>
 

@@ -10,8 +10,8 @@ from pypdf import PdfReader, PdfWriter
 
 HERE = pathlib.Path(__file__).parent
 OUT = HERE / 'out'
-GENERATORS = ['classnotes.py', 'paper_of_week.py', 'studies_toc.py', 'getting_started.py', 'review.py']
-DOCS = ['cover', 'toc', 'getting_started', 'classnotes', 'studies', 'paper_of_week', 'review', 'synthesis']
+GENERATORS = ['classnotes.py', 'paper_of_week.py', 'studies_toc.py', 'getting_started.py', 'review.py', 'purpose.py']
+DOCS = ['cover', 'purpose', 'toc', 'getting_started', 'classnotes', 'studies', 'paper_of_week', 'review', 'synthesis']
 
 
 def run(*cmd):
@@ -29,10 +29,11 @@ def main(png=False):
             args += [str(OUT / f'png_{d}'), 'pg']
         run(*args)
 
-    # Page order: cover, contents, Getting Started (i-iv), then classnotes.layout(), which also sets
+    # Page order: cover, purpose, contents, Getting Started (i-iv), then classnotes.layout(), which also sets
     # every page number, so the order and the numbers can't drift apart.
     from classnotes import layout
-    seq = [('cover', 0), ('toc', 0)] + [('getting_started', i) for i in range(4)]
+    # The purpose page after the cover puts every two-page section on a left/right open spread.
+    seq = [('cover', 0), ('purpose', 0), ('toc', 0)] + [('getting_started', i) for i in range(4)]
     seq += [(pdf, i) for pdf, i, _ in layout()]
 
     readers, writer = {}, PdfWriter()
