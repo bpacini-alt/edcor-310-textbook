@@ -5,11 +5,13 @@
  * Shared by both books. The source lives in feedback/worker.js in each textbook
  * repository, and the two copies must stay identical.
  *
- * Cloudflare runs this only for /api/* (see run_worker_first in wrangler.jsonc).
- * Every other request goes straight to the static site.
+ * Cloudflare runs this for /api/*, /editor, and /editor/* (see run_worker_first in wrangler.jsonc).
+ * Feedback, ratings, and author editing run here; other requests go to the static site.
  *
- * Needs one secret on each Worker, set in the Cloudflare dashboard (never in this repo):
- *   GITHUB_TOKEN  a fine-grained GitHub token with Issues: Read and write on textbook-feedback only
+ * Configure these in Cloudflare, never in this repo:
+ *   GITHUB_TOKEN         Issues access to textbook-feedback
+ *   EDITOR_GITHUB_TOKEN  Contents read/write on this textbook repository
+ *   ACCESS_TEAM_DOMAIN, ACCESS_AUD, EDITOR_EMAILS  editor authorization settings
  */
 
 const REPO = 'bpacini-alt/textbook-feedback';
@@ -253,7 +255,6 @@ async function handleRatings(request, env) {
 }
 
 
-const EDITOR_EMAILS = new Set(['bpacini@gmail.com', 'pacinib@byui.edu', 'benjaminmpacini@gmail.com']);
 const EDITOR_BOOKS = {
   'econ-150': { repo: 'bpacini-alt/Econ-150-textbook', generated: false },
   'science-of-learning': { repo: 'bpacini-alt/edcor-310-textbook', generated: true },
@@ -305,7 +306,8 @@ async function verifyEditorIdentity(request, env) {
       'RSASSA-PKCS1-v1_5', key, decodeBase64Url(parts[2]), new TextEncoder().encode(parts[0] + '.' + parts[1])
     );
     const email = String(payload.email || '').trim().toLowerCase();
-    if (!valid || !EDITOR_EMAILS.has(email)) return { ok: false, status: 403, error: 'editor_forbidden' };
+    const allowedEmails = String(env.EDITOR_EMAILS || '').split(',').map(value => value.trim().toLowerCase()).filter(Boolean);
+    if (!valid || !allowedEmails.includes(email)) return { ok: false, status: 403, error: 'editor_forbidden' };
     return { ok: true, email: email };
   } catch (error) {
     return { ok: false, status: 403, error: error instanceof Error ? error.message : 'access_token_invalid' };
