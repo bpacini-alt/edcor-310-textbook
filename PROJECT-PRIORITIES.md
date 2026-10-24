@@ -315,6 +315,15 @@ The Joy of Learning and Joy of Econ menus moved from Word into `menus/` (see `me
 
 These are promising possibilities, but they are intentionally near the bottom of the backlog. They should not displace the current work on content quality, practice, accessibility, interactives, audio, exports, or the series/front-matter system.
 
+### Found October 23, 2026
+
+1. **Missing shapes in figures (Priority: High; fix Monday, October 26).** About 50 shapes in both books have no width or height, so they draw nothing: bars, shaded areas, and legend swatches simply aren't there. This is the bug fixed in Econ 150 Chapter 10 (Econ pull request #33), and it was already in the Drive originals.
+   - **Econ 150 (about 42):** Chapter 13 is the worst. Its callback-rate, earnings-by-education, and pay-gap charts show no bars at all (15 shapes). Also Chapters 0, 2, 4, 8, 11, 17, and 22, `introduction.html`, and `ittrdogupr.html` (the Chapter 9 homework draft).
+   - **EDCOR 310 (8):** Chapter 6's five-color band figure (5) and the legend swatches in A Hero's Journey (`sup1.html`, 3).
+   - **The fix:** work out each size from points already drawn in the same figure (axes, labels, lines, dots), the way Chapter 10 was fixed. Then render every figure and compare it with its caption. A shape with an `id`, or inside a practice widget, may be redrawn by code; check before editing it.
+2. **Econ 150 unit names on title cards (Benjamin decided October 23; fix Monday).** The contents page's unit names are the official ones: The Case for the Market, The Firm in Perfect Competition, The Critique of the Market, and The Firm in Imperfect Competition. Several chapter title cards use other names ("How Markets Coordinate," "The Logic of Competition," "Critique of Markets," "Market Power and Imperfect Competition"), and Chapters 25 and 26 carry their own labels. Make the cards match the contents page. Still open for Benjamin: the book's subtitle says "Choice, Incentives, and Human Flourishing," while the Canvas course card says "Choice, Tradeoffs, and Human Flourishing."
+3. **Save the old Google Site's images (`benjaminpacini-site`).** The archive in `archive/google-site-2026-10-20/` has every page's HTML and every embedded Drive file, but not the pictures shown on the pages. About 40 pages still load their images from Google's servers, so the archive would lose them if the Google Site were deleted. Download the images into the archive, using a browser (Claude's shell can't reach Google Sites), and point the archived pages, or the manifest, at the local copies. **Don't delete the Google Site until this is done.**
+
 ### Student sign-in and lightweight progress tracking
 
 Explore a simple Google sign-in system for students, ideally restricted to verified `@byui.edu` accounts. The first useful version would not attempt to replace Canvas or become a full learning-management system. It would provide a shared identity across both books and optionally record low-stakes activity such as reading-check scores, practice scores, and completion dates.
