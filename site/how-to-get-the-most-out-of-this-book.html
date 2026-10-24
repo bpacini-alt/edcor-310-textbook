@@ -40,76 +40,162 @@ body:has(.etb-nav) .etb-ap { bottom: 51px; }
   </div>
 </header>
 <main>
-<style>
-.study-guide{font-family:Georgia,"Times New Roman",serif;max-width:740px;margin:0 auto;padding:1rem 1rem 5rem;color:#1a1a1a}
-.study-guide *{box-sizing:border-box}
-.study-guide a{color:#1a3a5c}
-.study-guide .etb-title-card{margin-bottom:1.5rem}
-.study-guide .etb-title-main{max-width:18ch}
-.study-guide .etb-title-sub{max-width:38ch}
-.study-guide .sg-lead{font-size:1.22rem;line-height:1.65;margin:1.25rem 0 2rem}
-.study-guide .sg-card{border:1px solid #e5e8ec;border-radius:10px;padding:1.15rem 1.25rem;margin:1rem 0;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.study-guide .sg-card h3{margin:.1rem 0 .45rem;font-size:1.2rem}
-.study-guide .sg-card p{line-height:1.65;margin:.5rem 0}
-.study-guide .sg-card ul,.study-guide .sg-card ol{line-height:1.65;padding-left:1.35rem}
-.study-guide .sg-callout{border-left:4px solid #94702c;background:#f7f2e8;padding:1rem 1.2rem;margin:1.5rem 0;font-size:1.12rem;line-height:1.65}
-.study-guide .sg-callout p{margin:.25rem 0}
-.study-guide .sg-small{font-size:.92rem;color:#555;line-height:1.55}
-.study-guide .sg-prompt{background:#f6f7f9;border:1px solid #e5e8ec;border-radius:8px;padding:1rem 1.1rem;font-family:Arial,sans-serif;font-size:.92rem;line-height:1.55}
-.study-guide .sg-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
-.study-guide .sg-table th,.study-guide .sg-table td{border:1px solid #dfe4e9;padding:.65rem;text-align:left;vertical-align:top;line-height:1.5}
-.study-guide .sg-table th{background:#f6f7f9}
-.study-guide .sg-example{border-left:3px solid #b8cfe0;padding:.35rem 1rem;margin:1rem 0}
-.study-guide .sg-example p{margin:.4rem 0;line-height:1.6}
-.study-guide .sg-muted{color:#5f6570}
-</style>
-<div class="etb study-guide">
+<style>.etb{font-family:Georgia,'Times New Roman',serif;max-width:740px;margin:0 auto;padding:1rem 1rem 5rem;color:#1a1a1a;}.etb-slbl{font-family:sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#aaa;margin:2.75rem 0 .85rem;padding-bottom:6px;border-bottom:1px solid #eee;}.etb-title-card{position:relative;overflow:hidden;border-top:4px solid #1a3a5c;border-radius:0 0 10px 10px;background:#fff;padding:2.25rem 2rem 1.75rem;box-shadow:0 1px 6px rgba(0,0,0,.06);}.etb-title-watermark{position:absolute;right:-8px;top:-22px;font-family:Georgia,serif;font-size:170px;font-weight:700;color:#f0f3f8;line-height:1;user-select:none;pointer-events:none;}.etb-title-unit{font-family:sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#aaa;margin-bottom:.65rem;position:relative;}.etb-title-main{font-family:Georgia,'Times New Roman',serif;font-size:30px;font-weight:700;color:#1a1a1a;line-height:1.2;margin:0 0 .55rem;position:relative;}.etb-title-sub{font-family:Georgia,'Times New Roman',serif;font-size:17px;font-style:italic;color:#777;margin:0 0 1.25rem;position:relative;}.etb-title-meta{font-family:sans-serif;font-size:11px;color:#bbb;border-top:1px solid #eee;padding-top:.85rem;display:flex;gap:20px;}.etb-hook{font-family:Georgia,'Times New Roman',serif;font-size:16.5px;line-height:1.9;color:#2a2a2a;padding:2rem 0 1.75rem;border-bottom:1px solid #eee;margin-bottom:1.75rem;}.etb-hook p{margin:0 0 1rem;}.etb-hook p:last-child{margin:0;}.etb-hook p:first-child::first-letter{font-size:3.4em;font-weight:700;float:left;line-height:.78;margin:.06em .1em 0 0;color:#1a3a5c;}.etb-bigidea{background:#eef6f0;border-left:4px solid #2a7a4f;border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin-bottom:2rem;font-size:15.5px;line-height:1.8;color:#1a3a2a;font-style:italic;}.etb-flipgrid{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1.25rem;}.etb-flip{flex:1 1 200px;cursor:pointer;border-radius:8px;min-height:155px;}.etb-flip-front{background:#f4f4f4;border:1px solid #ddd;border-radius:8px;padding:1rem 1.1rem;display:flex;flex-direction:column;min-height:155px;box-sizing:border-box;}.etb-flip-back{background:#eef6f0;border:1px solid #5a9a7f;border-radius:8px;padding:1rem 1.1rem;display:none;flex-direction:column;min-height:155px;box-sizing:border-box;}.etb-flip.flipped .etb-flip-front{display:none;}.etb-flip.flipped .etb-flip-back{display:flex;}.etb-flip-front-term{font-family:sans-serif;font-size:14px;font-weight:700;color:#1a3a5c;flex:1;display:flex;align-items:center;line-height:1.35;}.etb-flip-front-hint{font-family:sans-serif;font-size:10px;color:#bbb;text-align:right;margin-top:auto;letter-spacing:.03em;}.etb-flip-back-def{font-family:sans-serif;font-size:12.5px;color:#1a3a2a;line-height:1.55;flex:1;}.etb-flip-back-label{font-family:sans-serif;font-size:10px;color:#2a7a4f;text-align:right;margin-top:auto;}.etb-alsoknow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:2.5rem;}.etb-ak-item{font-family:sans-serif;font-size:12px;font-weight:600;color:#666;background:#f4f4f4;border:1px solid #e0e0e0;border-radius:99px;padding:4px 13px;cursor:pointer;position:relative;user-select:none;transition:background .15s,color .15s,border-color .15s;}.etb-ak-item:hover{background:#eaeaea;}.etb-ak-item.ak-open{background:#1a3a5c;color:#fff;border-color:#1a3a5c;}.etb-ak-pop{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;font-size:12px;font-weight:400;line-height:1.55;padding:9px 12px;border-radius:7px;width:220px;white-space:normal;z-index:300;box-shadow:0 4px 14px rgba(0,0,0,.2);pointer-events:none;}.etb-ak-pop::before{content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-bottom-color:#1a3a5c;}.etb-ak-item.ak-open .etb-ak-pop{display:block;}[data-tip]{border-bottom:1px dotted #2a7a4f;cursor:help;position:relative;}[data-tip]::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;font-family:sans-serif;font-size:12px;font-style:normal;line-height:1.45;padding:7px 11px;border-radius:6px;width:230px;white-space:normal;opacity:0;pointer-events:none;transition:opacity .18s;z-index:500;box-shadow:0 4px 16px rgba(0,0,0,.18);}[data-tip]:hover::after{opacity:1;}.etb-xref{display:inline-block;font-family:sans-serif;font-size:11px;font-weight:700;color:#1a3a5c;background:#eef4fb;border:1px solid #b8cfe0;border-radius:4px;padding:1px 8px;letter-spacing:.02em;vertical-align:middle;white-space:nowrap;}.etb-xref::before{content:"\2192 ";}.etb-concept{margin-bottom:2.75rem;padding-bottom:2.75rem;border-bottom:1px solid #eee;}.etb-concept:last-child{border-bottom:none;}.etb-concept h2{font-size:21px;font-weight:700;color:#1a1a1a;margin:0 0 1rem;line-height:1.25;}.etb-body{font-size:15px;line-height:1.85;color:#1a1a1a;}.etb-body p{margin:0 0 1rem;}.etb-body p:last-child{margin:0;}details.etb-retrieval{background:#fff8e6;border:1px solid #e8c96a;border-radius:8px;margin:1.5rem 0;}details.etb-retrieval summary{padding:.9rem 1.25rem;font-family:sans-serif;font-size:13.5px;font-weight:600;color:#7a5000;cursor:pointer;display:flex;align-items:center;gap:10px;list-style:none;user-select:none;}details.etb-retrieval summary::-webkit-details-marker{display:none;}.etb-ret-badge{background:#c48b00;color:#fff;font-family:sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:4px;flex-shrink:0;white-space:nowrap;}.etb-ret-arrow{margin-left:auto;color:#c48b00;font-size:13px;transition:transform .2s;flex-shrink:0;}details.etb-retrieval[open] .etb-ret-arrow{transform:rotate(90deg);}.etb-ret-body{padding:.85rem 1.25rem 1.1rem;border-top:1px solid #e8c96a;font-family:sans-serif;font-size:13.5px;line-height:1.7;color:#3d2e00;}.etb-ret-body p{margin:0 0 .75rem;}.etb-ret-body p:last-child{margin:0;}details.etb-misc{background:#fdf0f0;border:1px solid #dba8a8;border-radius:8px;margin:1.5rem 0;}details.etb-misc summary{padding:.9rem 1.25rem;font-family:sans-serif;font-size:13.5px;font-weight:600;color:#6b1f1f;cursor:pointer;display:flex;align-items:center;gap:10px;list-style:none;user-select:none;}details.etb-misc summary::-webkit-details-marker{display:none;}.etb-misc-badge{background:#a33030;color:#fff;font-family:sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:4px;flex-shrink:0;white-space:nowrap;}.etb-misc-arrow{margin-left:auto;color:#a33030;font-size:13px;transition:transform .2s;flex-shrink:0;}details.etb-misc[open] .etb-misc-arrow{transform:rotate(90deg);}.etb-misc-body{padding:.85rem 1.25rem 1.1rem;border-top:1px solid #dba8a8;font-family:sans-serif;font-size:13.5px;line-height:1.7;color:#3d0f0f;}.etb-misc-body p{margin:0 0 .75rem;}.etb-misc-body p:last-child{margin:0;}.etb-note{border-left:4px solid #1a3a5c;background:#eef4fb;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1.5rem 0;}.etb-note-label{font-family:sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1a3a5c;margin-bottom:.45rem;}.etb-note-body{font-family:sans-serif;font-size:13.5px;line-height:1.7;color:#0d2239;}.etb-note-body p{margin:0 0 .65rem;}.etb-note-body p:last-child{margin:0;}.etb-3col{display:flex;flex-wrap:wrap;gap:10px;margin:1.25rem 0;}.etb-3item{flex:1 1 180px;border:1px solid #ddd;border-radius:8px;overflow:hidden;}.etb-3item-hd{background:#2a7a4f;color:#fff;font-family:sans-serif;font-size:12px;font-weight:700;padding:8px 12px;}.etb-3item-bd{font-family:sans-serif;font-size:13px;color:#444;line-height:1.5;padding:10px 12px;}.etb-figure{margin:1.75rem 0;text-align:center;}.etb-figure img{width:100%;max-width:620px;border-radius:8px;display:inline-block;box-shadow:0 2px 12px rgba(0,0,0,.1);}.etb-figure-placeholder{width:100%;max-width:580px;min-height:220px;background:#f7f7f7;border:2px dashed #ccc;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;}.etb-figure-placeholder-label{font-family:sans-serif;font-size:12px;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}.etb-figure-caption{font-family:sans-serif;font-size:12px;color:#777;line-height:1.55;margin-top:.65rem;max-width:620px;margin-left:auto;margin-right:auto;text-align:left;}.etb-figure-caption strong{color:#444;}.etb-applications{background:#eef6f0;border:1px solid #5a9a7f;border-radius:10px;padding:1.4rem 1.5rem;margin:2.5rem 0;}.etb-app-header{display:flex;align-items:center;gap:10px;margin-bottom:.85rem;}.etb-app-badge{background:#2a7a4f;color:#fff;font-family:sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:4px;}.etb-app-title{font-family:sans-serif;font-size:13px;font-weight:700;color:#1a3a2a;}.etb-app-body{font-family:sans-serif;font-size:13.5px;line-height:1.7;color:#1a3a2a;}.etb-app-body p{margin:0 0 .75rem;}.etb-app-list{list-style:none;padding:0;margin:.5rem 0 0;}.etb-app-list li{font-family:sans-serif;font-size:13.5px;color:#1a3a2a;line-height:1.6;padding:6px 0 6px 22px;position:relative;border-bottom:1px solid rgba(42,122,79,.15);}.etb-app-list li:last-child{border-bottom:none;}.etb-app-list li::before{content:"\2192";position:absolute;left:0;color:#2a7a4f;font-weight:700;}.etb-synthesis{background:#1a3a5c;border-radius:10px;padding:1.75rem 2rem;margin:2.5rem 0 3rem;}.etb-syn-header{font-family:sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem;}.etb-syn-body{font-family:Georgia,'Times New Roman',serif;font-size:15.5px;line-height:1.85;color:rgba(255,255,255,.9);font-style:italic;margin-bottom:1.35rem;}.etb-syn-takes{border-top:1px solid rgba(255,255,255,.12);padding-top:1rem;display:flex;flex-direction:column;gap:9px;}.etb-syn-take{display:flex;gap:11px;align-items:flex-start;}.etb-syn-dot{width:6px;height:6px;border-radius:50%;background:#5dcaa5;flex-shrink:0;margin-top:7px;}.etb-syn-text{font-family:sans-serif;font-size:13px;color:rgba(255,255,255,.82);line-height:1.6;}.etb-worked{background:#f0f4ff;border:1px solid #a0b4e0;border-radius:8px;padding:1.1rem 1.4rem;margin:1.5rem 0;}.etb-worked-header{display:flex;align-items:center;gap:8px;margin-bottom:.65rem;}.etb-worked-badge{background:#1a3a5c;color:#fff;font-family:sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:4px;flex-shrink:0;}.etb-worked-title{font-family:sans-serif;font-size:13px;font-weight:700;color:#0d2239;}.etb-worked-body{font-family:sans-serif;font-size:13.5px;line-height:1.7;color:#0d2239;}.etb-worked-body p{margin:0 0 .65rem;}.etb-worked-body p:last-child{margin:0;}.etb-worked-step{display:flex;gap:10px;margin-bottom:.65rem;align-items:flex-start;}.etb-worked-stepnum{font-family:sans-serif;font-size:10px;font-weight:700;color:#fff;background:#1a3a5c;border-radius:4px;padding:2px 7px;flex-shrink:0;margin-top:2px;}.etb-worked-steptext{font-family:sans-serif;font-size:13.5px;color:#0d2239;line-height:1.65;}</style>
+<style>details.etb-practice{background:#f4f8fb;border:1px solid #c2d3e2;border-radius:8px;margin:1.75rem 0;}details.etb-practice>summary{padding:.85rem 1.1rem;font-family:sans-serif;font-size:13.5px;font-weight:600;color:#1a3a5c;cursor:pointer;display:flex;align-items:center;gap:10px;list-style:none;user-select:none;}details.etb-practice>summary::-webkit-details-marker{display:none;}.etb-practice-badge{background:#1a3a5c;color:#fff;font-family:sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:4px;flex-shrink:0;}.etb-practice-arrow{margin-left:auto;color:#1a3a5c;font-size:13px;transition:transform .2s;flex-shrink:0;}details.etb-practice[open]>summary .etb-practice-arrow{transform:rotate(90deg);}.etb-practice-body{padding:.3rem .55rem .8rem;}.etb-practice-frame{display:block;width:100%;border:0;background:#fff;border-radius:6px;}</style>
+<style>.etb .etb-ak-pop{margin-left:var(--ak-shift,0px)}.etb .etb-ak-pop::before{left:calc(50% - var(--ak-shift,0px))}.etb [data-tip]::after{margin-left:var(--tip-shift,0px)}</style>
+<div class="etb">
   <div class="etb-title-card">
-    <div class="etb-title-watermark" aria-hidden="true">↗</div>
-    <p class="etb-title-unit">Start here · Study guide</p>
-    <h1 class="etb-title-main">How to Get the Most Out of This Book</h1>
+    <div class="etb-title-watermark">i</div>
+    <div class="etb-title-unit">Start here · Study guide</div>
+    <h2 class="etb-title-main">How to Get the Most Out of This Book</h2>
     <p class="etb-title-sub">A short guide to learning educational psychology instead of merely reading about it</p>
-    <p class="etb-title-meta">Read this before Chapter 1.</p>
+    <div class="etb-title-meta"><span>Read this before Chapter 1</span><span>~ 10 min read</span><span>Practice-heavy guide</span></div>
   </div>
-  <p class="sg-lead">This book is about learning: how people change, how they develop, how they become capable, and how teachers can help them along the way.</p>
-  <p>You are not reading only to collect information for an exam. You are learning how to notice what is happening in people, how to evaluate claims about learning, and how to make wiser decisions as a teacher, leader, disciple, and evidence-based practitioner.</p>
-  <div class="sg-callout"><p><strong>First, practice using a tool until you are consistent and competent.</strong></p><p><strong>Then practice choosing the right tool from the toolkit for the job at hand.</strong></p></div>
-  <p>The book will sometimes present empirical findings, interpretive frameworks, and questions of value. Learn to tell those apart. Ask what the evidence shows, what an interpretation helps you notice, and what assumptions or commitments shape a conclusion.</p>
 
-  <div class="etb-slbl">Five study techniques that actually help</div>
-  <p>Jamie Clark’s one-page guide, <a href="https://static1.squarespace.com/static/5c47c0b3e17ba324ad0c9d7f/t/67a75d182d6a7f6e1116b882/1739021595741/5+Effective+Study+Strategies.pdf">Effective Study Strategies</a>, describes five research-backed ways to learn more effectively. You can also find <a href="https://www.jamieleeclark.com/graphics">Jamie’s larger collection of teaching guides</a>. These techniques may feel less smooth than rereading. That difficulty is often part of the point.</p>
-  <div class="sg-card"><h3>1. Retrieval practice: recall information</h3><p>Retrieval practice means trying to remember something before looking at the answer. Close the book and ask: What was the main idea? What terms and relationships do I remember? How would I explain this to another student?</p><p>Use the book’s retrieval questions, interactive practice, and reflection prompts for this purpose. Try first. Then check your answer and repair what you missed.</p></div>
-  <div class="sg-card"><h3>2. Spaced practice: distribute your studying</h3><p>Spaced practice means returning to material over several days or weeks rather than studying everything in one long session.</p><p>Read a section today, recall it tomorrow, and use it in a new situation several days later. You do not need to forget everything before returning. You do need to make your memory do some work.</p></div>
-  <div class="sg-card"><h3>3. Interleaving: mix up what you practice</h3><p>Interleaving means mixing related topics, theories, or problem types instead of practicing one kind repeatedly until it feels easy.</p><p>Early on, it is useful to practice the same kind of task several times. You are learning how to use the tool. Once you can use it consistently, start mixing. Practice deciding which concept, framework, or research principle helps you interpret a new situation.</p><p>Several frameworks may offer useful perspectives on the same situation. The goal is to practice recognizing what each framework makes visible, not to pretend that every human problem has one mechanical answer.</p></div>
-  <div class="sg-card"><h3>4. Dual coding: combine words and meaningful visuals</h3><p>Dual coding means representing an idea with both words and a useful visual. Draw a developmental timeline, map the relationship between concepts, sketch a model, or label a process.</p><p>The visual should clarify the idea. A simple concept map is more useful than a page decorated with colors and pictures.</p></div>
-  <div class="sg-card"><h3>5. Elaboration: explain how and why</h3><p>Elaboration means connecting a new idea to what you already know and asking deeper questions:</p><ul><li>Why might this happen?</li><li>How does this idea relate to another theory?</li><li>What is an example and a non-example?</li><li>What evidence would support or weaken the claim?</li><li>What would this framework help me notice?</li><li>What might it leave out?</li></ul></div>
+  <div class="etb-hook">
+    <p>Reading is not the same thing as learning. This book asks you to notice claims about people, weigh evidence, interpret frameworks, and use what you learn with humility.</p>
+    <p>You are not reading only to collect information for an exam. You are learning how to become a more capable teacher, leader, disciple, and evidence-based practitioner.</p>
+  </div>
 
-  <div class="etb-slbl">First learn the move. Then learn when to make it.</div>
-  <p>Blocked practice and spiral practice do different jobs. Blocked practice helps you learn how to perform a skill. Spiral or interleaved practice helps you learn when and why to use it.</p>
-  <table class="sg-table"><thead><tr><th>Practice type</th><th>Main question</th></tr></thead><tbody><tr><td>Blocked practice</td><td>Can I perform this skill?</td></tr><tr><td>Spiral or interleaved practice</td><td>Can I recognize when this skill is useful?</td></tr><tr><td>Transfer practice</td><td>Can I adapt the skill in a new situation?</td></tr></tbody></table>
+  <div class="etb-slbl">The big picture</div>
+  <div class="etb-bigidea">Use this book as a training ground. Learn the ideas, practice the moves, and then practice deciding which idea or move fits the situation in front of you. The aim is not to turn every human problem into a formula. It is to help you think more clearly, notice more carefully, and act more wisely.</div>
 
-  <div class="etb-slbl">Take notes that help you think</div>
-  <p>If your instructor asks you to take notes, you do not need to write down every sentence. High-quality notes help you reconstruct the important ideas later. They preserve the main claim, important relationships, evidence or examples, questions, and possible applications.</p>
-  <p>A weak note might say:</p>
-  <div class="sg-example"><p><em>Spaced practice means studying over time. It helps memory.</em></p></div>
-  <p>A stronger note might say:</p>
-  <div class="sg-example"><p><strong>Spaced practice</strong></p><p><strong>Main idea:</strong> Spread study and retrieval across days or weeks instead of cramming.</p><p><strong>Why it helps:</strong> Returning after some forgetting makes recall effortful, which strengthens later access.</p><p><strong>Example:</strong> Review a chapter today, tomorrow, and again several days later.</p><p><strong>Caution:</strong> Cramming may feel smoother, but fluency during one study session is not the same as durable learning.</p><p><strong>Question:</strong> How could a teacher build spaced review into ordinary classwork?</p></div>
-  <table class="sg-table"><thead><tr><th>Good notes capture</th><th>Ask yourself</th></tr></thead><tbody><tr><td>Main idea</td><td>What is the author claiming?</td></tr><tr><td>Support</td><td>What evidence or example is provided?</td></tr><tr><td>Relationships</td><td>How does this connect to another idea?</td></tr><tr><td>Limits</td><td>When might this explanation be incomplete?</td></tr><tr><td>Application</td><td>Where might this matter?</td></tr><tr><td>Retrieval prompt</td><td>What question could I answer later without looking?</td></tr></tbody></table>
-  <p>After taking notes, close the book and use your retrieval prompt. Write or explain what you remember. Then check your notes and repair anything inaccurate or incomplete. The goal is not to produce beautiful pages. The goal is to create notes that help you think when the chapter is no longer open.</p>
+  <div class="etb-concept">
+    <div class="etb-slbl">Study technique 1</div>
+    <h2>Retrieval practice</h2>
+    <div class="etb-body">
+      <p>Retrieval practice means trying to remember something before looking at the answer. Close the book and ask: What was the main idea? What terms and relationships do I remember? How would I explain this to another student?</p>
+      <p>Use the book’s retrieval questions, interactive practice, and reflection prompts for this purpose. Try first. Then check your answer and repair what you missed.</p>
+    </div>
+    <details class="etb-retrieval">
+      <summary><span class="etb-ret-badge">Try it now</span>Without looking back, name one claim from the last section and explain whether it is empirical, interpretive, or value-laden.<span class="etb-ret-arrow">▸</span></summary>
+      <div class="etb-ret-body"><p>Then look back. Did you identify the claim accurately? Did you distinguish what the evidence shows from what a framework helps you notice or what someone believes we ought to do?</p></div>
+    </details>
+  </div>
 
-  <div class="etb-slbl">Use the book’s features</div>
-  <p><strong>Retrieval practice</strong> asks you to recall an idea before looking back. <strong>Interactive practice</strong> lets you make a prediction or work through a problem. <strong>Intuition builders</strong> help you develop a feel for an abstract idea. <strong>Common misconception</strong> sections show where an appealing idea can go wrong. <strong>What to notice</strong> sections direct your attention toward an important feature. <strong>Think about</strong> questions ask you to connect the material to your own experience and future work.</p>
-  <p>Use the figures, audio, examples, and videos when they help you encounter the idea in another way. But make a prediction before touching an interactive. Otherwise, you may only be watching the answer happen.</p>
+  <div class="etb-concept">
+    <div class="etb-slbl">Study technique 2</div>
+    <h2>Spaced practice</h2>
+    <div class="etb-body">
+      <p>Spaced practice means returning to material over several days or weeks rather than studying everything in one long session.</p>
+      <p>Read a section today, recall it tomorrow, and use it in a new situation several days later. You do not need to forget everything before returning. You do need to make your memory do some work.</p>
+    </div>
+    <details class="etb-retrieval">
+      <summary><span class="etb-ret-badge">Try it now</span>Choose one idea from this chapter that you could explain today but might lose by next week. Write a question that would test whether you still understand it.<span class="etb-ret-arrow">▸</span></summary>
+      <div class="etb-ret-body"><p>Save the question and answer it later without reopening the chapter first.</p></div>
+    </details>
+  </div>
 
-  <div class="etb-slbl">Use AI as a tutor, not a substitute for thinking</div>
-  <p>AI can give you additional practice, but only if you make it ask something of you. Try a prompt like this:</p>
-  <div class="sg-prompt">Quiz me on this chapter one question at a time. Do not show me the answer until I respond. Ask me to explain my reasoning, identify misconceptions, interpret evidence, and apply the idea to a teaching or discipleship situation. If my answer is weak, give me a hint rather than solving the problem for me. Use the chapter text I provide as the main source.</div>
-  <p>You can also ask AI to create a new example, challenge you with a plausible misconception, compare two frameworks, or ask what evidence would change your mind. Do not assume that an AI response is correct. Compare important claims with the book, the cited research, and your instructor’s guidance.</p>
+  <div class="etb-concept">
+    <div class="etb-slbl">Study technique 3</div>
+    <h2>Interleaving</h2>
+    <div class="etb-body">
+      <p>Interleaving means mixing related topics, theories, or problem types instead of practicing one kind repeatedly until it feels easy.</p>
+      <p>Early on, it is useful to practice the same kind of task several times. You are learning how to use the tool. Once you can use it consistently, start mixing. Practice deciding which concept, framework, or research principle helps you interpret a new situation.</p>
+    </div>
+    <div class="etb-note">
+      <div class="etb-note-label">A rule of thumb</div>
+      <div class="etb-note-body">
+        <p><strong>First, practice using a tool until you are consistent and competent. Then practice choosing the right tool from the toolkit for the job at hand.</strong></p>
+      </div>
+    </div>
+    <div class="etb-body">
+      <p>Blocked practice helps you learn how to perform a skill. Spiral or interleaved practice helps you learn when and why to use it. Transfer practice asks whether you can adapt the skill to a new situation.</p>
+      <p>Several frameworks may offer useful perspectives on the same situation. The goal is to practice recognizing what each framework makes visible, not to pretend that every human problem has one mechanical answer.</p>
+    </div>
+    <details class="etb-retrieval">
+      <summary><span class="etb-ret-badge">Try it now</span>Take a classroom or discipleship situation and name two frameworks that might illuminate it. What would each one help you notice, and what might each one leave out?<span class="etb-ret-arrow">▸</span></summary>
+      <div class="etb-ret-body"><p>Do not ask only which framework is “right.” Ask what evidence supports or complicates each lens, what assumptions it carries, and what it helps you see.</p></div>
+    </details>
+  </div>
+
+  <div class="etb-concept">
+    <div class="etb-slbl">Study technique 4</div>
+    <h2>Dual coding</h2>
+    <div class="etb-body">
+      <p>Dual coding means representing an idea with both words and a useful visual. Draw a developmental timeline, map the relationship between concepts, sketch a model, or label a process.</p>
+      <p>The visual should clarify the idea. A simple concept map is more useful than a page decorated with colors and pictures.</p>
+    </div>
+    <details class="etb-retrieval">
+      <summary><span class="etb-ret-badge">Try it now</span>Draw a one-page map of a section you have just read. Include the main claim, its support, one relationship to another idea, and one question you still have.<span class="etb-ret-arrow">▸</span></summary>
+      <div class="etb-ret-body"><p>Then explain your map aloud without rereading the section.</p></div>
+    </details>
+  </div>
+
+  <div class="etb-concept">
+    <div class="etb-slbl">Study technique 5</div>
+    <h2>Elaboration</h2>
+    <div class="etb-body">
+      <p>Elaboration means connecting a new idea to what you already know and asking deeper questions:</p>
+      <ul>
+        <li>Why might this happen?</li>
+        <li>How does this idea relate to another framework?</li>
+        <li>What is an example and a non-example?</li>
+        <li>What evidence would support or weaken the claim?</li>
+        <li>What would this lens help me notice?</li>
+        <li>What might it leave out?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="etb-concept">
+    <div class="etb-slbl">Take notes that help you think</div>
+    <h2>High-quality notes preserve the structure of an idea</h2>
+    <div class="etb-body">
+      <p>If your instructor asks you to take notes, you do not need to write down every sentence. High-quality notes help you reconstruct the important ideas later. They preserve the main claim, important relationships, evidence or examples, questions, and possible applications.</p>
+      <p>A weak note might say:</p>
+    </div>
+    <div class="etb-note">
+      <div class="etb-note-label">Weak note</div>
+      <div class="etb-note-body"><p><em>Spaced practice means studying over time. It helps memory.</em></p></div>
+    </div>
+    <div class="etb-worked">
+      <div class="etb-worked-header"><span class="etb-worked-badge">Worked example</span><span class="etb-worked-title">Turn a fact into a useful study note</span></div>
+      <div class="etb-worked-body">
+        <p><strong>Spaced practice</strong></p>
+        <p><strong>Main idea:</strong> Spread study and retrieval across days or weeks instead of cramming.</p>
+        <p><strong>Why it helps:</strong> Returning after some forgetting makes recall effortful, which strengthens later access.</p>
+        <p><strong>Example:</strong> Review a chapter today, tomorrow, and again several days later.</p>
+        <p><strong>Caution:</strong> Cramming may feel smoother, but fluency during one study session is not the same as durable learning.</p>
+        <p><strong>Question:</strong> How could a teacher build spaced review into ordinary classwork?</p>
+      </div>
+    </div>
+    <div class="etb-body">
+      <p>When you take notes, look for six things: the main idea, support, relationships, limits, application, and a retrieval question. Afterward, close the book and answer your retrieval question. The goal is not beautiful pages. The goal is notes that help you think when the chapter is no longer open.</p>
+    </div>
+  </div>
+
+  <div class="etb-concept">
+    <div class="etb-slbl">Use the book’s features</div>
+    <h2>Let the chapter make you do something</h2>
+    <div class="etb-body">
+      <p><strong>Retrieval practice</strong> asks you to recall an idea before looking back. <strong>Interactive practice</strong> lets you make a prediction or work through a problem. <strong>Intuition builders</strong> help you develop a feel for an abstract idea. <strong>Common misconception</strong> sections show where an appealing idea can go wrong. <strong>What to notice</strong> sections direct your attention toward an important feature. <strong>Think about</strong> questions ask you to connect the material to your own experience and future work.</p>
+      <p>Use the figures, audio, examples, and videos when they help you encounter the idea in another way. But make a prediction before touching an interactive. Otherwise, you may only be watching the answer happen.</p>
+    </div>
+  </div>
+
+  <div class="etb-concept">
+    <div class="etb-slbl">Use AI as a tutor</div>
+    <h2>Make AI ask something of you</h2>
+    <div class="etb-body">
+      <p>AI can give you additional practice, but only if you make it ask something of you. Try a prompt like this:</p>
+    </div>
+    <div class="etb-note">
+      <div class="etb-note-label">A prompt to try</div>
+      <div class="etb-note-body"><p>Quiz me on this chapter one question at a time. Do not show me the answer until I respond. Ask me to explain my reasoning, identify misconceptions, interpret evidence, and apply the idea to a teaching or discipleship situation. If my answer is weak, give me a hint rather than solving the problem for me. Use the chapter text I provide as the main source.</p></div>
+    </div>
+    <div class="etb-body">
+      <p>You can also ask AI to create a new example, challenge you with a plausible misconception, compare two frameworks, or ask what evidence would change your mind. Do not assume that an AI response is correct. Compare important claims with the book, the cited research, and your instructor’s guidance.</p>
+    </div>
+  </div>
 
   <div class="etb-slbl">A simple study routine</div>
-  <ol><li>Read a manageable section.</li><li>Attempt the retrieval or interactive practice.</li><li>Write a short explanation from memory.</li><li>Return to the text and correct yourself.</li><li>Revisit the idea later.</li><li>Apply it to a real teaching, leadership, or discipleship situation.</li></ol>
-  <p>You do not need to use every feature every time. You do need to make the ideas do some work.</p>
-</div></main>
+  <div class="etb-synthesis">
+    <div class="etb-syn-header">Try this sequence</div>
+    <div class="etb-syn-body">Read a manageable section. Attempt the practice. Explain the idea from memory. Check and correct yourself. Return later. Then use the idea in a real teaching, leadership, or discipleship situation.</div>
+  </div>
+</div>
+</main>
 <nav class="etb-nav" aria-label="Chapter navigation"><div class="etb-nav-inner"><span class="etb-nav-disabled" aria-disabled="true">← Previous</span><a class="etb-nav-home" href="/contents/index.html" aria-label="Table of contents">Contents</a><span class="etb-nav-disabled" aria-disabled="true">Next →</span></div></nav>
 <script src="/assets/report.js" data-book="EDCOR 310" defer></script>
 <script src="/assets/etb-audio.js"></script>
