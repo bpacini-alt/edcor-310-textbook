@@ -1,6 +1,6 @@
 # Private prose editor
 
-The The Science of Learning pages include an **Edit** link for content pages listed in `etb-live/manifest.json`. The editor is served at `/editor/`.
+The Science of Learning pages include an **Edit** link for content pages listed in `etb-live/manifest.json`. The editor is served at `/editor/`.
 
 Configure one Cloudflare Access self-hosted application for `learning.benjaminpacini.com`, covering both `/editor` and `/editor/*`. Use Google sign-in and an Allow policy restricted to the three email accounts you supplied. The Worker applies the same email check from the `EDITOR_EMAILS` variable.
 
