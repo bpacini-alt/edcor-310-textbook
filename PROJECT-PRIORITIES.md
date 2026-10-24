@@ -291,6 +291,22 @@ Full details, costs, and file-size limits are in `audio/README.md` under "Stage 
 
 **Status:** Record for later; do not start until the chapters are done being edited. Then go chapter by chapter, starting with the chapters students will be assigned first.
 
+### Both books: "Worth remembering" aphorism boxes (recorded October 24, 2026)
+
+**Benjamin's view:** a clever turn of phrase makes a real difference to what students remember. Each chapter's big ideas should get a short, memorable line, shown in a "Worth remembering" box right where the idea is taught, with a recap of all of them after the chapter synthesis.
+
+**The model:** EDCOR 310 Chapter 11 (Constructivism), added in EDCOR 310 pull request #35. It has six aphorisms, such as "Your brain thinks in examples, not definitions" and "To change a mind, change the schema," each with a one- or two-sentence follow-up, and a recap of all six at the end. The look is the `etb-aphorism` style, which for now lives only in Chapter 11's own style block.
+
+**How to do it:**
+
+1. Move the `etb-aphorism` styles somewhere both books can share, so every chapter uses one design.
+2. Go chapter by chapter with Benjamin. Draft three to six candidate aphorisms from each chapter's major concepts; Benjamin chooses and rewords them. They have to sound like him, and each one has to stay true to the evidence in the chapter.
+3. Place each box where its idea is taught and add the recap after the synthesis. Use the same wording in the slides and any other course materials, so students meet the same phrase every time.
+
+**Priority:** Medium. Useful for students, but a big lift across two books, because the wording has to be drafted and approved chapter by chapter.
+
+**Status:** Record for later; start when there is time. EDCOR 310 Chapter 11 is done (once #35 is merged).
+
 ### Loose ends from the move to the new sites (recorded October 20, 2026)
 
 Small items found while moving both books off EdTechBooks. Most are quick. Items marked **(Benjamin)** need his decision or his account first.
