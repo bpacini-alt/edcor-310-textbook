@@ -327,6 +327,7 @@ These are promising possibilities, but they are intentionally near the bottom of
 ### Found October 24, 2026
 
 1. **EDCOR 310: Add the forgetting curve (Benjamin asked October 24).** The book doesn't mention Ebbinghaus or the forgetting curve anywhere, though retrieval practice and spacing come up in nearly every chapter. The new course workbook's example Class Notes page is built around it, so students will meet it there first. Add it to Chapter 22 (Attention, Memory, and Cognitive Load): a short explanation, a simple figure showing memory falling quickly without review and the curve flattening with each review, and a sentence tying it to the workbook's warm-up and 48-hour check. Verify the claims against the original research and current replications before writing, since popular versions often overstate the exact percentages.
+2. **EDCOR 310 workbook: revise the Course Synthesis (Priority: High; Benjamin plans to do it soon).** The workbook's last two pages (77–78, built by `workbook/synthesis.py`) are a first draft Benjamin approved as good enough for now. They ask three questions: "Who am I becoming?", "How will I be better because of this class?", and "What have I learned that I never want to forget?", each with a short prompt underneath. Revise the wording and layout with Benjamin, then rebuild the PDF (`cd workbook && python3 build.py`) and replace `workbook/EDCOR310_Workbook.pdf` in the same pull request. Depends on EDCOR 310 pull request #38, which adds the `workbook/` folder.
 
 ### Student sign-in and lightweight progress tracking
 
