@@ -9,12 +9,36 @@ KF = HERE / "node_modules/@fontsource/kalam/files"
 WEEKS = list(range(1, 14))   # weeks 1-13; 99 Studies / Paper of the Week start in week 2
 
 
+UNIT_END = {4: 1, 7: 2, 10: 3, 13: 4}   # a Unit Review follows these weeks
+
+
+def layout():
+    """Every numbered page in order, as (pdf, page index, key). Drives page numbers and build order.
+    Week 1 is class notes only; later weeks add 99 Studies and Paper of the Week; a two-page
+    Unit Review follows weeks 4, 7, 10, and 13; the Course Synthesis closes the book.
+    Every section has an even page count, and the purpose page after the cover shifts the book by one,
+    so each two-page section opens as a facing spread (A on the left, B on the right)."""
+    seq = []
+    for w in WEEKS:
+        for d in (1, 2):
+            for b in (False, True):
+                seq.append(("classnotes", 4 * (w - 1) + (d - 1) * 2 + b, ("notes", w, d, b)))
+        if w > 1:
+            seq += [("studies", w - 2, ("99", w)), ("paper_of_week", w - 2, ("potw", w))]
+        if w in UNIT_END:
+            u = UNIT_END[w]
+            seq += [("review", 2 * (u - 1) + k, ("review", u, k)) for k in (0, 1)]
+    seq += [("synthesis", k, ("synth", k)) for k in (0, 1)]
+    return seq
+
+
+PAGE = {key: n for n, (_, _, key) in enumerate(layout(), 1)}
+
+
 def pg_for(kind, week, day=1, back=False):
-    """Page numbers: week 1 = class notes only (4 pp); weeks 2+ = notes x2, 99 Studies, Paper of the Week (6 pp)."""
-    base = 0 if week == 1 else 4 + 6 * (week - 2)
     if kind == "notes":
-        return base + (day - 1) * 2 + (2 if back else 1)
-    return base + (5 if kind == "99" else 6)
+        return PAGE[("notes", week, day, bool(back))]
+    return PAGE[(kind, week)]
 
 
 def foot(label, pg, right):
@@ -61,6 +85,11 @@ h1 {{ text-align: center; font-family: RC, sans-serif; font-weight: 700; font-si
 .lines {{ flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }}
 .dotgrid {{ flex: 1 1 auto; margin: 8px 0 2px; background-image: radial-gradient(circle, #7a7a7a 0 1.15px, transparent 1.5px); background-size: 25px 25px; background-position: 0 0; }}
 .lines {{ position: relative; }}
+.tq {{ flex: 1 1 0; display: flex; flex-direction: column; min-height: 0; margin-top: 8px; }}
+.tq + .tq {{ border-top: 1px dashed #999; padding-top: 6px; }}
+.tql {{ font-family: RC, sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: .8px; text-transform: uppercase; color: #555; }}
+.tqq {{ flex: 2.2 1 0; display: flex; flex-direction: column; min-height: 0; }}
+.tqa {{ flex: 1 1 0; display: flex; flex-direction: column; min-height: 0; }}
 .hw {{ position: absolute; left: 3px; right: 2px; top: 3px; font-family: Kalam, cursive; font-size: 15.5px; line-height: 25px; color: #1d3f73; white-space: pre-line; }}
 .hwf {{ font-family: Kalam, cursive; color: #1d3f73; }}
 .checks span.on::before {{ content: ""; background: #1d3f73; box-shadow: inset 0 0 0 2px #fff; }}
@@ -109,6 +138,12 @@ def footer(side, week, day, ex=None):
     return foot("Class Notes", pg, f"Week {week} &middot; Day {day}")
 
 
+def tq(n, q="", a=""):
+    """One tricky practice question: question lines, then an answer line."""
+    return (f'<div class="tq"><div class="tql">Question {n}</div><div class="tqq">{lines(q)}</div>'
+            f'<div class="tql">Answer</div><div class="tqa">{lines(a)}</div></div>')
+
+
 def checks(opts, on=None, cls="checks", lead=""):
     items = "".join(f'<span class="{"on" if o == on else ""}">{o}</span>' for o in opts)
     return f'<div class="{cls}">{lead}{items}</div>'
@@ -136,9 +171,10 @@ def front(week, day, ex=None):
   </section>
 
   <section class="box grow">
-    <div class="bar"><div class="tab">DURING CLASS</div><div class="hint">Take notes on the right. Write quiz questions on the left as you go.</div></div>
+    <div class="bar"><div class="tab">DURING CLASS</div><div class="hint">Take notes on the right. Use the left for tricky practice questions.</div></div>
     <div class="cols" style="grid-template-columns: 2.05in 1fr">
-      <div class="cell"><div class="q">Quiz questions I could answer next week<small>Write 2&ndash;3. Answer them during your 48-hour check.</small></div>{lines(e.get("quiz", ""))}</div>
+      <div class="cell"><div class="q">Tricky practice questions<small>From your practice quizzes: ones you missed or almost missed. Write the right answer too.</small></div>
+        {tq(1, e.get("q1", ""), e.get("a1", ""))}{tq(2, e.get("q2", ""), e.get("a2", ""))}</div>
       <div class="cell"><div class="q">Notes<small>Write, sketch, map, or draw. Whatever helps you remember.</small></div><div class="dotgrid">{e.get("notes", "")}</div></div>
     </div>
   </section>
@@ -159,10 +195,10 @@ def back(week, day, ex=None):
     return f"""
 <div class="page"><div class="frame">
   <section class="box" style="flex:none">
-    <div class="bar"><div class="tab">DURING CLASS</div><div class="hint">Key terms, people, and ideas I should practice</div></div>
+    <div class="bar"><div class="tab">DURING CLASS</div><div class="hint">Vocab: key terms, people, and ideas to practice</div></div>
     <table class="terms">
       <colgroup><col style="width:36%"><col></colgroup>
-      <tr><th>Term, person, or idea</th><th>What it means, in my own words (or an example)</th></tr>
+      <tr><th>Vocab (term, person, or idea)</th><th>What it means, in my own words (or an example)</th></tr>
       {rows}
     </table>
     <div class="terms-note">To practice: cover the right column and try to explain each one out loud.</div>
@@ -187,10 +223,10 @@ def back(week, day, ex=None):
   </section>
 
   <section class="box" style="height:1.42in; flex:none">
-    <div class="bar"><div class="tab">48-HOUR CHECK</div><div class="hint">Two days later. Cover both sides of this page first.</div>
+    <div class="bar"><div class="tab">48-HOUR CHECK</div><div class="hint">Two days later. Cover both pages first.</div>
       <div class="date">Date:{h48date or '<span></span>'}</div></div>
     <div class="cols" style="grid-template-columns: 1fr">
-      <div class="cell"><div class="q">What can I still remember? Then answer my quiz questions from the front.</div>{lines(e.get("h48", ""))}</div>
+      <div class="cell"><div class="q">What can I still remember? Then cover the answers on the left page and retry my tricky questions.</div>{lines(e.get("h48", ""))}</div>
     </div>
   </section>
 

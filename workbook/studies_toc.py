@@ -1,6 +1,6 @@
 """99 Studies pages and the blue Table of Contents. arg: outdir"""
 import sys, pathlib
-from classnotes import CSS, SCRIPT, WEEKS, lines, pg_for, foot, BLANK_W
+from classnotes import CSS, SCRIPT, WEEKS, lines, pg_for, foot, BLANK_W, PAGE, UNIT_END
 
 H = pathlib.Path(__file__).parent
 EXTRA = """
@@ -51,13 +51,16 @@ TOC_CSS = """
 .toc { width: 8.5in; height: 11in; background: #006eb6; color: #fff; padding: 0.55in 0.62in 0; font-family: Lato, sans-serif; }
 .toc .code { display: inline-block; border: 2px solid rgba(255,255,255,.85); padding: 3px 14px 2px; font-family: RC, sans-serif; font-size: 24px; letter-spacing: .5px; }
 .toc .code b { font-weight: 400; color: #8fc8f0; }
-.toc h1 { text-align: left; color: #fff; font-size: 56px; margin: 12px 0 26px; }
+.toc h1 { text-align: left; color: #fff; font-size: 52px; margin: 8px 0 20px; }
 .toc table { width: 100%; border-collapse: collapse; }
 .toc th { font-family: RC, sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 1.2px; text-transform: uppercase; text-align: center; padding: 0 4px 10px; vertical-align: bottom; line-height: 1.2; border-bottom: 1.5px solid rgba(255,255,255,.85); }
+.toc tr.unit td { background: rgba(255,255,255,.14); font-size: 15px; padding: 6px 4px 5px; }
+.toc tr.unit td.wk { padding-left: 8px; font-size: 15.5px; }
+.toc tr.unit td.ul { text-align: left; font-style: italic; opacity: .9; }
 .toc th.wk, .toc td.wk { text-align: left; }
 .toc th.none { border: none; }
 .toc th.group { font-size: 13px; letter-spacing: 2px; padding-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,.6); }
-.toc td { text-align: center; font-size: 17px; padding: 8px 4px 7px; border-bottom: 1px solid rgba(255,255,255,.3); font-variant-numeric: tabular-nums; }
+.toc td { text-align: center; font-size: 16px; padding: 6px 4px 5px; border-bottom: 1px solid rgba(255,255,255,.3); font-variant-numeric: tabular-nums; }
 .toc td.wk { font-family: RC, sans-serif; font-weight: 700; font-size: 19px; }
 .toc .gs { display: flex; flex-wrap: nowrap; gap: 6px 16px; align-items: baseline; font-size: 14px; white-space: nowrap; margin: -10px 0 22px; padding: 10px 0 12px; border-top: 1px solid rgba(255,255,255,.5); border-bottom: 1px solid rgba(255,255,255,.5); }
 .toc .gs b { font-family: RC, sans-serif; font-size: 13.5px; letter-spacing: 1.2px; text-transform: uppercase; margin-right: 6px; }
@@ -70,12 +73,19 @@ TOC_CSS = """
 
 
 def toc():
-    rows = ''.join(f'<tr><td class="wk">Week {w}</td><td>{pg_for("notes", w, 1)}</td><td>{pg_for("notes", w, 2)}</td><td>{pg_for("99", w) if w > 1 else "&ndash;"}</td><td>{pg_for("potw", w) if w > 1 else "&ndash;"}</td></tr>' for w in WEEKS)
+    rows = ''
+    for w in WEEKS:
+        rows += (f'<tr><td class="wk">Week {w}</td><td>{pg_for("notes", w, 1)}</td><td>{pg_for("notes", w, 2)}</td>'
+                 f'<td>{pg_for("99", w) if w > 1 else "&ndash;"}</td><td>{pg_for("potw", w) if w > 1 else "&ndash;"}</td></tr>')
+        if w in UNIT_END:
+            u = UNIT_END[w]
+            rows += (f'<tr class="unit"><td class="wk">Unit {u} Review</td><td colspan="3" class="ul">Brain dump &amp; unit synthesis</td>'
+                     f'<td>{PAGE[("review", u, 0)]}&ndash;{PAGE[("review", u, 1)]}</td></tr>')
     return f'''<div class="page toc"><div class="code">EDCOR <b>310</b></div><h1>Table of Contents</h1><div class="gs"><b>Getting Started</b><span>How to Use This Workbook <i>i</i></span><span>Reading an APA Citation <i>ii</i></span><span>Example Class Notes <i>iii&ndash;iv</i></span></div>
 <table><tr><th class="none"></th><th colspan="2" class="group">Class Notes</th><th class="none"></th><th class="none"></th></tr>
 <tr><th class="wk">Week</th><th>Day 1</th><th>Day 2</th><th>99 Studies</th><th>Paper of<br>the Week</th></tr>{rows}</table>
-<p class="note">Numbers are page numbers. Class notes are front and back.</p>
-<div class="lined"><b>Course Synthesis</b><span class="dots"></span><span>Pg. 77</span></div></div>'''
+<p class="note">Numbers are page numbers. Each class day is a two-page spread.</p>
+<div class="lined"><b>Course Synthesis</b><span class="dots"></span><span>Pg. {PAGE[("synth", 0)]}</span></div></div>'''
 
 
 if __name__ == '__main__':

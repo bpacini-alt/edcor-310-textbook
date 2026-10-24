@@ -9,12 +9,12 @@ FM = """
 .fm p, .fm li { font-size: 14.4px; line-height: 1.5; color: #222; }
 .fm ul { padding-left: 20px; }
 .fm li { margin-bottom: 4px; }
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 11px; }
 .card { border: 1.8px solid #111; border-radius: 11px; overflow: hidden; }
-.card .tab { display: inline-flex; }
+.card .tab { display: inline-flex; font-size: 13.5px; letter-spacing: .6px; padding: 5px 12px 5px 11px; }
 .card .in { padding: 9px 13px 11px; }
 .card .when { font-family: RC, sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .8px; text-transform: uppercase; color: #555; margin-bottom: 4px; }
-.card p { font-size: 13.8px; }
+.card p { font-size: 13px; }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .note { border-left: 4px solid #111; padding: 4px 0 4px 14px; }
 .cite { font-size: 19px; line-height: 2.5; padding: 18px 22px 10px 52px; text-indent: -30px; border: 1.8px solid #111; border-radius: 11px; }
@@ -43,15 +43,17 @@ def page(inner, label, pg):
 
 HOW = page('''
   <h1>How to Use This Workbook</h1>
-  <p class="lede">This workbook is where you think on paper. It has three kinds of pages. Each one is built to help you
+  <p class="lede">This workbook is where you think on paper. It has four kinds of pages. Each one is built to help you
   understand ideas, remember them, and use them.</p>
   <div class="cards">
-    <div class="card"><div class="tab">CLASS NOTES</div><div class="in"><div class="when">Every class &middot; front and back</div>
-      <p>Take notes, write your own quiz questions, and connect what you learned to your life. There&rsquo;s one for each class day.</p></div></div>
-    <div class="card"><div class="tab">99 STUDIES</div><div class="in"><div class="when">Weekly, starting Week 2</div>
-      <p>Pick three of the week&rsquo;s nine studies. For each one, write takeaways for teaching, for life, and gospel connections.</p></div></div>
-    <div class="card"><div class="tab">PAPER OF THE WEEK</div><div class="in"><div class="when">Weekly, starting Week 2</div>
-      <p>Read one research article closely. Pull out its citation, judge the evidence, and bring it to class for the jigsaw.</p></div></div>
+    <div class="card"><div class="tab">CLASS NOTES</div><div class="in"><div class="when">Every class day</div>
+      <p>Take notes, record tricky practice questions, build your vocab, and connect what you learned to your life.</p></div></div>
+    <div class="card"><div class="tab">99 STUDIES</div><div class="in"><div class="when">Weekly, from Week 2</div>
+      <p>Pick three of the week&rsquo;s nine studies. Write takeaways for teaching, for life, and gospel connections.</p></div></div>
+    <div class="card"><div class="tab">PAPER OF THE WEEK</div><div class="in"><div class="when">Weekly, from Week 2</div>
+      <p>Read one research article closely. Pull out its citation, judge the evidence, and bring it to the jigsaw.</p></div></div>
+    <div class="card"><div class="tab">UNIT REVIEW</div><div class="in"><div class="when">End of each unit</div>
+      <p>Brain-dump everything from the unit, pick your top ten, five, and three, then reflect on who you&rsquo;re becoming.</p></div></div>
   </div>
   <div class="two">
     <div>
@@ -66,7 +68,7 @@ HOW = page('''
       <h2>Two habits do the most for your memory</h2>
       <ul>
         <li><b>The warm-up.</b> Before class starts, write what you remember from last time without looking. Pulling ideas out of memory makes them stick better than rereading.</li>
-        <li><b>The 48-hour check.</b> Two days later, cover the page and see what you can still recall. Then answer your own quiz questions. Coming back after a gap is what makes learning last.</li>
+        <li><b>The 48-hour check.</b> Two days later, cover both pages and see what you can still recall. Then cover the answers and retry your tricky practice questions. Coming back after a gap is what makes learning last.</li>
       </ul>
       <h2 style="margin-top:12px">Rate yourself at the end</h2>
       <p>Each Class Notes page ends with a short self-check: did these notes help you make sense of the ideas, remember them,
@@ -154,7 +156,10 @@ EX = dict(
     warm="schemas = mental frameworks. new stuff\nsticks when it hooks onto what I know.\nassimilation vs. accommodation (?)",
     objective="Why pulling info out of memory beats\nrereading it",
     got="Yes",
-    quiz="1. Why does rereading\nfeel like it works?\n\n2. What did R & K find\nafter one week?\n\n3. Sketch the forgetting\ncurve from memory.",
+    q1="Reread 3x vs. quiz\nmyself once: who\nremembers more\nafter a week?",
+    a1="Quizzing! Rereading\nfeels better but fades.",
+    q2="Best example of\nretrieval practice?\na) highlight b) reread\nc) brain dump",
+    a2="c) brain dump",
     notes=NOTES,
     terms=[("Retrieval practice", "pulling info from memory (brain dump, quiz yourself)"),
            ("Forgetting curve", "memory drops fast, then levels off; reviews flatten it"),
@@ -165,13 +170,13 @@ EX = dict(
     become="teacher",
     differently="Open my practicum lessons with a 3-question\nwarm-up instead of a review lecture.",
     h48_date="Sept 18",
-    h48="Forgetting curve, R&K, fluency illusion, brain dumps. Blanked on\nthe details of the 1-week result, so I reread that part.",
+    h48="Forgetting curve, R&K, fluency illusion, brain dumps. Got Q2. Missed Q1\nagain (said rereading!), so I reread that part of Ch. 22.",
     rating=[4, 4, 3],
     callouts_front=(co("Messy is fine. A &ldquo;(?)&rdquo; means &ldquo;check this later.&rdquo;", 2.8, 4.75, 2.45)
                     + co("Sketches count. Draw it if that helps you think.", 9.25, 4.6, 2.6)
-                    + co("These become your 48-hour check.", 8.55, 0.62, 1.7)),
+                    + co("Cover the answers and retry these at your 48-hour check.", 9.98, 0.62, 1.75)),
     callouts_back=(co("Left blank on purpose. Not every box fits every day.", 5.0, 5.55, 2.25)
-                   + co("Three terms is plenty.", 2.25, 5.9, 1.6)
+                   + co("Three vocab terms is plenty.", 2.25, 5.7, 1.8)
                    + co("Honest beats perfect.", 9.7, 3.95, 1.45)),
 )
 
