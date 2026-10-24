@@ -1,6 +1,6 @@
 # EDCOR 310 course workbook
 
-The printed workbook students use alongside *The Science of Learning*: Class Notes for every class day, weekly 99 Studies and Paper of the Week pages, a Getting Started section, and a closing Course Synthesis. The current version is `EDCOR310_Workbook.pdf` (84 pages, letter size).
+The printed workbook students use alongside *The Science of Learning*: Class Notes for every class day, weekly 99 Studies and Paper of the Week pages, a Unit Review after each unit, a Getting Started section, and a closing Course Synthesis. The current version is `EDCOR310_Workbook.pdf` (92 pages, letter size).
 
 ## Rebuilding it
 
@@ -14,11 +14,11 @@ The new PDF lands in `out/`. When it's ready to share, copy it over `EDCOR310_Wo
 
 | File | What it builds |
 |---|---|
-| `classnotes.py` | Shared page styles, plus the Class Notes front and back (also used for the filled-in example) |
+| `classnotes.py` | Shared page styles, the page order and numbering (`layout()`), and the Class Notes front and back (also used for the filled-in example) |
 | `paper_of_week.py` | Paper of the Week, with the APA citation skeleton |
 | `studies_toc.py` | 99 Studies pages and the Table of Contents |
 | `getting_started.py` | How to Use This Workbook, Reading an APA Citation, and the example Class Notes (pages i–iv) |
-| `synthesis.py` | Course Synthesis (pages 77–78) |
+| `review.py` | Unit Reviews (brain dump + unit synthesis, after Weeks 4, 7, 10, and 13) and the Course Synthesis |
 | `cover.py` | The cover |
 | `banner.py` | Recolors the Canvas banner (`assets/banner-original.png`) into `assets/banner-blue.png`. Only rerun it if the banner changes. |
 | `build.py` | Renders everything and puts the pages in order |
@@ -27,6 +27,8 @@ The new PDF lands in `out/`. When it's ready to share, copy it over `EDCOR310_Wo
 
 - **Look:** matches the textbook. Blue (#006EB6) and white on the cover and contents page, black and white inside so it prints cheaply. Headings in Roboto Condensed, text in Lato (Canvas's own font). The EDCOR 310 box appears on the cover, contents, and notes pages.
 - **Title:** *The Science of Learning* with "Course Workbook," and the course title (Educational Psychology and Human Development) in the footer.
-- **Order:** Week 1 is Class Notes only. Weeks 2–13 run Day 1, Day 2, 99 Studies, Paper of the Week. Every section has an even page count so each Class Notes front and back share a sheet when printed double-sided from the cover. Keep it that way when adding pages.
+- **Order:** Week 1 is Class Notes only. Weeks 2–13 run Day 1, Day 2, 99 Studies, Paper of the Week. A two-page Unit Review follows Weeks 4, 7, 10, and 13, and the Course Synthesis closes the book. `layout()` in `classnotes.py` is the one place the order lives; page numbers and the contents page come from it. Every section has an even page count so each front and back share a sheet when printed double-sided from the cover. Keep it that way when adding pages.
+- **Practice and vocab:** the front's left column holds two tricky practice questions with their answers (students get unlimited practice quizzes), retried at the 48-hour check. Vocab goes in the table on the back.
+- **Unit Reviews:** the brain dump is fast and fragmentary and includes things learned indirectly (teaching methods, a classmate, a friend). Then top ten alone, top five with a group, top three alone again. The back asks how the unit makes students better teachers, disciples, and leaders at home, at church, and in the community, and what they'll do differently. The Course Synthesis asks the same questions about the whole course.
 - **Class Notes:** the boxes are tools, not a form to complete. The page says so, the example leaves boxes blank on purpose, and the self-check asks whether the notes helped students make meaning, remember, and grow, not whether every box is full.
 - **Citations:** students fill in author, year, title, and journal and check that they found the DOI, instead of handwriting a full APA citation.
