@@ -30,6 +30,7 @@ The website is learning.benjaminpacini.com, served by Cloudflare from the `site/
 | `feedback/` | The Report a problem button and the function that receives reports | Yes (see "Shared") |
 | `menus/` | The Joy of Learning reading menu: `joy-of-learning.json` holds every reading. `build/build_site.py` turns it into `site/joy-of-learning.html` | Yes, the data file (see `menus/README.md` and "Shared") |
 | `original/` | The October 2026 import from Google Drive | No. Archive only. |
+| `workbook/` | The printed course workbook: the finished PDF and the scripts that build it (see `workbook/README.md`) | Yes. Rebuild the PDF in the same pull request. |
 
 After changing anything in `etb-live/`, `build/`, `menus/`, or the player, run `python3 build/build_site.py` from the repository root and commit the regenerated `site/` files in the same pull request.
 
