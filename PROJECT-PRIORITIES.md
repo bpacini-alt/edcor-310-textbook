@@ -103,7 +103,23 @@ Start with concepts where a visual or manipulable model is substantially better 
 
 **Why this comes before larger AI features:** A well-designed manipulative can directly improve conceptual understanding with modest technical complexity.
 
-### Priority 4 — Add chapter audio
+### Priority 4 — Add author-led video explanations
+
+Create a more prominent, purposeful role for videos made by the author so students can see Benjamin explain the ideas in the book and engage with the material in another format.
+
+Begin with an inventory of the existing Ed Psych recorded lectures and other unlisted videos:
+
+- Identify which videos fit specific chapters, sections, concepts, or review points.
+- Evaluate their relevance, clarity, length, production quality, and likely student value.
+- Prefer using existing recordings—and, where useful, cutting them into shorter chapter-specific segments—before creating substantial new material.
+- Identify the small number of missing explanations where new recording would genuinely add value.
+- Determine whether videos should be embedded directly in the chapter, placed in a prominent “Watch Benjamin explain this” feature, or both.
+- Develop a practical workflow for transcripts, captions, chapter links, and permissions.
+- Decide deliberately whether any unlisted videos should become public; public visibility should follow the content review, not precede it.
+
+**Why this matters:** Author-led video can make the books feel more personal and interactive while giving students another way to encounter difficult ideas. Its cost and value should be established by auditing the existing recordings before committing to a large new production effort.
+
+### Priority 5 — Add chapter audio
 
 Continue the audio work already underway, beginning with the chapters where audio will most help students.
 
@@ -115,7 +131,7 @@ Continue the audio work already underway, beginning with the chapters where audi
 
 **Why this matters:** Audio improves access and gives students another way to review, but it should not outrank core content repair or the highest-value interactives.
 
-### Priority 5 — Build a reliable PDF export/compiler
+### Priority 6 — Build a reliable PDF export/compiler
 
 Create a polished way for students to download or print a coherent PDF of a book or selected chapters.
 
@@ -126,7 +142,7 @@ Create a polished way for students to download or print a coherent PDF of a book
 
 **Why this matters:** A dependable PDF gives students a familiar, portable, printable format and may be relatively high leverage if the existing publishing system supports it cleanly.
 
-### Priority 6 — Add an AI/notebook export workflow
+### Priority 7 — Add an AI/notebook export workflow
 
 Investigate an export that lets students use approved chapter materials in an AI notebook or study environment—for example, to summarize, ask questions, review vocabulary, and quiz themselves.
 
@@ -140,7 +156,7 @@ The first version should be simple and controlled:
 
 **Why this is not first:** It could be powerful, but its value depends on clean content, stable exports, and careful attention to student privacy, accuracy, and platform changes.
 
-### Priority 7 — Develop real-time policy analysis practice
+### Priority 8 — Develop real-time policy analysis practice
 
 Explore a later-stage system in which students analyze a policy in real time, using their notes while responding to probing questions.
 
@@ -163,10 +179,10 @@ Possible components include:
 | 1 | Polish and standardize each book | Very high | Medium | Main ongoing focus |
 | 2 | Practice-heavy chapters | Very high | Medium–high | Build into every chapter |
 | 3 | Small, high-yield interactives/manipulables | High | Medium | Build selectively |
-| 4 | Chapter audio | Medium–high | Medium | Continue in a repeatable workflow |
-| 5 | PDF compiler/export | Medium–high | Low–medium | Build once the pipeline is understood |
-| 6 | AI/notebook export | Potentially high | Medium–high | Prototype after content/export foundations |
-| 7 | Real-time policy analysis coach | Potentially very high | Very high | Strategic later project |
+| 4 | Author-led video explanations | High | Low–high, depending on reuse | Audit existing recordings first; build selectively |\n| 5 | Chapter audio | Medium–high | Medium | Continue in a repeatable workflow |
+| 6 | PDF compiler/export | Medium–high | Low–medium | Build once the pipeline is understood |
+| 7 | AI/notebook export | Potentially high | Medium–high | Prototype after content/export foundations |
+| 8 | Real-time policy analysis coach | Potentially very high | Very high | Strategic later project |
 
 This ranking is provisional. A concrete task can move upward if it solves an urgent student problem, unlocks several other projects, or is dramatically easier than expected.
 
@@ -313,7 +329,7 @@ The Joy of Learning and Joy of Econ menus moved from Word into `menus/` (see `me
 
 ## Cool ideas for later
 
-These are promising possibilities, but they are intentionally near the bottom of the backlog. They should not displace the current work on content quality, practice, accessibility, interactives, audio, exports, or the series/front-matter system.
+These are promising possibilities, but they are intentionally near the bottom of the backlog. They should not displace the current work on content quality, practice, accessibility, interactives, author-led video, audio, exports, or the series/front-matter system.
 
 ### Found October 23, 2026
 
