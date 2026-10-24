@@ -86,6 +86,27 @@ Revise both books chapter by chapter so students regularly retrieve, predict, ex
 - Provide answers, explanations, or feedback where appropriate so students can learn from the attempt.
 - Prefer a manageable number of high-quality tasks over busywork or question volume for its own sake.
 - Keep the practice aligned with the chapter's central ideas and learning outcomes.
+- For EDCOR 310, design the practice system before scaling up chapter-by-chapter implementation. The goal is not simply to imitate AP question formats: EDCOR 310 is meant to help students become disciples, leaders, and evidence-based practitioners. Write a short practice specification, create several representative examples, and identify a repeatable framework that gives the course an AP-like scaffold without reducing the course to test preparation. The design should include:
+  - a progression from retrieval and explanation to evidence interpretation, judgment, application to teaching and discipleship, and transfer to real practice;
+  - recurring task types and feedback expectations so students know what good practice looks like from chapter to chapter;
+  - prompts that surface misconceptions and require students to explain why an answer is right, not merely select it;
+  - opportunities to choose a meaningful application or presentation, adapting the strongest parts of the Joy of Econ choice-based, high-level assignment model where appropriate;
+  - a clear distinction between low-stakes learning practice, preparation for course assessments, and formative work that develops professional judgment;
+  - sample items from several chapters, plus a rubric or checklist for evaluating whether a proposed activity builds understanding, leadership, discipleship, or evidence-based practice.
+
+  A useful first draft of the recurring practice arc is a five-move framework:
+
+  1. **Understand the tool:** retrieve, define, explain, and distinguish the idea; identify relevant evidence and limits.
+  2. **Perform the tool:** use it in a relatively clear, blocked example with feedback.
+  3. **Choose the tool:** use mixed, spiral, and interleaved practice to decide which framework or strategy fits a new situation.
+  4. **Judge the use:** evaluate whether the tool is being used appropriately, proportionately, and in an evidence-aligned way. Ask what it helps us see, what it leaves out, and what unintended consequences might follow. For theories and frameworks, treat them as evidence-informed interpretive lenses—not definitive explanations or guaranteed prescriptions.
+  5. **Transfer and act:** adapt the tool to an unfamiliar classroom, leadership, discipleship, or professional situation; propose a modest next step and identify what evidence would show whether it helped.
+
+  The central distinction is: **choosing asks, “Is this the right tool?” Judging asks, “Is this a good use of the tool?”**
+
+  The framework should include a recurring **Evidence-Based Practice Response**: an AP-FRQ-like case with a short scenario, several directed tasks, and a rubric rewarding accurate reasoning, evidence, limits, judgment, and application. Students should not receive full credit merely for naming a framework; they should connect it to the case, judge its fit and limits, and recommend an action that can be observed and revised.
+
+  Treat this as a design hypothesis to test, not a decision that prevents a better framework.
 
 **Why this is high priority:** Practice is where students turn exposure into durable understanding. A practice-heavy chapter can improve learning more directly than adding another presentation feature.
 
@@ -103,7 +124,23 @@ Start with concepts where a visual or manipulable model is substantially better 
 
 **Why this comes before larger AI features:** A well-designed manipulative can directly improve conceptual understanding with modest technical complexity.
 
-### Priority 4 — Add chapter audio
+### Priority 4 — Add author-led video explanations
+
+Create a more prominent, purposeful role for videos made by the author so students can see Benjamin explain the ideas in the book and engage with the material in another format.
+
+Begin with an inventory of the existing Ed Psych recorded lectures and other unlisted videos:
+
+- Identify which videos fit specific chapters, sections, concepts, or review points.
+- Evaluate their relevance, clarity, length, production quality, and likely student value.
+- Prefer using existing recordings—and, where useful, cutting them into shorter chapter-specific segments—before creating substantial new material.
+- Identify the small number of missing explanations where new recording would genuinely add value.
+- Determine whether videos should be embedded directly in the chapter, placed in a prominent “Watch Benjamin explain this” feature, or both.
+- Develop a practical workflow for transcripts, captions, chapter links, and permissions.
+- Decide deliberately whether any unlisted videos should become public; public visibility should follow the content review, not precede it.
+
+**Why this matters:** Author-led video can make the books feel more personal and interactive while giving students another way to encounter difficult ideas. Its cost and value should be established by auditing the existing recordings before committing to a large new production effort.
+
+### Priority 5 — Add chapter audio
 
 Continue the audio work already underway, beginning with the chapters where audio will most help students.
 
@@ -115,7 +152,7 @@ Continue the audio work already underway, beginning with the chapters where audi
 
 **Why this matters:** Audio improves access and gives students another way to review, but it should not outrank core content repair or the highest-value interactives.
 
-### Priority 5 — Build a reliable PDF export/compiler
+### Priority 6 — Build a reliable PDF export/compiler
 
 Create a polished way for students to download or print a coherent PDF of a book or selected chapters.
 
@@ -126,7 +163,7 @@ Create a polished way for students to download or print a coherent PDF of a book
 
 **Why this matters:** A dependable PDF gives students a familiar, portable, printable format and may be relatively high leverage if the existing publishing system supports it cleanly.
 
-### Priority 6 — Add an AI/notebook export workflow
+### Priority 7 — Add an AI/notebook export workflow
 
 Investigate an export that lets students use approved chapter materials in an AI notebook or study environment—for example, to summarize, ask questions, review vocabulary, and quiz themselves.
 
@@ -140,7 +177,7 @@ The first version should be simple and controlled:
 
 **Why this is not first:** It could be powerful, but its value depends on clean content, stable exports, and careful attention to student privacy, accuracy, and platform changes.
 
-### Priority 7 — Develop real-time policy analysis practice
+### Priority 8 — Develop real-time policy analysis practice
 
 Explore a later-stage system in which students analyze a policy in real time, using their notes while responding to probing questions.
 
@@ -163,10 +200,10 @@ Possible components include:
 | 1 | Polish and standardize each book | Very high | Medium | Main ongoing focus |
 | 2 | Practice-heavy chapters | Very high | Medium–high | Build into every chapter |
 | 3 | Small, high-yield interactives/manipulables | High | Medium | Build selectively |
-| 4 | Chapter audio | Medium–high | Medium | Continue in a repeatable workflow |
-| 5 | PDF compiler/export | Medium–high | Low–medium | Build once the pipeline is understood |
-| 6 | AI/notebook export | Potentially high | Medium–high | Prototype after content/export foundations |
-| 7 | Real-time policy analysis coach | Potentially very high | Very high | Strategic later project |
+| 4 | Author-led video explanations | High | Low–high, depending on reuse | Audit existing recordings first; build selectively |\n| 5 | Chapter audio | Medium–high | Medium | Continue in a repeatable workflow |
+| 6 | PDF compiler/export | Medium–high | Low–medium | Build once the pipeline is understood |
+| 7 | AI/notebook export | Potentially high | Medium–high | Prototype after content/export foundations |
+| 8 | Real-time policy analysis coach | Potentially very high | Very high | Strategic later project |
 
 This ranking is provisional. A concrete task can move upward if it solves an urgent student problem, unlocks several other projects, or is dramatically easier than expected.
 
@@ -313,7 +350,7 @@ The Joy of Learning and Joy of Econ menus moved from Word into `menus/` (see `me
 
 ## Cool ideas for later
 
-These are promising possibilities, but they are intentionally near the bottom of the backlog. They should not displace the current work on content quality, practice, accessibility, interactives, audio, exports, or the series/front-matter system.
+These are promising possibilities, but they are intentionally near the bottom of the backlog. They should not displace the current work on content quality, practice, accessibility, interactives, author-led video, audio, exports, or the series/front-matter system.
 
 ### Found October 23, 2026
 
