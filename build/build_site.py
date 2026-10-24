@@ -154,7 +154,10 @@ def front_pages(units, chapters, supplements):
         "stats": f"{len(chapters)} chapters in {len(units)} units · about {hours} hours of reading · free and open",
         "contents_sub": f"{len(chapters)} chapters in {len(units)} units, about {hours} hours of reading",
         "count": str(len(chapters)),
-        "front": [{"n": "i", "t": "About this book", "s": "How the book was made, and acknowledgments", "m": "", "href": "/about.html"}],
+        "front": [
+            {"n": "i", "t": "About this book", "s": "How the book was made, and acknowledgments", "m": "", "href": "/about.html"},
+            {"n": "ii", "t": "How to Get the Most Out of This Book", "s": "How to study, practice, and use this book well", "m": "", "href": "/how-to-get-the-most-out-of-this-book.html"}
+        ],
         "units": [{
             "roman": u["roman"], "kicker": f"{u['label']} · {chapter_range(u)}", "title": u["name"],
             "hook": sentences(u["intro"][0], 2) if u["intro"] else "",

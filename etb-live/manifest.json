@@ -3,6 +3,16 @@
  "snapshot_date": "2026-10-20",
  "chapters": [
   {
+   "id": 99999,
+   "short": "how-to-get-the-most-out-of-this-book",
+   "title": "How to Get the Most Out of This Book",
+   "updated": "2026-10-24T00:00:00.000Z",
+   "len": 10923,
+   "published": 1,
+   "order": 0,
+   "file": "how-to-get-the-most-out-of-this-book.html"
+  },
+  {
    "id": 10458,
    "short": "chapter_4_research_m",
    "title": "Part I: Intro to Psychology",
