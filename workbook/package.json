@@ -1,0 +1,11 @@
+{
+  "name": "edcor310-workbook",
+  "private": true,
+  "description": "Builds the EDCOR 310 course workbook PDF",
+  "dependencies": {
+    "@fontsource/kalam": "5.0.13",
+    "@fontsource/lato": "5.0.20",
+    "@fontsource/roboto-condensed": "5.0.14",
+    "playwright": "1.63.0"
+  }
+}
