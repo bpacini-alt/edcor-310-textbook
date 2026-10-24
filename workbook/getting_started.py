@@ -68,7 +68,7 @@ HOW = page('''
       <h2>Two habits do the most for your memory</h2>
       <ul>
         <li><b>The warm-up.</b> Before class starts, write what you remember from last time without looking. Pulling ideas out of memory makes them stick better than rereading.</li>
-        <li><b>The 48-hour check.</b> Two days later, cover the page and see what you can still recall. Then cover the answers and retry your tricky practice questions. Coming back after a gap is what makes learning last.</li>
+        <li><b>The 48-hour check.</b> Two days later, cover both pages and see what you can still recall. Then cover the answers and retry your tricky practice questions. Coming back after a gap is what makes learning last.</li>
       </ul>
       <h2 style="margin-top:12px">Rate yourself at the end</h2>
       <p>Each Class Notes page ends with a short self-check: did these notes help you make sense of the ideas, remember them,

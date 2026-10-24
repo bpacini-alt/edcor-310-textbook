@@ -84,7 +84,7 @@ def toc():
     return f'''<div class="page toc"><div class="code">EDCOR <b>310</b></div><h1>Table of Contents</h1><div class="gs"><b>Getting Started</b><span>How to Use This Workbook <i>i</i></span><span>Reading an APA Citation <i>ii</i></span><span>Example Class Notes <i>iii&ndash;iv</i></span></div>
 <table><tr><th class="none"></th><th colspan="2" class="group">Class Notes</th><th class="none"></th><th class="none"></th></tr>
 <tr><th class="wk">Week</th><th>Day 1</th><th>Day 2</th><th>99 Studies</th><th>Paper of<br>the Week</th></tr>{rows}</table>
-<p class="note">Numbers are page numbers. Class notes are front and back.</p>
+<p class="note">Numbers are page numbers. Each class day is a two-page spread.</p>
 <div class="lined"><b>Course Synthesis</b><span class="dots"></span><span>Pg. {PAGE[("synth", 0)]}</span></div></div>'''
 
 
