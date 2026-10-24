@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edit textbook prose</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f6f8;color:#1d2730;font:15px system-ui,-apple-system,"Segoe UI",sans-serif}
+header{padding:13px 18px;background:#17324d;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px}
+header h1{margin:0;font:700 19px Georgia,"Times New Roman",serif}header span{font-size:12px;opacity:.8}
+main{max-width:1200px;margin:0 auto;padding:14px 16px}
+.toolbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+button{border:1px solid #b9c6d1;background:#fff;border-radius:6px;padding:8px 10px;cursor:pointer;font:600 13px system-ui}
+button:hover{background:#eaf1f7}button:disabled{opacity:.55;cursor:wait}
+#save{margin-left:auto;background:#1f6f47;color:#fff;border-color:#1f6f47}#save:hover{background:#185b39}
+#status{font-size:13px;color:#53616c;min-width:130px;text-align:right}.error{color:#a33a30!important}
+iframe{display:block;width:100%;height:calc(100vh - 135px);min-height:500px;border:1px solid #cbd5dd;border-radius:8px;background:white}
+.hint{margin:0 0 10px;font-size:13px;color:#5d6972}
+</style>
+</head>
+<body>
+<header><h1 id="title">Textbook editor</h1><span>Private author access</span></header>
+<main>
+<p class="hint">Edit the page text below. Save publishes your changes to the live book.</p>
+<div class="toolbar" aria-label="Text formatting">
+<button type="button" data-command="bold"><b>Bold</b></button>
+<button type="button" data-command="italic"><i>Italic</i></button>
+<button type="button" data-command="formatBlock" data-value="h2">Heading</button>
+<button type="button" data-command="formatBlock" data-value="p">Paragraph</button>
+<button type="button" data-command="insertUnorderedList">Bulleted list</button>
+<button type="button" data-command="createLink">Link</button>
+<button type="button" id="save" disabled>Save and publish</button>
+<span id="status">Loading page…</span>
+</div>
+<iframe id="page" title="Editable textbook page" sandbox="allow-same-origin" referrerpolicy="no-referrer"></iframe>
+</main>
+<script>
+(function(){
+"use strict";
+var params=new URLSearchParams(location.search);
+var book=params.get("book")||"", path=params.get("path")||"";
+var frame=document.getElementById("page"), title=document.getElementById("title");
+var status=document.getElementById("status"), save=document.getElementById("save");
+var state=null, root=null, frameDoc=null;
+function showStatus(message,error){status.textContent=message;status.className=error?"error":""}
+function api(method,payload){
+ var options={method:method,headers:{}};
+ if(payload){options.headers["Content-Type"]="application/json";options.body=JSON.stringify(payload)}
+ var url="/editor/api";
+ if(method==="GET") url+="?book="+encodeURIComponent(book)+"&path="+encodeURIComponent(path);
+ return fetch(url,options).then(function(response){
+  return response.json().catch(function(){return {}}).then(function(data){
+   if(!response.ok){var e=new Error(data.error||("Request failed ("+response.status+")"));e.status=response.status;throw e}
+   return data;
+  });
+ });
+}
+function addBase(html){
+ var base='<base href="'+location.origin+'/">';
+ if(/<head[^>]*>/i.test(html)) return html.replace(/<head[^>]*>/i,function(m){return m+base});
+ return base+html;
+}
+function cleanRoot(node){
+ var copy=node.cloneNode(true);
+ copy.removeAttribute("contenteditable");copy.removeAttribute("spellcheck");
+ copy.querySelectorAll("[contenteditable]").forEach(function(n){n.removeAttribute("contenteditable")});
+ copy.querySelectorAll("script").forEach(function(n){n.remove()});
+ copy.querySelectorAll("*").forEach(function(n){
+  Array.from(n.attributes).forEach(function(a){
+   if(/^on/i.test(a.name)) n.removeAttribute(a.name);
+   if((a.name==="href"||a.name==="src"||a.name==="xlink:href")&&/^\s*javascript:/i.test(a.value)) n.removeAttribute(a.name);
+  });
+ });
+ return copy.innerHTML;
+}
+function serializeDocument(doc){
+ return "<!doctype html>\n"+doc.documentElement.outerHTML;
+}
+function initialize(){
+ frameDoc=frame.contentDocument;
+ root=frameDoc&&frameDoc.querySelector(".etb");
+ if(!root){showStatus("This page has no editable text area.",true);return}
+ root.setAttribute("contenteditable","true");
+ root.setAttribute("spellcheck","true");
+ root.focus();
+ frameDoc.addEventListener("click",function(event){
+  if(event.target.closest("a")) event.preventDefault();
+ },true);
+ frameDoc.addEventListener("submit",function(event){event.preventDefault()},true);
+ save.disabled=false;showStatus("Ready to edit.");
+}
+function load(){
+ if(!/^(econ-150|science-of-learning)$/.test(book)||!/^etb-live\/[^/]+\.html$/.test(path)){
+  showStatus("Invalid page link.",true);return;
+ }
+ api("GET").then(function(data){
+  state=data;
+  var doc=new DOMParser().parseFromString(data.live,"text/html");
+  title.textContent="Edit: "+((doc.querySelector("h1")||{}).textContent||data.title||path.split("/").pop()).trim();
+  frame.onload=initialize;
+  frame.srcdoc=addBase(data.live);
+ }).catch(function(error){showStatus(error.message,true)});
+}
+document.querySelectorAll("[data-command]").forEach(function(button){
+ button.addEventListener("mousedown",function(event){event.preventDefault()});
+ button.addEventListener("click",function(){
+  if(!frameDoc||!root)return;
+  root.focus();
+  var command=button.dataset.command;
+  if(command==="createLink"){
+   var url=prompt("Enter the link address:","https://");
+   if(url) frameDoc.execCommand(command,false,url);
+  }else frameDoc.execCommand(command,false,button.dataset.value||null);
+ });
+});
+save.addEventListener("click",function(){
+ if(!state||!root)return;
+ save.disabled=true;showStatus("Publishing…");
+ try{
+  var edited=cleanRoot(root);
+  var liveDoc=new DOMParser().parseFromString(state.live,"text/html");
+  var liveRoot=liveDoc.querySelector(".etb");
+  var sourceDoc=new DOMParser().parseFromString(state.source,"text/html");
+  var sourceRoot=sourceDoc.querySelector(".etb");
+  if(!liveRoot||!sourceRoot)throw new Error("Could not locate the chapter text.");
+  liveRoot.innerHTML=edited;sourceRoot.innerHTML=edited;
+  var liveContent=serializeDocument(liveDoc);
+  var sourceContent=book==="econ-150"?liveContent:sourceDoc.body.innerHTML;
+  api("POST",{book:book,path:path,headSha:state.headSha,sourceSha:state.sourceSha,liveSha:state.liveSha,sourceContent:sourceContent,liveContent:liveContent})
+   .then(function(result){
+    state.headSha=result.headSha;state.sourceSha=result.sourceSha;state.liveSha=result.liveSha;
+    state.source=sourceContent;state.live=liveContent;
+    showStatus("Published. The live page is updating.");
+   })
+   .catch(function(error){showStatus(error.status===409?"This page changed elsewhere. Reload before saving.":error.message,true)})
+   .finally(function(){save.disabled=false});
+ }catch(error){showStatus(error.message,true);save.disabled=false}
+});
+load();
+})();
+</script>
+</body>
+</html>
