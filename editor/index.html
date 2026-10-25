@@ -60,11 +60,14 @@ function addBase(html){
  if(/<head[^>]*>/i.test(html)) return html.replace(/<head[^>]*>/i,function(m){return m+base});
  return base+html;
 }
-function cleanRoot(node){
+// Scripts the page already had (progress bars, figures, widgets) are kept. Any other
+// script, such as one pasted in, is removed. The editing frame is sandboxed, so page
+// scripts never run while editing.
+function cleanRoot(node,keepScripts){
  var copy=node.cloneNode(true);
  copy.removeAttribute("contenteditable");copy.removeAttribute("spellcheck");
  copy.querySelectorAll("[contenteditable]").forEach(function(n){n.removeAttribute("contenteditable")});
- copy.querySelectorAll("script").forEach(function(n){n.remove()});
+ copy.querySelectorAll("script").forEach(function(n){if(!keepScripts||!keepScripts.has(n.textContent))n.remove()});
  copy.querySelectorAll("*").forEach(function(n){
   Array.from(n.attributes).forEach(function(a){
    if(/^on/i.test(a.name)) n.removeAttribute(a.name);
@@ -75,6 +78,25 @@ function cleanRoot(node){
 }
 function serializeDocument(doc){
  return "<!doctype html>\n"+doc.documentElement.outerHTML;
+}
+// A page fragment (EDCOR 310's etb-live source) is parsed in a <template>, which keeps
+// everything where it was. Parsing it as a whole document would move any <style> or
+// <meta> at the top of the file into <head>, and those would be lost on save.
+function parseFragment(html){
+ var template=document.createElement("template");
+ template.innerHTML=html;
+ return template;
+}
+function countTags(html,tag){
+ return (String(html).match(new RegExp("<"+tag+"\\b","gi"))||[]).length;
+}
+// Last safety check before publishing: a text edit should never remove styles or scripts.
+function checkNothingLost(before,after){
+ ["style","script","link"].forEach(function(tag){
+  if(countTags(after,tag)<countTags(before,tag)){
+   throw new Error("Not published: saving would have removed part of this page's code ("+tag+"). Please report this so the editor can be fixed.");
+  }
+ });
 }
 function initialize(){
  frameDoc=frame.contentDocument;
@@ -117,15 +139,18 @@ save.addEventListener("click",function(){
  if(!state||!root)return;
  save.disabled=true;showStatus("Publishing…");
  try{
-  var edited=cleanRoot(root);
   var liveDoc=new DOMParser().parseFromString(state.live,"text/html");
   var liveRoot=liveDoc.querySelector(".etb");
-  var sourceDoc=new DOMParser().parseFromString(state.source,"text/html");
-  var sourceRoot=sourceDoc.querySelector(".etb");
+  var sourceTemplate=parseFragment(state.source);
+  var sourceRoot=sourceTemplate.content.querySelector(".etb");
   if(!liveRoot||!sourceRoot)throw new Error("Could not locate the chapter text.");
+  var keepScripts=new Set(Array.from(liveRoot.querySelectorAll("script")).map(function(n){return n.textContent}));
+  var edited=cleanRoot(root,keepScripts);
   liveRoot.innerHTML=edited;sourceRoot.innerHTML=edited;
   var liveContent=serializeDocument(liveDoc);
-  var sourceContent=book==="econ-150"?liveContent:sourceDoc.body.innerHTML;
+  var sourceContent=book==="econ-150"?liveContent:sourceTemplate.innerHTML;
+  checkNothingLost(state.live,liveContent);
+  if(book!=="econ-150")checkNothingLost(state.source,sourceContent);
   api("POST",{book:book,path:path,headSha:state.headSha,sourceSha:state.sourceSha,liveSha:state.liveSha,sourceContent:sourceContent,liveContent:liveContent})
    .then(function(result){
     state.headSha=result.headSha;state.sourceSha=result.sourceSha;state.liveSha=result.liveSha;
