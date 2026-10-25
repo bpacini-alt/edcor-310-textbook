@@ -300,16 +300,31 @@ def publish_chapters():
     # supplements get the bar too, with only the Contents button active.
     sequence = [e for e in manifest if html.unescape(e["title"]).startswith("Chapter ")]
     position = {e["file"]: i for i, e in enumerate(sequence)}
+    style_losses = []
     for entry in manifest:
         title = html.unescape(entry["title"])
         fragment = (SRC / entry["file"]).read_text(encoding="utf-8")
         i = position.get(entry["file"])
         prev = sequence[i - 1] if i is not None and i > 0 else None
         nxt = sequence[i + 1] if i is not None and i + 1 < len(sequence) else None
-        (OUT / entry["file"]).write_text(
-            wrap_chapter_page(title, fragment, nav_bar(prev, nxt), entry["file"]),
-            encoding="utf-8",
-        )
+        page = wrap_chapter_page(title, fragment, nav_bar(prev, nxt), entry["file"])
+        # Safety check: a rebuild should never strip styles from a published page. If the
+        # source in etb-live/ has fewer <style> blocks than the page students see, leave the
+        # published page alone and stop, so nobody commits a page that lost its styling.
+        out = OUT / entry["file"]
+        if out.exists():
+            before = len(re.findall(r"<style\b", out.read_text(encoding="utf-8"), flags=re.I))
+            after = len(re.findall(r"<style\b", page, flags=re.I))
+            if after < before:
+                style_losses.append(f"{entry['file']}: published page has {before} style blocks; "
+                                    f"the rebuilt page would have {after}")
+                continue
+        out.write_text(page, encoding="utf-8")
+    if style_losses:
+        sys.exit("STOPPED: rebuilding would remove styles from these pages, so they were left as they are:\n  "
+                 + "\n  ".join(style_losses)
+                 + "\nCopy the missing <style> blocks into the page's etb-live/ file and build again. "
+                   "If you removed a style on purpose, delete the page from site/ first.")
 
 def publish_menu():
     """The Joy of Learning reading menu. menus/joy-of-learning.json is the one place to edit it."""

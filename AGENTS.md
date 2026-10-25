@@ -34,6 +34,8 @@ The website is learning.benjaminpacini.com, served by Cloudflare from the `site/
 
 After changing anything in `etb-live/`, `build/`, `menus/`, or the player, run `python3 build/build_site.py` from the repository root and commit the regenerated `site/` files in the same pull request.
 
+A page's styles must live in its `etb-live/` file, not only in `site/`. The build checks this: if a rebuilt page would have fewer `<style>` blocks than the published one, it leaves that page alone and stops with a message naming it. Copy the missing styles into the `etb-live/` file rather than working around the check.
+
 ## Private prose editor
 
 # Private prose editor
@@ -49,6 +51,8 @@ For each Worker, set these top-level Worker variables and secrets in Cloudflare:
 The two repositories use the same `feedback/worker.js` and `editor/index.html`, but each has its own Access application audience and its own Worker secret. The token is never stored in Git or sent to the browser.
 
 The editor writes to `main` when Benjamin selects **Save and publish**. EDCOR's Worker updates both `etb-live/<page>.html` and its generated `site/<page>.html` in one Git commit. Cloudflare deploys the commit through the repository's existing deployment connection.
+
+The editor changes only page text. It keeps every style, script, and link the page already has, and it refuses to publish if a save would remove any of them. (An earlier version dropped `<style>` blocks at the top of an `etb-live/` file and stripped scripts inside the page; see the October 24, 2026 fix.)
 
 ## Shared between the two books
 
