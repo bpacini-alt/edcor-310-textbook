@@ -60,13 +60,63 @@ body:has(.etb-nav) .etb-ap { bottom: 51px; }
 .etb-tool-claude{background:#fff0e5;color:#c2612b;}
 .etb-tool-name{font-family:sans-serif;font-size:13px;font-weight:700;color:#1a3a5c;}
 .etb-tool-use{font-family:sans-serif;font-size:12px;line-height:1.55;color:#566575;}
-.etb-bank{margin:3rem 0 1rem;padding-top:.5rem;border-top:1px solid #eee;}
-.etb-bank-intro{font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.8;color:#2a2a2a;margin:0 0 1.25rem;}
-.etb-bank-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
-.etb-bank-grid details.etb-retrieval{margin:0;min-width:0;}
-.etb-bank-grid details.etb-retrieval summary{height:100%;box-sizing:border-box;align-items:flex-start;}
-.etb-bank-grid details.etb-retrieval .etb-ret-body{min-height:92px;}
-@media(max-width:620px){.etb-toolgrid,.etb-bank-grid{grid-template-columns:1fr;}}
+/* The practice bank follows the last section directly: no closing rule and padding on that section. */
+.etb-concept:has(+ .etb-bank){margin-bottom:0;padding-bottom:0;border-bottom:none;}
+@media(max-width:620px){.etb-toolgrid{grid-template-columns:1fr;}}
+.htp{margin:3rem 0 1rem;font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#1a1a1a;}
+.htp *{box-sizing:border-box;}
+.htp-head{background:#1a3a5c;border-radius:12px 12px 0 0;padding:1.2rem 1.3rem 1rem;color:#fff;}
+.htp-badge{display:inline-block;background:#0f2740;color:#cdd8e4;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:4px;margin-bottom:.5rem;}
+.htp-title{font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:700;line-height:1.2;margin:0 0 .3rem;color:#fff;}
+.htp-sub{font-size:13.5px;color:#c4d1de;margin:0;line-height:1.5;}
+.htp-tabs{display:none;flex-wrap:wrap;border:1px solid #c2cdd9;border-top:none;background:#eef2f6;}
+.htp.js .htp-tabs{display:flex;}
+.htp-tab{flex:1 1 0;min-width:0;font:inherit;font-size:12.5px;font-weight:600;color:#5a6b7d;background:transparent;border:none;border-bottom:3px solid transparent;padding:.6rem .35rem;cursor:pointer;text-align:center;margin:0;border-radius:0;line-height:1.3;}
+.htp-tab .n{display:block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a98a6;font-weight:700;}
+.htp-tab[aria-selected="true"]{background:#fff;color:#1a3a5c;border-bottom-color:#1a3a5c;}
+.htp-tab.done .n{color:#2a7a4f;}
+.htp-tab:focus-visible{outline:2px solid #1a3a5c;outline-offset:-2px;}
+.htp-body{border:1px solid #c2cdd9;border-top:none;border-radius:0 0 12px 12px;background:#fff;padding:1.1rem 1.2rem 1.3rem;}
+.htp.js .htp-panel{display:none;}
+.htp.js .htp-panel.on{display:block;}
+.htp-panel+.htp-panel{margin-top:2rem;}
+.htp.js .htp-panel+.htp-panel{margin-top:0;}
+.htp-ph{font-family:Georgia,'Times New Roman',serif;font-size:19px;font-weight:700;margin:0 0 .25rem;color:#1a1a1a;line-height:1.3;}
+.htp-blurb{font-size:13.5px;color:#5a6b7d;margin:0 0 1rem;line-height:1.55;}
+.htp-flips{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:0;}
+.htp-flips .etb-flip{min-width:0;}
+.htp-card{border:1px solid #dfe5ec;border-radius:10px;padding:1rem 1.05rem;margin:0 0 .9rem;background:#fff;}
+.htp-ctag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a98a6;margin:0 0 .45rem;}
+.htp-prompt{font-size:15px;font-weight:600;line-height:1.55;margin:0 0 .75rem;color:#1a1a1a;}
+.htp-yourturn .htp-prompt{margin:0;font-weight:400;}
+.htp-opts{display:flex;flex-direction:column;gap:6px;}
+.htp-opt{font:inherit;font-size:14px;text-align:left;line-height:1.45;border:1px solid #c2cdd9;background:#fff;color:#1a1a1a;border-radius:8px;padding:.6rem .8rem;cursor:pointer;margin:0;width:100%;}
+.htp-opt:hover{border-color:#1a3a5c;background:#f7f9fb;}
+.htp-opt:focus-visible{outline:2px solid #1a3a5c;outline-offset:1px;}
+.htp-opt.wrong{border-color:#c0504d;background:#fbeeee;color:#7a2a28;cursor:default;}
+.htp-opt.right{border-color:#2a7a4f;background:#eaf5ee;color:#1d4d33;font-weight:600;}
+.htp-mcq.solved .htp-opt:not(.right){opacity:.55;cursor:default;}
+.htp-fb{font-size:13.5px;line-height:1.55;margin-top:.6rem;border-radius:8px;}
+.htp-fb:empty{display:none;}
+.htp-fb.ok{background:#eaf5ee;color:#1d4d33;padding:.6rem .8rem;}
+.htp-fb.no{background:#fbeeee;color:#7a2a28;padding:.6rem .8rem;}
+.htp-mrow{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:10px;align-items:center;padding:.65rem 0;border-bottom:1px solid #eef2f6;}
+.htp-mrow:first-child{padding-top:0;}
+.htp-mdesc{font-size:14px;line-height:1.5;color:#26323f;display:flex;gap:9px;margin:0;}
+.htp-mn{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#eef2f6;color:#1a3a5c;font-size:11.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;margin-top:1px;}
+.htp-mpick{display:flex;align-items:center;gap:6px;}
+.htp-mpick select{flex:1;min-width:0;font:inherit;font-size:14px;padding:.45rem .5rem;border:1px solid #b9c6d4;border-radius:6px;background:#fff;color:#1a1a1a;margin:0;height:auto;}
+.htp-mmark{width:18px;flex-shrink:0;font-weight:700;font-size:15px;text-align:center;}
+.htp-mrow.right select{border-color:#2a7a4f;background:#eaf5ee;}
+.htp-mrow.right .htp-mmark{color:#2a7a4f;}
+.htp-mrow.wrong select{border-color:#c0504d;background:#fbeeee;}
+.htp-mrow.wrong .htp-mmark{color:#c0504d;}
+.htp-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem;}
+.htp-btn{font:inherit;font-size:13.5px;font-weight:600;border:1px solid #1a3a5c;background:#1a3a5c;color:#fff;border-radius:8px;padding:.55rem 1rem;cursor:pointer;margin:0;}
+.htp-btn.sec{background:#fff;color:#1a3a5c;}
+.htp-progress{font-size:12.5px;color:#5a6b7d;text-align:right;margin-top:.5rem;}
+.htp-progress:empty{display:none;}
+@media(max-width:620px){.htp-mrow{grid-template-columns:1fr;gap:6px;}.htp-mpick{padding-left:31px;}.htp-body{padding:1rem .85rem 1.1rem;}.htp-tab{font-size:11.5px;}.htp-tab .n{font-size:8.5px;}}
 </style>
 <style>.etb .etb-ak-pop{margin-left:var(--ak-shift,0px)}.etb .etb-ak-pop::before{left:calc(50% - var(--ak-shift,0px))}.etb [data-tip]::after{margin-left:var(--tip-shift,0px)}</style>
 <div class="etb">
@@ -270,29 +320,59 @@ body:has(.etb-nav) .etb-ap { bottom: 51px; }
     </div>
   </div>
 
-  <div class="etb-bank">
-    <div class="etb-slbl">Practice bank</div>
-    <div class="etb-bank-intro">Close the book before you begin. Write or say your answer, then open the check. These questions practice both sides of learning: performing a tool and deciding which tool fits the situation.</div>
-    <div class="etb-bank-grid">
-      <details class="etb-retrieval"><summary><span class="etb-ret-badge">1 · Retrieve</span>Why can rereading and highlighting feel effective while producing weak learning?<span class="etb-ret-arrow">▸</span></summary><div class="etb-ret-body"><p>A strong answer distinguishes familiarity from retrieval. Rereading and highlighting keep the material visible and create fluency, but by themselves they do not require you to retrieve, explain, or apply the idea.</p></div></details>
-      <details class="etb-retrieval"><summary><span class="etb-ret-badge">2 · Choose</span>A student can perform a framework when told which one to use, but gets stuck in a new case. What practice is missing?<span class="etb-ret-arrow">▸</span></summary><div class="etb-ret-body"><p>The student needs practice choosing a tool, not only performing it. Interleaving, transfer, and varied applications help develop that conditional judgment.</p></div></details>
-      <details class="etb-retrieval"><summary><span class="etb-ret-badge">3 · Note</span>Turn this weak note into a useful one: “Spaced practice means studying over time.”<span class="etb-ret-arrow">▸</span></summary><div class="etb-ret-body"><p>Add the mechanism, an example, and a question: “Spread study and retrieval across days or weeks instead of cramming. Returning after some forgetting makes recall effortful, which strengthens later access. How could a teacher build this into ordinary classwork?”</p></div></details>
-      <details class="etb-retrieval"><summary><span class="etb-ret-badge">4 · Plan</span>Design a 15-minute study loop for a chapter you finished yesterday.<span class="etb-ret-arrow">▸</span></summary><div class="etb-ret-body"><p>Begin closed-book with a brain dump or a few questions; check and correct; explain one idea in your own words; apply it to a new case; then schedule another retrieval session several days later.</p></div></details>
-      <details class="etb-retrieval"><summary><span class="etb-ret-badge">5 · AI coach</span>Write a prompt that makes an AI increase your effort instead of doing the thinking for you.<span class="etb-ret-arrow">▸</span></summary><div class="etb-ret-body"><p>A strong prompt asks for one question at a time, no answer before your response, hints after an error, explanation of your reasoning, mixed chapters, and a new teaching or discipleship application.</p></div></details>
-      <details class="etb-retrieval"><summary><span class="etb-ret-badge">6 · Teach</span>Design one activity that makes another learner retrieve, elaborate, and apply an idea.<span class="etb-ret-arrow">▸</span></summary><div class="etb-ret-body"><p>For example: ask the learner to explain the idea without notes, connect it to something they already know, and use it to respond to a new classroom, leadership, or discipleship situation. Give feedback after the attempt.</p></div></details>
-    </div>
-  </div>
+  <div class="etb-bank htp" id="practice">
+<div class="etb-slbl">Practice bank</div>
+<div class="htp-head"><div class="htp-badge">Practice</div><div class="htp-title">Put the guide to work</div><p class="htp-sub">Four rounds, from words to real situations. Try each one before you check.</p></div>
+<div class="htp-tabs" role="tablist">
+<button type="button" class="htp-tab" role="tab" data-tab="1"><span class="n">Round 1</span>Vocabulary</button>
+<button type="button" class="htp-tab" role="tab" data-tab="2"><span class="n">Round 2</span>Matching</button>
+<button type="button" class="htp-tab" role="tab" data-tab="3"><span class="n">Round 3</span>Comprehension</button>
+<button type="button" class="htp-tab" role="tab" data-tab="4"><span class="n">Round 4</span>Scenarios</button>
+</div><div class="htp-body">
+<section class="htp-panel" data-panel="1"><h3 class="htp-ph">Round 1 · Vocabulary</h3><p class="htp-blurb">Say each definition out loud, or write it down, before you tap the card. If you were wrong or vague, come back to that card later.</p><div class="etb-flipgrid htp-flips"><div class="etb-flip" tabindex="0" role="button" aria-label="Vocabulary card: retrieval practice"><div class="etb-flip-front"><div class="etb-flip-front-term">Retrieval practice</div><div class="etb-flip-front-hint">tap to reveal ↓</div></div><div class="etb-flip-back"><div class="etb-flip-back-def">Pulling an idea out of your memory before you look at the answer.</div><div class="etb-flip-back-label">tap to hide ↑</div></div></div><div class="etb-flip" tabindex="0" role="button" aria-label="Vocabulary card: spaced practice"><div class="etb-flip-front"><div class="etb-flip-front-term">Spaced practice</div><div class="etb-flip-front-hint">tap to reveal ↓</div></div><div class="etb-flip-back"><div class="etb-flip-back-def">Coming back to material over several days or weeks instead of studying it all in one long session.</div><div class="etb-flip-back-label">tap to hide ↑</div></div></div><div class="etb-flip" tabindex="0" role="button" aria-label="Vocabulary card: blocked practice"><div class="etb-flip-front"><div class="etb-flip-front-term">Blocked practice</div><div class="etb-flip-front-hint">tap to reveal ↓</div></div><div class="etb-flip-back"><div class="etb-flip-back-def">Practicing one kind of problem many times in a row. It helps early, while you learn to perform a tool.</div><div class="etb-flip-back-label">tap to hide ↑</div></div></div><div class="etb-flip" tabindex="0" role="button" aria-label="Vocabulary card: interleaving"><div class="etb-flip-front"><div class="etb-flip-front-term">Interleaving</div><div class="etb-flip-front-hint">tap to reveal ↓</div></div><div class="etb-flip-back"><div class="etb-flip-back-def">Mixing related topics or problem types so you have to decide which one applies.</div><div class="etb-flip-back-label">tap to hide ↑</div></div></div><div class="etb-flip" tabindex="0" role="button" aria-label="Vocabulary card: dual coding"><div class="etb-flip-front"><div class="etb-flip-front-term">Dual coding</div><div class="etb-flip-front-hint">tap to reveal ↓</div></div><div class="etb-flip-back"><div class="etb-flip-back-def">Pairing words with a useful visual, such as a timeline, a diagram, or a labeled sketch.</div><div class="etb-flip-back-label">tap to hide ↑</div></div></div><div class="etb-flip" tabindex="0" role="button" aria-label="Vocabulary card: elaboration"><div class="etb-flip-front"><div class="etb-flip-front-term">Elaboration</div><div class="etb-flip-front-hint">tap to reveal ↓</div></div><div class="etb-flip-back"><div class="etb-flip-back-def">Connecting a new idea to what you already know by asking why, how, and what counts as an example or a non-example.</div><div class="etb-flip-back-label">tap to hide ↑</div></div></div><div class="etb-flip" tabindex="0" role="button" aria-label="Vocabulary card: fluency"><div class="etb-flip-front"><div class="etb-flip-front-term">Fluency</div><div class="etb-flip-front-hint">tap to reveal ↓</div></div><div class="etb-flip-back"><div class="etb-flip-back-def">The feeling that material is easy to process. It is easy to mistake for learning.</div><div class="etb-flip-back-label">tap to hide ↑</div></div></div><div class="etb-flip" tabindex="0" role="button" aria-label="Vocabulary card: retrieval cue"><div class="etb-flip-front"><div class="etb-flip-front-term">Retrieval cue</div><div class="etb-flip-front-hint">tap to reveal ↓</div></div><div class="etb-flip-back"><div class="etb-flip-back-def">A question, phrase, or situation that helps you bring an idea back to mind.</div><div class="etb-flip-back-label">tap to hide ↑</div></div></div><div class="etb-flip" tabindex="0" role="button" aria-label="Vocabulary card: transfer"><div class="etb-flip-front"><div class="etb-flip-front-term">Transfer</div><div class="etb-flip-front-hint">tap to reveal ↓</div></div><div class="etb-flip-back"><div class="etb-flip-back-def">Using what you learned in a new situation.</div><div class="etb-flip-back-label">tap to hide ↑</div></div></div><div class="etb-flip" tabindex="0" role="button" aria-label="Vocabulary card: practice beyond mastery"><div class="etb-flip-front"><div class="etb-flip-front-term">Practice beyond mastery</div><div class="etb-flip-front-hint">tap to reveal ↓</div></div><div class="etb-flip-back"><div class="etb-flip-back-def">Changing the conditions once you can use a tool consistently: no cues, a new case, or teaching it to someone else.</div><div class="etb-flip-back-label">tap to hide ↑</div></div></div></div></section>
+<section class="htp-panel" data-panel="2"><h3 class="htp-ph">Round 2 · Matching</h3><p class="htp-blurb">Match each study move to the strategy it uses. Each strategy is used once.</p><div class="htp-card htp-match">
+<div class="htp-mrow" data-ans="Retrieval practice"><label class="htp-mdesc" for="htp-m1"><span class="htp-mn">1</span>You close the book and write down everything you remember from the chapter, then check what you missed.</label><div class="htp-mpick"><select id="htp-m1"><option value="">Choose…</option><option>Retrieval practice</option><option>Spaced practice</option><option>Interleaving</option><option>Dual coding</option><option>Elaboration</option><option>Transfer</option></select><span class="htp-mmark" aria-hidden="true"></span></div></div>
+<div class="htp-mrow" data-ans="Spaced practice"><label class="htp-mdesc" for="htp-m2"><span class="htp-mn">2</span>You study a chapter on Monday, quiz yourself on it Wednesday, and quiz yourself again the next week.</label><div class="htp-mpick"><select id="htp-m2"><option value="">Choose…</option><option>Retrieval practice</option><option>Spaced practice</option><option>Interleaving</option><option>Dual coding</option><option>Elaboration</option><option>Transfer</option></select><span class="htp-mmark" aria-hidden="true"></span></div></div>
+<div class="htp-mrow" data-ans="Interleaving"><label class="htp-mdesc" for="htp-m3"><span class="htp-mn">3</span>Your review set mixes problems from three chapters, so for each one you first have to decide which framework fits.</label><div class="htp-mpick"><select id="htp-m3"><option value="">Choose…</option><option>Retrieval practice</option><option>Spaced practice</option><option>Interleaving</option><option>Dual coding</option><option>Elaboration</option><option>Transfer</option></select><span class="htp-mmark" aria-hidden="true"></span></div></div>
+<div class="htp-mrow" data-ans="Dual coding"><label class="htp-mdesc" for="htp-m4"><span class="htp-mn">4</span>Next to your written explanation of a process, you draw a labeled diagram of its steps.</label><div class="htp-mpick"><select id="htp-m4"><option value="">Choose…</option><option>Retrieval practice</option><option>Spaced practice</option><option>Interleaving</option><option>Dual coding</option><option>Elaboration</option><option>Transfer</option></select><span class="htp-mmark" aria-hidden="true"></span></div></div>
+<div class="htp-mrow" data-ans="Elaboration"><label class="htp-mdesc" for="htp-m5"><span class="htp-mn">5</span>You ask why a claim is true, how it connects to something you already know, and what a non-example would look like.</label><div class="htp-mpick"><select id="htp-m5"><option value="">Choose…</option><option>Retrieval practice</option><option>Spaced practice</option><option>Interleaving</option><option>Dual coding</option><option>Elaboration</option><option>Transfer</option></select><span class="htp-mmark" aria-hidden="true"></span></div></div>
+<div class="htp-mrow" data-ans="Transfer"><label class="htp-mdesc" for="htp-m6"><span class="htp-mn">6</span>You take an idea from class and use it to plan a lesson for a group you have never taught.</label><div class="htp-mpick"><select id="htp-m6"><option value="">Choose…</option><option>Retrieval practice</option><option>Spaced practice</option><option>Interleaving</option><option>Dual coding</option><option>Elaboration</option><option>Transfer</option></select><span class="htp-mmark" aria-hidden="true"></span></div></div>
+<div class="htp-btns"><button type="button" class="htp-btn" data-act="check">Check my matches</button><button type="button" class="htp-btn sec" data-act="reset">Start over</button></div><div class="htp-fb" aria-live="polite"></div></div></section>
+<section class="htp-panel" data-panel="3"><h3 class="htp-ph">Round 3 · Comprehension</h3><p class="htp-blurb">Pick an answer. If it is wrong, read why and try again.</p>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Question 1</p><p class="htp-prompt">According to this guide, why do rereading and highlighting do so little on their own?</p><div class="htp-opts"><button type="button" class="htp-opt" data-fb="Time isn&#x27;t the problem. You can spend hours rereading and still learn little, because rereading asks so little of your memory.">They take too much time.</button><button type="button" class="htp-opt" data-ok="1" data-fb="Right. They keep the page in front of you, so the material feels familiar. Nothing asks you to retrieve, explain, or use the idea.">They take little effort and leave you feeling that you&#x27;ve learned.</button><button type="button" class="htp-opt" data-fb="The guide doesn&#x27;t tie them to any kind of learner. The problem is the same for everyone: they take little effort and create false confidence.">They only help certain kinds of learners.</button><button type="button" class="htp-opt" data-fb="They don&#x27;t erase anything. They just don&#x27;t do much to make the new idea retrievable later.">They make you forget what you already knew.</button></div><div class="htp-fb" aria-live="polite"></div></div>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Question 2</p><p class="htp-prompt">You recognize a term when you see it, but you can&#x27;t explain it with the book closed. What is going on?</p><div class="htp-opts"><button type="button" class="htp-opt" data-ok="1" data-fb="Right. The idea feels recognizable, which is fluency. The test is whether you can bring it back and explain it without the page.">You have familiarity, not learning.</button><button type="button" class="htp-opt" data-fb="Durable learning means you can retrieve, explain, and use the idea later. Recognizing it isn&#x27;t enough.">You have durable learning.</button><button type="button" class="htp-opt" data-fb="Interleaving means mixing problem types. This is about the gap between recognizing and recalling.">You are interleaving.</button><button type="button" class="htp-opt" data-fb="Transfer means using an idea in a new situation. You can&#x27;t transfer an idea you can&#x27;t yet retrieve.">You have reached transfer.</button></div><div class="htp-fb" aria-live="polite"></div></div>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Question 3</p><p class="htp-prompt">When does the guide suggest you start interleaving?</p><div class="htp-opts"><button type="button" class="htp-opt" data-fb="Too early. At first, blocked practice helps you learn to perform the tool. Mixing comes once you can use it consistently.">On the first day you meet a new tool.</button><button type="button" class="htp-opt" data-fb="Mixing helps most when it is spread out over time, not crammed into one night.">Only the night before the exam.</button><button type="button" class="htp-opt" data-fb="Blocked practice feels smoother, but it doesn&#x27;t train you to choose the right tool. Interleaving does.">Never. Blocked practice is always better.</button><button type="button" class="htp-opt" data-ok="1" data-fb="Right. First get consistent with the tool. Then mix, so you practice choosing which tool fits.">Once you can use each tool consistently.</button></div><div class="htp-fb" aria-live="polite"></div></div>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Question 4</p><p class="htp-prompt">Which request to an AI tool best fits this guide&#x27;s advice?</p><div class="htp-opts"><button type="button" class="htp-opt" data-fb="A summary lets the tool do the thinking. You end up recognizing ideas instead of retrieving them.">“Summarize this chapter in five bullet points.”</button><button type="button" class="htp-opt" data-fb="Making notes is part of the thinking. If the tool writes them, you skip the part that builds memory.">“Write my study notes for me.”</button><button type="button" class="htp-opt" data-ok="1" data-fb="Right. This makes you retrieve first. You can add: give me a hint if I&#x27;m wrong, and ask me to explain my reasoning.">“Quiz me one question at a time, and don&#x27;t show the answer until I respond.”</button><button type="button" class="htp-opt" data-fb="That is highlighting with extra steps. It keeps the page in front of you instead of asking you to recall it.">“Highlight the most important sentences.”</button></div><div class="htp-fb" aria-live="polite"></div></div>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Question 5</p><p class="htp-prompt">Which note will help you most a week from now?</p><div class="htp-opts"><button type="button" class="htp-opt" data-ok="1" data-fb="Right. A good note keeps the idea, the reason, an example, and a question you can try to answer without looking.">A note with the idea in your own words, why it works, an example, and a question you can answer later.</button><button type="button" class="htp-opt" data-fb="It&#x27;s accurate but thin. It leaves out why spacing works and how you would use it.">“Spaced practice = studying over time.”</button><button type="button" class="htp-opt" data-fb="It marks the idea as important, but it doesn&#x27;t say anything you could think with later.">“SPACED PRACTICE — important!!”</button><button type="button" class="htp-opt" data-fb="Copying keeps the author&#x27;s words, not your understanding. You also skip the work of putting it in your own words.">A paragraph copied word for word from the book.</button></div><div class="htp-fb" aria-live="polite"></div></div>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Question 6</p><p class="htp-prompt">What does “practice beyond mastery” mean?</p><div class="htp-opts"><button type="button" class="htp-opt" data-fb="Getting it right a few times is where this kind of practice starts, not where it ends.">Stop once you get it right three times in a row.</button><button type="button" class="htp-opt" data-fb="Repeating the same problems mostly builds fluency. Practice beyond mastery changes the problems.">Keep doing the same problems until they feel easy.</button><button type="button" class="htp-opt" data-fb="Moving on is fine, but this is about stretching what you already know, not dropping it.">Skip ahead to harder chapters.</button><button type="button" class="htp-opt" data-ok="1" data-fb="Right. Once you can use a tool, you make the practice harder in new ways so you can use the tool more flexibly.">Change the conditions: explain it without cues, compare it with a nearby idea, teach it, or use it in a new case.</button></div><div class="htp-fb" aria-live="polite"></div></div>
+</section>
+<section class="htp-panel" data-panel="4"><h3 class="htp-ph">Round 4 · Scenarios</h3><p class="htp-blurb">Each student below is working hard, but something isn't working. Decide what you would tell them before you look at the choices.</p>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Scenario 1</p><p class="htp-prompt">Jane studies for hours. She reads each chapter slowly and highlights the important ideas, but her quiz scores aren&#x27;t where she wants them. What should she change first?</p><div class="htp-opts"><button type="button" class="htp-opt" data-fb="A better highlighting system still keeps the page in front of her. Her memory never has to do the work.">Highlight more carefully, using a different color for each kind of idea.</button><button type="button" class="htp-opt" data-fb="Rereading the night before builds fluency, and it fades fast. It will feel like progress without much payoff.">Reread her highlights several times the night before each quiz.</button><button type="button" class="htp-opt" data-ok="1" data-fb="Right. This adds retrieval and spacing. The guide&#x27;s tip fits too: never leave a highlight by itself, and write why it matters.">Turn her highlights into questions, answer them with the book closed, and come back to them over several days.</button><button type="button" class="htp-opt" data-fb="More time with a weak strategy usually means more of the same results. The method needs to change, not the hours.">Study more hours each week, the same way.</button></div><div class="htp-fb" aria-live="polite"></div></div>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Scenario 2</p><p class="htp-prompt">Marcus works every practice problem at the end of each chapter, and he gets them right. On the midterm, which mixes chapters, he often can&#x27;t tell which framework a question needs. What would help most?</p><div class="htp-opts"><button type="button" class="htp-opt" data-ok="1" data-fb="Right. That is interleaving. He can perform each tool already. Now he needs practice choosing the right one.">Mix problems from several chapters, so he has to decide which framework fits each one.</button><button type="button" class="htp-opt" data-fb="He can already do them when he knows which chapter they come from. Doing more of the same won&#x27;t teach him to choose.">Do the end-of-chapter problems again until they feel automatic.</button><button type="button" class="htp-opt" data-fb="A summary sheet can help him organize, but reading it is still recognition. He needs practice making the choice.">Make one big summary sheet of every framework.</button><button type="button" class="htp-opt" data-fb="Focusing on one chapter is blocked practice again. The midterm problem is telling chapters apart.">Practice only the chapter he finds hardest.</button></div><div class="htp-fb" aria-live="polite"></div></div>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Scenario 3</p><p class="htp-prompt">Sofia crams the night before each quiz and does fine. A month later, on the final, most of it is gone. What should she try?</p><div class="htp-opts"><button type="button" class="htp-opt" data-fb="Cramming can get her through tomorrow&#x27;s quiz. It does little for what she remembers a month later.">Cram longer the night before the final.</button><button type="button" class="htp-opt" data-fb="Slow rereading still builds familiarity rather than recall, and doing it once won&#x27;t hold up for a month.">Reread all of her notes once more, slowly.</button><button type="button" class="htp-opt" data-fb="That might make studying more pleasant, but it doesn&#x27;t change how well the material sticks.">Switch to studying with music she likes.</button><button type="button" class="htp-opt" data-ok="1" data-fb="Right. That is spaced practice. Coming back after some forgetting makes recall harder, and that effort is what makes it last.">Spread short retrieval sessions over days and weeks, returning to old material after she has partly forgotten it.</button></div><div class="htp-fb" aria-live="polite"></div></div>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Scenario 4</p><p class="htp-prompt">Ethan listens to each chapter on his walk to campus. In class, when the teacher asks a question, he remembers little of what he heard. What is the best fix?</p><div class="htp-opts"><button type="button" class="htp-opt" data-fb="Listening is a fine way to meet the material. The missing piece is what he does after.">Stop listening and only read the text.</button><button type="button" class="htp-opt" data-ok="1" data-fb="Right. The guide suggests exactly this: use audio for first exposure, then retrieve something when you arrive.">Keep listening, then spend a few minutes when he arrives recalling the main ideas without the audio.</button><button type="button" class="htp-opt" data-fb="A second listen adds familiarity, not recall. It will feel easier and still fade.">Listen to each chapter twice.</button><button type="button" class="htp-opt" data-fb="Covering more chapters without retrieving them just spreads the same problem wider.">Speed up the audio so he can fit in more chapters.</button></div><div class="htp-fb" aria-live="polite"></div></div>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Scenario 5</p><p class="htp-prompt">Priya asks an AI to summarize every chapter and reads the summaries carefully. She feels prepared, but on the exam she struggles to explain the ideas. What should she change?</p><div class="htp-opts"><button type="button" class="htp-opt" data-fb="Shorter summaries are easier to read, which makes the illusion of learning even stronger.">Ask for shorter, simpler summaries.</button><button type="button" class="htp-opt" data-fb="That is rereading again. It builds recognition, not the ability to explain.">Read each summary twice before the exam.</button><button type="button" class="htp-opt" data-fb="The tool isn&#x27;t the problem. The job she gives it is.">Stop using AI entirely.</button><button type="button" class="htp-opt" data-ok="1" data-fb="Right. The guide puts it this way: if the tool does all the thinking, you are practicing watching the tool think.">Ask the AI to quiz her one question at a time and to ask her to explain her reasoning before showing the answer.</button></div><div class="htp-fb" aria-live="polite"></div></div>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Scenario 6</p><p class="htp-prompt">Brother Ruiz teaches a youth Sunday School class. Each week he opens by reading a summary of last week&#x27;s lesson. The youth nod along, but a month later they remember little. What could he do instead?</p><div class="htp-opts"><button type="button" class="htp-opt" data-ok="1" data-fb="Right. This adds retrieval and elaboration, and coming back week after week adds spacing. The same strategies work for any learner, not just for you.">Open by asking the youth to recall last week&#x27;s main idea in their own words, then ask how it applied during their week.</button><button type="button" class="htp-opt" data-fb="More detail is still something the youth listen to. They still aren&#x27;t recalling anything themselves.">Read a longer, more detailed summary.</button><button type="button" class="htp-opt" data-fb="Reading a summary is still review by recognition. The youth need a chance to recall it themselves.">Hand out last week&#x27;s summary to read silently.</button><button type="button" class="htp-opt" data-fb="Skipping review gives up a cheap chance at retrieval and spacing. A short recall question at the start does a lot.">Skip review and move straight to the new lesson.</button></div><div class="htp-fb" aria-live="polite"></div></div>
+<div class="htp-card htp-mcq"><p class="htp-ctag">Scenario 7</p><p class="htp-prompt">Leah can define all five study strategies perfectly from her flashcards. When a friend asks her to help plan a study week for a hard class, Leah isn&#x27;t sure where to start. What does her practice need?</p><div class="htp-opts"><button type="button" class="htp-opt" data-fb="She already knows the definitions. More flashcards won&#x27;t build the skill she&#x27;s missing.">More flashcard reviews until the definitions are instant.</button><button type="button" class="htp-opt" data-fb="Longer definitions are still definitions. She needs practice applying them.">A new set of flashcards with longer definitions.</button><button type="button" class="htp-opt" data-ok="1" data-fb="Right. This is transfer and practice beyond mastery. Knowing the definitions is the starting point. Using them flexibly is the goal.">Practice using the strategies in new situations, such as planning real study weeks and explaining why each piece is there.</button><button type="button" class="htp-opt" data-fb="Defining a strategy and using it well are different skills. The guide asks for both.">Nothing. Knowing the definitions is enough.</button></div><div class="htp-fb" aria-live="polite"></div></div>
+<div class="htp-card htp-yourturn"><p class="htp-ctag">Your turn</p><p class="htp-prompt">Think of a class you are taking right now. Which of these students studies the most like you do? Write one change you will make this week, and when you will check whether it is working.</p></div>
+</section></div>
+<div class="htp-progress" aria-live="polite"></div>
+</div>
 </div>
 <script>
 (function(){
   function positionPill(item){
+    /* Keep the definition inside the book's column, which clips anything wider. */
     var r=item.getBoundingClientRect();
-    var width=220;
+    var pop=item.querySelector('.etb-ak-pop');
+    var width=(pop && pop.offsetWidth) || 244;
+    var box=(item.closest('.etb')||document.documentElement).getBoundingClientRect();
+    var minLeft=Math.max(box.left,0)+10;
+    var maxRight=Math.min(box.right,document.documentElement.clientWidth)-10;
     var left=r.left + (r.width/2) - (width/2);
     var shift=0;
-    var viewport=document.documentElement.clientWidth;
-    if(left < 10) shift=10-left;
-    if(left+width > viewport-10) shift=(viewport-10)-(left+width);
+    if(left < minLeft) shift=minLeft-left;
+    if(left+shift+width > maxRight) shift=maxRight-(left+width);
     item.style.setProperty('--ak-shift',shift+'px');
   }
   function initFeatureStills(){
@@ -320,6 +400,90 @@ body:has(.etb-nav) .etb-ap { bottom: 51px; }
     });
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initFeatureStills);else initFeatureStills();
+})();
+</script>
+<script>
+(function(){
+  /* Practice bank: tabs, matching, and multiple-choice feedback. */
+  function init(){
+    var root=document.querySelector('.htp');
+    if(!root||root.getAttribute('data-ready'))return;
+    root.setAttribute('data-ready','1');
+    root.classList.add('js');
+    var tabs=root.querySelectorAll('.htp-tab');
+    var panels=root.querySelectorAll('.htp-panel');
+    function show(n,focus){
+      for(var i=0;i<tabs.length;i++){
+        var on=tabs[i].getAttribute('data-tab')===n;
+        tabs[i].setAttribute('aria-selected',on?'true':'false');
+        tabs[i].setAttribute('tabindex',on?'0':'-1');
+        panels[i].classList.toggle('on',on);
+      }
+      if(focus){for(var j=0;j<tabs.length;j++){if(tabs[j].getAttribute('data-tab')===n)tabs[j].focus();}}
+    }
+    for(var t=0;t<tabs.length;t++){
+      panels[t].setAttribute('role','tabpanel');
+      tabs[t].addEventListener('click',function(){show(this.getAttribute('data-tab'));});
+      tabs[t].addEventListener('keydown',function(e){
+        var n=parseInt(this.getAttribute('data-tab'),10);
+        if(e.key==='ArrowRight'){e.preventDefault();show(String(n%tabs.length+1),true);}
+        if(e.key==='ArrowLeft'){e.preventDefault();show(String((n+tabs.length-2)%tabs.length+1),true);}
+      });
+    }
+    show('1');
+
+    function markDone(panelNum){
+      for(var i=0;i<tabs.length;i++){if(tabs[i].getAttribute('data-tab')===panelNum)tabs[i].classList.add('done');}
+    }
+
+    /* Matching */
+    var match=root.querySelector('.htp-match');
+    if(match){
+      var rows=match.querySelectorAll('.htp-mrow');
+      var fb=match.querySelector('.htp-fb');
+      match.querySelector('[data-act="check"]').addEventListener('click',function(){
+        var right=0,blank=0;
+        for(var i=0;i<rows.length;i++){
+          var sel=rows[i].querySelector('select'),mark=rows[i].querySelector('.htp-mmark');
+          rows[i].classList.remove('right','wrong');mark.textContent='';
+          if(!sel.value){blank++;continue;}
+          if(sel.value===rows[i].getAttribute('data-ans')){right++;rows[i].classList.add('right');mark.textContent='✓';}
+          else{rows[i].classList.add('wrong');mark.textContent='✗';}
+        }
+        if(right===rows.length){fb.className='htp-fb ok';fb.textContent='All six match. Next, try saying what each strategy is for without looking at the list.';markDone('2');}
+        else{fb.className='htp-fb no';fb.textContent=right+' of '+rows.length+' correct'+(blank?' ('+blank+' still blank)':'')+'. Change the ones marked ✗ and check again.';}
+      });
+      match.querySelector('[data-act="reset"]').addEventListener('click',function(){
+        for(var i=0;i<rows.length;i++){rows[i].classList.remove('right','wrong');rows[i].querySelector('select').value='';rows[i].querySelector('.htp-mmark').textContent='';}
+        fb.className='htp-fb';fb.textContent='';
+      });
+    }
+
+    /* Multiple choice */
+    var cards=root.querySelectorAll('.htp-mcq');
+    for(var c=0;c<cards.length;c++){
+      (function(card){
+        var fb=card.querySelector('.htp-fb');
+        var opts=card.querySelectorAll('.htp-opt');
+        for(var k=0;k<opts.length;k++){
+          opts[k].addEventListener('click',function(){
+            if(card.classList.contains('solved')||this.classList.contains('wrong'))return;
+            if(this.getAttribute('data-ok')){
+              this.classList.add('right');card.classList.add('solved');
+              for(var m=0;m<opts.length;m++){opts[m].setAttribute('aria-disabled','true');}
+              fb.className='htp-fb ok';fb.textContent=this.getAttribute('data-fb');
+              var panel=card.closest('.htp-panel');
+              if(panel&&panel.querySelectorAll('.htp-mcq').length===panel.querySelectorAll('.htp-mcq.solved').length){markDone(panel.getAttribute('data-panel'));}
+            }else{
+              this.classList.add('wrong');this.setAttribute('aria-disabled','true');
+              fb.className='htp-fb no';fb.textContent='Not quite. '+this.getAttribute('data-fb')+' Try another answer.';
+            }
+          });
+        }
+      })(cards[c]);
+    }
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
 </main>
