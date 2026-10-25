@@ -322,7 +322,7 @@ Small items found while moving both books off EdTechBooks. Most are quick. Items
    **Approved and checked October 20, 2026; deletion still to do (Benjamin).** Benjamin approved deleting every branch whose pull request is merged or closed. 26 qualify: 13 in each repository, listed in EDCOR 310 #16 and Econ 150 #15. Each one's last commit is already in `main` or belongs to a closed pull request. Claude's GitHub access in that session couldn't delete branches, so delete them from each repository's **Branches** page. Keep `main`, any branch with an open pull request, and `docs/collaborator-coordination-clean-20261021` (no pull request; ask Benjamin).
 6. **Econ 150 `site/` folder (Benjamin).** It holds an old placeholder page that Cloudflare does not serve. Keep or remove.
 7. **Protect `main` (Benjamin).** In each repository's Settings → Branches, add a rule for `main` that requires a pull request and blocks deletion and force-pushes.
-8. **Cloudflare preview builds (Benjamin).** Every branch shows a red X. Either turn off branch builds, or turn on preview links, so each pull request gets a test address to click before merging.
+8. **Cloudflare preview builds (Benjamin).** Every branch shows a red X. Either turn off branch builds, or turn on preview links, so each pull request gets a test address to click before merging. **Done, October 24, 2026:** preview links work in both books. Cloudflare comments a preview address on each pull request.
 9. **The professional website (Benjamin).** benjaminpacini.com is registered, and the old Google Site is archived in the `benjaminpacini-site` repository, but the new site isn't built or connected to Cloudflare yet. benpacini.com, the short version to redirect, is not registered yet.
 10. **Renew the report button's GitHub token (Benjamin), by October 2027.** See "Report a problem button" in `AGENTS.md`.
 11. **One image rule for each whole book.** An image with no width limit spills past the text column and gets cut off, worst on phones. EDCOR 310 Chapter 2 and Econ 150 Chapter 1 now carry their own fix (`:where(.etb) img{max-width:100%;height:auto}` at the start of the chapter's styles), but an image added to any other chapter will have the same problem. Move the rule into each book's page wrapper: `wrap_chapter_page()` in EDCOR 310's `build/build_site.py`, and the page header in Econ 150's `build/wrap_pages.py`. The Econ 150 change rewrites every chapter's header, so rerun the script and commit all the pages. Then remove the two per-chapter copies and check a few chapters with images at phone width.
@@ -337,7 +337,7 @@ Small items found while moving both books off EdTechBooks. Most are quick. Items
 
 The mockups are in Benjamin's Claude canvas "BenjaminPacini.com Landing Page": the hub, plus a cover page and a contents page for each book. Ask Benjamin for access; it is private.
 
-**Ready to build once preview links work (Priority 1: navigation and access)**
+**Ready to build (Priority 1: navigation and access)**
 
 *Status, October 23, 2026: items 1, 2, 4, and 5 are built (pull requests "Cover and contents pages (shared design)" in both repositories). Benjamin chose the two-page version, a cover and then a contents page, over a one-page front, and the plain white Econ look with navy and light brass accents over the darker Canvas-course colors. Still open: item 3 (the shared top bar on chapter pages), Econ 150's unit hooks and reading times, and EDCOR 310's "How to Get the Most Out of This Book" and Introduction.*
 
@@ -347,7 +347,7 @@ The mockups are in Benjamin's Claude canvas "BenjaminPacini.com Landing Page": t
 4. **Each book takes its accent color from its cover:** EDCOR 310 uses the cover's blue (#145d90). Econ 150 uses the cover's night navy (#1b2430) with gold numerals (#a87d32). Everything else follows the styles the chapters already use (Georgia, white title cards, the uppercase labels), as in EDCOR 310's `site/assets/book.css`.
 5. **Build the front matter from one template,** kept identical in both repositories and changed in matching pull requests, the same way as the audio player.
 
-**Do first:** loose end 8 (Cloudflare preview links), so Benjamin can look at the new pages before anything is merged.
+**Done:** loose end 8 (Cloudflare preview links). Benjamin can look at new pages before anything is merged.
 
 **Writing for Benjamin to do later (Priority 1: content)**
 
