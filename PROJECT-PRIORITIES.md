@@ -397,6 +397,28 @@ These are promising possibilities, but they are intentionally near the bottom of
 
 1. **EDCOR 310: Add the forgetting curve (Benjamin asked October 24).** The book doesn't mention Ebbinghaus or the forgetting curve anywhere, though retrieval practice and spacing come up in nearly every chapter. The new course workbook's example Class Notes page is built around it, so students will meet it there first. Add it to Chapter 22 (Attention, Memory, and Cognitive Load): a short explanation, a simple figure showing memory falling quickly without review and the curve flattening with each review, and a sentence tying it to the workbook's warm-up and 48-hour check. Verify the claims against the original research and current replications before writing, since popular versions often overstate the exact percentages.
 
+### EDCOR 310: Supplemental essay, "The Intuitionist Approach to Education" (recorded October 24, 2026)
+
+**The idea:** a supplemental essay that takes Haidt's elephant and rider seriously and asks what follows for teachers if intuition drives most learning. The thesis is Benjamin's line: we used to think the rider's job was to steer the elephant; the rider's real job is building a better elephant. The goal is not a new method. It is showing that many methods we already know work trace back to schemas, using studied, everyday classroom examples.
+
+**Outline agreed so far:**
+
+1. Opening scene: a student marks "learning styles are a myth" correctly on the exam, then plans a lesson around visual learners two years later.
+2. The account: the elephant and rider, and why the elephant runs on schemas and prototypes. Treat "95 percent" as a premise, not a measured fact; the figure traces to a marketing estimate.
+3. What most teaching assumes: we teach the rider.
+4. Build the elephant right the first time (prototypes; examples and non-examples; fractions, the equal sign, triangles, the natural selection storybook).
+5. Retraining the elephant is a different job (conceptual change; red carpet, then tug; predict before the demo).
+6. The elephant is lazy, so shape the path (Willingham; AI and take-home work; in-class drills).
+7. Possible section: teachers have elephants too (apprenticeship of observation, expert blind spot).
+8. What's left for the rider: intuitionism favors explicit instruction and practice, not discovery for its own sake.
+9. Close.
+
+**Related:** Chapter 2 already covers the elephant and rider and Hendrick's argument, so the essay should extend Chapter 2, not repeat it. Chapter 11 now carries the six aphorisms the essay should reuse word for word.
+
+**Open questions for Benjamin:** who the audience is (EDCOR 310 students, or a broader "Psychology of…" post); whether the conference-talk examples belong in the essay; whether to include the "teachers have elephants too" section.
+
+**Status:** Snoozed. Pick up when Benjamin is ready to draft.
+
 ### Student sign-in and lightweight progress tracking
 
 Explore a simple Google sign-in system for students, ideally restricted to verified `@byui.edu` accounts. The first useful version would not attempt to replace Canvas or become a full learning-management system. It would provide a shared identity across both books and optionally record low-stakes activity such as reading-check scores, practice scores, and completion dates.
