@@ -44,6 +44,10 @@ The default behavior is **inspect, report, recommend, then act**:
 
 Safe reversible improvements—such as fixing links, clarifying documentation, standardizing names, or reorganizing clearly misplaced files—may be proposed as ordinary maintenance. Deletion is never assumed merely because a file is old.
 
+### Deferred branch cleanup
+
+Keep routine branch cleanup report-first and approval-gated. Enable automatic deletion of head branches after merged pull requests where appropriate, but do not delete arbitrary branches merely because they have no open pull request. During the Friday cleanup, inspect branches with no open PR and no known active use, then classify each as **safe to delete**, **needs review**, or **retain**. Before deleting any candidate, re-check for open-PR dependencies and preserve `main`, protected coordination/documentation branches—including `docs/collaborator-coordination-clean-20261021` and Econ 150's `docs/reading-times-note`—as well as any branch containing unique unmerged work or serving an active preview. Record the branch name and head commit SHA before deletion. **Status:** Deferred; do not implement branch deletion automatically yet.
+
 When Claude or another collaborator has recently worked in the repository, first inspect the current state and recent history before cleaning up. Do not mistake unfamiliarity for obsolescence, and do not delete work simply because it is not part of the current preferred workflow.
 
 ### Priority 0.5 — Learn and apply GitHub security controls
