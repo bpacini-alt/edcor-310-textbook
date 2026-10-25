@@ -66,7 +66,7 @@ The editor changes only page text. It keeps every style, script, and link the pa
 
 ## Known Cloudflare behavior
 
-Cloudflare's build check shows a red X on every branch and pull request. That comes from Cloudflare's preview-build settings, not from the changes. The build that matters runs on `main` after a merge. After merging, open the live site and check the pages you changed.
+Every pull request gets a Cloudflare preview. A few minutes after you push, Cloudflare's bot comments on the pull request with a preview address (for example `https://<branch-name>-science-of-learning.bpacini.workers.dev` for EDCOR 310, or `…-econ-150-textbook.bpacini.workers.dev` for Econ 150). Use it to check the pages you changed before asking Benjamin to merge, and give him the links. The live site updates after a merge to `main`; after merging, open the live site and check the pages you changed.
 
 ## Writing for students
 
