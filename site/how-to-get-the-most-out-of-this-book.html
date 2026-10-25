@@ -60,7 +60,9 @@ body:has(.etb-nav) .etb-ap { bottom: 51px; }
 .etb-tool-claude{background:#fff0e5;color:#c2612b;}
 .etb-tool-name{font-family:sans-serif;font-size:13px;font-weight:700;color:#1a3a5c;}
 .etb-tool-use{font-family:sans-serif;font-size:12px;line-height:1.55;color:#566575;}
-.etb-bank{margin:3rem 0 1rem;padding-top:.5rem;border-top:1px solid #eee;}
+.etb-bank{margin:3rem 0 1rem;}
+/* The practice bank follows the last section directly: no closing rule and padding on that section. */
+.etb-concept:has(+ .etb-bank){margin-bottom:0;padding-bottom:0;border-bottom:none;}
 .etb-bank-intro{font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.8;color:#2a2a2a;margin:0 0 1.25rem;}
 .etb-bank-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
 .etb-bank-grid details.etb-retrieval{margin:0;min-width:0;}
@@ -286,13 +288,17 @@ body:has(.etb-nav) .etb-ap { bottom: 51px; }
 <script>
 (function(){
   function positionPill(item){
+    /* Keep the definition inside the book's column, which clips anything wider. */
     var r=item.getBoundingClientRect();
-    var width=220;
+    var pop=item.querySelector('.etb-ak-pop');
+    var width=(pop && pop.offsetWidth) || 244;
+    var box=(item.closest('.etb')||document.documentElement).getBoundingClientRect();
+    var minLeft=Math.max(box.left,0)+10;
+    var maxRight=Math.min(box.right,document.documentElement.clientWidth)-10;
     var left=r.left + (r.width/2) - (width/2);
     var shift=0;
-    var viewport=document.documentElement.clientWidth;
-    if(left < 10) shift=10-left;
-    if(left+width > viewport-10) shift=(viewport-10)-(left+width);
+    if(left < minLeft) shift=minLeft-left;
+    if(left+shift+width > maxRight) shift=maxRight-(left+width);
     item.style.setProperty('--ak-shift',shift+'px');
   }
   function initFeatureStills(){
