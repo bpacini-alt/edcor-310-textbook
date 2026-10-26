@@ -96,6 +96,24 @@ Make each book clear, coherent, accessible, and trustworthy before adding substa
 
 **Why this is high priority:** Better presentation, trustworthy sourcing, and fewer points of friction benefit every student immediately and multiply the value of every later feature.
 
+### Priority 2 companion — AP Psychology as an EDCOR 310 rigor benchmark
+
+**Status:** Research and alignment first; secondary reference, not the EDCOR instructional blueprint.
+
+Review the current [AP Psychology course framework](https://apcentral.collegeboard.org/courses/ap-psychology), public practice questions, scoring rubrics, and especially its **Article Analysis Question (AAQ)** and **Evidence-Based Question (EBQ)** formats. Use these as benchmarks for precise psychological vocabulary, conceptual discrimination, research literacy, interpretation of evidence, and rigorous argumentation. Map each candidate skill or topic to EDCOR 310 outcomes; do not import unrelated AP units or make EDCOR an AP test-preparation course.
+
+**EDCOR extension:** Convert relevant scientific reasoning into authentic classroom practice: diagnose a teaching/learning problem, evaluate the strength and limits of evidence, select and justify an instructional response, anticipate tradeoffs or unintended consequences, and reflect on professional judgment, leadership, and discipleship. The aim is not simply knowing psychology, but becoming a wiser, evidence-informed educator.
+
+**First deliverable:** Compare AP Psychology AAQ/EBQ examples with several EDCOR classroom decision-making cases and propose reusable higher-order practice patterns. Respect College Board copyright and restrictions on secure assessment materials.
+
+### Priority 2 companion — Separate Econ and EDCOR Tier 2 engines / Rule of Four fluency
+
+**Next prototype:** Revise Econ MRP homework as a single-screen, table-first calculation/hiring task with an optional aligned graph, plus a separate graph-to-table translation mode. Practice moving between representations, but **do not require table + graph on every item**; use combined views when making relationships explicit and hide answers for independent translation. Give EDCOR a distinct classroom-evidence and instructional-decision Tier 2 sequence while reusing technical components. Include 10+ validated variants, targeted additional practice, optional test-out, and a minimal vertical practice-progress display distinct from provisional understanding indicators. See [Precise Practice design playbook](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/PRECISE-PRACTICE-DESIGN.md).
+
+### Priority 2 companion — Precise Practice design playbook and AI feedback pilot
+
+**High impact / strategic infrastructure.** Preserve the agreed instructional principles, foundational practice engines, question-type repertoire, mental anchors, aphorism handling, spiral review, and minimal homework-friendly learning indicators in [the Precise Practice design playbook](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/PRECISE-PRACTICE-DESIGN.md). Treat patterns as provisional until student-tested; do not require every engine on every page. **Next:** Audit existing Econ 11–12 and EDCOR exercise implementations; prototype Tier 2 blocked practice, then Tier 3 application/FRQ formats. Pilot a rubric-grounded, low-stakes AI aphorism feedback box against instructor-scored responses before deploying it broadly.
+
 ### Priority 2 — Make every chapter practice-heavy
 
 Revise both books chapter by chapter so students regularly retrieve, predict, explain, apply, and receive feedback—not merely read and then answer a few questions at the end.
