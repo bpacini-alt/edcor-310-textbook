@@ -260,18 +260,11 @@ The default strategy should be to focus on the book, chapter, or feature with th
 
 These are broken now, so they count as Priority 0. Fix them in the GitHub copies when the chapters move to the new site. Leave the EdTechBooks copies alone for now.
 
-### Econ 150: Broken interactive widgets in Chapters 2 and 4
+### Found October 23, 2026 (high: fix now)
 
-Four interactive pieces don't run in the current chapter files:
-
-- **Chapter 2:** two graph widgets. One is the "Missing Market" widget (the chapter's first script); the other is the chapter's eighth script.
-- **Chapter 4:** Interactive practice 1 ("Predict the new equilibrium") and Interactive practice 2 ("Binding or not?").
-
-**Cause:** when EdTechBooks squashed each script onto a single line, a `//` comment ended up commenting out everything after it, so the browser stops with "Unexpected end of input."
-
-**How to fix:** in each affected script, change `//` comments to `/* … */` or restore the line breaks. Then load the chapter on the new site and confirm the widgets work.
-
-**Status:** fix on the new site; do not edit in EdTechBooks. Found during the audio-player work, which doesn't affect these widgets. A check of every EDCOR 310 chapter found no similar problems.
+1. **Missing shapes in figures (High).** Shapes with no width or height draw nothing. **Mostly fixed October 26** (EDCOR 310 and Econ 150 pull requests "Draw the missing figure shapes"): every static figure in both books now draws, including EDCOR 310 Chapter 6's band figure and the Hero's Journey legend. **Still open: Econ 150 Chapter 13** (its callback-rate, earnings-by-education, and pay-gap charts, 15 shapes). It was left alone because open drafts edit that chapter (Econ 150 #40 and #55). Fix it once those are merged or closed, the same way: size each shape from points already drawn in its figure, then render and compare with the caption. Chapter 11's two drag-the-curve homework graphs also contain size-less shapes, but the homework code redraws those graphs when the page loads, so they need no fix.
+2. **Econ 150 unit names on title cards (Benjamin decided October 23; fix Monday).** The contents page's unit names are the official ones: The Case for the Market, The Firm in Perfect Competition, The Critique of the Market, and The Firm in Imperfect Competition. Several chapter title cards use other names ("How Markets Coordinate," "The Logic of Competition," "Critique of Markets," "Market Power and Imperfect Competition"), and Chapters 25 and 26 carry their own labels. Make the cards match the contents page. Still open for Benjamin: the book's subtitle says "Choice, Incentives, and Human Flourishing," while the Canvas course card says "Choice, Tradeoffs, and Human Flourishing."
+3. **Save the old Google Site's images (`benjaminpacini-site`).** The archive in `archive/google-site-2026-10-20/` has every page's HTML and every embedded Drive file, but not the pictures shown on the pages. About 40 pages still load their images from Google's servers, so the archive would lose them if the Google Site were deleted. Download the images into the archive, using a browser (Claude's shell can't reach Google Sites), and point the archived pages, or the manifest, at the local copies. **Don't delete the Google Site until this is done.**
 
 ## Deferred structural revisions
 
@@ -402,15 +395,6 @@ The Joy of Learning and Joy of Econ menus moved from Word into `menus/` (see `me
 ## Cool ideas for later
 
 These are promising possibilities, but they are intentionally near the bottom of the backlog. They should not displace the current work on content quality, practice, accessibility, interactives, author-led video, audio, exports, or the series/front-matter system.
-
-### Found October 23, 2026
-
-1. **Missing shapes in figures (Priority: High; fix Monday, October 26).** About 50 shapes in both books have no width or height, so they draw nothing: bars, shaded areas, and legend swatches simply aren't there. This is the bug fixed in Econ 150 Chapter 10 (Econ pull request #33), and it was already in the Drive originals.
-   - **Econ 150 (about 42):** Chapter 13 is the worst. Its callback-rate, earnings-by-education, and pay-gap charts show no bars at all (15 shapes). Also Chapters 0, 2, 4, 8, 11, 17, and 22, `introduction.html`, and `ittrdogupr.html` (the Chapter 9 homework draft).
-   - **EDCOR 310 (8):** Chapter 6's five-color band figure (5) and the legend swatches in A Hero's Journey (`sup1.html`, 3).
-   - **The fix:** work out each size from points already drawn in the same figure (axes, labels, lines, dots), the way Chapter 10 was fixed. Then render every figure and compare it with its caption. A shape with an `id`, or inside a practice widget, may be redrawn by code; check before editing it.
-2. **Econ 150 unit names on title cards (Benjamin decided October 23; fix Monday).** The contents page's unit names are the official ones: The Case for the Market, The Firm in Perfect Competition, The Critique of the Market, and The Firm in Imperfect Competition. Several chapter title cards use other names ("How Markets Coordinate," "The Logic of Competition," "Critique of Markets," "Market Power and Imperfect Competition"), and Chapters 25 and 26 carry their own labels. Make the cards match the contents page. Still open for Benjamin: the book's subtitle says "Choice, Incentives, and Human Flourishing," while the Canvas course card says "Choice, Tradeoffs, and Human Flourishing."
-3. **Save the old Google Site's images (`benjaminpacini-site`).** The archive in `archive/google-site-2026-10-20/` has every page's HTML and every embedded Drive file, but not the pictures shown on the pages. About 40 pages still load their images from Google's servers, so the archive would lose them if the Google Site were deleted. Download the images into the archive, using a browser (Claude's shell can't reach Google Sites), and point the archived pages, or the manifest, at the local copies. **Don't delete the Google Site until this is done.**
 
 ### Found October 24, 2026
 
