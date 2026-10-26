@@ -41,11 +41,17 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--tint-line); ou
 .fm-cover-title { margin: 0; font-size: clamp(32px, 7vw, 40px); font-weight: 700; line-height: 1.12; text-wrap: balance; }
 .fm-cover-sub { margin: 0; font-size: 19px; font-style: italic; color: var(--muted); text-wrap: balance; }
 .fm-byline { margin: 6px 0 0; font-family: var(--sans); font-size: 14.5px; color: #3d434c; }
-.fm-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.fm-actions { display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .fm-btn { display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; border-radius: 8px; background: var(--accent); border: 1px solid var(--accent); color: #ffffff; font-family: var(--sans); font-size: 15px; font-weight: 600; text-decoration: none; }
 .fm-btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #ffffff; }
 .fm-btn-quiet { background: var(--paper); color: var(--accent); }
 .fm-btn-quiet:hover { background: var(--tint); color: var(--accent); }
+.fm-jump { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 8px; font-family: var(--sans); }
+.fm-jump-label { font-size: 13px; color: var(--muted); }
+.fm-jump select { min-height: 36px; max-width: min(300px, 70vw); padding: 0 8px; border: 1px solid #d5dbe2; border-radius: 6px; background: var(--paper); color: var(--ink); font: 14px var(--sans); }
+.fm-jump-go { min-height: 36px; padding: 0 12px; border: 1px solid var(--accent); border-radius: 6px; background: var(--paper); color: var(--accent); font: 600 14px var(--sans); cursor: pointer; }
+.fm-jump-go:hover { background: var(--tint); }
+.fm-jump select:focus-visible, .fm-jump-go:focus-visible { outline: 3px solid var(--tint-line); outline-offset: 2px; }
 .fm-stats { margin: 0; padding-top: 16px; border-top: 1px solid #e3e7ec; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--muted); }
 
 /* Contents title card, after the chapters' title cards */
@@ -75,6 +81,8 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--tint-line); ou
 
 .fm-rows { list-style: none; margin: 0 -12px; padding: 0; }
 .fm-rows li { border-top: 1px solid var(--line); }
+.fm-rows li.fm-divider { padding: 16px 12px 6px; }
+.fm-divider span { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--kicker); }
 .fm-row { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 14px; align-items: baseline; padding: 14px 12px; text-decoration: none; color: var(--ink); border-radius: 8px; }
 .fm-row:hover { background: var(--tint); color: var(--ink); }
 .fm-num { font-size: 22px; font-weight: 700; line-height: 1; color: var(--numeral); text-align: right; font-variant-numeric: tabular-nums; }

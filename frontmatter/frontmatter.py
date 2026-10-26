@@ -18,12 +18,13 @@ The `book` dict:
   site                                              "https://learning.benjaminpacini.com"
   cover        {"src", "width", "height", "alt"}
   theme        {"accent", "accent_hover", "numeral", "badge_bg", "badge_fg", "kicker", "tint", "tint_line", "watermark"}
-  start        {"label", "href"}                    the cover's second button
+  (the cover's chapter picker is built from front + units; no extra data needed)
   stats        "26 chapters in 4 units · about 21 hours of reading · free and open"
   contents_sub "26 chapters in 4 units, about 21 hours of reading"
   count        "26"                                 the faint number on the contents card
-  front        [{"n", "t", "s", "m", "href"}]       Start here
+  front        [{"n", "t", "s", "m", "href"}]       Before Chapter 1
   units        [{"roman", "kicker", "title", "hook", "outcomes": [(text, [clo, ...])], "chapters": [{"n", "t", "s", "m", "href"}]}]
+               a chapter may also carry "divider": "The Closing Reckoning" to start a small subheading inside its unit
   back_title   "Readings and quick references"
   back         [{"n", "t", "s", "href"}]
   about        {"paras": [...], "thanks": [...]} or None
@@ -86,6 +87,24 @@ def _page(book, title, description, body, current=""):
 """
 
 
+def _picker(book):
+    """A compact chapter picker: one native dropdown and a Go button. Phones open their own list."""
+    groups = []
+    if book["front"]:
+        groups.append(("Before Chapter 1", book["front"]))
+    for i, u in enumerate(book["units"], 1):
+        groups.append((f"Unit {i} · {u['title']}", u["chapters"]))
+    opts = []
+    for label, items in groups:
+        rows = "".join(f'<option value="{esc(c["href"])}">{esc(c["n"])}. {esc(c["t"])}</option>' for c in items)
+        opts.append(f'<optgroup label="{esc(label)}">{rows}</optgroup>')
+    return f"""      <form class="fm-jump" onsubmit="if(this.c.value)location.href=this.c.value;return false;">
+        <label class="fm-jump-label" for="fm-jump">Jump to a chapter</label>
+        <select id="fm-jump" name="c" required><option value="">Choose a chapter…</option>{''.join(opts)}</select>
+        <button class="fm-jump-go" type="submit">Go</button>
+      </form>"""
+
+
 def _cover(book):
     c = book["cover"]
     body = f"""  <section class="fm-cover" aria-labelledby="fm-title">
@@ -97,8 +116,8 @@ def _cover(book):
       <p class="fm-byline">{esc(book['byline'])}</p>
     </div>
     <div class="fm-actions">
-      <a class="fm-btn" href="/contents/index.html">Open the book</a>
-      <a class="fm-btn fm-btn-quiet" href="{esc(book['start']['href'])}">{esc(book['start']['label'])}</a>
+      <a class="fm-btn" href="/contents/index.html">Table of contents</a>
+{_picker(book)}
     </div>
     <p class="fm-stats">{esc(book['stats'])}</p>
   </section>"""
@@ -108,6 +127,8 @@ def _cover(book):
 def _rows(items, numeral_class="fm-num", with_time=True):
     out = []
     for c in items:
+        if c.get("divider"):
+            out.append(f'      <li class="fm-divider"><span>{esc(c["divider"])}</span></li>')
         time = f'\n        <span class="fm-time">{esc(c["m"])}</span>' if with_time and c.get("m") else ""
         sub = f'<span class="fm-row-sub">{esc(c["s"])}</span>' if c.get("s") else ""
         out.append(f"""      <li><a class="fm-row" href="{esc(c['href'])}">
@@ -123,7 +144,7 @@ def _contents(book):
     if book["front"]:
         sections.append(f"""  <section class="fm-panel" id="start" aria-labelledby="start-h">
     <p class="fm-label">Front matter</p>
-    <h2 class="fm-panel-title" id="start-h">Start here</h2>
+    <h2 class="fm-panel-title" id="start-h">Before Chapter 1</h2>
     <ol class="fm-rows">
 {_rows(book['front'], 'fm-num fm-num-small')}
     </ol>
@@ -245,11 +266,17 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--tint-line); ou
 .fm-cover-title { margin: 0; font-size: clamp(32px, 7vw, 40px); font-weight: 700; line-height: 1.12; text-wrap: balance; }
 .fm-cover-sub { margin: 0; font-size: 19px; font-style: italic; color: var(--muted); text-wrap: balance; }
 .fm-byline { margin: 6px 0 0; font-family: var(--sans); font-size: 14.5px; color: #3d434c; }
-.fm-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.fm-actions { display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .fm-btn { display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; border-radius: 8px; background: var(--accent); border: 1px solid var(--accent); color: #ffffff; font-family: var(--sans); font-size: 15px; font-weight: 600; text-decoration: none; }
 .fm-btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #ffffff; }
 .fm-btn-quiet { background: var(--paper); color: var(--accent); }
 .fm-btn-quiet:hover { background: var(--tint); color: var(--accent); }
+.fm-jump { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 8px; font-family: var(--sans); }
+.fm-jump-label { font-size: 13px; color: var(--muted); }
+.fm-jump select { min-height: 36px; max-width: min(300px, 70vw); padding: 0 8px; border: 1px solid #d5dbe2; border-radius: 6px; background: var(--paper); color: var(--ink); font: 14px var(--sans); }
+.fm-jump-go { min-height: 36px; padding: 0 12px; border: 1px solid var(--accent); border-radius: 6px; background: var(--paper); color: var(--accent); font: 600 14px var(--sans); cursor: pointer; }
+.fm-jump-go:hover { background: var(--tint); }
+.fm-jump select:focus-visible, .fm-jump-go:focus-visible { outline: 3px solid var(--tint-line); outline-offset: 2px; }
 .fm-stats { margin: 0; padding-top: 16px; border-top: 1px solid #e3e7ec; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--muted); }
 
 /* Contents title card, after the chapters' title cards */
@@ -279,6 +306,8 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--tint-line); ou
 
 .fm-rows { list-style: none; margin: 0 -12px; padding: 0; }
 .fm-rows li { border-top: 1px solid var(--line); }
+.fm-rows li.fm-divider { padding: 16px 12px 6px; }
+.fm-divider span { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--kicker); }
 .fm-row { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 14px; align-items: baseline; padding: 14px 12px; text-decoration: none; color: var(--ink); border-radius: 8px; }
 .fm-row:hover { background: var(--tint); color: var(--ink); }
 .fm-num { font-size: 22px; font-weight: 700; line-height: 1; color: var(--numeral); text-align: right; font-variant-numeric: tabular-nums; }

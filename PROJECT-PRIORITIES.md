@@ -263,7 +263,7 @@ These are broken now, so they count as Priority 0. Fix them in the GitHub copies
 ### Found October 23, 2026 (high: fix now)
 
 1. **Missing shapes in figures (High).** Shapes with no width or height draw nothing. **Mostly fixed October 26** (EDCOR 310 and Econ 150 pull requests "Draw the missing figure shapes"): every static figure in both books now draws, including EDCOR 310 Chapter 6's band figure and the Hero's Journey legend. **Still open: Econ 150 Chapter 13** (its callback-rate, earnings-by-education, and pay-gap charts, 15 shapes). It was left alone because open drafts edit that chapter (Econ 150 #40 and #55). Fix it once those are merged or closed, the same way: size each shape from points already drawn in its figure, then render and compare with the caption. Chapter 11's two drag-the-curve homework graphs also contain size-less shapes, but the homework code redraws those graphs when the page loads, so they need no fix.
-2. **Econ 150 unit names on title cards (Benjamin decided October 23; fix Monday).** The contents page's unit names are the official ones: The Case for the Market, The Firm in Perfect Competition, The Critique of the Market, and The Firm in Imperfect Competition. Several chapter title cards use other names ("How Markets Coordinate," "The Logic of Competition," "Critique of Markets," "Market Power and Imperfect Competition"), and Chapters 25 and 26 carry their own labels. Make the cards match the contents page. Still open for Benjamin: the book's subtitle says "Choice, Incentives, and Human Flourishing," while the Canvas course card says "Choice, Tradeoffs, and Human Flourishing."
+2. **Unit names on title cards (decided and mostly done October 26).** Rule: a chapter's title-card label always matches its unit on the contents page. Econ 150's units are now The Case for the Market, The Logic of Competition, The Critique of the Market, and When Competition Breaks Down, with "The Closing Reckoning" as a subheading over Chapters 25–26. Pages before Chapter 1 read "Before Chapter 1", which replaced "Start here". EDCOR 310 uses its four contents-page names. **Still open: Chapters 13 and 14 in both books,** left alone while drafts edit them (EDCOR 310 #34, #53; Econ 150 #40, #55). Set their labels when those settle. Econ 150's subtitle stays "The Science of Choice, **Incentives**, and Human Flourishing" (Benjamin, October 26). **Benjamin: change the Canvas course card, which says "Tradeoffs", to match.**
 3. **Save the old Google Site's images (`benjaminpacini-site`).** The archive in `archive/google-site-2026-10-20/` has every page's HTML and every embedded Drive file, but not the pictures shown on the pages. About 40 pages still load their images from Google's servers, so the archive would lose them if the Google Site were deleted. Download the images into the archive, using a browser (Claude's shell can't reach Google Sites), and point the archived pages, or the manifest, at the local copies. **Don't delete the Google Site until this is done.**
 
 ## Deferred structural revisions
@@ -280,14 +280,6 @@ When we next revise the Econ 150 textbook's firm-behavior unit, change the chapt
 The reasoning is that students should first understand how firms turn inputs into output and make production decisions, then derive and interpret costs, and only afterward apply those ideas to short-run and long-run profit maximization.
 
 **Status:** Record for later; do not implement yet. When this becomes active work, create a GitHub issue to track the structural revision, then use a pull request for the actual chapter and navigation changes.
-
-### EDCOR 310: Fix the unit labels on chapter title cards
-
-The small label at the top of each chapter's title card (for example, "Unit 3 · The Developing Learner") doesn't match the book's four units. Chapters 1–8 say "Unit 1 · The Great Adventure" instead of "Unit 1 · Intro to Psychology," Chapter 14 says Unit 3 though it sits in Unit 2, and Chapters 16–24 say Units 4 and 5.
-
-**How to do it:** go chapter by chapter with Benjamin. Show what each label says now, ask what it should say, then make the changes in one batch.
-
-**Status:** Record for later; do not implement yet.
 
 ### Both books: Add recorded narration in Benjamin's voice (ElevenLabs)
 
@@ -395,6 +387,10 @@ The Joy of Learning and Joy of Econ menus moved from Word into `menus/` (see `me
 ## Cool ideas for later
 
 These are promising possibilities, but they are intentionally near the bottom of the backlog. They should not displace the current work on content quality, practice, accessibility, interactives, author-led video, audio, exports, or the series/front-matter system.
+
+### Unit opener art (recorded October 26, 2026)
+
+A consistent opener image for each unit in both books (8 in all). Benjamin wants it eventually, as a lower priority. Neither book has unit images now.
 
 ### Found October 24, 2026
 
