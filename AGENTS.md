@@ -5,7 +5,9 @@ This file is for every collaborator, human or AI (Claude, ChatGPT/Codex). Read i
 - `REPOSITORY-HOUSEKEEPING.md`: how collaborators coordinate, and the cleanup rules
 - `PROJECT-PRIORITIES.md`: what matters most right now and what is deliberately deferred
 
-Those two documents are identical in both textbook repositories (`edcor-310-textbook` and `Econ-150-textbook`). Keep them that way: a change to one goes into the other in a matching pull request.
+`REPOSITORY-HOUSEKEEPING.md` is the same in both textbook repositories (`edcor-310-textbook` and `Econ-150-textbook`); change it in both, in matching pull requests.
+
+`PROJECT-PRIORITIES.md` is each book's own list of what it needs. The goal is that each book's file lists everything that book needs, not that the two files match. When an item applies to both books (the shared design and tools, decisions about the series, work planned for both), put it in both files, in matching pull requests. When it applies to only one book, put it only in that book's file. Expect the two files to differ more over time.
 
 ## The short version
 
