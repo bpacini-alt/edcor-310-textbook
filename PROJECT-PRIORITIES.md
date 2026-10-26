@@ -160,6 +160,21 @@ Begin with an inventory of the existing Ed Psych recorded lectures and other unl
 
 **Why this matters:** Author-led video can make the books feel more personal and interactive while giving students another way to encounter difficult ideas. Its cost and value should be established by auditing the existing recordings before committing to a large new production effort.
 
+### Priority 4 companion — Pilot short-form chapter video series
+
+**Status:** Interesting and potentially high-value, but deferred until the higher-priority textbook work is in good shape. Pilot in a small number of chapters before committing to a full production workflow.
+
+Create a series of short, clear, chapter-linked videos that complement the main text rather than duplicate or replace it. Use a range of lengths—roughly 30 seconds, 2 minutes, and 7 minutes—so each video has one focused job: explain an interesting study, clarify a disputed claim, demonstrate an evidence-based practice, walk through a policy debate, or model how to think with a disciplinary tool.
+
+Possible recurring formats include:
+
+- **Econ 150:** *Study of the Day*, *Policy Debates*, and *How to Think Like an Economist*.
+- **EDCOR 310 / Joy of Learning:** *Tool Time* and *Ed Psych Bites*, including short “true, false, or in between” treatments of claims students encounter online and practical evidence-based teaching moves students can use tomorrow.
+
+Test the format in a few chapters, paying attention to student interest, completion, comprehension, production time, accessibility, and maintenance. Explore whether students can create candidate videos as part of meaningful coursework, with especially strong student-created pieces reviewed for possible inclusion in the books. Establish a repeatable workflow for captions, transcripts, chapter placement, permissions, and links before scaling.
+
+**Why this matters:** Short-form video can improve access, readability, engagement, and the sense that the books are alive and useful without making the main text harder to navigate. A small pilot can reveal whether the student value justifies the ongoing production and maintenance cost.
+
 ### Priority 5 — Add chapter audio
 
 Continue the audio work already underway, beginning with the chapters where audio will most help students.
