@@ -137,7 +137,6 @@ THEME = {
 
 
 def front_pages(units, chapters, supplements):
-    first = min(chapters, key=lambda c: c["num"])
     hours = round(sum(c["minutes"] for c in chapters) / 60)
     back = [{"n": "A", "t": "Joy of Learning", "s": "The reading menu", "href": "/joy-of-learning.html"}]
     for i, s in enumerate(supplements, 1):
@@ -151,7 +150,6 @@ def front_pages(units, chapters, supplements):
         ],
         "cover": {"src": "/assets/cover.jpg", "width": COVER_SIZE[0], "height": COVER_SIZE[1], "alt": BOOK["cover_alt"]},
         "theme": THEME,
-        "start": {"label": f"Start with Chapter {first['num']}", "href": "/" + first["href"]},
         "stats": f"{len(chapters)} chapters in {len(units)} units · about {hours} hours of reading · free and open",
         "contents_sub": f"{len(chapters)} chapters in {len(units)} units, about {hours} hours of reading",
         "count": str(len(chapters)),
