@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Rating histogram reveal prototype</title>
+  <desc id="desc">A compact reading-rating table after one vote, showing four vertical histogram bars for each reading.</desc>
+  <rect width="1200" height="720" fill="#f6f7f9"/>
+  <text x="58" y="56" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.4" fill="#145d90">PROTOTYPE · BANG FOR BUCK</text>
+  <text x="58" y="102" font-family="Georgia, serif" font-size="39" font-weight="700" fill="#1a1a1a">Vote once. Then browse the evidence.</text>
+  <text x="58" y="132" font-family="Georgia, serif" font-size="19" fill="#66717d">The semester distribution appears after a real vote—or through instructor preview.</text>
+
+  <rect x="58" y="158" width="1084" height="54" rx="9" fill="#eef6fb" stroke="#c9dbe8"/>
+  <text x="78" y="192" font-family="Arial, sans-serif" font-size="15" fill="#234b65">Thanks for voting. All semester histograms are now visible.</text>
+  <rect x="865" y="171" width="252" height="29" rx="6" fill="#fff" stroke="#a87d32"/>
+  <text x="991" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#775817">Reveal all graphs · instructor preview</text>
+
+  <rect x="40" y="240" width="1120" height="404" rx="10" fill="#fff" stroke="#e2e7ec"/>
+  <rect x="40" y="240" width="1120" height="43" rx="10" fill="#fbfcfd"/>
+  <path d="M40 283H1160" stroke="#e2e7ec"/>
+  <text x="62" y="267" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.1" fill="#66717d">READING</text>
+  <text x="745" y="267" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.1" fill="#66717d">YOUR VOTE</text>
+  <text x="1015" y="267" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.1" fill="#66717d">SEMESTER DISTRIBUTION</text>
+
+  <g font-family="Georgia, serif" font-size="17" fill="#1a1a1a">
+    <text x="62" y="322">The Case for Phone-Free Schools</text>
+    <text x="62" y="344" font-family="Arial, sans-serif" font-size="11" fill="#66717d">Reading 1 · aggregate semester feedback</text>
+    <text x="62" y="402">Milton Friedman on Discrimination</text>
+    <text x="62" y="424" font-family="Arial, sans-serif" font-size="11" fill="#66717d">Reading 2 · aggregate semester feedback</text>
+    <text x="62" y="482">The Joy of Difficult Learning</text>
+    <text x="62" y="504" font-family="Arial, sans-serif" font-size="11" fill="#66717d">Reading 3 · aggregate semester feedback</text>
+    <text x="62" y="562">What School Psychologists Actually Do</text>
+    <text x="62" y="584" font-family="Arial, sans-serif" font-size="11" fill="#66717d">Reading 4 · aggregate semester feedback</text>
+    <text x="62" y="642">A Skeptic's Guide to IQ</text>
+  </g>
+
+  <g stroke="#e2e7ec">
+    <path d="M40 364H1160M40 444H1160M40 524H1160M40 604H1160"/>
+  </g>
+
+  <g font-family="Arial, sans-serif" font-size="10" font-weight="700" text-anchor="middle">
+    <g fill="#fff" stroke="#145d90"><rect x="694" y="306" width="25" height="24" rx="5"/><rect x="724" y="306" width="25" height="24" rx="5"/><rect x="754" y="306" width="25" height="24" rx="5"/><rect x="784" y="306" width="25" height="24" rx="5"/></g>
+    <g fill="#66717d"><text x="706" y="322">1</text><text x="736" y="322">2</text><text x="766" y="322">3</text><text x="796" y="322">4</text></g>
+    <g fill="#fff" stroke="#145d90"><rect x="694" y="386" width="25" height="24" rx="5"/><rect x="724" y="386" width="25" height="24" rx="5"/><rect x="754" y="386" width="25" height="24" rx="5"/><rect x="784" y="386" width="25" height="24" rx="5"/></g>
+    <g fill="#66717d"><text x="706" y="402">1</text><text x="736" y="402">2</text><text x="766" y="402">3</text><text x="796" y="402">4</text></g>
+    <g fill="#fff" stroke="#145d90"><rect x="694" y="466" width="25" height="24" rx="5"/><rect x="724" y="466" width="25" height="24" rx="5"/><rect x="754" y="466" width="25" height="24" rx="5"/><rect x="784" y="466" width="25" height="24" rx="5"/></g>
+    <g fill="#66717d"><text x="706" y="482">1</text><text x="736" y="482">2</text><text x="766" y="482">3</text><text x="796" y="482">4</text></g>
+    <g fill="#fff" stroke="#145d90"><rect x="694" y="546" width="25" height="24" rx="5"/><rect x="724" y="546" width="25" height="24" rx="5"/><rect x="754" y="546" width="25" height="24" rx="5"/><rect x="784" y="546" width="25" height="24" rx="5"/></g>
+    <g fill="#66717d"><text x="706" y="562">1</text><text x="736" y="562">2</text><text x="766" y="562">3</text><text x="796" y="562">4</text></g>
+    <g fill="#fff" stroke="#145d90"><rect x="694" y="626" width="25" height="24" rx="5"/><rect x="724" y="626" width="25" height="24" rx="5"/><rect x="754" y="626" width="25" height="24" rx="5"/><rect x="784" y="626" width="25" height="24" rx="5"/></g>
+    <g fill="#66717d"><text x="706" y="642">1</text><text x="736" y="642">2</text><text x="766" y="642">3</text><text x="796" y="642">4</text></g>
+  </g>
+
+  <g>
+    <g fill="#9b3b32"><rect x="978" y="334" width="13" height="4" rx="2"/><rect x="1000" y="324" width="13" height="14" rx="2"/><rect x="1022" y="296" width="13" height="42" rx="2"/><rect x="1044" y="316" width="13" height="22" rx="2"/></g>
+    <g fill="#a87d32"><rect x="978" y="414" width="13" height="4" rx="2"/><rect x="1000" y="407" width="13" height="11" rx="2"/><rect x="1022" y="389" width="13" height="29" rx="2"/><rect x="1044" y="368" width="13" height="50" rx="2"/></g>
+    <g fill="#2a7a4f"><rect x="978" y="494" width="13" height="15" rx="2"/><rect x="1000" y="487" width="13" height="22" rx="2"/><rect x="1022" y="469" width="13" height="40" rx="2"/><rect x="1044" y="493" width="13" height="16" rx="2"/></g>
+    <g fill="#c09135"><rect x="978" y="574" width="13" height="3" rx="2"/><rect x="1000" y="563" width="13" height="14" rx="2"/><rect x="1022" y="537" width="13" height="40" rx="2"/><rect x="1044" y="545" width="13" height="32" rx="2"/></g>
+    <g fill="#9b3b32"><rect x="978" y="654" width="13" height="25" rx="2"/><rect x="1000" y="651" width="13" height="28" rx="2"/><rect x="1022" y="659" width="13" height="20" rx="2"/><rect x="1044" y="671" width="13" height="8" rx="2"/></g>
+    <g font-family="Arial, sans-serif" font-size="9" fill="#66717d" text-anchor="middle"><text x="984" y="352">1</text><text x="1006" y="352">2</text><text x="1028" y="352">3</text><text x="1050" y="352">4</text></g>
+    <g font-family="Arial, sans-serif" font-size="9" fill="#66717d" text-anchor="middle"><text x="984" y="432">1</text><text x="1006" y="432">2</text><text x="1028" y="432">3</text><text x="1050" y="432">4</text></g>
+    <g font-family="Arial, sans-serif" font-size="9" fill="#66717d" text-anchor="middle"><text x="984" y="524">1</text><text x="1006" y="524">2</text><text x="1028" y="524">3</text><text x="1050" y="524">4</text></g>
+    <g font-family="Arial, sans-serif" font-size="9" fill="#66717d" text-anchor="middle"><text x="984" y="592">1</text><text x="1006" y="592">2</text><text x="1028" y="592">3</text><text x="1050" y="592">4</text></g>
+    <g font-family="Arial, sans-serif" font-size="9" fill="#66717d" text-anchor="middle"><text x="984" y="698">1</text><text x="1006" y="698">2</text><text x="1028" y="698">3</text><text x="1050" y="698">4</text></g>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="10" fill="#66717d">
+    <text x="1081" y="337">54 responses</text>
+    <text x="1081" y="417">56 responses</text>
+    <text x="1081" y="508">51 responses</text>
+    <text x="1081" y="576">53 responses</text>
+    <text x="1081" y="678">45 responses</text>
+  </g>
+</svg>
