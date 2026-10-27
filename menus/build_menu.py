@@ -187,7 +187,7 @@ def build(data):
 <label for="jm-scope">Your picks for</label>
 <select id="jm-scope">{scope_opts}</select>
 <div class="jm-meter"><div class="jm-meter-track" aria-hidden="true"><div class="jm-meter-fill" id="jm-meter-fill"></div></div><span class="jm-meter-text" id="jm-meter-text" aria-live="polite"></span></div>
-<div class="jm-bar-actions"><button type="button" class="jm-btn jm-btn-strong" id="jm-copy">Copy my list</button><button type="button" class="jm-btn" id="jm-clear">Clear my picks</button></div>
+<div class="jm-bar-actions"><button type="button" class="jm-btn jm-btn-strong jm-hidden" id="jm-reveal-all" aria-label="Reveal all graphs for instructor review" title="Instructor preview">Reveal all graphs</button><button type="button" class="jm-btn jm-btn-strong" id="jm-copy">Copy my list</button><button type="button" class="jm-btn" id="jm-clear">Clear my picks</button></div>
 </div></div>
 <div class="jm-wrap" style="padding-top:2rem">
 <section class="jm-card" aria-labelledby="jm-title">

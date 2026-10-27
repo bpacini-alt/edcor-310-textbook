@@ -12,6 +12,10 @@
   if (!cfgEl) return;
   var cfg = JSON.parse(cfgEl.textContent);
   var KEY = cfg.storageKey;
+  var previewMode = new URLSearchParams(window.location.search).get("instructor") === "1";
+  var revealButton = document.getElementById("jm-reveal-all");
+  var graphsUnlocked = false;
+  var graphsLoading = false;
   function targetOf(scopeId) { var s = scopeById[scopeId]; return s ? Number(s.dataset.target) || 60 : 60; }
 
   // ---------- saved state ----------
@@ -86,21 +90,21 @@
   function renderRatingSummary(summaryEl, data) {
     while (summaryEl.firstChild) summaryEl.removeChild(summaryEl.firstChild);
     if (!data || !data.total) {
-      summaryEl.textContent = "No semester ratings yet.";
+      summaryEl.textContent = "";
       return;
     }
     var count = document.createElement("span");
     count.textContent = data.total + (data.total === 1 ? " response" : " responses");
     summaryEl.appendChild(count);
     var chart = document.createElement("span");
-    chart.className = "jm-rating-chart";
+    chart.className = "jm-rating-histogram";
     var labels = [];
     [1, 2, 3, 4].forEach(function (rating) {
       var segment = document.createElement("span");
       var n = Number(data.counts && data.counts[rating]) || 0;
       var pct = Number(data.percentages && data.percentages[rating]) || 0;
-      segment.className = "jm-rating-segment jm-rating-" + rating;
-      segment.style.width = pct + "%";
+      segment.className = "jm-rating-bar jm-rating-" + rating;
+      segment.style.height = pct ? Math.max(2, pct) + "%" : "0";
       segment.title = ratingName(rating) + ": " + n;
       chart.appendChild(segment);
       labels.push(rating + ": " + n);
@@ -114,6 +118,67 @@
       yours.textContent = "You: " + data.yourRating;
       summaryEl.appendChild(yours);
     }
+  }
+
+  function ratingUrl(params) {
+    var endpoint = cfg.ratingsEndpoint || "/api/ratings";
+    var query = Object.keys(params).map(function (key) {
+      return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
+    }).join("&");
+    return endpoint + (endpoint.indexOf("?") === -1 ? "?" : "&") + query;
+  }
+
+  function paintSavedRatings(data) {
+    var ratings = data && data.ratings || {};
+    Object.keys(ratings).forEach(function (id) {
+      var el = byId[id];
+      if (!el) return;
+      var buttons = Array.prototype.slice.call(el.querySelectorAll("[data-ratings] [data-rating]"));
+      paintRatingButtons(buttons, ratings[id]);
+    });
+    return Object.keys(ratings).length > 0;
+  }
+
+  function renderAllSummaries(data) {
+    var summaries = data && data.summaries || {};
+    entries.forEach(function (el) {
+      var summaryEl = el.querySelector(".jm-rating-summary");
+      if (summaryEl) renderRatingSummary(summaryEl, summaries[el.dataset.id] || null);
+    });
+  }
+
+  function loadAllGraphs() {
+    if (!graphsUnlocked || graphsLoading) return;
+    graphsLoading = true;
+    entries.forEach(function (el) {
+      var summaryEl = el.querySelector(".jm-rating-summary");
+      if (summaryEl) summaryEl.textContent = "Loading…";
+    });
+    fetch(ratingUrl({ book: cfg.ratingsBook, all: "1" }), { credentials: "same-origin" })
+      .then(parseRatingResponse)
+      .then(renderAllSummaries)
+      .catch(function () {
+        entries.forEach(function (el) {
+          var summaryEl = el.querySelector(".jm-rating-summary");
+          if (summaryEl) summaryEl.textContent = "Ratings are unavailable right now.";
+        });
+        say("Ratings are unavailable right now.");
+      })
+      .then(function () { graphsLoading = false; });
+  }
+
+  function unlockGraphs(message) {
+    graphsUnlocked = true;
+    loadAllGraphs();
+    if (message) say(message);
+  }
+
+  if (previewMode && revealButton) {
+    revealButton.classList.remove("jm-hidden");
+    revealButton.removeAttribute("aria-hidden");
+    revealButton.addEventListener("click", function () {
+      unlockGraphs("Graphs revealed for instructor review.");
+    });
   }
 
   entries.forEach(function (el) {
@@ -178,7 +243,12 @@
         .then(function (data) {
           renderRatingSummary(ratingSummaryEl, data);
           paintRatingButtons(ratingButtons, data.yourRating);
-          say("Saved. Thanks for the feedback.");
+          if (!graphsUnlocked) {
+            unlockGraphs("Saved. You can now see the semester results.");
+          } else {
+            loadAllGraphs();
+            say("Saved. The histogram is updated.");
+          }
         })
         .catch(function () {
           ratingSummaryEl.textContent = "Ratings are unavailable right now.";
@@ -190,6 +260,17 @@
         });
     }
   });
+
+  function loadExistingRatings() {
+    fetch(ratingUrl({ book: cfg.ratingsBook, mine: "1" }), { credentials: "same-origin" })
+      .then(parseRatingResponse)
+      .then(function (data) {
+        if (paintSavedRatings(data)) unlockGraphs();
+      })
+      .catch(function () { /* Ratings are optional until a student submits one. */ });
+  }
+  loadExistingRatings();
+
   // ---------- meters ----------
   var barText = document.getElementById("jm-meter-text");
   var barFill = document.getElementById("jm-meter-fill");

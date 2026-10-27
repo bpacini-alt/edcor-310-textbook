@@ -745,6 +745,29 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   body { background: #fff; }
 }
 
+/* Revealed rating distributions: a compact four-bin histogram. */
+.jm-rating-histogram {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: .14rem;
+  width: 4.7rem;
+  height: 1.05rem;
+  vertical-align: middle;
+}
+.jm-rating-bar {
+  flex: 1 1 0;
+  align-self: flex-end;
+  width: auto;
+  min-height: 0;
+  border-radius: 2px 2px 0 0;
+  transition: height .2s ease;
+}
+.jm-rating-bar.jm-rating-1 { background: var(--crit); }
+.jm-rating-bar.jm-rating-2 { background: var(--acc2, var(--acc)); }
+.jm-rating-bar.jm-rating-3 { background: var(--mine); }
+.jm-rating-bar.jm-rating-4 { background: #c09135; }
+#jm-reveal-all { border-color: var(--acc2, var(--acc)); }
+
 </style>
 </head>
 <body>
@@ -756,7 +779,7 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
 <label for="jm-scope">Your picks for</label>
 <select id="jm-scope"><option value="unit-1">Unit 1 (4 hr)</option><option value="unit-2">Unit 2 (3 hr)</option><option value="unit-3">Unit 3 (3 hr)</option><option value="unit-4">Unit 4 (3 hr)</option></select>
 <div class="jm-meter"><div class="jm-meter-track" aria-hidden="true"><div class="jm-meter-fill" id="jm-meter-fill"></div></div><span class="jm-meter-text" id="jm-meter-text" aria-live="polite"></span></div>
-<div class="jm-bar-actions"><button type="button" class="jm-btn jm-btn-strong" id="jm-copy">Copy my list</button><button type="button" class="jm-btn" id="jm-clear">Clear my picks</button></div>
+<div class="jm-bar-actions"><button type="button" class="jm-btn jm-btn-strong jm-hidden" id="jm-reveal-all" aria-label="Reveal all graphs for instructor review" title="Instructor preview">Reveal all graphs</button><button type="button" class="jm-btn jm-btn-strong" id="jm-copy">Copy my list</button><button type="button" class="jm-btn" id="jm-clear">Clear my picks</button></div>
 </div></div>
 <div class="jm-wrap" style="padding-top:2rem">
 <section class="jm-card" aria-labelledby="jm-title">
@@ -2879,6 +2902,10 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   if (!cfgEl) return;
   var cfg = JSON.parse(cfgEl.textContent);
   var KEY = cfg.storageKey;
+  var previewMode = new URLSearchParams(window.location.search).get("instructor") === "1";
+  var revealButton = document.getElementById("jm-reveal-all");
+  var graphsUnlocked = false;
+  var graphsLoading = false;
   function targetOf(scopeId) { var s = scopeById[scopeId]; return s ? Number(s.dataset.target) || 60 : 60; }
 
   // ---------- saved state ----------
@@ -2953,21 +2980,21 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   function renderRatingSummary(summaryEl, data) {
     while (summaryEl.firstChild) summaryEl.removeChild(summaryEl.firstChild);
     if (!data || !data.total) {
-      summaryEl.textContent = "No semester ratings yet.";
+      summaryEl.textContent = "";
       return;
     }
     var count = document.createElement("span");
     count.textContent = data.total + (data.total === 1 ? " response" : " responses");
     summaryEl.appendChild(count);
     var chart = document.createElement("span");
-    chart.className = "jm-rating-chart";
+    chart.className = "jm-rating-histogram";
     var labels = [];
     [1, 2, 3, 4].forEach(function (rating) {
       var segment = document.createElement("span");
       var n = Number(data.counts && data.counts[rating]) || 0;
       var pct = Number(data.percentages && data.percentages[rating]) || 0;
-      segment.className = "jm-rating-segment jm-rating-" + rating;
-      segment.style.width = pct + "%";
+      segment.className = "jm-rating-bar jm-rating-" + rating;
+      segment.style.height = pct ? Math.max(2, pct) + "%" : "0";
       segment.title = ratingName(rating) + ": " + n;
       chart.appendChild(segment);
       labels.push(rating + ": " + n);
@@ -2981,6 +3008,67 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
       yours.textContent = "You: " + data.yourRating;
       summaryEl.appendChild(yours);
     }
+  }
+
+  function ratingUrl(params) {
+    var endpoint = cfg.ratingsEndpoint || "/api/ratings";
+    var query = Object.keys(params).map(function (key) {
+      return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
+    }).join("&");
+    return endpoint + (endpoint.indexOf("?") === -1 ? "?" : "&") + query;
+  }
+
+  function paintSavedRatings(data) {
+    var ratings = data && data.ratings || {};
+    Object.keys(ratings).forEach(function (id) {
+      var el = byId[id];
+      if (!el) return;
+      var buttons = Array.prototype.slice.call(el.querySelectorAll("[data-ratings] [data-rating]"));
+      paintRatingButtons(buttons, ratings[id]);
+    });
+    return Object.keys(ratings).length > 0;
+  }
+
+  function renderAllSummaries(data) {
+    var summaries = data && data.summaries || {};
+    entries.forEach(function (el) {
+      var summaryEl = el.querySelector(".jm-rating-summary");
+      if (summaryEl) renderRatingSummary(summaryEl, summaries[el.dataset.id] || null);
+    });
+  }
+
+  function loadAllGraphs() {
+    if (!graphsUnlocked || graphsLoading) return;
+    graphsLoading = true;
+    entries.forEach(function (el) {
+      var summaryEl = el.querySelector(".jm-rating-summary");
+      if (summaryEl) summaryEl.textContent = "Loading…";
+    });
+    fetch(ratingUrl({ book: cfg.ratingsBook, all: "1" }), { credentials: "same-origin" })
+      .then(parseRatingResponse)
+      .then(renderAllSummaries)
+      .catch(function () {
+        entries.forEach(function (el) {
+          var summaryEl = el.querySelector(".jm-rating-summary");
+          if (summaryEl) summaryEl.textContent = "Ratings are unavailable right now.";
+        });
+        say("Ratings are unavailable right now.");
+      })
+      .then(function () { graphsLoading = false; });
+  }
+
+  function unlockGraphs(message) {
+    graphsUnlocked = true;
+    loadAllGraphs();
+    if (message) say(message);
+  }
+
+  if (previewMode && revealButton) {
+    revealButton.classList.remove("jm-hidden");
+    revealButton.removeAttribute("aria-hidden");
+    revealButton.addEventListener("click", function () {
+      unlockGraphs("Graphs revealed for instructor review.");
+    });
   }
 
   entries.forEach(function (el) {
@@ -3045,7 +3133,12 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
         .then(function (data) {
           renderRatingSummary(ratingSummaryEl, data);
           paintRatingButtons(ratingButtons, data.yourRating);
-          say("Saved. Thanks for the feedback.");
+          if (!graphsUnlocked) {
+            unlockGraphs("Saved. You can now see the semester results.");
+          } else {
+            loadAllGraphs();
+            say("Saved. The histogram is updated.");
+          }
         })
         .catch(function () {
           ratingSummaryEl.textContent = "Ratings are unavailable right now.";
@@ -3057,6 +3150,17 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
         });
     }
   });
+
+  function loadExistingRatings() {
+    fetch(ratingUrl({ book: cfg.ratingsBook, mine: "1" }), { credentials: "same-origin" })
+      .then(parseRatingResponse)
+      .then(function (data) {
+        if (paintSavedRatings(data)) unlockGraphs();
+      })
+      .catch(function () { /* Ratings are optional until a student submits one. */ });
+  }
+  loadExistingRatings();
+
   // ---------- meters ----------
   var barText = document.getElementById("jm-meter-text");
   var barFill = document.getElementById("jm-meter-fill");

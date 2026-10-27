@@ -734,3 +734,26 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   .jm-hidden { display: block !important; }
   body { background: #fff; }
 }
+
+/* Revealed rating distributions: a compact four-bin histogram. */
+.jm-rating-histogram {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: .14rem;
+  width: 4.7rem;
+  height: 1.05rem;
+  vertical-align: middle;
+}
+.jm-rating-bar {
+  flex: 1 1 0;
+  align-self: flex-end;
+  width: auto;
+  min-height: 0;
+  border-radius: 2px 2px 0 0;
+  transition: height .2s ease;
+}
+.jm-rating-bar.jm-rating-1 { background: var(--crit); }
+.jm-rating-bar.jm-rating-2 { background: var(--acc2, var(--acc)); }
+.jm-rating-bar.jm-rating-3 { background: var(--mine); }
+.jm-rating-bar.jm-rating-4 { background: #c09135; }
+#jm-reveal-all { border-color: var(--acc2, var(--acc)); }
