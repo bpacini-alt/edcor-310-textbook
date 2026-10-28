@@ -103,12 +103,6 @@
     var yAxis = document.createElement("span");
     yAxis.className = "jm-rating-y-axis";
     yAxis.setAttribute("aria-hidden", "true");
-    [100, 50, 0].forEach(function (value) {
-      var yTick = document.createElement("span");
-      yTick.className = "jm-rating-y-tick";
-      yTick.textContent = value;
-      yAxis.appendChild(yTick);
-    });
 
     var plot = document.createElement("span");
     plot.className = "jm-rating-plot";
