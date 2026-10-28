@@ -199,7 +199,7 @@ def build(data):
 <p class="jm-kicker">{esc(c['course'])} · Reading Menu</p>
 <h1 class="jm-title" id="jm-title">{esc(c['menuTitle'])}</h1>
 <p class="jm-lede">{esc(data['intro']['lede'])}</p>
-<details class="jm-howto" open><summary>How this works</summary><div class="jm-howto-body">
+<details class="jm-howto"><summary>How this works</summary><div class="jm-howto-body">
 {howto}
 </div></details>
 </section>
