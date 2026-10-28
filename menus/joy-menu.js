@@ -19,6 +19,7 @@
   var summaries = {};
   var summariesReady = false;
   var summariesError = false;
+  var summariesPromise = null;
   function targetOf(scopeId) { var s = scopeById[scopeId]; return s ? Number(s.dataset.target) || 60 : 60; }
 
   // ---------- saved state ----------
@@ -164,9 +165,10 @@
   }
 
   function loadAllSummaries() {
-    if (!graphsUnlocked || graphsLoading || summariesReady) return Promise.resolve();
+    if (!graphsUnlocked || summariesReady) return Promise.resolve();
+    if (summariesPromise) return summariesPromise;
     graphsLoading = true;
-    return fetch(ratingUrl({ book: cfg.ratingsBook, all: "1" }), { credentials: "same-origin" })
+    summariesPromise = fetch(ratingUrl({ book: cfg.ratingsBook, all: "1" }), { credentials: "same-origin" })
       .then(parseRatingResponse)
       .then(function (data) {
         summaries = data && data.summaries || {};
@@ -177,7 +179,11 @@
         summariesError = true;
         say("Ratings are unavailable right now.");
       })
-      .then(function () { graphsLoading = false; });
+      .then(function () {
+        graphsLoading = false;
+        summariesPromise = null;
+      });
+    return summariesPromise;
   }
 
   function viewVotes(el, button, summaryEl) {
