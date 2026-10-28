@@ -757,3 +757,26 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
 .jm-rating-bar.jm-rating-3 { background: var(--mine); }
 .jm-rating-bar.jm-rating-4 { background: #c09135; }
 #jm-reveal-all { border-color: var(--acc2, var(--acc)); }
+
+
+/* Ratings remain quiet in the row; the histogram appears inside the expanded reading. */
+.jm-vote-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .45rem;
+  margin-top: .55rem;
+  padding-top: .45rem;
+  border-top: 1px dotted var(--line);
+}
+.jm-vote-tools .jm-rating-summary {
+  flex-basis: auto;
+  justify-content: flex-start;
+  min-height: 1.1rem;
+}
+.jm-view-votes { color: var(--acc); }
+.jm-instructor-tools {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}

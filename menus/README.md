@@ -55,6 +55,6 @@ Students can mark readings "I'll read this" or "My group has it," filter by form
 These menus were moved here in October 2026 from two Word documents: *ECON 150 Pacini Joy of Econ Menu* and the Joy of Learning section of *EDCOR 310 Reading Calendar and Study Guide*. Each repository keeps its own course's original in `menus/original/` for reference. The data files are now the source of truth. Bundled entries were split so that every reading has its own heading, link, and time.
 
 
-## Instructor graph preview
+## Instructor vote preview
 
-Append `?instructor=1` to the Joy menu URL to reveal the instructor-only **Reveal all graphs** button. The button is a convenience preview control, not an authentication boundary; the graphs remain aggregate semester ratings.
+Append `?instructor=1` to the Joy menu URL to reveal the instructor-only **Reveal all votes** button at the bottom of the page. For students, a successful vote makes the per-reading **View votes** button available inside the existing `+` expansion. The button is a convenience preview control, not an authentication boundary; the results remain aggregate semester ratings.

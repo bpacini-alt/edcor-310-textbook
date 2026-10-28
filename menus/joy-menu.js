@@ -16,6 +16,9 @@
   var revealButton = document.getElementById("jm-reveal-all");
   var graphsUnlocked = false;
   var graphsLoading = false;
+  var summaries = {};
+  var summariesReady = false;
+  var summariesError = false;
   function targetOf(scopeId) { var s = scopeById[scopeId]; return s ? Number(s.dataset.target) || 60 : 60; }
 
   // ---------- saved state ----------
@@ -90,7 +93,7 @@
   function renderRatingSummary(summaryEl, data) {
     while (summaryEl.firstChild) summaryEl.removeChild(summaryEl.firstChild);
     if (!data || !data.total) {
-      summaryEl.textContent = "";
+      summaryEl.textContent = "No semester ratings yet.";
       return;
     }
     var count = document.createElement("span");
@@ -139,45 +142,91 @@
     return Object.keys(ratings).length > 0;
   }
 
-  function renderAllSummaries(data) {
-    var summaries = data && data.summaries || {};
+  function renderEntrySummary(el) {
+    var summaryEl = el.querySelector(".jm-rating-summary");
+    if (!summaryEl) return;
+    summaryEl.textContent = summariesError
+      ? "Ratings are unavailable right now."
+      : "";
+    if (!summariesError) renderRatingSummary(summaryEl, summaries[el.dataset.id] || null);
+    summaryEl.classList.remove("jm-hidden");
+    summaryEl.setAttribute("data-visible", "true");
+  }
+
+  function showVoteTools() {
     entries.forEach(function (el) {
-      var summaryEl = el.querySelector(".jm-rating-summary");
-      if (summaryEl) renderRatingSummary(summaryEl, summaries[el.dataset.id] || null);
+      var tools = el.querySelector(".jm-vote-tools");
+      if (tools) {
+        tools.classList.remove("jm-hidden");
+        tools.removeAttribute("aria-hidden");
+      }
     });
   }
 
-  function loadAllGraphs() {
-    if (!graphsUnlocked || graphsLoading) return;
+  function loadAllSummaries() {
+    if (!graphsUnlocked || graphsLoading || summariesReady) return Promise.resolve();
     graphsLoading = true;
-    entries.forEach(function (el) {
-      var summaryEl = el.querySelector(".jm-rating-summary");
-      if (summaryEl) summaryEl.textContent = "Loading…";
-    });
-    fetch(ratingUrl({ book: cfg.ratingsBook, all: "1" }), { credentials: "same-origin" })
+    return fetch(ratingUrl({ book: cfg.ratingsBook, all: "1" }), { credentials: "same-origin" })
       .then(parseRatingResponse)
-      .then(renderAllSummaries)
+      .then(function (data) {
+        summaries = data && data.summaries || {};
+        summariesReady = true;
+        summariesError = false;
+      })
       .catch(function () {
-        entries.forEach(function (el) {
-          var summaryEl = el.querySelector(".jm-rating-summary");
-          if (summaryEl) summaryEl.textContent = "Ratings are unavailable right now.";
-        });
+        summariesError = true;
         say("Ratings are unavailable right now.");
       })
       .then(function () { graphsLoading = false; });
   }
 
-  function unlockGraphs(message) {
+  function viewVotes(el, button, summaryEl) {
+    if (!graphsUnlocked) {
+      say("Vote once to view votes.");
+      return;
+    }
+    if (summaryEl.getAttribute("data-visible") === "true") {
+      summaryEl.classList.add("jm-hidden");
+      summaryEl.removeAttribute("data-visible");
+      button.textContent = "View votes";
+      return;
+    }
+    button.disabled = true;
+    button.textContent = "Loading…";
+    loadAllSummaries().then(function () {
+      renderEntrySummary(el);
+      button.disabled = false;
+      button.textContent = "Hide votes";
+    });
+  }
+
+  function unlockGraphs(message, exposeButtons) {
     graphsUnlocked = true;
-    loadAllGraphs();
+    if (exposeButtons !== false) showVoteTools();
+    loadAllSummaries();
     if (message) say(message);
+  }
+
+  function revealAllVotes() {
+    unlockGraphs(null, true);
+    loadAllSummaries().then(function () {
+      entries.forEach(function (el) {
+        el.open = true;
+        renderEntrySummary(el);
+        var button = el.querySelector(".jm-view-votes");
+        if (button) {
+          button.disabled = false;
+          button.textContent = "Hide votes";
+        }
+      });
+    });
   }
 
   if (previewMode && revealButton) {
     revealButton.classList.remove("jm-hidden");
     revealButton.removeAttribute("aria-hidden");
     revealButton.addEventListener("click", function () {
-      unlockGraphs("Graphs revealed for instructor review.");
+      revealAllVotes();
     });
   }
 
@@ -190,8 +239,10 @@
     var group = plan && plan.querySelector('[data-choice="group"]');
     var ratingCell = el.querySelector("[data-ratings]");
     var ratingButtons = ratingCell ? Array.prototype.slice.call(ratingCell.querySelectorAll("[data-rating]")) : [];
-    var ratingSummaryEl = ratingCell ? ratingCell.querySelector(".jm-rating-summary") : null;
-    if (!plan || !mine || !group || !ratingCell || ratingButtons.length !== 4 || !ratingSummaryEl) return;
+    var voteTools = el.querySelector(".jm-vote-tools");
+    var viewVotesButton = el.querySelector(".jm-view-votes");
+    var ratingSummaryEl = el.querySelector(".jm-rating-summary");
+    if (!plan || !mine || !group || !ratingCell || ratingButtons.length !== 4 || !voteTools || !viewVotesButton || !ratingSummaryEl) return;
 
     function keepSummaryStill(event) {
       event.preventDefault();
@@ -221,6 +272,11 @@
       paint(); save(); applyFilters();
     });
 
+    viewVotesButton.addEventListener("click", function (event) {
+      keepSummaryStill(event);
+      viewVotes(el, viewVotesButton, ratingSummaryEl);
+    });
+
     var ratingBusy = false;
     ratingButtons.forEach(function (button) {
       button.addEventListener("click", function (event) {
@@ -244,11 +300,11 @@
           renderRatingSummary(ratingSummaryEl, data);
           paintRatingButtons(ratingButtons, data.yourRating);
           if (!graphsUnlocked) {
-            unlockGraphs("Saved. You can now see the semester results.");
+            unlockGraphs();
           } else {
-            loadAllGraphs();
-            say("Saved. The histogram is updated.");
+            loadAllSummaries();
           }
+          say("Saved. Thanks for the feedback.");
         })
         .catch(function () {
           ratingSummaryEl.textContent = "Ratings are unavailable right now.";

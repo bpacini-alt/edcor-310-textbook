@@ -47,7 +47,6 @@ def entry_html(e, scope_id, titles):
         '<button type="button" class="jm-btn jm-rating-btn" data-rating="3" aria-pressed="false" aria-label="A-tier · Keep" title="A-tier · Keep">3</button>'
         '<button type="button" class="jm-btn jm-rating-btn" data-rating="4" aria-pressed="false" aria-label="S-tier · Life-changing · Celebrate" title="S-tier · Life-changing · Celebrate">4</button>'
         '</span>'
-        '<span class="jm-rating-summary" aria-live="polite"></span>'
         '</span>'
     )
     out = [
@@ -77,6 +76,10 @@ def entry_html(e, scope_id, titles):
     if e.get("pairs"):
         links = " · ".join('<a href="#r-%s">%s</a>' % (esc(p), esc(titles[p])) for p in e["pairs"])
         out.append('<p class="jm-pairs">Pairs with: %s</p>' % links)
+    out.append('<div class="jm-vote-tools jm-hidden" aria-hidden="true">')
+    out.append('<button type="button" class="jm-btn jm-view-votes" aria-label="View votes for this reading">View votes</button>')
+    out.append('<span class="jm-rating-summary jm-hidden" aria-live="polite"></span>')
+    out.append('</div>')
     out.append('</div>')
     out.append('</details>')
     return "\n".join(out)
@@ -187,7 +190,7 @@ def build(data):
 <label for="jm-scope">Your picks for</label>
 <select id="jm-scope">{scope_opts}</select>
 <div class="jm-meter"><div class="jm-meter-track" aria-hidden="true"><div class="jm-meter-fill" id="jm-meter-fill"></div></div><span class="jm-meter-text" id="jm-meter-text" aria-live="polite"></span></div>
-<div class="jm-bar-actions"><button type="button" class="jm-btn jm-btn-strong jm-hidden" id="jm-reveal-all" aria-label="Reveal all graphs for instructor review" title="Instructor preview">Reveal all graphs</button><button type="button" class="jm-btn jm-btn-strong" id="jm-copy">Copy my list</button><button type="button" class="jm-btn" id="jm-clear">Clear my picks</button></div>
+<div class="jm-bar-actions"><button type="button" class="jm-btn jm-btn-strong" id="jm-copy">Copy my list</button><button type="button" class="jm-btn" id="jm-clear">Clear my picks</button></div>
 </div></div>
 <div class="jm-wrap" style="padding-top:2rem">
 <section class="jm-card" aria-labelledby="jm-title">
@@ -220,6 +223,7 @@ def build(data):
 </section>
 {chr(10).join(units_html)}
 {appendix}
+<div class="jm-instructor-tools jm-hidden"><button type="button" class="jm-btn jm-btn-strong" id="jm-reveal-all" aria-hidden="true" aria-label="Reveal all votes for instructor review" title="Instructor preview">Reveal all votes</button></div>
 <p class="jm-foot">{esc(c['menuTitle'])} · {esc(c['course'])} · Your picks are saved in this browser only. They don't reach your instructor or your group.</p>
 </main>
 <script type="application/json" id="jm-config">{json.dumps(config)}</script>
