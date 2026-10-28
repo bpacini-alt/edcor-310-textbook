@@ -889,12 +889,6 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   color: var(--faint);
   font: 600 .58rem/1 var(--sans);
 }
-.jm-rating-y-axis::before {
-  content: "%";
-  position: absolute;
-  top: -.75rem;
-  right: 0;
-}
 .jm-rating-plot {
   grid-column: 2;
   grid-row: 1;
