@@ -12,10 +12,7 @@
   if (!cfgEl) return;
   var cfg = JSON.parse(cfgEl.textContent);
   var KEY = cfg.storageKey;
-  var previewMode = new URLSearchParams(window.location.search).get("instructor") === "1";
   var revealButton = document.getElementById("jm-reveal-all");
-  var graphsUnlocked = false;
-  var graphsLoading = false;
   var summaries = {};
   var summariesReady = false;
   var summariesError = false;
@@ -165,9 +162,8 @@
   }
 
   function loadAllSummaries() {
-    if (!graphsUnlocked || summariesReady) return Promise.resolve();
+    if (summariesReady) return Promise.resolve();
     if (summariesPromise) return summariesPromise;
-    graphsLoading = true;
     summariesPromise = fetch(ratingUrl({ book: cfg.ratingsBook, all: "1" }), { credentials: "same-origin" })
       .then(parseRatingResponse)
       .then(function (data) {
@@ -180,21 +176,16 @@
         say("Ratings are unavailable right now.");
       })
       .then(function () {
-        graphsLoading = false;
         summariesPromise = null;
       });
     return summariesPromise;
   }
 
   function viewVotes(el, button, summaryEl) {
-    if (!graphsUnlocked) {
-      say("Vote once to view votes.");
-      return;
-    }
     if (summaryEl.getAttribute("data-visible") === "true") {
       summaryEl.classList.add("jm-hidden");
       summaryEl.removeAttribute("data-visible");
-      button.textContent = "View votes";
+      button.textContent = "Reveal";
       return;
     }
     button.disabled = true;
@@ -206,11 +197,18 @@
     });
   }
 
-  function unlockGraphs(message, exposeButtons) {
-    graphsUnlocked = true;
-    if (exposeButtons !== false) showVoteTools();
-    loadAllSummaries();
-    if (message) say(message);
+  function revealAllVotes() {
+    loadAllSummaries().then(function () {
+      entries.forEach(function (el) {
+        el.open = true;
+        renderEntrySummary(el);
+        var button = el.querySelector(".jm-view-votes");
+        if (button) {
+          button.disabled = false;
+          button.textContent = "Hide votes";
+        }
+      });
+    });
   }
 
   function revealAllVotes() {
@@ -228,7 +226,7 @@
     });
   }
 
-  if (previewMode && revealButton) {
+  if (revealButton) {
     revealButton.classList.remove("jm-hidden");
     revealButton.removeAttribute("aria-hidden");
     revealButton.addEventListener("click", function () {
@@ -305,11 +303,7 @@
         .then(function (data) {
           renderRatingSummary(ratingSummaryEl, data);
           paintRatingButtons(ratingButtons, data.yourRating);
-          if (!graphsUnlocked) {
-            unlockGraphs();
-          } else {
-            loadAllSummaries();
-          }
+          loadAllSummaries();
           say("Saved. Thanks for the feedback.");
         })
         .catch(function () {
@@ -327,7 +321,7 @@
     fetch(ratingUrl({ book: cfg.ratingsBook, mine: "1" }), { credentials: "same-origin" })
       .then(parseRatingResponse)
       .then(function (data) {
-        if (paintSavedRatings(data)) unlockGraphs();
+        paintSavedRatings(data);
       })
       .catch(function () { /* Ratings are optional until a student submits one. */ });
   }

@@ -76,8 +76,8 @@ def entry_html(e, scope_id, titles):
     if e.get("pairs"):
         links = " · ".join('<a href="#r-%s">%s</a>' % (esc(p), esc(titles[p])) for p in e["pairs"])
         out.append('<p class="jm-pairs">Pairs with: %s</p>' % links)
-    out.append('<div class="jm-vote-tools jm-hidden" aria-hidden="true">')
-    out.append('<button type="button" class="jm-btn jm-view-votes" aria-label="View votes for this reading">View votes</button>')
+    out.append('<div class="jm-vote-tools">')
+    out.append('<button type="button" class="jm-btn jm-view-votes" aria-label="Reveal votes for this reading">Reveal</button>')
     out.append('<span class="jm-rating-summary jm-hidden" aria-live="polite"></span>')
     out.append('</div>')
     out.append('</div>')
@@ -223,7 +223,7 @@ def build(data):
 </section>
 {chr(10).join(units_html)}
 {appendix}
-<div class="jm-instructor-tools jm-hidden"><button type="button" class="jm-btn jm-btn-strong" id="jm-reveal-all" aria-hidden="true" aria-label="Reveal all votes for instructor review" title="Instructor preview">Reveal all votes</button></div>
+<div class="jm-instructor-tools"><button type="button" class="jm-btn" id="jm-reveal-all" aria-label="Reveal all votes" title="Reveal all semester votes">Reveal all votes</button></div>
 <p class="jm-foot">{esc(c['menuTitle'])} · {esc(c['course'])} · Your picks are saved in this browser only. They don't reach your instructor or your group.</p>
 </main>
 <script type="application/json" id="jm-config">{json.dumps(config)}</script>

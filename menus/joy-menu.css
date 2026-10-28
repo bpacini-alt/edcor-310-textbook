@@ -774,9 +774,25 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   justify-content: flex-start;
   min-height: 1.1rem;
 }
-.jm-view-votes { color: var(--acc); }
+.jm-view-votes {
+  color: var(--acc);
+  font-size: .8rem;
+  padding: .28rem .55rem;
+}
 .jm-instructor-tools {
   display: flex;
   justify-content: flex-end;
   margin-top: 2rem;
+  opacity: .68;
+  transition: opacity .2s ease;
+}
+.jm-instructor-tools:hover,
+.jm-instructor-tools:focus-within {
+  opacity: 1;
+}
+#jm-reveal-all {
+  border-color: var(--line);
+  color: var(--muted, var(--text));
+  font-size: .82rem;
+  padding: .35rem .65rem;
 }
