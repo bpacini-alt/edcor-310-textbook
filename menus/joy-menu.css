@@ -17,6 +17,11 @@
   --pro-tint: #e8f3ec;
   --crit: #9b3b32;
   --crit-tint: #f8ebe9;
+  /* Rating histogram bins: 1 (dark red), 2 (yellow), 3 (green), 4 (teal). */
+  --rating-1: #8b1e2d;
+  --rating-2: #d8a928;
+  --rating-3: #3f8f55;
+  --rating-4: #168b8b;
   --serif: Georgia, 'Times New Roman', serif;
   --sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   /* --acc (book accent) and --acc2 (numerals) are set per course in the page head. */
@@ -182,10 +187,10 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 }
 .jm-rating-chart { display: inline-flex; width: 5.5rem; height: .35rem; overflow: hidden; border-radius: 99px; background: var(--line); }
 .jm-rating-segment { height: 100%; min-width: 0; }
-.jm-rating-1 { background: var(--crit); }
-.jm-rating-2 { background: var(--acc2, var(--acc)); }
-.jm-rating-3 { background: var(--mine); }
-.jm-rating-4 { background: #c09135; }
+.jm-rating-1 { background: var(--rating-1); }
+.jm-rating-2 { background: var(--rating-2); }
+.jm-rating-3 { background: var(--rating-3); }
+.jm-rating-4 { background: var(--rating-4); }
 .jm-rating-yours { color: var(--text); }
 .jm-hidden { display: none !important; }
 
@@ -733,4 +738,96 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   .jm-entry { break-inside: avoid; }
   .jm-hidden { display: block !important; }
   body { background: #fff; }
+}
+
+/* Revealed rating distributions: a compact four-bin histogram. */
+.jm-rating-histogram {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: .14rem;
+  width: 4.7rem;
+  height: 1.05rem;
+  vertical-align: middle;
+}
+.jm-rating-bar {
+  flex: 1 1 0;
+  align-self: flex-end;
+  width: auto;
+  min-height: 0;
+  border-radius: 2px 2px 0 0;
+  transition: height .2s ease;
+}
+.jm-rating-bar.jm-rating-1 { background: var(--rating-1); }
+.jm-rating-bar.jm-rating-2 { background: var(--rating-2); }
+.jm-rating-bar.jm-rating-3 { background: var(--rating-3); }
+.jm-rating-bar.jm-rating-4 { background: var(--rating-4); }
+#jm-reveal-all { border-color: var(--acc2, var(--acc)); }
+
+
+/* Per-reading reveal sits under the plus in the open summary row. */
+.jm-vote-tools {
+  display: none;
+  position: absolute;
+  right: .28rem;
+  bottom: .18rem;
+  align-items: center;
+  gap: .25rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  z-index: 2;
+}
+.jm-entry[open] > .jm-entry-summary .jm-vote-tools { display: flex; }
+.jm-vote-tools .jm-rating-summary {
+  flex-basis: auto;
+  justify-content: flex-start;
+  min-height: 1.1rem;
+}
+.jm-view-votes {
+  color: var(--acc);
+  font-size: .8rem;
+  padding: .28rem .55rem;
+}
+.jm-instructor-tools {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  opacity: .68;
+  transition: opacity .2s ease;
+}
+.jm-instructor-tools:hover,
+.jm-instructor-tools:focus-within {
+  opacity: 1;
+}
+#jm-reveal-all {
+  border-color: var(--line);
+  color: var(--muted, var(--text));
+  font-size: .82rem;
+  padding: .35rem .65rem;
+}
+
+/* On phones, keep ratings and reveal controls on separate lines. */
+@media (max-width: 760px) {
+  .jm-entry-summary {
+    padding-bottom: 1.9rem;
+  }
+  .jm-entry[open] > .jm-entry-summary {
+    padding-bottom: 3.8rem;
+  }
+  .jm-entry[open] > .jm-entry-summary .jm-entry-chevron {
+    top: 1.6rem;
+  }
+  .jm-entry-summary .jm-vote-tools {
+    bottom: .22rem;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .12rem;
+  }
+  .jm-entry-summary .jm-vote-tools .jm-rating-summary {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .1rem;
+    white-space: normal;
+    font-size: 9px;
+  }
 }

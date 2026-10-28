@@ -183,6 +183,32 @@ async function ratingSummary(db, book, reading, semester, clientId) {
     yourRating: mine ? Number(mine.rating) : null,
   };
 }
+async function ratingSummaries(db, book, semester, clientId) {
+  const results = await db.batch([
+    db.prepare('SELECT reading_id, rating, COUNT(*) AS count FROM reading_ratings WHERE book = ? AND semester = ? GROUP BY reading_id, rating ORDER BY reading_id, rating').bind(book, semester),
+    db.prepare('SELECT reading_id, rating FROM reading_ratings WHERE book = ? AND semester = ? AND client_id = ?').bind(book, semester, clientId),
+  ]);
+  const summaries = {};
+  for (const row of results[0].results || []) {
+    const id = row.reading_id;
+    if (!summaries[id]) summaries[id] = { counts: { 1: 0, 2: 0, 3: 0, 4: 0 } };
+    summaries[id].counts[Number(row.rating)] = Number(row.count);
+  }
+  const yourRatings = {};
+  for (const row of results[1].results || []) yourRatings[row.reading_id] = Number(row.rating);
+  for (const [reading, summary] of Object.entries(summaries)) {
+    const total = Object.values(summary.counts).reduce((sum, count) => sum + count, 0);
+    const percentages = {};
+    for (const rating of [1, 2, 3, 4]) {
+      percentages[rating] = total ? Math.round((summary.counts[rating] / total) * 1000) / 10 : 0;
+    }
+    summaries[reading] = {
+      ok: true, book, reading, semester, counts: summary.counts, total, percentages,
+      yourRating: yourRatings[reading] || null,
+    };
+  }
+  return { ok: true, book, semester, summaries };
+}
 
 async function handleRatings(request, env) {
   try {
@@ -196,6 +222,7 @@ async function handleRatings(request, env) {
   let reading = clean(url.searchParams.get('reading'), 100);
   let rating = null;
   const mineRequest = request.method === 'GET' && url.searchParams.get('mine') === '1';
+  const allRequest = request.method === 'GET' && url.searchParams.get('all') === '1';
 
   if (request.method === 'POST') {
     const raw = await request.text();
@@ -207,7 +234,7 @@ async function handleRatings(request, env) {
     rating = Number(data && data.rating);
   }
 
-  if (mineRequest) {
+  if (mineRequest || allRequest) {
     if (!RATING_BOOKS.has(book)) return ratingJson(400, { error: 'bad_target' });
   } else if (!validRatingTarget(book, reading)) return ratingJson(400, { error: 'bad_target' });
   if (request.method === 'POST' && (!Number.isInteger(rating) || rating < 1 || rating > 4)) {
@@ -233,6 +260,7 @@ async function handleRatings(request, env) {
     'CREATE INDEX IF NOT EXISTS idx_reading_ratings_lookup ON reading_ratings (book, reading_id, semester)'
   ).run();
 
+  if (allRequest) return ratingJson(200, await ratingSummaries(env.RATINGS_DB, book, semester, clientId), clientId);
   if (mineRequest) return ratingJson(200, await ratingMine(env.RATINGS_DB, book, semester, clientId), clientId);
 
   if (request.method === 'POST') {

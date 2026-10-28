@@ -53,3 +53,8 @@ Students can mark readings "I'll read this" or "My group has it," filter by form
 ## History
 
 These menus were moved here in October 2026 from two Word documents: *ECON 150 Pacini Joy of Econ Menu* and the Joy of Learning section of *EDCOR 310 Reading Calendar and Study Guide*. Each repository keeps its own course's original in `menus/original/` for reference. The data files are now the source of truth. Bundled entries were split so that every reading has its own heading, link, and time.
+
+
+## Vote distributions
+
+Anyone can open a reading with `+` and use the small **Reveal** button to see that reading's aggregate semester histogram. The **Reveal all votes** button at the bottom shows the distributions for every reading. These are aggregate semester ratings, not individual responses; students should make their own reading decisions before revealing the comparison data.

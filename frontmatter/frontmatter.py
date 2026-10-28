@@ -90,6 +90,14 @@ def _page(book, title, description, body, current=""):
 def _picker(book):
     """A compact chapter picker: one native dropdown and a Go button. Phones open their own list."""
     groups = []
+    if book["back"]:
+        sections.append(f"""  <section class="fm-panel" id="back" aria-labelledby="back-h">
+    <p class="fm-label">Back matter</p>
+    <h2 class="fm-panel-title" id="back-h">{esc(book['back_title'])}</h2>
+    <ol class="fm-rows">
+{_rows(book['back'], 'fm-num fm-num-small', with_time=False)}
+    </ol>
+  </section>""")
     if book["front"]:
         groups.append(("Before Chapter 1", book["front"]))
     for i, u in enumerate(book["units"], 1):
@@ -173,14 +181,6 @@ def _contents(book):
     </div>{hook}{outcomes}
     <ol class="fm-rows">
 {_rows(u['chapters'])}
-    </ol>
-  </section>""")
-    if book["back"]:
-        sections.append(f"""  <section class="fm-panel" id="back" aria-labelledby="back-h">
-    <p class="fm-label">Back matter</p>
-    <h2 class="fm-panel-title" id="back-h">{esc(book['back_title'])}</h2>
-    <ol class="fm-rows">
-{_rows(book['back'], 'fm-num fm-num-small', with_time=False)}
     </ol>
   </section>""")
     body = f"""  <section class="fm-card fm-contents-card" aria-labelledby="fm-title">

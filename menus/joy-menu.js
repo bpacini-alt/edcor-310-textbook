@@ -12,6 +12,11 @@
   if (!cfgEl) return;
   var cfg = JSON.parse(cfgEl.textContent);
   var KEY = cfg.storageKey;
+  var revealButton = document.getElementById("jm-reveal-all");
+  var allVotesVisible = false;
+  var summaries = {};
+  var summariesError = false;
+  var summariesPromise = null;
   function targetOf(scopeId) { var s = scopeById[scopeId]; return s ? Number(s.dataset.target) || 60 : 60; }
 
   // ---------- saved state ----------
@@ -93,14 +98,14 @@
     count.textContent = data.total + (data.total === 1 ? " response" : " responses");
     summaryEl.appendChild(count);
     var chart = document.createElement("span");
-    chart.className = "jm-rating-chart";
+    chart.className = "jm-rating-histogram";
     var labels = [];
     [1, 2, 3, 4].forEach(function (rating) {
       var segment = document.createElement("span");
       var n = Number(data.counts && data.counts[rating]) || 0;
       var pct = Number(data.percentages && data.percentages[rating]) || 0;
-      segment.className = "jm-rating-segment jm-rating-" + rating;
-      segment.style.width = pct + "%";
+      segment.className = "jm-rating-bar jm-rating-" + rating;
+      segment.style.height = pct ? Math.max(2, pct) + "%" : "0";
       segment.title = ratingName(rating) + ": " + n;
       chart.appendChild(segment);
       labels.push(rating + ": " + n);
@@ -116,6 +121,137 @@
     }
   }
 
+  function ratingUrl(params) {
+    var endpoint = cfg.ratingsEndpoint || "/api/ratings";
+    var query = Object.keys(params).map(function (key) {
+      return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
+    }).join("&");
+    return endpoint + (endpoint.indexOf("?") === -1 ? "?" : "&") + query;
+  }
+
+  function paintSavedRatings(data) {
+    var ratings = data && data.ratings || {};
+    Object.keys(ratings).forEach(function (id) {
+      var el = byId[id];
+      if (!el) return;
+      var buttons = Array.prototype.slice.call(el.querySelectorAll("[data-ratings] [data-rating]"));
+      paintRatingButtons(buttons, ratings[id]);
+    });
+    return Object.keys(ratings).length > 0;
+  }
+
+  function renderEntrySummary(el) {
+    var summaryEl = el.querySelector(".jm-rating-summary");
+    if (!summaryEl) return;
+    summaryEl.textContent = summariesError
+      ? "Ratings are unavailable right now."
+      : "";
+    if (!summariesError) renderRatingSummary(summaryEl, summaries[el.dataset.id] || null);
+    summaryEl.classList.remove("jm-hidden");
+    summaryEl.setAttribute("data-visible", "true");
+  }
+
+  function refreshVisibleSummaries() {
+    entries.forEach(function (el) {
+      var summaryEl = el.querySelector(".jm-rating-summary");
+      if (summaryEl && summaryEl.getAttribute("data-visible") === "true") renderEntrySummary(el);
+    });
+  }
+
+  function loadAllSummaries() {
+    if (summariesPromise) return summariesPromise;
+    summariesError = false;
+    summariesPromise = fetch(ratingUrl({ book: cfg.ratingsBook, all: "1" }), { credentials: "same-origin" })
+      .then(parseRatingResponse)
+      .then(function (data) {
+        summaries = data && data.summaries || {};
+      })
+      .catch(function () {
+        summariesError = true;
+        say("Ratings are unavailable right now.");
+      })
+      .then(function () {
+        summariesPromise = null;
+      });
+    return summariesPromise;
+  }
+
+  function viewVotes(el, button, summaryEl) {
+    if (summaryEl.getAttribute("data-visible") === "true") {
+      summaryEl.classList.add("jm-hidden");
+      summaryEl.removeAttribute("data-visible");
+      button.textContent = "Reveal";
+      button.setAttribute("aria-label", "Reveal votes for this reading");
+      return;
+    }
+    button.disabled = true;
+    button.textContent = "Loading…";
+    loadAllSummaries().then(function () {
+      renderEntrySummary(el);
+      button.disabled = false;
+      button.textContent = "Hide votes";
+      button.setAttribute("aria-label", "Hide votes for this reading");
+    });
+  }
+
+  function hideEntryVotes(el) {
+    var summaryEl = el.querySelector(".jm-rating-summary");
+    if (summaryEl) {
+      summaryEl.classList.add("jm-hidden");
+      summaryEl.removeAttribute("data-visible");
+    }
+    var button = el.querySelector(".jm-view-votes");
+    if (button) {
+      button.disabled = false;
+      button.textContent = "Reveal";
+      button.setAttribute("aria-label", "Reveal votes for this reading");
+    }
+  }
+
+  function revealAllVotes() {
+    if (allVotesVisible) {
+      entries.forEach(function (el) {
+        el.open = false;
+        hideEntryVotes(el);
+      });
+      allVotesVisible = false;
+      if (revealButton) {
+        revealButton.disabled = false;
+        revealButton.textContent = "Reveal all votes";
+      }
+      return;
+    }
+    if (revealButton) {
+      revealButton.disabled = true;
+      revealButton.textContent = "Loading…";
+    }
+    loadAllSummaries().then(function () {
+      entries.forEach(function (el) {
+        el.open = true;
+        renderEntrySummary(el);
+        var button = el.querySelector(".jm-view-votes");
+        if (button) {
+          button.disabled = false;
+          button.textContent = "Hide votes";
+          button.setAttribute("aria-label", "Hide votes for this reading");
+        }
+      });
+      allVotesVisible = true;
+      if (revealButton) {
+        revealButton.disabled = false;
+        revealButton.textContent = "Hide all votes";
+      }
+    });
+  }
+
+  if (revealButton) {
+    revealButton.classList.remove("jm-hidden");
+    revealButton.removeAttribute("aria-hidden");
+    revealButton.addEventListener("click", function () {
+      revealAllVotes();
+    });
+  }
+
   entries.forEach(function (el) {
     var id = el.dataset.id;
     var titleLink = el.querySelector(".jm-entry-title a");
@@ -125,8 +261,10 @@
     var group = plan && plan.querySelector('[data-choice="group"]');
     var ratingCell = el.querySelector("[data-ratings]");
     var ratingButtons = ratingCell ? Array.prototype.slice.call(ratingCell.querySelectorAll("[data-rating]")) : [];
-    var ratingSummaryEl = ratingCell ? ratingCell.querySelector(".jm-rating-summary") : null;
-    if (!plan || !mine || !group || !ratingCell || ratingButtons.length !== 4 || !ratingSummaryEl) return;
+    var voteTools = el.querySelector(".jm-vote-tools");
+    var viewVotesButton = el.querySelector(".jm-view-votes");
+    var ratingSummaryEl = el.querySelector(".jm-rating-summary");
+    if (!plan || !mine || !group || !ratingCell || ratingButtons.length !== 4 || !voteTools || !viewVotesButton || !ratingSummaryEl) return;
 
     function keepSummaryStill(event) {
       event.preventDefault();
@@ -156,6 +294,11 @@
       paint(); save(); applyFilters();
     });
 
+    viewVotesButton.addEventListener("click", function (event) {
+      keepSummaryStill(event);
+      viewVotes(el, viewVotesButton, ratingSummaryEl);
+    });
+
     var ratingBusy = false;
     ratingButtons.forEach(function (button) {
       button.addEventListener("click", function (event) {
@@ -178,6 +321,7 @@
         .then(function (data) {
           renderRatingSummary(ratingSummaryEl, data);
           paintRatingButtons(ratingButtons, data.yourRating);
+          loadAllSummaries().then(refreshVisibleSummaries);
           say("Saved. Thanks for the feedback.");
         })
         .catch(function () {
@@ -190,6 +334,17 @@
         });
     }
   });
+
+  function loadExistingRatings() {
+    fetch(ratingUrl({ book: cfg.ratingsBook, mine: "1" }), { credentials: "same-origin" })
+      .then(parseRatingResponse)
+      .then(function (data) {
+        paintSavedRatings(data);
+      })
+      .catch(function () { /* Ratings are optional until a student submits one. */ });
+  }
+  loadExistingRatings();
+
   // ---------- meters ----------
   var barText = document.getElementById("jm-meter-text");
   var barFill = document.getElementById("jm-meter-fill");
