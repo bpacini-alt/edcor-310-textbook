@@ -60,6 +60,7 @@ def entry_html(e, scope_id, titles):
         plan,
         ratings,
         '<span class="jm-entry-chevron" aria-hidden="true">+</span>',
+
         '</summary>',
         '<div class="jm-entry-detail">',
     ]

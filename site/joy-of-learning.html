@@ -810,6 +810,32 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   font-size: .82rem;
   padding: .35rem .65rem;
 }
+
+/* On phones, keep ratings and reveal controls on separate lines. */
+@media (max-width: 760px) {
+  .jm-entry-summary {
+    padding-bottom: 1.9rem;
+  }
+  .jm-entry[open] > .jm-entry-summary {
+    padding-bottom: 3.8rem;
+  }
+  .jm-entry[open] > .jm-entry-summary .jm-entry-chevron {
+    top: 1.6rem;
+  }
+  .jm-entry-summary .jm-vote-tools {
+    bottom: .22rem;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .12rem;
+  }
+  .jm-entry-summary .jm-vote-tools .jm-rating-summary {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .1rem;
+    white-space: normal;
+    font-size: 9px;
+  }
+}
 </style>
 </head>
 <body>
