@@ -60,13 +60,10 @@ def entry_html(e, scope_id, titles):
         plan,
         ratings,
         '<span class="jm-entry-chevron" aria-hidden="true">+</span>',
-        '<span class="jm-vote-tools" aria-label="Vote distribution controls">',
-        '<button type="button" class="jm-btn jm-view-votes" aria-label="Reveal votes for this reading">Reveal</button>',
-        '<span class="jm-rating-summary jm-hidden" aria-live="polite"></span>',
-        '</span>',
 
         '</summary>',
         '<div class="jm-entry-detail">',
+        '<div class="jm-explanation">',
     ]
     blurb = esc(e.get("blurb"))
     if e.get("hook"):
@@ -82,7 +79,14 @@ def entry_html(e, scope_id, titles):
         links = " · ".join('<a href="#r-%s">%s</a>' % (esc(p), esc(titles[p])) for p in e["pairs"])
         out.append('<p class="jm-pairs">Pairs with: %s</p>' % links)
 
-    out.append('</div>')
+    out.extend([
+        '</div>',
+        '<span class="jm-vote-tools" aria-label="Vote distribution controls">',
+        '<button type="button" class="jm-btn jm-view-votes" aria-label="Reveal votes for this reading">Reveal</button>',
+        '<span class="jm-rating-summary jm-hidden" aria-live="polite"></span>',
+        '</span>',
+        '</div>',
+    ])
     out.append('</details>')
     return "\n".join(out)
 

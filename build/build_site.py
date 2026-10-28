@@ -138,7 +138,7 @@ THEME = {
 
 def front_pages(units, chapters, supplements):
     hours = round(sum(c["minutes"] for c in chapters) / 60)
-    back = [{"n": "A", "t": "Joy of Learning", "s": "The reading menu", "href": "/joy-of-learning.html"}]
+    back = []
     for i, s in enumerate(supplements, 1):
         back.append({"n": "ABCDEFGH"[i], "t": s["title"], "s": "Quick reference", "href": "/" + s["href"]})
     book = {
@@ -155,7 +155,8 @@ def front_pages(units, chapters, supplements):
         "count": str(len(chapters)),
         "front": [
             {"n": "i", "t": "About this book", "s": "How the book was made, and acknowledgments", "m": "", "href": "/about.html"},
-            {"n": "ii", "t": "How to Get the Most Out of This Book", "s": "How to study, practice, and use this book well", "m": "", "href": "/how-to-get-the-most-out-of-this-book.html"}
+            {"n": "ii", "t": "How to Get the Most Out of This Book", "s": "How to study, practice, and use this book well", "m": "", "href": "/how-to-get-the-most-out-of-this-book.html"},
+            {"n": "J", "t": "Joy of Learning", "s": "The reading menu", "m": "", "href": "/joy-of-learning.html"}
         ],
         "units": [{
             "roman": u["roman"], "kicker": f"{u['label']} · {chapter_range(u)}", "title": u["name"],

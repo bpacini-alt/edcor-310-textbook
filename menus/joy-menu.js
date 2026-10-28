@@ -97,22 +97,49 @@
     var count = document.createElement("span");
     count.textContent = data.total + (data.total === 1 ? " response" : " responses");
     summaryEl.appendChild(count);
+
     var chart = document.createElement("span");
     chart.className = "jm-rating-histogram";
+    var yAxis = document.createElement("span");
+    yAxis.className = "jm-rating-y-axis";
+    yAxis.setAttribute("aria-hidden", "true");
+    [100, 50, 0].forEach(function (value) {
+      var yTick = document.createElement("span");
+      yTick.className = "jm-rating-y-tick";
+      yTick.textContent = value;
+      yAxis.appendChild(yTick);
+    });
+
+    var plot = document.createElement("span");
+    plot.className = "jm-rating-plot";
+    var xAxis = document.createElement("span");
+    xAxis.className = "jm-rating-x-axis";
     var labels = [];
     [1, 2, 3, 4].forEach(function (rating) {
+      var bin = document.createElement("span");
+      bin.className = "jm-rating-bin";
       var segment = document.createElement("span");
       var n = Number(data.counts && data.counts[rating]) || 0;
       var pct = Number(data.percentages && data.percentages[rating]) || 0;
       segment.className = "jm-rating-bar jm-rating-" + rating;
       segment.style.height = pct ? Math.max(2, pct) + "%" : "0";
       segment.title = ratingName(rating) + ": " + n;
-      chart.appendChild(segment);
-      labels.push(rating + ": " + n);
+      bin.appendChild(segment);
+      plot.appendChild(bin);
+
+      var xTick = document.createElement("span");
+      xTick.className = "jm-rating-x-tick";
+      xTick.textContent = rating;
+      xAxis.appendChild(xTick);
+      labels.push(rating + ": " + n + " (" + Math.round(pct) + "%)");
     });
+    chart.appendChild(yAxis);
+    chart.appendChild(plot);
+    chart.appendChild(xAxis);
     chart.setAttribute("role", "img");
-    chart.setAttribute("aria-label", labels.join(", "));
+    chart.setAttribute("aria-label", labels.join(", ") + ". X-axis: rating. Y-axis: percent of responses.");
     summaryEl.appendChild(chart);
+
     if (data.yourRating) {
       var yours = document.createElement("span");
       yours.className = "jm-rating-yours";
@@ -120,7 +147,6 @@
       summaryEl.appendChild(yours);
     }
   }
-
   function ratingUrl(params) {
     var endpoint = cfg.ratingsEndpoint || "/api/ratings";
     var query = Object.keys(params).map(function (key) {
