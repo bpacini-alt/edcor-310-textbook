@@ -899,12 +899,6 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   color: var(--faint);
   font: 600 .58rem/1 var(--sans);
 }
-.jm-rating-y-axis::before {
-  content: "%";
-  position: absolute;
-  top: -.75rem;
-  right: 0;
-}
 .jm-rating-plot {
   grid-column: 2;
   grid-row: 1;
@@ -4147,12 +4141,6 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
     var yAxis = document.createElement("span");
     yAxis.className = "jm-rating-y-axis";
     yAxis.setAttribute("aria-hidden", "true");
-    [100, 50, 0].forEach(function (value) {
-      var yTick = document.createElement("span");
-      yTick.className = "jm-rating-y-tick";
-      yTick.textContent = value;
-      yAxis.appendChild(yTick);
-    });
 
     var plot = document.createElement("span");
     plot.className = "jm-rating-plot";
