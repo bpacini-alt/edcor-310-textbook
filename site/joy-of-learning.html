@@ -27,6 +27,11 @@
   --pro-tint: #e8f3ec;
   --crit: #9b3b32;
   --crit-tint: #f8ebe9;
+  /* Rating histogram bins: 1 (dark red), 2 (yellow), 3 (green), 4 (teal). */
+  --rating-1: #8b1e2d;
+  --rating-2: #d8a928;
+  --rating-3: #3f8f55;
+  --rating-4: #168b8b;
   --serif: Georgia, 'Times New Roman', serif;
   --sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   /* --acc (book accent) and --acc2 (numerals) are set per course in the page head. */
@@ -192,10 +197,10 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 }
 .jm-rating-chart { display: inline-flex; width: 5.5rem; height: .35rem; overflow: hidden; border-radius: 99px; background: var(--line); }
 .jm-rating-segment { height: 100%; min-width: 0; }
-.jm-rating-1 { background: var(--crit); }
-.jm-rating-2 { background: var(--acc2, var(--acc)); }
-.jm-rating-3 { background: var(--mine); }
-.jm-rating-4 { background: #c09135; }
+.jm-rating-1 { background: var(--rating-1); }
+.jm-rating-2 { background: var(--rating-2); }
+.jm-rating-3 { background: var(--rating-3); }
+.jm-rating-4 { background: var(--rating-4); }
 .jm-rating-yours { color: var(--text); }
 .jm-hidden { display: none !important; }
 
@@ -762,10 +767,10 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   border-radius: 2px 2px 0 0;
   transition: height .2s ease;
 }
-.jm-rating-bar.jm-rating-1 { background: var(--crit); }
-.jm-rating-bar.jm-rating-2 { background: var(--acc2, var(--acc)); }
-.jm-rating-bar.jm-rating-3 { background: var(--mine); }
-.jm-rating-bar.jm-rating-4 { background: #c09135; }
+.jm-rating-bar.jm-rating-1 { background: var(--rating-1); }
+.jm-rating-bar.jm-rating-2 { background: var(--rating-2); }
+.jm-rating-bar.jm-rating-3 { background: var(--rating-3); }
+.jm-rating-bar.jm-rating-4 { background: var(--rating-4); }
 #jm-reveal-all { border-color: var(--acc2, var(--acc)); }
 
 
