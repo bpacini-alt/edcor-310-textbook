@@ -185,7 +185,7 @@ async function ratingSummary(db, book, reading, semester, clientId) {
 }
 async function ratingSummaries(db, book, semester, clientId) {
   const results = await db.batch([
-    db.prepare('SELECT reading_id, rating, COUNT(*) AS count FROM reading_ratings WHERE book = ? AND semester = ? GROUP BY reading_id, rating').bind(book, semester),
+    db.prepare('SELECT reading_id, rating, COUNT(*) AS count FROM reading_ratings WHERE book = ? AND semester = ? GROUP BY reading_id, rating ORDER BY reading_id, rating').bind(book, semester),
     db.prepare('SELECT reading_id, rating FROM reading_ratings WHERE book = ? AND semester = ? AND client_id = ?').bind(book, semester, clientId),
   ]);
   const summaries = {};

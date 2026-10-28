@@ -13,8 +13,8 @@
   var cfg = JSON.parse(cfgEl.textContent);
   var KEY = cfg.storageKey;
   var revealButton = document.getElementById("jm-reveal-all");
+  var allVotesVisible = false;
   var summaries = {};
-  var summariesReady = false;
   var summariesError = false;
   var summariesPromise = null;
   function targetOf(scopeId) { var s = scopeById[scopeId]; return s ? Number(s.dataset.target) || 60 : 60; }
@@ -151,25 +151,20 @@
     summaryEl.setAttribute("data-visible", "true");
   }
 
-  function showVoteTools() {
+  function refreshVisibleSummaries() {
     entries.forEach(function (el) {
-      var tools = el.querySelector(".jm-vote-tools");
-      if (tools) {
-        tools.classList.remove("jm-hidden");
-        tools.removeAttribute("aria-hidden");
-      }
+      var summaryEl = el.querySelector(".jm-rating-summary");
+      if (summaryEl && summaryEl.getAttribute("data-visible") === "true") renderEntrySummary(el);
     });
   }
 
   function loadAllSummaries() {
-    if (summariesReady) return Promise.resolve();
     if (summariesPromise) return summariesPromise;
+    summariesError = false;
     summariesPromise = fetch(ratingUrl({ book: cfg.ratingsBook, all: "1" }), { credentials: "same-origin" })
       .then(parseRatingResponse)
       .then(function (data) {
         summaries = data && data.summaries || {};
-        summariesReady = true;
-        summariesError = false;
       })
       .catch(function () {
         summariesError = true;
@@ -186,6 +181,7 @@
       summaryEl.classList.add("jm-hidden");
       summaryEl.removeAttribute("data-visible");
       button.textContent = "Reveal";
+      button.setAttribute("aria-label", "Reveal votes for this reading");
       return;
     }
     button.disabled = true;
@@ -194,10 +190,41 @@
       renderEntrySummary(el);
       button.disabled = false;
       button.textContent = "Hide votes";
+      button.setAttribute("aria-label", "Hide votes for this reading");
     });
   }
 
+  function hideEntryVotes(el) {
+    var summaryEl = el.querySelector(".jm-rating-summary");
+    if (summaryEl) {
+      summaryEl.classList.add("jm-hidden");
+      summaryEl.removeAttribute("data-visible");
+    }
+    var button = el.querySelector(".jm-view-votes");
+    if (button) {
+      button.disabled = false;
+      button.textContent = "Reveal";
+      button.setAttribute("aria-label", "Reveal votes for this reading");
+    }
+  }
+
   function revealAllVotes() {
+    if (allVotesVisible) {
+      entries.forEach(function (el) {
+        el.open = false;
+        hideEntryVotes(el);
+      });
+      allVotesVisible = false;
+      if (revealButton) {
+        revealButton.disabled = false;
+        revealButton.textContent = "Reveal all votes";
+      }
+      return;
+    }
+    if (revealButton) {
+      revealButton.disabled = true;
+      revealButton.textContent = "Loading…";
+    }
     loadAllSummaries().then(function () {
       entries.forEach(function (el) {
         el.open = true;
@@ -206,23 +233,14 @@
         if (button) {
           button.disabled = false;
           button.textContent = "Hide votes";
+          button.setAttribute("aria-label", "Hide votes for this reading");
         }
       });
-    });
-  }
-
-  function revealAllVotes() {
-    unlockGraphs(null, true);
-    loadAllSummaries().then(function () {
-      entries.forEach(function (el) {
-        el.open = true;
-        renderEntrySummary(el);
-        var button = el.querySelector(".jm-view-votes");
-        if (button) {
-          button.disabled = false;
-          button.textContent = "Hide votes";
-        }
-      });
+      allVotesVisible = true;
+      if (revealButton) {
+        revealButton.disabled = false;
+        revealButton.textContent = "Hide all votes";
+      }
     });
   }
 
@@ -303,7 +321,7 @@
         .then(function (data) {
           renderRatingSummary(ratingSummaryEl, data);
           paintRatingButtons(ratingButtons, data.yourRating);
-          loadAllSummaries();
+          loadAllSummaries().then(refreshVisibleSummaries);
           say("Saved. Thanks for the feedback.");
         })
         .catch(function () {

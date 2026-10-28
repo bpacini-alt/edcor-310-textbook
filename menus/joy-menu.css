@@ -759,16 +759,20 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
 #jm-reveal-all { border-color: var(--acc2, var(--acc)); }
 
 
-/* Ratings remain quiet in the row; the histogram appears inside the expanded reading. */
+/* Per-reading reveal sits under the plus in the open summary row. */
 .jm-vote-tools {
-  display: flex;
-  flex-wrap: wrap;
+  display: none;
+  position: absolute;
+  right: .28rem;
+  bottom: .18rem;
   align-items: center;
-  gap: .45rem;
-  margin-top: .55rem;
-  padding-top: .45rem;
-  border-top: 1px dotted var(--line);
+  gap: .25rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  z-index: 2;
 }
+.jm-entry[open] > .jm-entry-summary .jm-vote-tools { display: flex; }
 .jm-vote-tools .jm-rating-summary {
   flex-basis: auto;
   justify-content: flex-start;
