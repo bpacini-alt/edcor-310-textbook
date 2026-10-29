@@ -22,7 +22,7 @@ The `book` dict:
   stats        "26 chapters in 4 units · about 21 hours of reading · free and open"
   contents_sub "26 chapters in 4 units, about 21 hours of reading"
   count        "26"                                 the faint number on the contents card
-  front        [{"n", "t", "s", "m", "href"}]       Before Chapter 1
+  front        [{"n", "t", "s", "m", "href"}]       The Opening Pages
   units        [{"roman", "kicker", "title", "hook", "outcomes": [(text, [clo, ...])], "chapters": [{"n", "t", "s", "m", "href"}]}]
                a chapter may also carry "divider": "The Closing Reckoning" to start a small subheading inside its unit
   back_title   "Readings and quick references"
@@ -91,7 +91,7 @@ def _picker(book):
     """A compact chapter picker: one native dropdown and a Go button. Phones open their own list."""
     groups = []
     if book["front"]:
-        groups.append(("Before Chapter 1", book["front"]))
+        groups.append(("The Opening Pages", book["front"]))
     for i, u in enumerate(book["units"], 1):
         groups.append((f"Unit {i} · {u['title']}", u["chapters"]))
     if book.get("back"):
@@ -145,8 +145,8 @@ def _contents(book):
     sections = []
     if book["front"]:
         sections.append(f"""  <section class="fm-panel" id="start" aria-labelledby="start-h">
-    <p class="fm-label">Front matter</p>
-    <h2 class="fm-panel-title" id="start-h">Before Chapter 1</h2>
+    <p class="fm-label">Begin here</p>
+    <h2 class="fm-panel-title" id="start-h">The Opening Pages</h2>
     <ol class="fm-rows">
 {_rows(book['front'], 'fm-num fm-num-small')}
     </ol>
