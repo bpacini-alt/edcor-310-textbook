@@ -329,6 +329,22 @@ Full details, costs, and file-size limits are in `audio/README.md` under "Stage 
 
 **Status:** Record for later; start when there is time. EDCOR 310 Chapter 11 is done (once #35 is merged).
 
+### Both books: Read answers aloud after a pause (recorded October 28, 2026)
+
+**The problem:** the audio player never reads the answers to Retrieval Practice or Quick Checks, even when a student has opened them. Right now it reads a Retrieval Practice question and says "Pause and try answering on your own before you go on." For a Quick Check, it reads the question and then leaves four seconds of quiet. In both cases it moves on without giving the answer. A student who listens instead of reading never hears the answers (reader reports [textbook-feedback#24](https://github.com/bpacini-alt/textbook-feedback/issues/24), [#25](https://github.com/bpacini-alt/textbook-feedback/issues/25), and [#26](https://github.com/bpacini-alt/textbook-feedback/issues/26), all in Econ 150 Chapter 14).
+
+**Benjamin's direction:** keep the retrieval attempt, then give the answer. The narration should ask the student to try first, pause, and then read the answer. For example: "For this retrieval practice, pause and try to come up with the answer. I'll give it in five seconds. … The answer is …"
+
+**How to do it:**
+
+1. Do it in the player's reading rules (`audio/player/etb-audio.js`), not chapter by chapter, so every Retrieval Practice and Quick Check in both books works the same way. The recorded narration in Benjamin's voice (above) takes its script from these same rules, so it will pick this up too.
+2. Settle one standard wording for each kind of box, and how long each pause lasts. A definition or recall question may need about five seconds. A calculation needs longer, or a line telling the student to pause the audio and press play when ready.
+3. Change both books' copies of the player in matching pull requests, and update the table in `audio/README.md` that says answers aren't read.
+
+**Priority:** Medium. It matters for students who study by listening, but the wording and timing are a design decision, and the change has to land in both books at once.
+
+**Status:** Waiting for Benjamin to approve the wording and pause lengths.
+
 ### Loose ends from the move to the new sites (recorded October 20, 2026)
 
 Small items found while moving both books off EdTechBooks. Most are quick. Items marked **(Benjamin)** need his decision or his account first.
