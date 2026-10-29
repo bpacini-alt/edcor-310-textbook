@@ -94,6 +94,8 @@ def _picker(book):
         groups.append(("Before Chapter 1", book["front"]))
     for i, u in enumerate(book["units"], 1):
         groups.append((f"Unit {i} · {u['title']}", u["chapters"]))
+    if book.get("back"):
+        groups.append(("Back matter", book["back"]))
     opts = []
     for label, items in groups:
         rows = "".join(f'<option value="{esc(c["href"])}">{esc(c["n"])}. {esc(c["t"])}</option>' for c in items)
@@ -173,6 +175,14 @@ def _contents(book):
     </div>{hook}{outcomes}
     <ol class="fm-rows">
 {_rows(u['chapters'])}
+    </ol>
+  </section>""")
+    if (book.get("back")):
+        sections.append(f"""  <section class="fm-panel" id="back" aria-labelledby="back-h">
+    <p class="fm-label">Back matter</p>
+    <h2 class="fm-panel-title" id="back-h">{esc(book.get("back_title") or "Back matter")}</h2>
+    <ol class="fm-rows">
+{_rows(book['back'], 'fm-num fm-num-small')}
     </ol>
   </section>""")
     body = f"""  <section class="fm-card fm-contents-card" aria-labelledby="fm-title">
