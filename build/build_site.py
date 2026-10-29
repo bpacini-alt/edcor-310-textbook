@@ -139,8 +139,9 @@ THEME = {
 def front_pages(units, chapters, supplements):
     hours = round(sum(c["minutes"] for c in chapters) / 60)
     back = []
-    for i, s in enumerate(supplements, 1):
-        back.append({"n": "ABCDEFGH"[i], "t": s["title"], "s": "Quick reference", "href": "/" + s["href"]})
+    back_roman = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii"]
+    for i, s in enumerate(supplements):
+        back.append({"n": back_roman[i], "t": s["title"], "s": "Quick reference", "href": "/" + s["href"]})
     book = {
         "title": BOOK["title"], "subtitle": BOOK["subtitle"], "course": BOOK["course"], "school": BOOK["school"],
         "byline": names(BOOK["authors"]), "site": BOOK["site"],
@@ -156,7 +157,7 @@ def front_pages(units, chapters, supplements):
         "front": [
             {"n": "i", "t": "About this book", "s": "How the book was made, and acknowledgments", "m": "", "href": "/about.html"},
             {"n": "ii", "t": "How to Get the Most Out of This Book", "s": "How to study, practice, and use this book well", "m": "", "href": "/how-to-get-the-most-out-of-this-book.html"},
-            {"n": "J", "t": "Joy of Learning", "s": "The reading menu", "m": "", "href": "/joy-of-learning.html"}
+            {"n": "iii", "t": "Joy of Learning", "s": "The reading menu", "m": "", "href": "/joy-of-learning.html"}
         ],
         "units": [{
             "roman": u["roman"], "kicker": f"{u['label']} · {chapter_range(u)}", "title": u["name"],

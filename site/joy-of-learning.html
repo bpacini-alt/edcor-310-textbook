@@ -886,6 +886,7 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   height: 6.5rem;
   column-gap: .35rem;
   align-items: stretch;
+  margin-top: .35rem;
 }
 .jm-rating-y-axis {
   position: relative;
@@ -914,8 +915,16 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   flex: 1 1 0;
   height: 100%;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+.jm-rating-count {
+  margin-bottom: .12rem;
+  color: var(--muted, var(--faint));
+  font: 600 .62rem/1 var(--sans);
+  line-height: 1;
+  white-space: nowrap;
 }
 .jm-rating-bar {
   flex: 0 0 auto;
@@ -4153,9 +4162,15 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
       var segment = document.createElement("span");
       var n = Number(data.counts && data.counts[rating]) || 0;
       var pct = Number(data.percentages && data.percentages[rating]) || 0;
+      var voteCount = document.createElement("span");
+      voteCount.className = "jm-rating-count";
+      voteCount.textContent = n;
+      voteCount.setAttribute("aria-hidden", "true");
+      voteCount.title = n + (n === 1 ? " vote" : " votes");
       segment.className = "jm-rating-bar jm-rating-" + rating;
       segment.style.height = pct ? Math.max(2, pct) + "%" : "0";
       segment.title = ratingName(rating) + ": " + n;
+      bin.appendChild(voteCount);
       bin.appendChild(segment);
       plot.appendChild(bin);
 
