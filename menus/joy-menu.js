@@ -115,9 +115,15 @@
       var segment = document.createElement("span");
       var n = Number(data.counts && data.counts[rating]) || 0;
       var pct = Number(data.percentages && data.percentages[rating]) || 0;
+      var voteCount = document.createElement("span");
+      voteCount.className = "jm-rating-count";
+      voteCount.textContent = n;
+      voteCount.setAttribute("aria-hidden", "true");
+      voteCount.title = n + (n === 1 ? " vote" : " votes");
       segment.className = "jm-rating-bar jm-rating-" + rating;
       segment.style.height = pct ? Math.max(2, pct) + "%" : "0";
       segment.title = ratingName(rating) + ": " + n;
+      bin.appendChild(voteCount);
       bin.appendChild(segment);
       plot.appendChild(bin);
 
