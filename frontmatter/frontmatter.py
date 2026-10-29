@@ -175,6 +175,14 @@ def _contents(book):
 {_rows(u['chapters'])}
     </ol>
   </section>""")
+    if book.get("back"):
+        sections.append(f"""  <section class="fm-panel" id="back" aria-labelledby="back-h">
+    <p class="fm-label">Back matter</p>
+    <h2 class="fm-panel-title" id="back-h">{esc(book.get("back_title") or "Back matter")}</h2>
+    <ol class="fm-rows">
+{_rows(book["back"], 'fm-num fm-num-small')}
+    </ol>
+  </section>""")
     body = f"""  <section class="fm-card fm-contents-card" aria-labelledby="fm-title">
     <div class="fm-watermark" aria-hidden="true">{esc(book['count'])}</div>
     <img class="fm-thumb" src="{esc(c['src'])}" width="{c['width']}" height="{c['height']}" alt="">
