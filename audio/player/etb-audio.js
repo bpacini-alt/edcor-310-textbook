@@ -715,6 +715,7 @@
     reader.node.hidden = false;
     reader.open = true;
     document.documentElement.style.overflow = 'hidden';
+    document.documentElement.classList.add('etb-rv-open');  // print only this view
     reader.node.scrollTop = 0;
     reader.node.querySelector('.etb-rv-close').focus();
   }
@@ -723,6 +724,7 @@
     reader.node.hidden = true;
     reader.open = false;
     document.documentElement.style.overflow = '';
+    document.documentElement.classList.remove('etb-rv-open');
     if (reader.back && reader.back.focus) reader.back.focus();
   }
 
