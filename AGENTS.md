@@ -36,6 +36,8 @@ The website is learning.benjaminpacini.com, served by Cloudflare from the `site/
 
 After changing anything in `etb-live/`, `build/`, `menus/`, or the player, run `python3 build/build_site.py` from the repository root and commit the regenerated `site/` files in the same pull request.
 
+**Drafts for review.** A rewritten chapter can be published for review before it replaces the live one: put it in `etb-live/` under its own name (for example `chapter16a.html`) and list it in `DRAFTS` in `build/build_site.py`. The build publishes it at its own address with a "Draft for review" banner, keeps it out of the contents and the Previous / Next bar, and asks search engines not to index it. When the draft is approved, its text replaces the chapter's file and its `DRAFTS` entry is removed.
+
 A page's styles must live in its `etb-live/` file, not only in `site/`. The build checks this: if a rebuilt page would have fewer `<style>` blocks than the published one, it leaves that page alone and stops with a message naming it. Copy the missing styles into the `etb-live/` file rather than working around the check.
 
 ## Private prose editor

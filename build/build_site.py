@@ -275,6 +275,30 @@ body {{ margin: 0; }}
 """
 
 
+# Drafts for review: pages in etb-live/ that are published at their own address but are
+# not in manifest.json, so they stay out of the contents and the Previous / Next sequence.
+# Share the link directly. When a draft is approved, it replaces its chapter's file and
+# its entry here is removed.
+DRAFTS = {
+    "chapter16a.html": ("Chapter 16 (draft): Agency and Determinism", "chapter16.html"),
+}
+
+DRAFT_BANNER = """<div style="background:#fff8e6;border-bottom:1px solid #e8c96a;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13px;color:#5a3d00;">
+  <div style="max-width:740px;margin:0 auto;padding:.6rem 1rem;"><strong>Draft for review.</strong> This version is not yet part of the book. <a href="/{current}" style="color:#7a5000;">See the current chapter</a>.</div>
+</div>"""
+
+
+def publish_drafts():
+    for name, (title, current) in DRAFTS.items():
+        source = SRC / name
+        if not source.exists():
+            continue
+        fragment = DRAFT_BANNER.format(current=esc(current)) + source.read_text(encoding="utf-8")
+        page = wrap_chapter_page(title, fragment, nav_bar(None, None))
+        page = page.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n<meta name="viewport"', 1)
+        (OUT / name).write_text(page, encoding="utf-8")
+
+
 def publish_chapters():
     (OUT / "editor").mkdir(parents=True, exist_ok=True)
     shutil.copyfile(ROOT / "editor" / "index.html", OUT / "editor" / "index.html")
@@ -343,6 +367,7 @@ def main():
     (OUT / "assets").mkdir(parents=True, exist_ok=True)
     build_cover()
     publish_chapters()
+    publish_drafts()
     publish_menu()
     for path, content in front_pages(units, chapters, supplements).items():
         (OUT / path).write_text(content)
