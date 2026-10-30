@@ -1,3 +1,6 @@
 # Local files from running Cloudflare's tools; never commit them.
 .wrangler/
 node_modules/
+
+# Python bytecode the build leaves behind; never commit it.
+__pycache__/
