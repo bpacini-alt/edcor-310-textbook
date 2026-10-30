@@ -456,6 +456,22 @@ The Joy of Learning and Joy of Econ menus moved from Word into `menus/` (see `me
 17. **Audit Joy reading times and clarify recommended stopping points (both books).** Make a pass through every Joy of Econ and Joy of Learning entry to distinguish (a) the source's actual length, (b) a realistic estimate of the student's total reading/listening/viewing time, and (c) the amount we recommend before switching to something else. Correct plainly wrong estimates—for example, never label a 15-minute video as 5 minutes. When a long podcast or video has a useful stopping point, say so directly (for example, “Feel free to listen to the first 30 minutes”) rather than hiding that advice inside an ambiguous “~25 minutes.” A time such as “~25 minutes” should clearly communicate a recommended stopping point based on diminishing returns, not a claim that the source ends there. Use consistent wording across both menus.
 ## Cool ideas for later
 
+### Student chapter feedback and ratings
+
+Explore a lightweight way for students to rate individual chapters and report what they found useful, confusing, memorable, or unnecessary. The goal would be to gather chapter-level evidence about student experience—not to turn the textbook into a popularity contest or create another grading system.
+
+Possible feedback prompts:
+
+- What was most useful in this chapter?
+- What was confusing or difficult to follow?
+- What helped you understand the idea?
+- What felt unnecessary or too long?
+- How useful was this chapter overall?
+
+A first version could use a short, optional end-of-chapter form with a four-point usefulness scale and one or two open-response questions. Aggregate results could help identify chapters for the Chapter Quality Manual, while preserving the distinction between student preference and evidence about learning.
+
+**Status:** Interesting but deferrable; revisit after the core chapter workflow is stable. Protect student privacy, avoid collecting unnecessary identifying information, and do not let ratings replace direct review of accuracy or learning outcomes.
+
 These are promising possibilities, but they are intentionally near the bottom of the backlog. They should not displace the current work on content quality, practice, accessibility, interactives, author-led video, audio, exports, or the series/front-matter system.
 
 ### Unit opener art (recorded October 26, 2026)
