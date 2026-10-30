@@ -1,13 +1,13 @@
-# Chapter Quality Pass: Triage and Publication Readiness
+# Chapter Quality Manual: Readiness, Revision, and Triage
 
 **Status:** Draft for Benjamin's review  
 **Applies to:** Econ 150 and EDCOR 310  
 **Purpose:** Improve chapters without creating an endless revision cycle.
 
-This protocol has two jobs:
+This manual supports two common requests:
 
 1. **Publication pass:** decide whether a chapter is ready to publish.
-2. **Book triage:** identify the small number of chapters where revision is most valuable.
+2. **Comparative evaluation:** evaluate a selected group of chapters and identify which are ready, which need targeted work, and which cannot be published yet.
 
 It is a decision tool, not a demand for perfection.
 
@@ -56,11 +56,17 @@ Stop the pass when:
 
 At that point, publish or move on.
 
-### 4. Time-box investigation
+### 4. Match the depth of work to the problem
 
-Begin with a medium pass of roughly **30–45 minutes** for an ordinary chapter. Investigate further only when a claim is central, consequential, controversial, unusually surprising, or likely to mislead students.
+Some chapters need a light polish. Some need a targeted repair. Some need a full rewrite. The manual should help us tell the difference rather than impose the same amount of work on every chapter.
 
-Do not verify every minor citation at publication-level depth. Do not turn one interesting question into a new research project unless it changes the chapter's central teaching claim.
+Investigate further when a problem is central, consequential, controversial, unusually surprising, or likely to mislead students. A full rewrite is justified when the chapter's structure, teaching purpose, evidence, or student usability is substantially broken—not merely because many sentences could be improved.
+
+Do not verify every minor citation at publication-level depth. Do not turn one interesting question into a new research project unless it changes the chapter's central teaching claim. Conversely, do not stop investigating a serious problem merely because a nominal time limit has been reached.
+
+The controlling question is:
+
+> Is this work likely to produce a meaningfully better book for students, and can we define what “better” will require?
 
 ### 5. Preserve momentum
 
@@ -177,9 +183,11 @@ Check the things students will actually encounter:
 
 Fix serious barriers now. Record minor design preferences for a later book-wide pass.
 
-## Mode B: Book-wide triage
+## Mode B: Comparative chapter evaluation
 
-Triage is deliberately lighter. It is not a miniature publication pass for every chapter.
+Use the same manual when evaluating several chapters together. The evaluator may choose four chapters, a unit, a whole book, or any other useful comparison set. There is no fixed number.
+
+The goal is not to produce a repair list for every chapter. The goal is to sort the selected chapters into useful readiness categories and identify where the next revision effort will have the greatest student payoff.
 
 For each chapter, record a rough rating:
 
@@ -194,11 +202,16 @@ For each chapter, record a rough rating:
 
 Then assign:
 
-- **Revision urgency:** High / Medium / Low
+- **Publication status:** Cannot publish yet / Publishable with targeted fixes / Ready for now
+- **Revision scale:** Light polish / Targeted revision / Substantial rewrite / Full rewrite
 - **Likely payoff:** High / Medium / Low
-- **Recommended action:** Full pass / Targeted pass / Leave for now
 
-The triage pass should produce a ranked shortlist—normally the **four chapters most worth revising next**—not a complete repair plan for the entire book.
+The evaluation should identify:
+
+- chapters that cannot be published in their current form;
+- chapters that are publishable but need targeted fixes;
+- chapters that are ready for now; and
+- the chapter or chapters where revision would produce the greatest student benefit.
 
 A low score does not automatically mean “work on this first.” Prioritize chapters where:
 
@@ -206,7 +219,9 @@ A low score does not automatically mean “work on this first.” Prioritize cha
 - the central idea is important;
 - a bounded revision could substantially help;
 - the chapter is not blocked by a larger unresolved decision; and
-- the likely payoff justifies the time.
+- the likely payoff justifies the scale of the work.
+
+The rubric is a comparative aid, not a mechanical verdict. A chapter with a lower average score may still be the wrong next project if it requires a large rewrite with little immediate payoff. A chapter with one severe weakness may deserve priority even if its average score is otherwise strong.
 
 ## What counts as a publication blocker?
 
@@ -288,6 +303,18 @@ This protocol complements, rather than replaces:
 
 The priorities document should link here but should not duplicate this entire checklist.
 
+## How to invoke the manual
+
+### Single-chapter request
+
+> Review this chapter using the Chapter Quality Manual. Tell me whether it is ready to publish, identify the small number of changes that matter most, separate blockers from later improvements, and recommend whether the work is a light polish, targeted revision, substantial revision, or full rewrite.
+
+### Comparative request
+
+> Evaluate these chapters using the Chapter Quality Manual. Give each one a readiness status and rubric scores, explain the most important weakness or strength, identify which cannot be published yet, and recommend where I should spend revision time first.
+
+The response should remain concise enough to act on. A comprehensive review does not require reporting every possible improvement.
+
 ## Proposed first use
 
 Test the protocol on:
@@ -296,5 +323,5 @@ Test the protocol on:
 2. one chapter we suspect needs substantial work; and
 3. one chapter from the other book.
 
-If the process produces a long list but no clear next action, the protocol is too elaborate. If it misses an obvious substantive problem, strengthen the relevant check. The test is whether it helps us make and finish good revisions.
+Then test a comparative request on any useful group of chapters. If the process produces a long list but no clear next action, the protocol is too elaborate. If it misses an obvious substantive problem, strengthen the relevant check. The test is whether it helps us make and finish good revisions.
 
