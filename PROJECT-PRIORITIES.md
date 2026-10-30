@@ -288,12 +288,10 @@ These are broken now, so they count as Priority 0. Fix them in the GitHub copies
 
 These items are paused on purpose. Each needs a careful read or a decision, not a quick merge. Leave the pull requests open. Don't close, rewrite, or work around them.
 
-1. **EDCOR 310 Chapter 14 identity material: editorial pass (pull request #34) and three reader reports.** Handle these together in one sitting:
-   - Reader report textbook-feedback#28: the hook previews Erikson, Marcia, Cooley, and Steele instead of drawing the reader in.
-   - Reader report textbook-feedback#31: "a professional skill, not a philosophical position" should also say "or political."
-   - Reader report textbook-feedback#32: the "Where this book stands" passage needs a citation for each quote (the first is from "The Family: A Proclamation to the World," 1995; Benjamin to supply the second), plus Benjamin's call on the "my employer" wording.
-
-   #34 already rewrites the hook and this passage, so decide on #34 first, then answer the reports on top of it. #34 conflicts with `main` and needs a merge from `main` before review.
+1. **EDCOR 310 Chapter 14 identity material: editorial pass (pull request #34).** Benjamin's call on #34 is still open.
+   - **Decided October 30, 2026:** with pull request #79, Chapter 14 reads "not a philosophical or political position" (reader report textbook-feedback#31), says "sponsors BYU–Idaho, where I teach" instead of "my employer," and links a citation for each Church quote (reader report textbook-feedback#32): "The Family: A Proclamation to the World" (1995) and Dallin H. Oaks, "Stand for Truth" (worldwide devotional for young adults, May 21, 2023).
+   - **When #34 is brought up to date with `main`,** keep those wordings and both citations. #34's rewrite of the faith callout drops the citations and "where I teach." #34 already conflicts with `main`, and #79 adds another conflict in the same file.
+   - **When we edit Chapter 14 (Benjamin will write it):** rewrite the opening hook (reader report textbook-feedback#28). Keep the "Who am I?" paragraph. Replace the walk-through of Erikson's Stage 5, Marcia, Cooley, and Steele with something that draws the reader in, and let each researcher appear first in their own concept section. #34's shorter opening still previews the frameworks, so it doesn't settle this.
 2. **EDCOR 310 Chapters 13–14 practice bank (pull request #53).** Provisional practice questions. Wait until #34 is settled, because both edit Chapters 13–14.
 
 **Both books:**
