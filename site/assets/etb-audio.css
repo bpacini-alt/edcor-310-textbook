@@ -133,4 +133,18 @@
   .etb-ap-kicker .etb-ap-ch{display:none;}
 }
 @media (prefers-reduced-motion:reduce){.etb-ap{transition:none}.etb-playing .etb-eq i{animation:none;height:6px}}
-@media print{.etb-ap,.etb-title-listen,.etb-listen-here,.etb-rv{display:none!important}}
+/* Printing. Hide the player and the bars fixed to the screen (they would print over the text on every page),
+   and keep boxes, figures, and tables from splitting across pages. When the text-only version is open,
+   print only that, so "Text-only version, then Print" gives a clean copy of the chapter. */
+@media print{
+.etb-ap,.etb-title-listen,.etb-listen-here,.etb-nav,.etb-author-edit,#etb-pg,.efb{display:none!important}
+html{overflow:visible!important}
+html:not(.etb-rv-open) .etb-rv{display:none!important}
+html.etb-rv-open body>:not(.etb-rv){display:none!important}
+html.etb-rv-open .etb-rv{position:static!important;overflow:visible!important;inset:auto!important}
+.etb-rv-bar{display:none!important}
+.etb-rv-in{padding:0!important;max-width:none!important;font-size:12pt!important;line-height:1.6!important}
+.etb-figure,.etb-flip,.etb-check,.etb-retrieval,.etb-note,.etb-yt,.etb-misc,.etb-title-card,figure,table,tr,img,svg,li{break-inside:avoid;page-break-inside:avoid}
+h1,h2,h3,h4,.etb-worked-header,.etb-figure-title{break-after:avoid;page-break-after:avoid}
+p{orphans:3;widows:3}
+}
