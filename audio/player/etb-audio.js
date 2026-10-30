@@ -65,8 +65,23 @@
   function collect(el, out, extra) {
     for (var c = el.firstChild; c; c = c.nextSibling) {
       if (c.nodeType === 3) out.push(c);
-      else if (c.nodeType === 1 && !skipEl(c, extra)) { if (c.tagName === 'BR') out.push(null); else collect(c, out, extra); }
+      else if (c.nodeType === 1 && !skipEl(c, extra)) {
+        if (c.tagName === 'BR') { out.push(null); continue; }
+        /* An element drawn as its own box, or set apart by a margin (a figure number before its title), is a word break even with no space in the HTML. */
+        var apart = boxed(c);
+        if (apart) out.push(null);
+        collect(c, out, extra);
+        if (apart) out.push(null);
+      }
     }
+  }
+  function boxed(e) {
+    var st = window.getComputedStyle ? getComputedStyle(e) : null;
+    if (!st) return false;
+    var d = st.display;
+    if (/^(EM|STRONG|B|I|U|SUB|SUP|A|CODE|SMALL|MARK|ABBR|Q|DFN|VAR)$/.test(e.tagName)) return false; /* text styling (italics, bold, subscripts, links) never splits a word, even inside a flex row */
+    if (d !== 'inline') return true;
+    return e.tagName === 'SPAN' && (parseFloat(st.marginLeft) > 0 || parseFloat(st.marginRight) > 0);
   }
   function squish(s) { return (s || '').replace(/ /g, ' ').replace(/\s+/g, ' ').trim(); }
   function textOf(el, extra) { var n = []; collect(el, n, extra); return squish(n.map(function (x) { return x ? x.nodeValue : ' '; }).join('')); }
@@ -202,7 +217,7 @@
   if (!/^\d+$/.test(num)) num = ''; /* the introduction's watermark is a symbol, not a chapter number */
   var titleEl = card && (card.querySelector('.etb-title-main') || card.querySelector('h1,h2'));
   var subEl = card && card.querySelector('.etb-title-sub');
-  var chapTitle = titleEl ? squish(titleEl.textContent) : squish(document.title);
+  var chapTitle = titleEl ? textOf(titleEl) : squish(document.title);
   function newSec(id, title, label, anchor) { secs.push({ id: id, title: title, label: label, els: [], anchor: anchor }); return secs.length - 1; }
 
   var cs = newSec('intro', chapTitle, 'Introduction', null), k = 0;
@@ -686,7 +701,7 @@
   function buildReader() {
     var h = '<div class="etb-rv-bar"><div class="etb-rv-bar-in"><span>Text-only version</span><button type="button" class="etb-rv-close">Back to the chapter</button></div></div><article class="etb-rv-in">';
     h += '<h1>' + esc(num ? 'Chapter ' + num + ': ' + chapTitle : chapTitle) + '</h1>';
-    if (subEl) h += '<p class="etb-rv-sub">' + esc(squish(subEl.textContent)) + '</p>';
+    if (subEl) h += '<p class="etb-rv-sub">' + esc(textOf(subEl)) + '</p>';
     var lastSec = 0;
     blocks.forEach(function (b) {
       var s = secs[b.sec];
@@ -715,6 +730,7 @@
     reader.node.hidden = false;
     reader.open = true;
     document.documentElement.style.overflow = 'hidden';
+    document.documentElement.classList.add('etb-rv-open');  // print only this view
     reader.node.scrollTop = 0;
     reader.node.querySelector('.etb-rv-close').focus();
   }
@@ -723,6 +739,7 @@
     reader.node.hidden = true;
     reader.open = false;
     document.documentElement.style.overflow = '';
+    document.documentElement.classList.remove('etb-rv-open');
     if (reader.back && reader.back.focus) reader.back.focus();
   }
 
