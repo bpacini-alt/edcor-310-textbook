@@ -154,18 +154,11 @@ Flag:
 
 Do not flatten the author's personality or remove an effective rhetorical move merely because it is stylized. The issue is accumulated pattern, not one sentence.
 
-### F. Practice and learning design
+### F. Practice and learning design — tentative, not currently scored
 
-Check whether the chapter gives students a reasonable chance to:
+Practice and learning design remains an important future dimension, but it is excluded from the current numerical rubric. The recurring practice system is still being designed, so chapters should not be penalized for failing a standard we have not yet settled.
 
-- retrieve the basic idea;
-- distinguish it from nearby ideas;
-- use it in a straightforward example;
-- explain or interpret it;
-- apply it to a new situation when appropriate;
-- receive an answer, explanation, or other useful feedback.
-
-This is a quality check, not a requirement to add a large practice system during every prose pass. If the chapter needs a major practice redesign, record it separately rather than expanding the current revision indefinitely.
+When the practice framework is established, add this dimension back to the rubric or evaluate it separately. Until then, record obvious practice needs as future work without allowing them to determine publication status.
 
 ### G. Accessibility and student use
 
@@ -197,8 +190,26 @@ For each chapter, record a rough rating:
 | Student clarity | Frequently confusing | Uneven | Usually clear | Consistently clear |
 | Structure and pacing | Needs reconstruction | Significant drag or gaps | Works with some roughness | Strong |
 | Writing and voice | Generic or difficult | Uneven | Mostly engaging | Distinctive and compelling |
-| Practice and learning design | Little usable practice | Major gaps | Adequate | Purposeful and well-sequenced |
 | Accessibility and presentation | Serious barriers | Several problems | Mostly usable | Clean and reliable |
+
+The current rubric is worth **90 points**:
+
+| Dimension | Points |
+|---|---:|
+| Conceptual accuracy and nuance | 20 |
+| Evidence quality and calibration | 20 |
+| Student clarity and reading level | 15 |
+| Structure and pacing | 15 |
+| Compelling human writing | 10 |
+| Chapter purpose and coherence | 5 |
+| Accessibility and presentation | 5 |
+| **Total** | **90** |
+
+Convert each 1–4 rating into points with: `rating ÷ 4 × category points`.
+
+As a rough guide, a chapter scoring **77–90** is strong enough to be ready for now, **63–76** is generally publishable with targeted fixes, and a score below **63** signals substantial revision. These ranges never override a serious publication blocker.
+
+When the practice system is settled, practice may be restored as a separate 10-point dimension, bringing the rubric back to 100 points.
 
 Then assign:
 
