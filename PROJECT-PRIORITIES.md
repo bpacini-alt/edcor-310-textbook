@@ -327,7 +327,8 @@ Benjamin and Claude rewrote Chapter 16 (Agency and Determinism) around six conce
     - **Ch 26:** a retrieval answer cites "Chapter 21 — Pygmalion Effect"; Pygmalion is in Ch 1 and Ch 12.
     - **Ch 9 (optional):** point the "Erasure of Agency" misconception forward to Ch 16, Concept 1.
 4. **Spot-check before the swap:** the choice-blindness detection rate (Johansson & Hall, 2005), the volume and pages for Finn, Miele & Wigfield (2024), the title and pages for Patall et al. (2024), and the California task force report citation.
-5. **Open PR #64** retitles the current Chapter 16's concepts; it becomes moot once the draft replaces the chapter.
+5. **"Worth remembering" aphorisms:** taken out of the draft on October 30; Benjamin will write them in the separate aphorism pass (see "Both books: 'Worth remembering' aphorism boxes" below).
+6. **Open PR #64** retitles the current Chapter 16's concepts; it becomes moot once the draft replaces the chapter.
 
 **Status:** Waiting on Mayleigh's review.
 
