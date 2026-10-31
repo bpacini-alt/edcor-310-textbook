@@ -1,6 +1,6 @@
 # Chapter Quality Manual: Readiness, Revision, and Triage
 
-**Status:** Draft for Benjamin's review  
+**Status:** Approved by Benjamin, October 30, 2026. First used on EDCOR 310's Chapter 16 rewrite.  
 **Applies to:** Econ 150 and EDCOR 310  
 **Purpose:** Improve chapters without creating an endless revision cycle.
 

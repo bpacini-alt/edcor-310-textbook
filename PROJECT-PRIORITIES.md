@@ -577,3 +577,8 @@ If a proposed task is not the highest-value next move, say so plainly and ask wh
 ## North-star test
 
 The goal is not to build the most technologically elaborate textbook. The goal is to give students a clearer, more useful, more engaging way to understand difficult ideas—and to keep improving the parts that matter most.
+
+## Small follow-ups (recorded October 30, 2026)
+
+- **EDCOR 310 Chapter 16: *Doonesbury* permission (optional).** The February 17, 1987 strip in the hook is used under fair use for educational commentary, with a caption saying it isn't covered by the book's Creative Commons license. For extra safety, ask Andrews McMeel Syndication, which handles *Doonesbury* licensing, for permission.
+- **EDCOR 310 Chapter 16: two citations to complete.** Finn, Miele & Wigfield (2024, *Journal of Educational Psychology*) and Patall et al. (2024, *Educational Psychologist*, 59(1)) are cited by DOI because their final volume and page numbers couldn't be confirmed. Add the volume, issue, and pages when they're available.
