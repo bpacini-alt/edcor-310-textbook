@@ -1,3 +1,6 @@
+> **Status: Candidate workflow / deliberate brainstorming.**  
+> This is one proposed way to create lightweight reading checks and package them for Top Hat. It is not a permanent assessment protocol. Keep the conceptual distinction between reading checks and deeper application practice, but validate the technical details through an actual Top Hat import before treating this workflow as settled.
+
 # Reading-Check Quizzes: Pedagogy, Workflow, and Top Hat QTI
 
 This document describes the repeatable process for turning a textbook chapter into a short, importable reading-check quiz.
