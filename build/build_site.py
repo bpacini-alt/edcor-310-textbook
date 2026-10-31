@@ -280,7 +280,7 @@ body {{ margin: 0; }}
 # Share the link directly. When a draft is approved, it replaces its chapter's file and
 # its entry here is removed.
 DRAFTS = {
-    "chapter16a.html": ("Chapter 16 (draft): Agency and Determinism", "chapter16.html"),
+    "chapter16a.html": ("Chapter 16 (draft): Agency and Self-Belief", "chapter16.html"),
 }
 
 DRAFT_BANNER = """<div style="background:#fff8e6;border-bottom:1px solid #e8c96a;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13px;color:#5a3d00;">

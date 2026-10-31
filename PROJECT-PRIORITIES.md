@@ -329,22 +329,23 @@ Full details, costs, and file-size limits are in `audio/README.md` under "Stage 
 
 **Status:** Record for later; do not start until the chapters are done being edited. Then go chapter by chapter, starting with the chapters students will be assigned first.
 
-### EDCOR 310: Chapter 16 rev. 2 (recorded October 30, 2026)
+### EDCOR 310: Chapter 16 rewrite (recorded October 30, 2026)
 
-Benjamin and Claude rewrote Chapter 16 (Agency and Determinism) around six concepts: The Illusion of Agency, Learned Helplessness, Attribution, Feedback, Efficacy Engineering, and Autonomy Support. The draft is published for review at `/chapter16a.html` (source `etb-live/chapter16a.html`); the live Chapter 16 is unchanged.
+Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actually Builds It?** (rev. 3, October 30), opening with the self-esteem movement, around six concepts: Self-Esteem, Determinism, Learned Helplessness, Attribution (which now includes feedback and praise), Efficacy Engineering, and Autonomy Support. The draft is published for review at `/chapter16a.html` (source `etb-live/chapter16a.html`); the live Chapter 16 is unchanged.
 
 1. **Mayleigh reviews the draft.** **Waiting on:** Mayleigh.
-2. **Swap it in.** When approved, the draft's text replaces `etb-live/chapter16.html`, `chapter16a.html` and its `DRAFTS` entry are removed (ask Benjamin before deleting), and the manifest title stays "Chapter 16: Agency vs. Determinism" unless Benjamin renames it.
+2. **Swap it in.** When approved, the draft's text replaces `etb-live/chapter16.html`, `chapter16a.html` and its `DRAFTS` entry are removed (ask Benjamin before deleting), and the manifest title changes from "Chapter 16: Agency vs. Determinism" to "Chapter 16: Agency and Self-Belief" (Benjamin approved the new title October 30).
 3. **Matching edits in other chapters, shipped with the swap** so the book doesn't contradict itself:
     - **Ch 12:** soften the social persuasion row's "'You're so smart' does not."
-    - **Ch 19:** shrink the learned helplessness card and box to the behaviorist point with a pointer to Ch 16; rewrite or cut the "stopped raising her hand" retrieval question; remove the three strong ability-praise vs. effort-praise lines and point to Ch 16, Concept 4.
+    - **Ch 19:** shrink the learned helplessness card and box to the behaviorist point with a pointer to Ch 16, Concept 3; rewrite or cut the "stopped raising her hand" retrieval question; remove the three strong ability-praise vs. effort-praise lines and point to Ch 16, Concept 4.
     - **Ch 20:** trim the practical autonomy-support list (four T's, giving a rationale) to a callback to Ch 16, Concept 6; soften the creative-writing answer that treats a structured template only as a threat; revise the growth mindset card, "Mastery requires a growth mindset," and the "effort-focused feedback" table row.
     - **Ch 1:** soften "one of the most replicated results in education research" for Pygmalion to match Ch 12.
     - **Ch 26:** a retrieval answer cites "Chapter 21 — Pygmalion Effect"; Pygmalion is in Ch 1 and Ch 12.
-    - **Ch 9 (optional):** point the "Erasure of Agency" misconception forward to Ch 16, Concept 1.
+    - **Ch 9 (optional):** point the "Erasure of Agency" misconception forward to Ch 16, Concept 2 (Determinism).
 4. **Spot-check before the swap:** the choice-blindness detection rate (Johansson & Hall, 2005), the volume and pages for Finn, Miele & Wigfield (2024), the title and pages for Patall et al. (2024), and the California task force report citation.
-5. **"Worth remembering" aphorisms:** Benjamin chose two on October 30: "Agency is a gift, but using it well is learned." (Concept 2, after the learned-helplessness reversal) and "Praise says you can. Success shows you can." (Concept 5, after the evidence that performance builds belief), both recapped after the synthesis. Any others wait for the separate aphorism pass (see "Both books: 'Worth remembering' aphorism boxes" below).
-6. **Open PR #64** retitles the current Chapter 16's concepts; it becomes moot once the draft replaces the chapter.
+5. **"Worth remembering" aphorisms:** Benjamin chose two on October 30: "Agency is a gift, but using it well is learned." (Concept 3, after the learned-helplessness reversal) and "Praise says you can. Success shows you can." (Concept 5, after the evidence that performance builds belief), both recapped after the synthesis. Any others wait for the separate aphorism pass (see "Both books: 'Worth remembering' aphorism boxes" below).
+6. **The *Doonesbury* strip in the hook** (February 17, 1987, © G. B. Trudeau) is used under fair use for educational commentary, captioned as excluded from the book's Creative Commons license. Optional, for extra safety: request permission from Andrews McMeel Syndication, which now handles *Doonesbury* licensing.
+7. **Open PR #64** retitles the current Chapter 16's concepts; it becomes moot once the draft replaces the chapter.
 
 **Status:** Waiting on Mayleigh's review.
 
