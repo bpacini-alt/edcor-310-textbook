@@ -44,6 +44,18 @@ The default behavior is **inspect, report, recommend, then act**:
 
 Safe reversible improvements—such as fixing links, clarifying documentation, standardizing names, or reorganizing clearly misplaced files—may be proposed as ordinary maintenance. Deletion is never assumed merely because a file is old.
 
+### Completed priorities (recorded October 31, 2026)
+
+These items are complete on `main`. They remain documented here as a record, but are no longer active priorities.
+
+- **Localize the 15 EdTechBooks images.** All 10 Econ 150 images and all 5 EDCOR 310 images now live in the repositories and are served locally. Verified by Econ 150 PR #14 and EDCOR 310 PR #15.
+- **Correct the original EDCOR 310 reading-time mismatch.** The home-page total now uses the chapter title-card estimates. Verified by EDCOR 310 PR #15. This does not close the separate, broader reading-time audit.
+- **Correct the Econ 150 Chapter 16 typo.** “argu e” was corrected to “argue.” Verified by Econ 150 PR #14.
+- **Enable Cloudflare preview URLs for pull requests.** Both repositories now post preview addresses for review before merging.
+- **Build the basic shared cover/contents architecture.** The cover pages, contents pages, book-specific accent colors, and shared front-matter template are in place. Verified by EDCOR 310 PR #29 and its matching Econ 150 change. Remaining front-matter writing and the shared chapter-page top bar remain active work.
+- **Rebuild Econ 150 Chapter 16 and redistribute the material that belonged in Chapter 12.** Verified by Econ 150 PRs #105 and #106 and `review/CH16-REBUILD.md`.
+- **Replace EDCOR 310 Chapter 16 and complete its matching edits and citation checks.** Verified by EDCOR 310 PR #87, `docs/CHAPTER-16-MATCHING-EDITS.md`, and the current Chapter 16 source.
+
 ### Deferred branch cleanup
 
 Keep routine branch cleanup report-first and approval-gated. Enable automatic deletion of head branches after merged pull requests where appropriate, but do not delete arbitrary branches merely because they have no open pull request. During the Friday cleanup, inspect branches with no open PR and no known active use, then classify each as **safe to delete**, **needs review**, or **retain**. Before deleting any candidate, re-check for open-PR dependencies and preserve `main`, protected coordination/documentation branches—including `docs/collaborator-coordination-clean-20261021` and Econ 150's `docs/reading-times-note`—as well as any branch containing unique unmerged work or serving an active preview. Record the branch name and head commit SHA before deletion. **Status:** Deferred; do not implement branch deletion automatically yet.
@@ -299,8 +311,10 @@ These are broken now, so they count as Priority 0. Fix them in the GitHub copies
 
 ### Found October 23, 2026 (high: fix now)
 
-1. **Missing shapes in figures (High).** Shapes with no width or height draw nothing. **Mostly fixed October 26** (EDCOR 310 and Econ 150 pull requests "Draw the missing figure shapes"): every static figure in both books now draws, including EDCOR 310 Chapter 6's band figure and the Hero's Journey legend. **Still open: Econ 150 Chapter 13** (its callback-rate, earnings-by-education, and pay-gap charts, 15 shapes). It was left alone because open drafts edit that chapter (Econ 150 #40 and #55). Fix it once those are merged or closed, the same way: size each shape from points already drawn in its figure, then render and compare with the caption. Chapter 11's two drag-the-curve homework graphs also contain size-less shapes, but the homework code redraws those graphs when the page loads, so they need no fix.
-2. **Unit names on title cards (decided and mostly done October 26).** Rule: a chapter's title-card label always matches its unit on the contents page. Econ 150's units are now The Case for the Market, The Logic of Competition, The Critique of the Market, and When Competition Breaks Down, with "The Closing Reckoning" as a subheading over Chapters 25–26. Pages before Chapter 1 read "Before Chapter 1", which replaced "Start here". EDCOR 310 uses its four contents-page names. **Still open: Chapters 13 and 14 in both books,** left alone while drafts edit them (EDCOR 310 #34, #53; Econ 150 #40, #55). Set their labels when those settle. Econ 150's subtitle stays "The Science of Choice, **Incentives**, and Human Flourishing" (Benjamin, October 26). **Benjamin: change the Canvas course card, which says "Tradeoffs", to match.**
+1. **Econ 150 Chapter 13 missing figure shapes (High).** Fifteen shapes in the callback-rate, earnings-by-education, and pay-gap charts still have no width or height. They were left alone because open drafts edit Chapter 13 (Econ 150 #40 and #55). Fix them once those drafts are merged or closed: size each shape from points already drawn in its figure, then render and compare with the caption. Chapter 11's two drag-the-curve homework graphs contain size-less shapes, but the homework code redraws those graphs when the page loads, so they need no fix.
+
+2. **Remaining unit-label decisions.** Chapters 13 and 14 in both books still need their title-card labels settled after the current drafts (EDCOR 310 #34 and #53; Econ 150 #40 and #55). Econ 150's Canvas course card also still says "Tradeoffs" and should match the approved subtitle, "The Science of Choice, **Incentives**, and Human Flourishing."
+
 3. **Save the old Google Site's images (`benjaminpacini-site`).** The archive in `archive/google-site-2026-10-20/` has every page's HTML and every embedded Drive file, but not the pictures shown on the pages. About 40 pages still load their images from Google's servers, so the archive would lose them if the Google Site were deleted. Download the images into the archive, using a browser (Claude's shell can't reach Google Sites), and point the archived pages, or the manifest, at the local copies. **Don't delete the Google Site until this is done.**
 
 ### Waiting on Benjamin's review (recorded October 29, 2026)
@@ -407,22 +421,19 @@ Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actua
 
 **Status: done October 30** in both books. EDCOR 310's `build/build_site.py` and Econ 150's `build/wrap_pages.py` add the same short script and styles to every chapter. Tap a term to open or close it, Tab to a term to open it, press Escape to close it, and press Enter or Space to open an "Also know" term. Still open, low: screen readers announce the term but not its definition.
 
-### Loose ends from the move to the new sites (recorded October 20, 2026)
+### Remaining loose ends from the move to the new sites (recorded October 20, 2026)
 
-Small items found while moving both books off EdTechBooks. Most are quick. Items marked **(Benjamin)** need his decision or his account first.
+The original numbering is retained for traceability. Completed migration items are recorded above. Items marked **(Benjamin)** need his decision or his account first.
 
-1. **Images still load from EdTechBooks.** 5 images in EDCOR 310 and 10 in Econ 150 are still served from books.byui.edu. Copy them into each repository and point the pages at the copies **before** EdTechBooks is retired, or they will break.
-   **Done October 20, 2026** (EDCOR 310 #15, Econ 150 #14). All 15 are now copied into the repositories at the paths the pages already used. The 10 Econ 150 images had been returning "not found" on the new site; the 5 EDCOR 310 images were still loading from books.byui.edu. Wide images were also being cut off at the edge of the page, so EDCOR 310 Chapter 2 and Econ 150 Chapter 1 now shrink images to fit the column.
+
 2. **Switching students to the new sites (Benjamin).** Decide when students move over (a unit boundary or next semester), make the old-to-new address list for updating I-Learn links, and decide what happens to the EdTechBooks versions afterward.
-3. **EDCOR 310 reading times disagree.** The contents page estimates reading time from word counts (Chapter 22: 26 min), but each chapter's title card states its own estimate (~50 min). Use the chapter's own number, in `build/build_site.py`.
-   **Done October 20, 2026** (EDCOR 310 #15). The book's total on the home page changes from about 13 hours to about 21.
-4. **Typo in Econ 150 Chapter 16:** "argu e" should be "argue."
-   **Done October 20, 2026** (Econ 150 #14).
+
+
 5. **Leftover branches (Benjamin).** About 29 branches across both repositories belong to pull requests that are already merged or closed. Delete them once Benjamin approves. One of them, `docs/collaborator-coordination` (in both repositories), is the broken version that deleted nearly every file. It must never be merged.
    **Approved and checked October 20, 2026; deletion still to do (Benjamin).** Benjamin approved deleting every branch whose pull request is merged or closed. 26 qualify: 13 in each repository, listed in EDCOR 310 #16 and Econ 150 #15. Each one's last commit is already in `main` or belongs to a closed pull request. Claude's GitHub access in that session couldn't delete branches, so delete them from each repository's **Branches** page. Keep `main`, any branch with an open pull request, and `docs/collaborator-coordination-clean-20261021` (no pull request; ask Benjamin).
 6. **Econ 150 `site/` folder (Benjamin).** It holds an old placeholder page that Cloudflare does not serve. Keep or remove.
 7. **Protect `main` (Benjamin).** In each repository's Settings → Branches, add a rule for `main` that requires a pull request and blocks deletion and force-pushes.
-8. **Cloudflare preview builds (Benjamin).** Every branch shows a red X. Either turn off branch builds, or turn on preview links, so each pull request gets a test address to click before merging. **Done, October 24, 2026:** preview links work in both books. Cloudflare comments a preview address on each pull request.
+
 9. **The professional website (Benjamin).** benjaminpacini.com is registered, and the old Google Site is archived in the `benjaminpacini-site` repository, but the new site isn't built or connected to Cloudflare yet. benpacini.com, the short version to redirect, is not registered yet.
 10. **Renew the report button's GitHub token (Benjamin), by October 2027.** See "Report a problem button" in `AGENTS.md`.
 11. **One image rule for each whole book.** An image with no width limit spills past the text column and gets cut off, worst on phones. EDCOR 310 Chapter 2 and Econ 150 Chapter 1 now carry their own fix (`:where(.etb) img{max-width:100%;height:auto}` at the start of the chapter's styles), but an image added to any other chapter will have the same problem. Move the rule into each book's page wrapper: `wrap_chapter_page()` in EDCOR 310's `build/build_site.py`, and the page header in Econ 150's `build/wrap_pages.py`. The Econ 150 change rewrites every chapter's header, so rerun the script and commit all the pages. Then remove the two per-chapter copies and check a few chapters with images at phone width.
@@ -439,7 +450,7 @@ The mockups are in Benjamin's Claude canvas "BenjaminPacini.com Landing Page": t
 
 **Ready to build (Priority 1: navigation and access)**
 
-*Status, October 23, 2026: items 1, 2, 4, and 5 are built (pull requests "Cover and contents pages (shared design)" in both repositories). Benjamin chose the two-page version, a cover and then a contents page, over a one-page front, and the plain white Econ look with navy and light brass accents over the darker Canvas-course colors. Still open: item 3 (the shared top bar on chapter pages), Econ 150's unit hooks and reading times, and EDCOR 310's "How to Get the Most Out of This Book" and Introduction.*
+*Status, October 31, 2026: the basic cover/contents architecture is complete; see Completed priorities above. Still open: item 3 (the shared top bar on chapter pages), Econ 150's unit hooks and reading times, and EDCOR 310's opening material.
 
 1. **A cover page for each book.** The cover art, title, subtitle, authors, and course, with an "Open the book" button (to the contents) and one quick-start button. EDCOR 310's current home page becomes this page. Econ 150 has no cover page yet; its cover is `build/cover-web.png`.
 2. **A contents page for each book, in the same design.** A "Start here" group of front matter numbered i, ii, iii. Then each unit with its Roman-numeral badge, a one- or two-sentence hook, and its chapters (number, title, subtitle, reading time). Then back matter, such as EDCOR 310's quick references. Keep EDCOR 310's unit outcomes as a collapsible line under each unit.
@@ -447,7 +458,6 @@ The mockups are in Benjamin's Claude canvas "BenjaminPacini.com Landing Page": t
 4. **Each book takes its accent color from its cover:** EDCOR 310 uses the cover's blue (#145d90). Econ 150 uses the cover's night navy (#1b2430) with gold numerals (#a87d32). Everything else follows the styles the chapters already use (Georgia, white title cards, the uppercase labels), as in EDCOR 310's `site/assets/book.css`.
 5. **Build the front matter from one template,** kept identical in both repositories and changed in matching pull requests, the same way as the audio player.
 
-**Done:** loose end 8 (Cloudflare preview links). Benjamin can look at new pages before anything is merged.
 
 **Writing for Benjamin to do later (Priority 1: content)**
 
