@@ -24,16 +24,6 @@ These are possible practice activities, not a finalized recurring practice syste
 - Evidence-Based Practice Response prompts that ask students to identify evidence, reason from it, justify a response, and acknowledge limits.
 - Student choice, optional test-out, and flexible practice should remain possible; none of this is a mandatory chapter routine.
 
-## Possible title and eyebrow ideas from PR #59
-
-These were proposed labels, not a final instruction to publish them:
-
-1. **Adolescent Egocentrism** — *The joys of Axe body spray*
-2. **Id, Ego, and Superego** — *The Freudian Model*
-3. **Moral Development I: Kohlberg and Gilligan** — *The Heinz Dilemma—and Gilligan’s Response to Her Mentor*
-4. **Moral Development II: Haidt’s Moral Foundations Theory** — *Morality is about elephants, not riders*
-5. **The Judgment–Action Gap** — *Morality is caught more than taught*
-
 ## Revisit conditions
 
 When this work returns, review the chapter prose and practice together, verify the empirical and policy claims again, and build a fresh branch from the then-current main branch. Do not revive these old implementation branches as-is.
