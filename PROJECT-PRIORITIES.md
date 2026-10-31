@@ -331,7 +331,7 @@ Full details, costs, and file-size limits are in `audio/README.md` under "Stage 
 
 ### EDCOR 310: Chapter 16 rewrite (recorded October 30, 2026)
 
-Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actually Builds It?** (rev. 3, October 30), opening with the self-esteem movement, around six concepts: Self-Esteem, Determinism, Learned Helplessness, Attribution (which now includes feedback and praise), Efficacy Engineering, and Autonomy Support. The draft is published for review at `/chapter16a.html` (source `etb-live/chapter16a.html`); the live Chapter 16 is unchanged.
+Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actually Builds It?** (rev. 4, October 30), opening with the self-esteem movement, around six concepts: Self-Esteem, Determinism, Learned Helplessness, Attribution (which now includes feedback and praise), Efficacy Engineering, and Autonomy Support. The draft is published for review at `/chapter16a.html` (source `etb-live/chapter16a.html`); the live Chapter 16 is unchanged.
 
 1. **Mayleigh reviews the draft.** **Waiting on:** Mayleigh.
 2. **Swap it in.** When approved, the draft's text replaces `etb-live/chapter16.html`, `chapter16a.html` and its `DRAFTS` entry are removed (ask Benjamin before deleting), and the manifest title changes from "Chapter 16: Agency vs. Determinism" to "Chapter 16: Agency and Self-Belief" (Benjamin approved the new title October 30).
@@ -342,10 +342,11 @@ Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actua
     - **Ch 1:** soften "one of the most replicated results in education research" for Pygmalion to match Ch 12.
     - **Ch 26:** a retrieval answer cites "Chapter 21 — Pygmalion Effect"; Pygmalion is in Ch 1 and Ch 12.
     - **Ch 9 (optional):** point the "Erasure of Agency" misconception forward to Ch 16, Concept 2 (Determinism).
-4. **Spot-check before the swap:** the choice-blindness detection rate (Johansson & Hall, 2005), the volume and pages for Finn, Miele & Wigfield (2024), the title and pages for Patall et al. (2024), and the California task force report citation.
-5. **"Worth remembering" aphorisms:** Benjamin chose two on October 30: "Agency is a gift, but using it well is learned." (Concept 3, after the learned-helplessness reversal) and "Praise says you can. Success shows you can." (Concept 5, after the evidence that performance builds belief), both recapped after the synthesis. Any others wait for the separate aphorism pass (see "Both books: 'Worth remembering' aphorism boxes" below).
-6. **The *Doonesbury* strip in the hook** (February 17, 1987, © G. B. Trudeau) is used under fair use for educational commentary, captioned as excluded from the book's Creative Commons license. Optional, for extra safety: request permission from Andrews McMeel Syndication, which now handles *Doonesbury* licensing.
-7. **Open PR #64** retitles the current Chapter 16's concepts; it becomes moot once the draft replaces the chapter.
+4. **Citation spot-checks: done October 30.** Choice blindness (people caught only 26% of swapped photos), the Finn, Miele & Wigfield (2024) study details, the Patall et al. (2024) title and authors, and the California task force report all check out. Finn and Patall are cited by DOI because their final volume and page numbers couldn't be confirmed; add them when available.
+5. **Chapter Quality Manual pass (October 30):** "Ready after small fixes," about 74/90. The small fixes went in with rev. 4: a softer Self-Esteem card, a shorter "Also know" list (14 to 8 terms), fewer researcher names in Concepts 2 and 4, and a shorter praise-history passage (about 65 to 60 minutes). Still open, book-wide: the pop-up definitions only open on mouse hover, so phone and keyboard users can't reach them.
+6. **"Worth remembering" aphorisms:** Benjamin chose two on October 30: "Agency is a gift, but using it well is learned." (Concept 3, after the learned-helplessness reversal) and "Praise says you can. Success shows you can." (Concept 5, after the evidence that performance builds belief), both recapped after the synthesis. Any others wait for the separate aphorism pass (see "Both books: 'Worth remembering' aphorism boxes" below).
+7. **The *Doonesbury* strip in the hook** (February 17, 1987, © G. B. Trudeau) is used under fair use for educational commentary, captioned as excluded from the book's Creative Commons license. Optional, for extra safety: request permission from Andrews McMeel Syndication, which now handles *Doonesbury* licensing.
+8. **Open PR #64** retitles the current Chapter 16's concepts; it becomes moot once the draft replaces the chapter.
 
 **Status:** Waiting on Mayleigh's review.
 
