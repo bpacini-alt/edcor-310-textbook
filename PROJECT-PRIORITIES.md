@@ -120,13 +120,17 @@ Review the current [AP Psychology course framework](https://apcentral.collegeboa
 
 **First deliverable:** Compare AP Psychology AAQ/EBQ examples with several EDCOR classroom decision-making cases and propose reusable higher-order practice patterns. Respect College Board copyright and restrictions on secure assessment materials.
 
-### Priority 2 companion — Separate Econ and EDCOR Tier 2 engines / Rule of Four fluency
+### Priority 2 companion — Practice and learning design
 
-**Next prototype:** Revise Econ MRP homework as a single-screen, table-first calculation/hiring task with an optional aligned graph, plus a separate graph-to-table translation mode. Practice moving between representations, but **do not require table + graph on every item**; use combined views when making relationships explicit and hide answers for independent translation. Give EDCOR a distinct classroom-evidence and instructional-decision Tier 2 sequence while reusing technical components. Include 10+ validated variants, targeted additional practice, optional test-out, and a minimal vertical practice-progress display distinct from provisional understanding indicators. See [Precise Practice design playbook](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/PRECISE-PRACTICE-DESIGN.md).
+Treat practice design as a high-impact but still exploratory workstream. Keep the canonical cross-book brainstorming, pilots, and open questions in the [Precise Practice design notebook](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/PRECISE-PRACTICE-DESIGN.md). It is not a mandatory chapter protocol, and practice/learning design remains tentative and unscored until the system is defined and tested.
 
-### Priority 2 companion — Precise Practice design playbook and AI feedback pilot
+Current working direction: explore student-choice practice with optional test-out, concept-level Tier 1/Tier 2/Tier 3 possibilities, and distinct Econ/EDCOR applications. Leave the Econ 15 Tayleigh pilot and Econ 16 Benjamin pilot untouched while they are being tested.
 
-**High impact / strategic infrastructure.** Preserve the agreed instructional principles, foundational practice engines, question-type repertoire, mental anchors, aphorism handling, spiral review, and minimal homework-friendly learning indicators in [the Precise Practice design playbook](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/PRECISE-PRACTICE-DESIGN.md). Treat patterns as provisional until student-tested; do not require every engine on every page. **Next:** Audit existing Econ 11–12 and EDCOR exercise implementations; prototype Tier 2 blocked practice, then Tier 3 application/FRQ formats. Pilot a rubric-grounded, low-stakes AI aphorism feedback box against instructor-scored responses before deploying it broadly.
+The immediate goal is not to standardize every chapter. It is to learn from a few careful pilots, then decide what deserves to scale.
+
+### Priority 2 — Make every chapter practice-rich
+
+Over time, make chapters more active and practice-rich through retrieval, explanation, application, feedback, and transfer. The exact design remains an open question; see the [Precise Practice design notebook](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/PRECISE-PRACTICE-DESIGN.md) for deliberate brainstorming and prototype ideas.
 
 ### Priority 2 — Make every chapter practice-heavy
 
@@ -310,8 +314,7 @@ These items are paused on purpose. Each needs a careful read or a decision, not 
 
 **Both books:**
 
-- **Reading-check quizzes and Top Hat import (Econ 150 pull request #69, EDCOR 310 pull request #58).** A workflow for writing short "did you read it?" quizzes from each chapter and packaging them for import into Top Hat. Benjamin wants to understand it before deciding whether to adopt it.
-- **Tier 2 practice plan (Econ 150 pull request #63).** Adds the Econ Tier 2 pilot plan (read, construct, and reason with a marginal revenue product graph), the graph interaction types, and EDCOR's question families and "hidden curriculum" principle to `docs/PRECISE-PRACTICE-DESIGN.md`. It is a planning decision that sits under "Separate Econ and EDCOR Tier 2 engines" above.
+- **Practice and assessment documentation (Econ #69/#63; EDCOR #58).** These are being reorganized into one deliberate-brainstorming design notebook plus a separate candidate reading-check workflow. Leave the Econ 15 Tayleigh and Econ 16 Benjamin pilots unchanged.
 - **Read answers aloud after a pause** (under Deferred structural revisions below). Benjamin likes the direction but sees it as a bigger change to think through before approving wording and pause lengths.
 
 ## Deferred structural revisions
