@@ -344,7 +344,8 @@ Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actua
     - **Ch 9 (optional):** point the "Erasure of Agency" misconception forward to Ch 16, Concept 2 (Determinism).
 4. **Spot-check before the swap:** the choice-blindness detection rate (Johansson & Hall, 2005), the volume and pages for Finn, Miele & Wigfield (2024), the title and pages for Patall et al. (2024), and the California task force report citation.
 5. **"Worth remembering" aphorisms:** Benjamin chose two on October 30: "Agency is a gift, but using it well is learned." (Concept 3, after the learned-helplessness reversal) and "Praise says you can. Success shows you can." (Concept 5, after the evidence that performance builds belief), both recapped after the synthesis. Any others wait for the separate aphorism pass (see "Both books: 'Worth remembering' aphorism boxes" below).
-6. **Open PR #64** retitles the current Chapter 16's concepts; it becomes moot once the draft replaces the chapter.
+6. **The *Doonesbury* strip in the hook** (February 17, 1987, © G. B. Trudeau) is used under fair use for educational commentary, captioned as excluded from the book's Creative Commons license. Optional, for extra safety: request permission from Andrews McMeel Syndication, which now handles *Doonesbury* licensing.
+7. **Open PR #64** retitles the current Chapter 16's concepts; it becomes moot once the draft replaces the chapter.
 
 **Status:** Waiting on Mayleigh's review.
 
