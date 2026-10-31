@@ -92,6 +92,20 @@ Make each book clear, coherent, accessible, and trustworthy before adding substa
 - Conduct a dedicated readability and accessibility pass: plain language, heading hierarchy, link text, alt text, contrast, keyboard navigation, focus states, screen-reader labels, mobile layout, and basic usability.
 - Put reference lists in expandable/drop-down sections so sources remain available without interrupting the reading flow. Treat this as a substantial evidence-and-sourcing pass: transparency must not become a way to hide inconvenient evidence, and design choices must not reinforce confirmation bias.
 - Identify the chapters where students are most likely to get lost or misunderstand the central idea.
+
+#### Deferred workstream — Develop a references and citation strategy
+
+At a later stage, establish a consistent, maintainable sourcing system for both textbooks. Decide:
+
+- where citations should live in the student-facing books;
+- which claims, quotations, figures, and recommendations require citations;
+- which background knowledge or routine explanations do not need them;
+- when to use inline links, footnotes, endnotes, research boxes, or a consolidated references section;
+- how to keep references readable and useful rather than turning every page into a bibliography;
+- how to verify AI-generated references by checking that the source exists, actually supports the claim, and is cited accurately;
+- how to record enough source information to make future updates and corrections practical.
+
+**Why this is deferred:** The books already need better sourcing, but a durable references strategy is a systems decision. It is worth doing once the chapter structure, research boxes, and citation patterns are stable enough to reveal what the books actually need.
 - Integrate the chapter-fit readings removed from the student-facing Joy of Econ menu into the relevant Econ 150 chapters. Use the [Joy of Econ chapter-addition backlog](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/menus/joy-of-econ-chapter-additions.md) and classify each item as **add**, **companion**, or **discard**. This is a mid-level quality pass to complete alongside normal chapter revisions.
 
 **Why this is high priority:** Better presentation, trustworthy sourcing, and fewer points of friction benefit every student immediately and multiply the value of every later feature.
