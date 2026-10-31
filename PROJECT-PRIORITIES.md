@@ -331,21 +331,16 @@ Full details, costs, and file-size limits are in `audio/README.md` under "Stage 
 
 ### EDCOR 310: Chapter 16 rewrite (recorded October 30, 2026)
 
-Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actually Builds It?** (rev. 3, October 30), opening with the self-esteem movement, around six concepts: Self-Esteem, Determinism, Learned Helplessness, Attribution (which now includes feedback and praise), Efficacy Engineering, and Autonomy Support. The draft is published for review at `/chapter16a.html` (source `etb-live/chapter16a.html`); the live Chapter 16 is unchanged.
+Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actually Builds It?** (rev. 4, October 30), opening with the self-esteem movement, around six concepts: Self-Esteem, Determinism, Learned Helplessness, Attribution (which now includes feedback and praise), Efficacy Engineering, and Autonomy Support. The draft is published for review at `/chapter16a.html` (source `etb-live/chapter16a.html`); the live Chapter 16 is unchanged.
 
 1. **Mayleigh reviews the draft.** **Waiting on:** Mayleigh.
 2. **Swap it in.** When approved, the draft's text replaces `etb-live/chapter16.html`, `chapter16a.html` and its `DRAFTS` entry are removed (ask Benjamin before deleting), and the manifest title changes from "Chapter 16: Agency vs. Determinism" to "Chapter 16: Agency and Self-Belief" (Benjamin approved the new title October 30).
-3. **Matching edits in other chapters, shipped with the swap** so the book doesn't contradict itself:
-    - **Ch 12:** soften the social persuasion row's "'You're so smart' does not."
-    - **Ch 19:** shrink the learned helplessness card and box to the behaviorist point with a pointer to Ch 16, Concept 3; rewrite or cut the "stopped raising her hand" retrieval question; remove the three strong ability-praise vs. effort-praise lines and point to Ch 16, Concept 4.
-    - **Ch 20:** trim the practical autonomy-support list (four T's, giving a rationale) to a callback to Ch 16, Concept 6; soften the creative-writing answer that treats a structured template only as a threat; revise the growth mindset card, "Mastery requires a growth mindset," and the "effort-focused feedback" table row.
-    - **Ch 1:** soften "one of the most replicated results in education research" for Pygmalion to match Ch 12.
-    - **Ch 26:** a retrieval answer cites "Chapter 21 — Pygmalion Effect"; Pygmalion is in Ch 1 and Ch 12.
-    - **Ch 9 (optional):** point the "Erasure of Agency" misconception forward to Ch 16, Concept 2 (Determinism).
-4. **Spot-check before the swap:** the choice-blindness detection rate (Johansson & Hall, 2005), the volume and pages for Finn, Miele & Wigfield (2024), the title and pages for Patall et al. (2024), and the California task force report citation.
-5. **"Worth remembering" aphorisms:** Benjamin chose two on October 30: "Agency is a gift, but using it well is learned." (Concept 3, after the learned-helplessness reversal) and "Praise says you can. Success shows you can." (Concept 5, after the evidence that performance builds belief), both recapped after the synthesis. Any others wait for the separate aphorism pass (see "Both books: 'Worth remembering' aphorism boxes" below).
-6. **The *Doonesbury* strip in the hook** (February 17, 1987, © G. B. Trudeau) is used under fair use for educational commentary, captioned as excluded from the book's Creative Commons license. Optional, for extra safety: request permission from Andrews McMeel Syndication, which now handles *Doonesbury* licensing.
-7. **Open PR #64** retitles the current Chapter 16's concepts; it becomes moot once the draft replaces the chapter.
+3. **Matching edits in other chapters, shipped with the swap** so the book doesn't contradict itself. The full checklist, with current wording and drafted replacements, is in [`docs/CHAPTER-16-MATCHING-EDITS.md`](docs/CHAPTER-16-MATCHING-EDITS.md). Must-fix: Ch 19 (effort-vs.-ability praise in three places; the old learned-helplessness account), Ch 20 (growth mindset card, "Mastery requires a growth mindset," autonomy list, template answer), Ch 22 and Ch 24 (the "paradox of choice" stated as settled), Ch 12 (social persuasion row). Should-fix: Ch 1 (Pygmalion "most replicated") and Ch 26 (wrong chapter number). Optional pointers: Ch 9, 4, 3, 8.
+4. **Citation spot-checks: done October 30.** Choice blindness (people caught only 26% of swapped photos), the Finn, Miele & Wigfield (2024) study details, the Patall et al. (2024) title and authors, and the California task force report all check out. Finn and Patall are cited by DOI because their final volume and page numbers couldn't be confirmed; add them when available.
+5. **Chapter Quality Manual pass (October 30):** "Ready after small fixes," about 74/90. The small fixes went in with rev. 4: a softer Self-Esteem card, a shorter "Also know" list (14 to 8 terms), fewer researcher names in Concepts 2 and 4, and a shorter praise-history passage (about 65 to 60 minutes). Still open, book-wide: the pop-up definitions only open on mouse hover, so phone and keyboard users can't reach them (now its own item: "Both books: Pop-up definitions can't be opened by tap or keyboard").
+6. **"Worth remembering" aphorisms:** Benjamin chose two on October 30: "Agency is a gift, but using it well is learned." (Concept 3, after the learned-helplessness reversal) and "Praise says you can. Success shows you can." (Concept 5, after the evidence that performance builds belief), both recapped after the synthesis. Any others wait for the separate aphorism pass (see "Both books: 'Worth remembering' aphorism boxes" below).
+7. **The *Doonesbury* strip in the hook** (February 17, 1987, © G. B. Trudeau) is used under fair use for educational commentary, captioned as excluded from the book's Creative Commons license. Optional, for extra safety: request permission from Andrews McMeel Syndication, which now handles *Doonesbury* licensing.
+8. **Open PR #64** retitles the current Chapter 16's concepts; it becomes moot once the draft replaces the chapter.
 
 **Status:** Waiting on Mayleigh's review.
 
@@ -380,6 +375,17 @@ Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actua
 **Priority:** Medium. It matters for students who study by listening, but the wording and timing are a design decision, and the change has to land in both books at once.
 
 **Status:** On hold (October 29, 2026). Benjamin likes the direction but wants to think the change through before approving the wording and pause lengths.
+
+### Both books: Pop-up definitions can't be opened by tap or keyboard (recorded October 30, 2026)
+
+**The problem:** the dotted-underlined terms in chapter text (`data-tip`) show their definition only when a mouse hovers over them.
+- **EDCOR 310:** only Chapter 4 has a tap-to-open script, so on phones about 200 pop-ups across the other chapters (plus 15 in the Chapter 16 draft) can't be opened at all.
+- **Econ 150:** its chapters already open pop-ups on tap (the `tip-open` script).
+- **Both books:** the terms can't be reached or opened from the keyboard, and screen readers don't get the definition.
+
+**The fix:** add Econ 150's tap-to-open behavior to EDCOR 310, ideally once in the build instead of page by page. Then add keyboard access to both books in matching pull requests: terms can be focused, open with Enter, Space, or focus, and close with Escape.
+
+**Priority:** Medium-low (Benjamin, October 30). Found by the Chapter Quality Manual pass on the Chapter 16 draft.
 
 ### Loose ends from the move to the new sites (recorded October 20, 2026)
 
