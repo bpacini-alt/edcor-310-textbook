@@ -1,0 +1,3 @@
+# EDCOR Chapter 16 prototype update
+
+The standalone website preview now includes a mixed five-correct-and-understood readiness check drawing from Chapter 16 plus optional earlier Chapters 12 and 15, followed by an unlock of short AAQ/EBQ-style reasoning and metacognitive reflection. Earlier questions are draft examples and require review. Concept checkpoints show Tier 1, 2, 3, and Mix tiers; the full blocked-versus-randomized format selection is **not yet implemented** because the bank lacks sufficient distinct item types. This remains a documented gap, not a claim of completion. No canonical chapter files were modified. Browser and source verification remain outstanding.
