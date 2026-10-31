@@ -112,6 +112,7 @@ const RATINGS_SCHEMA = [
   '  reading_id TEXT NOT NULL,',
   '  semester TEXT NOT NULL,',
   '  rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 4),',
+  '  comment TEXT NOT NULL DEFAULT \'\',',
   '  client_id TEXT NOT NULL,',
   '  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,',
   '  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,',
@@ -221,6 +222,7 @@ async function handleRatings(request, env) {
   let book = clean(url.searchParams.get('book'), 60);
   let reading = clean(url.searchParams.get('reading'), 100);
   let rating = null;
+  let comment = '';
   const mineRequest = request.method === 'GET' && url.searchParams.get('mine') === '1';
   const allRequest = request.method === 'GET' && url.searchParams.get('all') === '1';
 
@@ -232,6 +234,7 @@ async function handleRatings(request, env) {
     book = clean(data && data.book, 60);
     reading = clean(data && data.reading, 100);
     rating = Number(data && data.rating);
+    comment = clean(data && data.comment, 1000);
   }
 
   if (mineRequest || allRequest) {
@@ -250,6 +253,7 @@ async function handleRatings(request, env) {
     'reading_id TEXT NOT NULL,' +
     'semester TEXT NOT NULL,' +
     'rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 4),' +
+    'comment TEXT NOT NULL DEFAULT \'\',' +
     'client_id TEXT NOT NULL,' +
     'created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,' +
     'updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,' +
@@ -259,6 +263,10 @@ async function handleRatings(request, env) {
   await env.RATINGS_DB.prepare(
     'CREATE INDEX IF NOT EXISTS idx_reading_ratings_lookup ON reading_ratings (book, reading_id, semester)'
   ).run();
+  const ratingColumns = await env.RATINGS_DB.prepare('PRAGMA table_info(reading_ratings)').all();
+  if (!(ratingColumns.results || []).some(row => row.name === 'comment')) {
+    await env.RATINGS_DB.prepare("ALTER TABLE reading_ratings ADD COLUMN comment TEXT NOT NULL DEFAULT ''").run();
+  }
 
   if (allRequest) return ratingJson(200, await ratingSummaries(env.RATINGS_DB, book, semester, clientId), clientId);
   if (mineRequest) return ratingJson(200, await ratingMine(env.RATINGS_DB, book, semester, clientId), clientId);
@@ -269,8 +277,8 @@ async function handleRatings(request, env) {
         'DELETE FROM reading_ratings WHERE book = ? AND reading_id = ? AND semester = ? AND client_id = ?'
       ).bind(book, reading, semester, clientId),
       env.RATINGS_DB.prepare(
-        'INSERT INTO reading_ratings (book, reading_id, semester, rating, client_id) VALUES (?, ?, ?, ?, ?)'
-      ).bind(book, reading, semester, rating, clientId),
+        'INSERT INTO reading_ratings (book, reading_id, semester, rating, client_id, comment) VALUES (?, ?, ?, ?, ?, ?)'
+      ).bind(book, reading, semester, rating, clientId, comment),
     ]);
   }
 

@@ -9,6 +9,7 @@ and writes:
   (all four from frontmatter/frontmatter.py, shared with Econ 150)
   site/<chapter>.html        every chapter, unit page, and supplement, wrapped as a full page
   site/joy-of-learning.html  the Joy of Learning reading menu (from menus/joy-of-learning.json)
+  site/recorded-lectures.html a linked index of the recorded EDCOR lectures
 
 Run from the repo root:  python3 build/build_site.py
 """
@@ -157,7 +158,8 @@ def front_pages(units, chapters, supplements):
         "front": [
             {"n": "i", "t": "About this book", "s": "How the book was made, and acknowledgments", "m": "", "href": "/about.html"},
             {"n": "ii", "t": "How to Get the Most Out of This Book", "s": "How to study, practice, and use this book well", "m": "", "href": "/how-to-get-the-most-out-of-this-book.html"},
-            {"n": "iii", "t": "Joy of Learning", "s": "The reading menu", "m": "", "href": "/joy-of-learning.html"}
+            {"n": "iii", "t": "Joy of Learning", "s": "The reading menu", "m": "", "href": "/joy-of-learning.html"},
+            {"n": "iv", "t": "Recorded Lectures", "s": "Author-led course videos", "m": "", "href": "/recorded-lectures.html"}
         ],
         "units": [{
             "roman": u["roman"], "kicker": f"{u['label']} · {chapter_range(u)}", "title": u["name"],
@@ -263,6 +265,15 @@ TIP_JS = """<script>
 </script>"""
 
 
+def page_rating_html(title, source_path):
+    if not source_path or not title.startswith("Chapter "):
+        return ""
+    page_id = Path(source_path).stem.lower()
+    return f"""<!-- PAGE RATING START -->
+<div class="etb-page-rating-config" data-page-rating data-book="science-of-learning" data-page="{esc(page_id)}" hidden></div>
+<!-- /PAGE RATING -->"""
+
+
 def wrap_chapter_page(title, fragment, nav="", source_path=""):
     """Wrap a captured EdTechBooks fragment as a complete site page."""
     fragment = fragment.replace(
@@ -272,6 +283,7 @@ def wrap_chapter_page(title, fragment, nav="", source_path=""):
     # Images keep their EdTechBooks paths (/images/content_images/...). The files are
     # in etb-live/images/ and publish_chapters() copies them into site/images/.
     edit_link = ""
+    rating = page_rating_html(title, source_path)
     if source_path and fragment.strip():
         edit_path = urllib.parse.quote("etb-live/" + source_path, safe="/")
         edit_link = f'<a href="/editor/?book=science-of-learning&amp;path={edit_path}">Edit</a>'
@@ -282,6 +294,7 @@ def wrap_chapter_page(title, fragment, nav="", source_path=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)} · The Science of Learning</title>
 <link rel="stylesheet" href="/assets/etb-audio.css">
+<link rel="stylesheet" href="/assets/page-rating.css">
 <style>
 html {{ background: #f6f7f9; }}
 body {{ margin: 0; }}
@@ -309,10 +322,12 @@ body {{ margin: 0; }}
 </header>
 <main>
 {fragment}
+{rating}
 </main>
 {nav}
 {TIP_JS}
 <script src="/assets/report.js" data-book="EDCOR 310" defer></script>
+<script src="/assets/page-rating.js"></script>
 <script src="/assets/etb-audio.js"></script>
 </body>
 </html>
@@ -359,6 +374,8 @@ def publish_chapters():
         )
     # The Report a problem button; feedback/report.js is the one place to edit it.
     (OUT / "assets" / "report.js").write_text((ROOT / "feedback" / "report.js").read_text(), encoding="utf-8")
+    (OUT / "assets" / "page-rating.js").write_text((ROOT / "feedback" / "page-rating.js").read_text(), encoding="utf-8")
+    (OUT / "assets" / "page-rating.css").write_text((ROOT / "feedback" / "page-rating.css").read_text(), encoding="utf-8")
     # The chapters' images, copied from EdTechBooks into etb-live/images/ so the site doesn't depend on it.
     if (SRC / "images").is_dir():
         shutil.copytree(SRC / "images", OUT / "images", dirs_exist_ok=True)
@@ -392,6 +409,16 @@ def publish_chapters():
                  + "\nCopy the missing <style> blocks into the page's etb-live/ file and build again. "
                    "If you removed a style on purpose, delete the page from site/ first.")
 
+def publish_recorded_lectures():
+    """Build the linked recorded-lecture index from lectures/edcor-310.json."""
+    from recorded_lectures import render
+    data_path = ROOT / "lectures" / "edcor-310.json"
+    if not data_path.exists():
+        return
+    data = json.loads(data_path.read_text(encoding="utf-8"))
+    (OUT / "recorded-lectures.html").write_text(render(data), encoding="utf-8")
+
+
 def publish_menu():
     """The Joy of Learning reading menu. menus/joy-of-learning.json is the one place to edit it."""
     import subprocess
@@ -410,6 +437,7 @@ def main():
     build_cover()
     publish_chapters()
     publish_drafts()
+    publish_recorded_lectures()
     publish_menu()
     for path, content in front_pages(units, chapters, supplements).items():
         (OUT / path).write_text(content)

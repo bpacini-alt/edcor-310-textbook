@@ -1,0 +1,1234 @@
+{
+  "course": {
+    "course": "EDCOR 310",
+    "menuTitle": "Recorded Lectures",
+    "bookTitle": "The Science of Learning",
+    "bookHome": "/",
+    "contents": "/contents/",
+    "accent": "#145d90",
+    "accent2": "#145d90",
+    "ring": "#8fb3d9",
+    "requirement": "hour-per-unit",
+    "storageKey": "recorded-lectures-edcor310-v1",
+    "description": "Recorded EDCOR 310 lectures, demonstrations, and course videos across the full course week sequence.",
+    "reportScript": "/assets/report.js",
+    "ratingsBook": "science-of-learning",
+    "dataFile": "recorded-lectures.json",
+    "showTopic": false,
+    "metaLabel": "Description",
+    "showLengthFilter": false,
+    "watchOnly": true,
+    "kicker": "Recorded Lectures"
+  },
+  "intro": {
+    "lede": "Watch every video in the week-by-week course sequence. Open the plus sign for a warm description, and use the rate controls to tell us what helps.",
+    "sections": [
+      {
+        "head": "Watch every video.",
+        "body": "Online students should watch every video in this index and keep a brief record of what they are learning."
+      },
+      {
+        "head": "In-person students.",
+        "body": "If you are an in-person student, you are expected to be in class. These recordings are an extra resource for review; watching them may not substitute for attendance."
+      },
+      {
+        "head": "Use the plus.",
+        "body": "Open a unit, then open a week and a video row to see its description and additional details. Each video opens in a new tab."
+      },
+      {
+        "head": "Read the tags.",
+        "body": "BroPa marks an instructor-made recording. Third party marks a video made by someone else or hosted outside the course."
+      },
+      {
+        "head": "Make time to process.",
+        "body": "You are welcome to read or watch faster if you choose, but leave time to pause, take notes, connect ideas, and record what you are learning. Speed is useful only when you are still processing the material."
+      },
+      {
+        "head": "Watch actively.",
+        "body": "As you watch, record the main claim, the evidence or example behind it, and one idea you could explain in your own words."
+      },
+      {
+        "head": "About the times.",
+        "body": "Times are rough estimates for planning only. Every video in this index belongs to the assigned collection."
+      }
+    ]
+  },
+  "units": [
+    {
+      "id": "unit-1",
+      "label": "Unit 1",
+      "title": "The Holy Art of Skepticism: Principles of Research in Psychology",
+      "meta": "Weeks 1–4",
+      "blurb": "Evidence, skepticism, research methods, and the limits of what we think we know.",
+      "weeks": [
+        {
+          "id": "week-1",
+          "title": "Week 1: The Grand Adventure",
+          "notes": [],
+          "entries": [
+            {
+              "id": "lecture-ySI9TTT1wx8",
+              "title": "Welcome to EDCOR 310",
+              "url": "https://youtu.be/ySI9TTT1wx8",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "In this video, Brother Pacini introduces himself, shares the values and teaching philosophy behind the course, and sets the tone for the semester.",
+              "short": "In this video, Brother Pacini introduces himself, shares the values and teaching philosophy behind the course, and sets the tone for the…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-kipp-video",
+              "title": "KIPP video",
+              "url": "https://drive.google.com/file/d/19Gq0jrIoTtndxzIVzyU6E4ul8o6jsswW/view?usp=sharing",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "This video offers a classroom example that gives the course’s opening ideas about learning a concrete setting.",
+              "short": "This video offers a classroom example that gives the course’s opening ideas about learning a concrete setting.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-JtPPiUaa39o",
+              "title": "Your First Educational Psychology Lesson",
+              "url": "https://youtu.be/JtPPiUaa39o",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "In this video, Brother Pacini pairs a personal introduction with a first lesson about teaching, students, and meaningful educational work.",
+              "short": "In this video, Brother Pacini pairs a personal introduction with a first lesson about teaching, students, and meaningful educational work.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-6hSvfkVn_yA",
+              "title": "How to Succeed in This Course",
+              "url": "https://youtu.be/6hSvfkVn_yA",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "In this video, Brother Pacini walks through course expectations, study habits, workload, lab and TA support, and practical advice for succeeding.",
+              "short": "In this video, Brother Pacini walks through course expectations, study habits, workload, lab and TA support, and practical advice for succeeding.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-MPSCXj7kmqE",
+              "title": "The Hero’s Journey",
+              "url": "https://youtu.be/MPSCXj7kmqE",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "In this video, Brother Pacini frames the course as a larger adventure in learning, introducing its narrative, motivation, objectives, and emotional stakes.",
+              "short": "In this video, Brother Pacini frames the course as a larger adventure in learning, introducing its narrative, motivation, objectives, and…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-d1Zxt28ff-E",
+              "title": "The Hero’s Journey: A 90-Second Opening",
+              "url": "https://www.youtube.com/watch?v=d1Zxt28ff-E",
+              "minutes": 2,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "This short public video helps launch the course’s adventure metaphor.",
+              "short": "This short public video helps launch the course’s adventure metaphor.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-3C2WloiW96A",
+              "title": "The Hero’s Journey: A Second 90-Second Opening",
+              "url": "https://www.youtube.com/watch?v=3C2WloiW96A",
+              "minutes": 2,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "This short public video offers a second visual companion to the opening lecture.",
+              "short": "This short public video offers a second visual companion to the opening lecture.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-35hRH7GVC7c",
+              "title": "The Hero’s Journey: A 15-Second Example",
+              "url": "https://www.youtube.com/watch?v=35hRH7GVC7c",
+              "minutes": 1,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "This very short public clip supplies one of the opening lecture’s quick examples.",
+              "short": "This very short public clip supplies one of the opening lecture’s quick examples.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-24adApYh0yc",
+              "title": "The Hero’s Journey: Another 90-Second Opening",
+              "url": "https://www.youtube.com/watch?v=24adApYh0yc",
+              "minutes": 2,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "This short public video helps set up the course’s central adventure.",
+              "short": "This short public video helps set up the course’s central adventure.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-5Aoy08tjHlg",
+              "title": "The Hero’s Journey: A Fifth Opening Clip",
+              "url": "https://www.youtube.com/watch?v=5Aoy08tjHlg",
+              "minutes": 2,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "This short public video completes the opening-week sequence.",
+              "short": "This short public video completes the opening-week sequence.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-SymPv4fepO0",
+              "title": "Normative and Positive Claims",
+              "url": "https://youtu.be/SymPv4fepO0",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "In this video, Brother Pacini uses Hume’s is/ought distinction to separate descriptive claims from value judgments.",
+              "short": "In this video, Brother Pacini uses Hume’s is/ought distinction to separate descriptive claims from value judgments.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-BOndvD4N7Yk",
+              "title": "What Is Wrong with You?",
+              "url": "https://youtu.be/BOndvD4N7Yk",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "In this video, Brother Pacini examines human cognitive limits, bias, and motivated reasoning—and asks us to notice when we are protecting what we want to believe.",
+              "short": "In this video, Brother Pacini examines human cognitive limits, bias, and motivated reasoning—and asks us to notice when we are protecting what…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-df3sdCtLngw",
+              "title": "You Know Untrue Things",
+              "url": "https://youtu.be/df3sdCtLngw",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Course opening",
+              "blurb": "In this video, Brother Pacini leads an activity about false beliefs, checking evidence, superstition, and claims about mental health.",
+              "short": "In this video, Brother Pacini leads an activity about false beliefs, checking evidence, superstition, and claims about mental health.",
+              "stance": "BroPa"
+            }
+          ]
+        },
+        {
+          "id": "week-2",
+          "title": "Week 2: O Say What Is Truth?",
+          "notes": [],
+          "entries": [
+            {
+              "id": "lecture-6Jj-JC7t0o0",
+              "title": "Evidence-Based Practice",
+              "url": "https://youtu.be/6Jj-JC7t0o0",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Truth and evidence",
+              "blurb": "In this video, Brother Pacini explores what counts as evidence, how evidence should shape teaching, and the stand/squat/sit activity.",
+              "short": "In this video, Brother Pacini explores what counts as evidence, how evidence should shape teaching, and the stand/squat/sit activity.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-YUooOYbgSUg",
+              "title": "Hattie: Effect Sizes and Evidence",
+              "url": "https://www.youtube.com/watch?v=YUooOYbgSUg",
+              "minutes": 2,
+              "format": "watch",
+              "topic": "Truth and evidence",
+              "blurb": "This public video offers a brief introduction to John Hattie’s work on effect sizes and meaningful evidence.",
+              "short": "This public video offers a brief introduction to John Hattie’s work on effect sizes and meaningful evidence.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-rzwJXUieD0U",
+              "title": "Hattie II: A Follow-Up on Evidence",
+              "url": "https://www.youtube.com/watch?v=rzwJXUieD0U",
+              "minutes": 3,
+              "format": "watch",
+              "topic": "Truth and evidence",
+              "blurb": "This public follow-up extends Hattie’s framework for thinking about evidence and effect sizes.",
+              "short": "This public follow-up extends Hattie’s framework for thinking about evidence and effect sizes.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-8BnEyLYfzt0",
+              "title": "What Is Truth?",
+              "url": "https://youtu.be/8BnEyLYfzt0",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Truth and evidence",
+              "blurb": "In this video, Brother Pacini explains an instructional and evidence hierarchy, showing how different kinds of evidence support different levels of confidence.",
+              "short": "In this video, Brother Pacini explains an instructional and evidence hierarchy, showing how different kinds of evidence support different…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-KdHhkpv9o38",
+              "title": "TABCATS Hymn: A Playful Truth Example",
+              "url": "https://www.youtube.com/watch?v=KdHhkpv9o38",
+              "minutes": 3,
+              "format": "watch",
+              "topic": "Truth and evidence",
+              "blurb": "This playful musical video gives the course’s conversation about truth a memorable example.",
+              "short": "This playful musical video gives the course’s conversation about truth a memorable example.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-5hVR37xDa2k",
+              "title": "The Holy Art of Skepticism",
+              "url": "https://www.youtube.com/watch?v=5hVR37xDa2k&t=718s",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Truth and evidence",
+              "blurb": "This recording is included in the course sequence, but its transcript contains substantial production interruptions and does not support a reliable topic summary.",
+              "short": "This recording is included in the course sequence, but its transcript contains substantial production interruptions and does not support a…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-OhMpoap7yvA",
+              "title": "Three Experiments",
+              "url": "https://youtu.be/OhMpoap7yvA",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Truth and evidence",
+              "blurb": "In this video, Brother Pacini introduces three influential psychology experiments and considers their cultural impact.",
+              "short": "In this video, Brother Pacini introduces three influential psychology experiments and considers their cultural impact.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-HVFAwytPkgE",
+              "title": "The Stanford Prison Experiment",
+              "url": "https://www.youtube.com/watch?v=HVFAwytPkgE",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Truth and evidence",
+              "blurb": "This public video uses the controversial Stanford Prison Experiment to examine roles, situations, and the limits of famous social-psychology findings.",
+              "short": "This public video uses the controversial Stanford Prison Experiment to examine roles, situations, and the limits of famous social-psychology…",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-xOYLCy5PVgM",
+              "title": "Milgram and Obedience",
+              "url": "https://www.youtube.com/watch?v=xOYLCy5PVgM",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Truth and evidence",
+              "blurb": "This public video uses a classic experiment to examine authority, obedience, and the pressure of social situations.",
+              "short": "This public video uses a classic experiment to examine authority, obedience, and the pressure of social situations.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-asch",
+              "title": "Asch",
+              "url": "https://vimeo.com/402639401",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Truth and evidence",
+              "blurb": "This public demonstration makes conformity and social pressure difficult to ignore.",
+              "short": "This public demonstration makes conformity and social pressure difficult to ignore.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-NEqjZVZi5zY",
+              "title": "Experimental Design: Correlation and Causation",
+              "url": "https://youtu.be/NEqjZVZi5zY",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Truth and evidence",
+              "blurb": "In this video, Brother Pacini builds skepticism without cynicism, distinguishes correlation from causation, and shows why experiments protect us from false beliefs.",
+              "short": "In this video, Brother Pacini builds skepticism without cynicism, distinguishes correlation from causation, and shows why experiments protect…",
+              "stance": "BroPa"
+            }
+          ]
+        },
+        {
+          "id": "week-3",
+          "title": "Week 3: Tools of the Scientist",
+          "notes": [],
+          "entries": [
+            {
+              "id": "lecture-oyT83jD4RsY",
+              "title": "Statistical Significance",
+              "url": "https://youtu.be/oyT83jD4RsY",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Research methods",
+              "blurb": "In this video, Brother Pacini explains alpha, p-values, and statistical tests, while emphasizing that evidence is not the same thing as certainty.",
+              "short": "In this video, Brother Pacini explains alpha, p-values, and statistical tests, while emphasizing that evidence is not the same thing as…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-5KsgzKVOEU8",
+              "title": "Statistical Significance: Practice",
+              "url": "https://youtu.be/5KsgzKVOEU8",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Research methods",
+              "blurb": "In this video, Brother Pacini guides practice with hypotheses, alpha, p-values, and the logic of changing one’s mind.",
+              "short": "In this video, Brother Pacini guides practice with hypotheses, alpha, p-values, and the logic of changing one’s mind.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-Kh9g0DSq7Mo",
+              "title": "Practical Significance",
+              "url": "https://youtu.be/Kh9g0DSq7Mo",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Research methods",
+              "blurb": "In this video, Brother Pacini uses Cohen’s d, Pearson’s r, and a statistical-courtroom analogy to show why “works” is not always the same as “matters.”",
+              "short": "In this video, Brother Pacini uses Cohen’s d, Pearson’s r, and a statistical-courtroom analogy to show why “works” is not always the same as…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-7b_cQ8ncxlE",
+              "title": "Type I and Type II Error",
+              "url": "https://youtu.be/7b_cQ8ncxlE",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Research methods",
+              "blurb": "In this video, Brother Pacini uses the courtroom analogy to explain false positives, false negatives, and the tradeoffs involved in choosing alpha.",
+              "short": "In this video, Brother Pacini uses the courtroom analogy to explain false positives, false negatives, and the tradeoffs involved in choosing…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-VljAWw9W7Dk",
+              "title": "Standard Deviation",
+              "url": "https://youtu.be/VljAWw9W7Dk",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Research methods",
+              "blurb": "In this video, Brother Pacini explains what standard deviation means and why it matters when we interpret distributions and scores.",
+              "short": "In this video, Brother Pacini explains what standard deviation means and why it matters when we interpret distributions and scores.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-bbDIgz5MrgE",
+              "title": "Practical Significance: Practice",
+              "url": "https://youtu.be/bbDIgz5MrgE",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Research methods",
+              "blurb": "In this video, Brother Pacini works through the difference between statistical significance and practical importance.",
+              "short": "In this video, Brother Pacini works through the difference between statistical significance and practical importance.",
+              "stance": "BroPa"
+            }
+          ]
+        },
+        {
+          "id": "week-4",
+          "title": "Week 4: Toward a Better Psychology",
+          "notes": [],
+          "entries": [
+            {
+              "id": "lecture-06JP1eN-Gkk",
+              "title": "The Mental Health Crisis",
+              "url": "https://youtu.be/06JP1eN-Gkk",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Mental health and research",
+              "blurb": "In this video, Brother Pacini asks whether a mental-health crisis exists, models how to reason from evidence, and considers what educators should do with the question.",
+              "short": "In this video, Brother Pacini asks whether a mental-health crisis exists, models how to reason from evidence, and considers what educators…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-oENSC1ueNxc",
+              "title": "The Role of a Teacher",
+              "url": "https://youtu.be/oENSC1ueNxc",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Mental health and research",
+              "blurb": "In this video, Brother Pacini explains what teachers can and cannot do regarding student mental health, including the boundaries of responsibility.",
+              "short": "In this video, Brother Pacini explains what teachers can and cannot do regarding student mental health, including the boundaries of…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-5XGmJ17pASA",
+              "title": "A Tier 1 Example",
+              "url": "https://www.youtube.com/watch?v=5XGmJ17pASA",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Mental health",
+              "blurb": "This video offers a concrete example of strong classroom-level mental-health support before more specialized interventions are considered.",
+              "short": "This video offers a concrete example of strong classroom-level mental-health support before more specialized interventions are considered.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-VgLKCAkSFVo",
+              "title": "Crash Course in Positive Psychology",
+              "url": "https://youtu.be/VgLKCAkSFVo",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Mental health and research",
+              "blurb": "In this video, Brother Pacini introduces positive psychology as a shift from asking “what is wrong?” toward strengths, growth, gratitude, and meaningful action.",
+              "short": "In this video, Brother Pacini introduces positive psychology as a shift from asking “what is wrong?” toward strengths, growth, gratitude, and…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-Jt1QbpASeh4",
+              "title": "A Positive Psychology Intervention",
+              "url": "https://youtu.be/Jt1QbpASeh4",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Mental health and research",
+              "blurb": "In this video, Brother Pacini leads a guided exercise involving relaxation, visualization, and personal reflection.",
+              "short": "In this video, Brother Pacini leads a guided exercise involving relaxation, visualization, and personal reflection.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-8mmnK0SUvSQ",
+              "title": "The Replication Crisis",
+              "url": "https://youtu.be/8mmnK0SUvSQ",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Mental health and research",
+              "blurb": "In this video, Brother Pacini explains replication, humility about published research, and why a single paper is not truth in a bottle.",
+              "short": "In this video, Brother Pacini explains replication, humility about published research, and why a single paper is not truth in a bottle.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture--U8lPMOTh08",
+              "title": "Skeptical of Skepticism",
+              "url": "https://youtu.be/-U8lPMOTh08",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Mental health and research",
+              "blurb": "In this video, Brother Pacini explores epistemic humility without giving up on truth, and distinguishes skepticism from cynicism.",
+              "short": "In this video, Brother Pacini explores epistemic humility without giving up on truth, and distinguishes skepticism from cynicism.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-QtnBmTUzuJ8",
+              "title": "Essay Question Prep",
+              "url": "https://youtu.be/QtnBmTUzuJ8",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Mental health and research",
+              "blurb": "In this video, Brother Pacini prepares students for open-response assessment through retrieval, worked examples, and grading comparisons.",
+              "short": "In this video, Brother Pacini prepares students for open-response assessment through retrieval, worked examples, and grading comparisons.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-stats-prep-video-review",
+              "title": "Stats Prep Video Review",
+              "url": "https://www.loom.com/share/cbc4faa58c6942a69acf7fdef5d601d6?sid=404d44b1-f9d9-413f-a6aa-70e166583cee",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Mental health and research",
+              "blurb": "This review video gives students extra practice with the statistics material before the exam.",
+              "short": "This review video gives students extra practice with the statistics material before the exam.",
+              "stance": "Third party"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit-2",
+      "label": "Unit 2",
+      "title": "Developmental Psychology: Adventures in Child Psychopathy",
+      "meta": "Weeks 5–7",
+      "blurb": "Development, parenting, identity, and the ways people learn and change.",
+      "weeks": [
+        {
+          "id": "week-5",
+          "title": "Week 5: The Great Parenting Debate",
+          "notes": [],
+          "entries": [
+            {
+              "id": "lecture-zpdYQjwCTnE",
+              "title": "Does Parenting Matter?",
+              "url": "https://youtu.be/zpdYQjwCTnE",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Development",
+              "blurb": "In this video, Brother Pacini walks through a useful debate about parenting, development, environment, and what evidence can—and cannot—establish.",
+              "short": "In this video, Brother Pacini walks through a useful debate about parenting, development, environment, and what evidence can—and…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-R6nx9MYCMrs",
+              "title": "Adventures in Toddler Psychopathy",
+              "url": "https://youtu.be/R6nx9MYCMrs",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Development",
+              "blurb": "In this video, Brother Pacini introduces developmental needs through the plants-and-toddlers analogy, including love, safety, relationships, and play.",
+              "short": "In this video, Brother Pacini introduces developmental needs through the plants-and-toddlers analogy, including love, safety, relationships,…",
+              "stance": "BroPa"
+            }
+          ]
+        },
+        {
+          "id": "week-6",
+          "title": "Week 6: Developmental Psychology",
+          "notes": [],
+          "entries": [
+            {
+              "id": "lecture-8rWVcCT03oE",
+              "title": "Intro to The Constructivism Debate",
+              "url": "https://youtu.be/8rWVcCT03oE",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Development",
+              "blurb": "In this video, Brother Pacini introduces constructivism, Piaget, classroom models, and competing views of how learners build knowledge.",
+              "short": "In this video, Brother Pacini introduces constructivism, Piaget, classroom models, and competing views of how learners build knowledge.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-DtiKqZ8Ur3M",
+              "title": "Social Learning",
+              "url": "https://youtu.be/DtiKqZ8Ur3M",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Development",
+              "blurb": "In this video, Brother Pacini explores social constructivism, learning from other people, and the role of interaction in development and learning.",
+              "short": "In this video, Brother Pacini explores social constructivism, learning from other people, and the role of interaction in development and…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-xWyjy7SyirA",
+              "title": "Keepy Uppy",
+              "url": "https://www.youtube.com/watch?v=xWyjy7SyirA",
+              "minutes": 3,
+              "format": "watch",
+              "topic": "Positive psychology",
+              "blurb": "This playful video demonstrates attention, coordination, and the way games can make practice memorable.",
+              "short": "This playful video demonstrates attention, coordination, and the way games can make practice memorable.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-AllFDiiueCw",
+              "title": "Gender Debate Wrap-Up",
+              "url": "https://youtu.be/AllFDiiueCw",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Development",
+              "blurb": "In this video, Brother Pacini synthesizes ideas about sex and gender differences, stereotype accuracy, individual variation, dating norms, and social expectations.",
+              "short": "In this video, Brother Pacini synthesizes ideas about sex and gender differences, stereotype accuracy, individual variation, dating norms, and…",
+              "stance": "BroPa"
+            }
+          ]
+        },
+        {
+          "id": "week-7",
+          "title": "Week 7: The Joys of Axe Body Spray",
+          "notes": [],
+          "entries": [
+            {
+              "id": "lecture-2s7Q8vx11aI",
+              "title": "Moral Development II",
+              "url": "https://youtu.be/2s7Q8vx11aI",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Development",
+              "blurb": "In this video, Brother Pacini explores moral dumbfounding, Haidt’s moral foundations, moral judgment, and how people with different ideologies weigh moral concerns.",
+              "short": "In this video, Brother Pacini explores moral dumbfounding, Haidt’s moral foundations, moral judgment, and how people with different ideologies…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-SK0M-GojRX0",
+              "title": "Sexuality",
+              "url": "https://youtu.be/SK0M-GojRX0",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Development",
+              "blurb": "In this video, Brother Pacini discusses sexuality, family influence, marriage, identity, social trends, and respectful treatment across differing beliefs and experiences.",
+              "short": "In this video, Brother Pacini discusses sexuality, family influence, marriage, identity, social trends, and respectful treatment across…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-2Qmdom1s6uA",
+              "title": "Adolescent Development and Identity",
+              "url": "https://youtu.be/2Qmdom1s6uA",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Development",
+              "blurb": "In this video, Brother Pacini explains adolescent identity formation, belonging, the personal fable, the imaginary audience, conformity, audience capture, and Erikson’s identity framework.",
+              "short": "In this video, Brother Pacini explains adolescent identity formation, belonging, the personal fable, the imaginary audience, conformity,…",
+              "stance": "BroPa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit-3",
+      "label": "Unit 3",
+      "title": "Motivational Psychology: Why We Do What We Do",
+      "meta": "Weeks 8–10",
+      "blurb": "Personality, motivation, behaviorism, and why we do what we do.",
+      "weeks": [
+        {
+          "id": "week-8",
+          "title": "Week 8: Personality and Determinism",
+          "notes": [],
+          "entries": [
+            {
+              "id": "lecture-XSI4ObrATsg",
+              "title": "Personality Theory and Determinism",
+              "url": "https://youtu.be/XSI4ObrATsg",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Personality and determinism",
+              "blurb": "In this video, Brother Pacini explores personality, determinism, the Big Five, the Barnum effect, trait stability, agency, and why personality is not destiny.",
+              "short": "In this video, Brother Pacini explores personality, determinism, the Big Five, the Barnum effect, trait stability, agency, and why personality…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-sPvyrWYutDQ",
+              "title": "Horoscopes and Personality",
+              "url": "https://www.youtube.com/watch?v=sPvyrWYutDQ",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Personality and determinism",
+              "blurb": "This playful video shows how vague claims can feel personally meaningful—and why skeptical thinking matters.",
+              "short": "This playful video shows how vague claims can feel personally meaningful—and why skeptical thinking matters.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-T_eUnHxrd5c",
+              "title": "Temperament",
+              "url": "https://youtu.be/T_eUnHxrd5c",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Personality and determinism",
+              "blurb": "In this video, Brother Pacini explains temperament as an early biological contribution to personality, distinct from personality developed through experience and choice.",
+              "short": "In this video, Brother Pacini explains temperament as an early biological contribution to personality, distinct from personality developed…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-vukKRFBamIM",
+              "title": "Free Will and Locus of Control",
+              "url": "https://youtu.be/vukKRFBamIM",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Personality and determinism",
+              "blurb": "In this video, Brother Pacini explores agency, locus of control, adversity, responsibility, and the possibility of choosing a response despite circumstances.",
+              "short": "In this video, Brother Pacini explores agency, locus of control, adversity, responsibility, and the possibility of choosing a response despite…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-DbJRzhuv4_M",
+              "title": "Free Will and Biology",
+              "url": "https://youtu.be/DbJRzhuv4_M",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Personality and determinism",
+              "blurb": "In this video, Brother Pacini considers free will and determinism alongside biology, including serotonin, SSRIs, cortisol, and oxytocin, while warning against treating biology as destiny.",
+              "short": "In this video, Brother Pacini considers free will and determinism alongside biology, including serotonin, SSRIs, cortisol, and oxytocin, while…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-jFw2EqdkzdQ",
+              "title": "Dopamine I",
+              "url": "https://www.youtube.com/watch?v=jFw2EqdkzdQ",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Personality and determinism",
+              "blurb": "This public video introduces dopamine and its relationship to motivation, reward, and learning.",
+              "short": "This public video introduces dopamine and its relationship to motivation, reward, and learning.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-sBAqF00gBGk",
+              "title": "Dopamine II",
+              "url": "https://www.youtube.com/watch?v=sBAqF00gBGk",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Personality and determinism",
+              "blurb": "This public follow-up extends the conversation about dopamine beyond the simple “pleasure chemical” story.",
+              "short": "This public follow-up extends the conversation about dopamine beyond the simple “pleasure chemical” story.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-lS3ddSQLLYs",
+              "title": "Addiction",
+              "url": "https://www.youtube.com/watch?v=lS3ddSQLLYs",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Personality and determinism",
+              "blurb": "This short video invites us to think about addiction through reinforcement, context, and behavior change.",
+              "short": "This short video invites us to think about addiction through reinforcement, context, and behavior change.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-NpndA1JzzjM",
+              "title": "Oxytocin",
+              "url": "https://www.youtube.com/watch?v=NpndA1JzzjM",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Personality and determinism",
+              "blurb": "This video examines oxytocin and the limits of neat, one-hormone explanations of social behavior.",
+              "short": "This video examines oxytocin and the limits of neat, one-hormone explanations of social behavior.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-4D3IlIcqny4",
+              "title": "Serotonin",
+              "url": "https://www.youtube.com/watch?v=4D3IlIcqny4",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Personality and determinism",
+              "blurb": "This brief video examines serotonin and the temptation to reduce complex behavior to a single chemical.",
+              "short": "This brief video examines serotonin and the temptation to reduce complex behavior to a single chemical.",
+              "stance": "Third party"
+            }
+          ]
+        },
+        {
+          "id": "week-9",
+          "title": "Week 9: Social Science",
+          "notes": [],
+          "entries": [
+            {
+              "id": "lecture-bvedJ19pTwI",
+              "title": "Anthropology: Culture",
+              "url": "https://youtu.be/bvedJ19pTwI",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Social science",
+              "blurb": "In this video, Brother Pacini uses an anthropological lens to explore culture, cultural interpretation, social norms, and the danger of treating unfamiliar practices as strange or inferior.",
+              "short": "In this video, Brother Pacini uses an anthropological lens to explore culture, cultural interpretation, social norms, and the danger of…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-vSWV5AOGDhU",
+              "title": "Red/Green Game: Introduction",
+              "url": "https://youtu.be/vSWV5AOGDhU",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Social science",
+              "blurb": "In this video, Brother Pacini introduces a group cooperation-and-competition game designed to reveal incentives and collective-action problems.",
+              "short": "In this video, Brother Pacini introduces a group cooperation-and-competition game designed to reveal incentives and collective-action problems.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-3YdlUrlqUQI",
+              "title": "Sociology: Tribalism",
+              "url": "https://youtu.be/3YdlUrlqUQI",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Social science",
+              "blurb": "In this video, Brother Pacini explores in-groups and out-groups, polarization, social identity, the contact hypothesis, community belonging, and peacemaking.",
+              "short": "In this video, Brother Pacini explores in-groups and out-groups, polarization, social identity, the contact hypothesis, community belonging,…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-417961735737996",
+              "title": "Jim and Leon video",
+              "url": "https://www.facebook.com/watch/?v=417961735737996",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Social science",
+              "blurb": "This brief incident clip makes group identity and tribalism concrete.",
+              "short": "This brief incident clip makes group identity and tribalism concrete.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-8fP2wUdGA3U",
+              "title": "Police Arrest Man: Utah–BYU Incident",
+              "url": "https://www.youtube.com/watch?v=8fP2wUdGA3U",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Social science",
+              "blurb": "This real-world incident video invites reflection on social context and the danger of judging behavior too quickly.",
+              "short": "This real-world incident video invites reflection on social context and the danger of judging behavior too quickly.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-XvGmOZ5T6_Y",
+              "title": "Two Minutes of Hate",
+              "url": "https://www.youtube.com/watch?v=XvGmOZ5T6_Y",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Social science",
+              "blurb": "This clip from 1984 makes propaganda, group emotion, and enemy-making vivid.",
+              "short": "This clip from 1984 makes propaganda, group emotion, and enemy-making vivid.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-jve0OaOXv2k",
+              "title": "Accidental Courtesy Trailer",
+              "url": "https://www.youtube.com/watch?v=jve0OaOXv2k",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Social science",
+              "blurb": "This documentary trailer introduces race, identity, and the difficult work of conversation across difference.",
+              "short": "This documentary trailer introduces race, identity, and the difficult work of conversation across difference.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-ebPoSMULI5U",
+              "title": "Jane Elliott’s Blue/Brown-Eyes Experiment",
+              "url": "https://www.youtube.com/watch?v=ebPoSMULI5U",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Social science",
+              "blurb": "This famous classroom exercise shows how labels and social expectations can shape treatment and performance.",
+              "short": "This famous classroom exercise shows how labels and social expectations can shape treatment and performance.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-FbWdwYdJAWM",
+              "title": "Red/Green Game: Debrief",
+              "url": "https://youtu.be/FbWdwYdJAWM",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Social science",
+              "blurb": "In this video, Brother Pacini explains why groups become competitive, how in-groups form, and how tribalism can produce collectively bad outcomes.",
+              "short": "In this video, Brother Pacini explains why groups become competitive, how in-groups form, and how tribalism can produce collectively bad…",
+              "stance": "BroPa"
+            }
+          ]
+        },
+        {
+          "id": "week-10",
+          "title": "Week 10: Behaviorism Debate",
+          "notes": [],
+          "entries": [
+            {
+              "id": "lecture-YOaLL-OgUIc",
+              "title": "Extrinsic Motivation",
+              "url": "https://youtu.be/YOaLL-OgUIc",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "In this video, Brother Pacini explains classical and operant conditioning, reinforcement and punishment, learned helplessness, and the limits of money and grade incentives.",
+              "short": "In this video, Brother Pacini explains classical and operant conditioning, reinforcement and punishment, learned helplessness, and the limits…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-cDM4E2c3gS8",
+              "title": "Skinner Demonstrates Conditioning",
+              "url": "https://www.youtube.com/watch?v=cDM4E2c3gS8",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "This classic demonstration shows operant conditioning in action.",
+              "short": "This classic demonstration shows operant conditioning in action.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-PBb1CH18Smg",
+              "title": "Classical Conditioning",
+              "url": "https://www.youtube.com/watch?v=PBb1CH18Smg",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "This demonstration shows how associations can be learned when one stimulus reliably predicts another.",
+              "short": "This demonstration shows how associations can be learned when one stimulus reliably predicts another.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-LEJqowyuyi0",
+              "title": "Operant Conditioning",
+              "url": "https://www.youtube.com/watch?v=LEJqowyuyi0",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "This compact video introduces reinforcement, punishment, and the consequences that shape behavior.",
+              "short": "This compact video introduces reinforcement, punishment, and the consequences that shape behavior.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-F9XUedayplg",
+              "title": "Why I’m a Behaviorist",
+              "url": "https://www.youtube.com/shorts/F9XUedayplg",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "This video presents a defense of behaviorism and its insistence that environments and consequences matter.",
+              "short": "This video presents a defense of behaviorism and its insistence that environments and consequences matter.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-MTqBP-x3yR0",
+              "title": "Word Unscramble",
+              "url": "https://www.youtube.com/watch?v=MTqBP-x3yR0",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "This quick demonstration shows how feedback and practice can change performance.",
+              "short": "This quick demonstration shows how feedback and practice can change performance.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-P4Rb9n_sQDg",
+              "title": "The Skinner Box",
+              "url": "https://www.youtube.com/watch?v=P4Rb9n_sQDg",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "This visual introduction explains the Skinner box and the experimental logic of operant conditioning.",
+              "short": "This visual introduction explains the Skinner box and the experimental logic of operant conditioning.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-jEO3sJdoNV8",
+              "title": "LHI",
+              "url": "https://www.youtube.com/watch?v=jEO3sJdoNV8",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "This short course video connects behavior, motivation, and learning.",
+              "short": "This short course video connects behavior, motivation, and learning.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-YGbf4KX9iEU",
+              "title": "Intrinsic Motivation",
+              "url": "https://youtu.be/YGbf4KX9iEU",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "In this video, Brother Pacini compares intrinsic and extrinsic motivation, explains overjustification and self-reward, and considers how classrooms can help students flourish.",
+              "short": "In this video, Brother Pacini compares intrinsic and extrinsic motivation, explains overjustification and self-reward, and considers how…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-mxz5udihf60",
+              "title": "Elder Bednar on Motivation",
+              "url": "https://www.youtube.com/watch?v=mxz5udihf60",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "This discussion explores motivation, agency, and the difference between pressure and self-directed action.",
+              "short": "This discussion explores motivation, agency, and the difference between pressure and self-directed action.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-u6XAPnuFjJc",
+              "title": "Drive: The RSA Animation",
+              "url": "https://www.youtube.com/watch?v=u6XAPnuFjJc",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "This short animation questions simple reward-and-punishment stories about drive and motivation.",
+              "short": "This short animation questions simple reward-and-punishment stories about drive and motivation.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-dbKVTRqOW6k",
+              "title": "Obedient Pets",
+              "url": "https://www.youtube.com/watch?v=dbKVTRqOW6k",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "This light, memorable example shows how conditioning can shape behavior in animals and people.",
+              "short": "This light, memorable example shows how conditioning can shape behavior in animals and people.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-elder-bednar-i-have-learned-for-myself",
+              "title": "Elder Bednar: I Have Learned For Myself",
+              "url": "https://www.churchofjesuschrist.org/media/video/2012-03-0022-i-have-learned-for-myself?lang=eng",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "This reflection considers learning for oneself and developing personal commitment.",
+              "short": "This reflection considers learning for oneself and developing personal commitment.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-N3ckjq_M2S0",
+              "title": "Elder Bednar on Motivation Part II",
+              "url": "https://www.youtube.com/watch?v=N3ckjq_M2S0",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Behaviorism and motivation",
+              "blurb": "This follow-up discussion explores motivation and the way beliefs about agency shape action.",
+              "short": "This follow-up discussion explores motivation and the way beliefs about agency shape action.",
+              "stance": "Third party"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit-4",
+      "label": "Unit 4",
+      "title": "Cognitive Psychology: How the Brain Learns",
+      "meta": "Weeks 11–12",
+      "blurb": "Attention, memory, intelligence, and how learning takes shape.",
+      "weeks": [
+        {
+          "id": "week-11",
+          "title": "Week 11: Executive Function and Attention",
+          "notes": [],
+          "entries": [
+            {
+              "id": "lecture-EjyNAYw3kqY",
+              "title": "Executive Function, Attention, and ADHD",
+              "url": "https://youtu.be/EjyNAYw3kqY",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Executive function and attention",
+              "blurb": "In this video, Brother Pacini explores attention, inhibition, working memory, cognitive flexibility, ADHD, and classroom supports such as chunking and tier-one instruction.",
+              "short": "In this video, Brother Pacini explores attention, inhibition, working memory, cognitive flexibility, ADHD, and classroom supports such as…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-MFzDaBzBlL0",
+              "title": "The Bike that Breaks Brains",
+              "url": "https://www.youtube.com/watch?v=MFzDaBzBlL0",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Cognitive psychology",
+              "blurb": "This surprising example shows how tools can become incorporated into action and perception.",
+              "short": "This surprising example shows how tools can become incorporated into action and perception.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-nqiillqHjZM",
+              "title": "A Great Game to Build Executive Function",
+              "url": "https://www.youtube.com/watch?v=nqiillqHjZM",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Cognitive psychology",
+              "blurb": "This playful activity exercises executive function through challenge, rules, and self-control.",
+              "short": "This playful activity exercises executive function through challenge, rules, and self-control.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-av53aMM79mY",
+              "title": "Attention, Part II",
+              "url": "https://youtu.be/av53aMM79mY",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Executive function and attention",
+              "blurb": "In this video, Brother Pacini explores selective attention, attention and memory, prioritization, and several outside demonstrations.",
+              "short": "In this video, Brother Pacini explores selective attention, attention and memory, prioritization, and several outside demonstrations.",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-v3iPrBrGSJM",
+              "title": "Selective Attention I",
+              "url": "https://www.youtube.com/watch?v=v3iPrBrGSJM",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Cognitive psychology",
+              "blurb": "This opening demonstration shows what we notice—and what attention leaves out.",
+              "short": "This opening demonstration shows what we notice—and what attention leaves out.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-IGQmdoK_ZfY",
+              "title": "Selective Attention II",
+              "url": "https://www.youtube.com/watch?v=IGQmdoK_ZfY",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Cognitive psychology",
+              "blurb": "This second attention demonstration makes selective perception difficult to ignore.",
+              "short": "This second attention demonstration makes selective perception difficult to ignore.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-GZGY0wPAnus",
+              "title": "Selective Attention III",
+              "url": "https://www.youtube.com/watch?v=GZGY0wPAnus",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Cognitive psychology",
+              "blurb": "This demonstration shows how attention filters what reaches conscious awareness.",
+              "short": "This demonstration shows how attention filters what reaches conscious awareness.",
+              "stance": "Third party"
+            },
+            {
+              "id": "lecture-0OSw5O7khek",
+              "title": "Working Memory",
+              "url": "https://youtu.be/0OSw5O7khek",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Executive function and attention",
+              "blurb": "In this video, Brother Pacini explains working-memory limits, chunking, attention, and capacity demonstrations, then connects them to acquisition, fluency, and learning.",
+              "short": "In this video, Brother Pacini explains working-memory limits, chunking, attention, and capacity demonstrations, then connects them to…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-MUlw4wl-GTw",
+              "title": "Perceptual Load Theory",
+              "url": "https://youtu.be/MUlw4wl-GTw",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Executive function and attention",
+              "blurb": "In this video, Brother Pacini explains how visual and sensory complexity can compete with attention, connecting classroom design to cognitive load theory.",
+              "short": "In this video, Brother Pacini explains how visual and sensory complexity can compete with attention, connecting classroom design to cognitive…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-emfx4WEHiaw",
+              "title": "Cognitive Load Theory",
+              "url": "https://youtu.be/emfx4WEHiaw",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Executive function and attention",
+              "blurb": "In this video, Brother Pacini explains intrinsic, extraneous, and germane load, and shows how simplifying content and removing distractions can support productive processing.",
+              "short": "In this video, Brother Pacini explains intrinsic, extraneous, and germane load, and shows how simplifying content and removing distractions can…",
+              "stance": "BroPa"
+            }
+          ]
+        },
+        {
+          "id": "week-12",
+          "title": "Week 12: Intelligence Theory",
+          "notes": [],
+          "entries": [
+            {
+              "id": "lecture-h7Uas4OjFrs",
+              "title": "Intelligence and IQ",
+              "url": "https://youtu.be/h7Uas4OjFrs",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Learning and intelligence",
+              "blurb": "In this video, Brother Pacini explores IQ testing, Spearman and Gardner, fluid and crystallized intelligence, malleability, group differences, eugenics, and ethical interpretation for teachers.",
+              "short": "In this video, Brother Pacini explores IQ testing, Spearman and Gardner, fluid and crystallized intelligence, malleability, group differences,…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-IbHbIQ4PB10",
+              "title": "How the Brain Learns, Part I",
+              "url": "https://youtu.be/IbHbIQ4PB10",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Learning and intelligence",
+              "blurb": "In this video, Brother Pacini traces a staged learning sequence from sensory input to attention, working memory, fluency, graphic organizers, multimodal instruction, and retrieval.",
+              "short": "In this video, Brother Pacini traces a staged learning sequence from sensory input to attention, working memory, fluency, graphic organizers,…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-lvxF8EpbGWI",
+              "title": "Discrimination, Interleaving, and Spiral Review",
+              "url": "https://youtu.be/lvxF8EpbGWI",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Learning and intelligence",
+              "blurb": "In this video, Brother Pacini connects retrieval practice, elaboration, organization, interleaving, spiral review, and discrimination, while distinguishing cognitive from perceptual load.",
+              "short": "In this video, Brother Pacini connects retrieval practice, elaboration, organization, interleaving, spiral review, and discrimination, while…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-bec0YgZ86fI",
+              "title": "How the Brain Learns, Part II",
+              "url": "https://youtu.be/bec0YgZ86fI",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Learning and intelligence",
+              "blurb": "In this video, Brother Pacini explains encoding as meaning-making, then uses analogy, reciprocal teaching, movement, gesture, mindfulness, and novelty to show how learners can strengthen memory and neuroplasticity.",
+              "short": "In this video, Brother Pacini explains encoding as meaning-making, then uses analogy, reciprocal teaching, movement, gesture, mindfulness, and…",
+              "stance": "BroPa"
+            },
+            {
+              "id": "lecture-x9-ce9OLDr0",
+              "title": "The Grand Adventure, Part II",
+              "url": "https://youtu.be/x9-ce9OLDr0",
+              "minutes": 10,
+              "format": "watch",
+              "topic": "Learning and intelligence",
+              "blurb": "In this video, Brother Pacini returns to the course’s adventure metaphor and invites students to reflect on mentors, meaningful tasks, personal growth, courage, and the kind of person they are becoming.",
+              "short": "In this video, Brother Pacini returns to the course’s adventure metaphor and invites students to reflect on mentors, meaningful tasks, personal…",
+              "stance": "BroPa"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
