@@ -27,6 +27,9 @@ body { padding-bottom: 60px; }
 /* When the audio player is open, it docks just above this bar instead of covering it. */
 body:has(.etb-nav) .etb-ap { bottom: 51px; }
 @media (max-width: 620px) { .etb-nav-inner { padding: 7px 8px; gap: 6px; } .etb-nav a, .etb-nav span { min-height: 32px; padding: 0 8px; font-size: 11px; } }
+[data-tip].tip-open::after, [data-tip]:focus-visible:not(.tip-hide)::after { opacity: 1; }
+[data-tip].tip-hide::after { opacity: 0 !important; }
+[data-tip]:focus-visible, .etb-ak-item:focus-visible { outline: 2px solid #2a7a4f; outline-offset: 2px; border-radius: 2px; }
 </style>
 </head>
 <body>
@@ -48,6 +51,34 @@ body:has(.etb-nav) .etb-ap { bottom: 51px; }
 
 </main>
 <nav class="etb-nav" aria-label="Chapter navigation"><div class="etb-nav-inner"><a href="/chapter15.html" aria-label="Go to Chapter 15: Personality Theory">← Previous</a><a class="etb-nav-home" href="/contents/index.html" aria-label="Table of contents">Contents</a><a href="/chapter17.html" aria-label="Go to Chapter 17: Anthropology &amp; Culture">Next →</a></div></nav>
+<script>
+(function () {
+  function closeAll(keep) {
+    document.querySelectorAll('[data-tip].tip-open').forEach(function (t) { if (t !== keep) t.classList.remove('tip-open'); });
+  }
+  document.querySelectorAll('[data-tip], .etb-ak-item').forEach(function (t) {
+    if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '0');
+  });
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-tip]') : null;
+    if (!t) { closeAll(); return; }
+    e.stopPropagation();
+    var open = t.classList.contains('tip-open');
+    closeAll(t);
+    t.classList.toggle('tip-open', !open);
+    t.classList.toggle('tip-hide', open);
+  }, true);
+  document.addEventListener('keydown', function (e) {
+    var t = document.activeElement;
+    if (!t || !t.matches) return;
+    if (e.key === 'Escape' && t.matches('[data-tip]')) { t.classList.remove('tip-open'); t.classList.add('tip-hide'); }
+    if ((e.key === 'Enter' || e.key === ' ') && t.matches('.etb-ak-item')) { e.preventDefault(); t.click(); }
+  });
+  document.addEventListener('focusout', function (e) {
+    if (e.target.matches && e.target.matches('[data-tip]')) e.target.classList.remove('tip-hide', 'tip-open');
+  });
+})();
+</script>
 <script src="/assets/report.js" data-book="EDCOR 310" defer></script>
 <script src="/assets/etb-audio.js"></script>
 </body>
