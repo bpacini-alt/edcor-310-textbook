@@ -86,6 +86,7 @@ Before expanding the books, make sure the basic system is dependable.
 Make each book clear, coherent, accessible, and trustworthy before adding substantial new functionality.
 
 - Standardize formatting **within each book**: headings, terminology, examples, figures, exercises, answer/review patterns, and page conventions. Do not force EDCOR 310 and Econ 150 into identical presentation when their audiences or content call for different choices.
+- Establish a shared color taxonomy for the books' various instructional and content boxes: decide what each color should signal, confirm accessible contrast, and standardize the choices throughout both books in a coordinated pass. This is a relatively simple but time-consuming polish task.
 - Improve chapter organization and navigation.
 - Remove confusing or redundant material.
 - Repair technical rough edges and inconsistent presentation.
