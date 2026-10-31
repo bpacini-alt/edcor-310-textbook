@@ -221,6 +221,48 @@ def nav_bar(prev, nxt):
             f'{link(nxt, "Next →")}</div></nav>')
 
 
+# Pop-up definitions ([data-tip]) and "Also know" terms (.etb-ak-item). Chapter pages
+# style the pop-ups to open on mouse hover only. This adds tap and keyboard access
+# to every chapter in one place: tap a term to open or close it, Tab to a term to
+# open it, and press Escape to close it. Also-know terms open with Enter or Space.
+# The click listener runs first (capture phase) and stops the click there, so
+# Chapter 4's older tap script doesn't toggle the pop-up a second time.
+TIP_CSS = """
+[data-tip].tip-open::after, [data-tip]:focus-visible:not(.tip-hide)::after { opacity: 1; }
+[data-tip].tip-hide::after { opacity: 0 !important; }
+[data-tip]:focus-visible, .etb-ak-item:focus-visible { outline: 2px solid #2a7a4f; outline-offset: 2px; border-radius: 2px; }
+"""
+
+TIP_JS = """<script>
+(function () {
+  function closeAll(keep) {
+    document.querySelectorAll('[data-tip].tip-open').forEach(function (t) { if (t !== keep) t.classList.remove('tip-open'); });
+  }
+  document.querySelectorAll('[data-tip], .etb-ak-item').forEach(function (t) {
+    if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '0');
+  });
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-tip]') : null;
+    if (!t) { closeAll(); return; }
+    e.stopPropagation();
+    var open = t.classList.contains('tip-open');
+    closeAll(t);
+    t.classList.toggle('tip-open', !open);
+    t.classList.toggle('tip-hide', open);
+  }, true);
+  document.addEventListener('keydown', function (e) {
+    var t = document.activeElement;
+    if (!t || !t.matches) return;
+    if (e.key === 'Escape' && t.matches('[data-tip]')) { t.classList.remove('tip-open'); t.classList.add('tip-hide'); }
+    if ((e.key === 'Enter' || e.key === ' ') && t.matches('.etb-ak-item')) { e.preventDefault(); t.click(); }
+  });
+  document.addEventListener('focusout', function (e) {
+    if (e.target.matches && e.target.matches('[data-tip]')) e.target.classList.remove('tip-hide', 'tip-open');
+  });
+})();
+</script>"""
+
+
 def wrap_chapter_page(title, fragment, nav="", source_path=""):
     """Wrap a captured EdTechBooks fragment as a complete site page."""
     fragment = fragment.replace(
@@ -251,6 +293,7 @@ body {{ margin: 0; }}
 .etb-site-nav-links {{ display: flex; gap: 1rem; }}
 .etb {{ overflow-x: clip; }}
 {NAV_CSS.strip()}
+{TIP_CSS.strip()}
 </style>
 </head>
 <body>
@@ -268,6 +311,7 @@ body {{ margin: 0; }}
 {fragment}
 </main>
 {nav}
+{TIP_JS}
 <script src="/assets/report.js" data-book="EDCOR 310" defer></script>
 <script src="/assets/etb-audio.js"></script>
 </body>

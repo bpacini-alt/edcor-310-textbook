@@ -387,6 +387,8 @@ Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actua
 
 **Priority:** Medium-low (Benjamin, October 30). Found by the Chapter Quality Manual pass on the Chapter 16 draft.
 
+**Status: done October 30** in both books. EDCOR 310's `build/build_site.py` and Econ 150's `build/wrap_pages.py` add the same short script and styles to every chapter. Tap a term to open or close it, Tab to a term to open it, press Escape to close it, and press Enter or Space to open an "Also know" term. Still open, low: screen readers announce the term but not its definition.
+
 ### Loose ends from the move to the new sites (recorded October 20, 2026)
 
 Small items found while moving both books off EdTechBooks. Most are quick. Items marked **(Benjamin)** need his decision or his account first.
