@@ -19,3 +19,11 @@ The prototype now matches the previously approved compact optional video side-qu
 
 - Assumed video-order mapping from the two URLs supplied: `6dsDNHMNc8M` = teenager stereotypes; `hxvtdETIAGs` = parenting teenagers. YouTube metadata and transcripts were not accessible through the available retrieval methods, so verify video titles before merging.
 - Transcripts: not yet inspected. YouTube captions should be verified manually if accessible; don't label the research boxes as transcripts.
+
+## Three-part research note + evidence ladder revision
+
+Both optional side quests now open with a video, then **1. Findings**, **2. Nuance**, **3. Application**, followed by expandable study-by-study primary references. A compact four-rung CSS-only evidence hierarchy highlights where the claims are grounded; for parenting it highlights both synthesis and the longitudinal designs inside it. The diagram notes that meta-analysis of observational evidence is not automatically causal.
+
+For teen stereotypes, the main studies are **Arnett (1999)**, **Jacobs et al. (2005)**, **Buchanan & Hughes (2009)**, and **Jussim & Harber (2005)**. **Qu et al. (2020)** is contextual supplementary evidence, not the leading result, because it manipulated young people's own beliefs, rather than parental expectations. Student-facing text explicitly distinguishes perceptual bias from self-fulfilling effects.
+
+**Pending:** Neither exact transcript has been provided or verified yet. Once available, compare what the videos say with the prose and citations; retain only complementary material in these boxes.
