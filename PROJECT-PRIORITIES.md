@@ -209,6 +209,9 @@ Begin with an inventory of the existing Ed Psych recorded lectures and other unl
 
 **Why this matters:** Author-led video can make the books feel more personal and interactive while giving students another way to encounter difficult ideas. Its cost and value should be established by auditing the existing recordings before committing to a large new production effort.
 
+**Near-term new-video pilot (November 2, 2026):** Record one short, author-led worked-example video for Econ 150 Chapter 15 on price elasticity of demand. Demonstrate a few common calculation forms (given percentage changes, midpoint changes, and a missing-variable/reverse problem) and embed it at the point of need beside the chapter's practice. Keep worked steps available in text; check captions/transcript, mobile playback, and no-autoplay behavior. Evaluate the recording/hosting/embedding workflow with this one pilot before expanding to additional chapters. This is a specific, immediately actionable slice of Priority 4, not a commitment to a large video library.
+
+
 ### Priority 4 companion — Pilot short-form chapter video series
 
 **Status:** Interesting and potentially high-value, but deferred until the higher-priority textbook work is in good shape. Pilot in a small number of chapters before committing to a full production workflow.
@@ -557,6 +560,12 @@ A student dashboard could eventually show a student's own progress, but that is 
 **Possible first experiment:** a hidden preview page with Google sign-in and one saved sample score. Test whether BYU-Idaho accounts work cleanly, whether scores persist across devices, and whether the experience is worth maintaining before expanding it.
 
 **Status:** Interesting but deferrable; revisit later. Do not begin until the higher-priority textbook work is in good shape.
+
+### Playful fluency-drill arcade mode (recorded November 2, 2026)
+
+**Status:** Funny/silly someday idea only; **very bottom of the priorities list**, below substantive chapter practice, accessibility, content repair, and video work. No implementation commitment.
+
+Explore a tiny, optional, browser-native game in the spirit of the offline dinosaur runner, wrapping existing rapid-response fluency drills. Correct answers earn points or advance a simple character; later rounds mix more eligible problem *types* while keeping the interface and controls simple. Themes, characters, and satirical scenarios can change by chapter (for example, Milton Friedman versus the Fabian socialists in one economics context, or Daron Acemoglu versus MAGA-style populism in another); do not bake a single character or political message into the shared practice engine. Reuse the established question-bank/feedback infrastructure, make the theme cosmetic, preserve a non-game alternative, and do not compromise learning quality, accessibility, or performance.
 
 ## The standing decision protocol
 
