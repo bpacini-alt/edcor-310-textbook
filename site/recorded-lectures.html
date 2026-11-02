@@ -27,8 +27,6 @@
   --pro-tint: #e8f3ec;
   --crit: #9b3b32;
   --crit-tint: #f8ebe9;
-  --author: #356a9a;
-  --author-tint: #eaf2f9;
   /* Rating histogram bins: 1 (dark red), 2 (yellow), 3 (green), 4 (teal). */
   --rating-1: #8b1e2d;
   --rating-2: #d8a928;
@@ -162,8 +160,6 @@ main.jm-wrap { padding-block: 1.25rem 4rem; }
 .jm-entry-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .5rem; font-family: var(--sans); font-size: 12px; margin-bottom: .35rem; }
 .jm-format { font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--acc2, var(--acc)); }
 .jm-topic { color: var(--muted); }
-.jm-description { color: var(--muted); }
-.jm-stance-author { color: var(--author); background: var(--author-tint); }
 .jm-stance { font-weight: 700; padding: .1rem .5rem; border-radius: 999px; }
 .jm-stance-pro { color: var(--pro); background: var(--pro-tint); }
 .jm-stance-crit { color: var(--crit); background: var(--crit-tint); }
@@ -962,6 +958,9 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
   }
 }
 
+.jm-watch-only { --author: #356a9a; --author-tint: #eaf2f9; }
+.jm-description { color: var(--muted); }
+.jm-stance-author { color: var(--author); background: var(--author-tint); }
 .jm-watch-only .jm-stance-third-party { color: #2a7a4f; background: #e9f5ee; }
 .jm-watch-only .jm-week { margin-top: .85rem; border-top: 1px solid var(--line); }
 .jm-watch-only .jm-week > summary { list-style: none; cursor: pointer; padding: .8rem .65rem; position: relative; padding-right: 2rem; }
@@ -3427,8 +3426,7 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
       lines.push("");
     });
     if (!any) { say("Pick a reading first, then copy your list."); return; }
-    var text = lines.join("
-");
+    var text = lines.join("\n");
     function fallback() {
       var t = document.createElement("textarea"); t.value = text; t.setAttribute("readonly", "");
       t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
@@ -3475,4 +3473,3 @@ main.jm-wrap { padding-block: .65rem 2.5rem; }
 <script src="/assets/report.js" data-book="EDCOR 310" defer></script>
 </body>
 </html>
-
