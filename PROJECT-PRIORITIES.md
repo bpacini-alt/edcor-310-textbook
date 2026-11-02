@@ -313,7 +313,7 @@ These are broken now, so they count as Priority 0. Fix them in the GitHub copies
 
 1. **Econ 150 Chapter 13 missing figure shapes (High).** Fifteen shapes in the callback-rate, earnings-by-education, and pay-gap charts still have no width or height. They were left alone because open drafts edit Chapter 13 (Econ 150 #40 and #55). Fix them once those drafts are merged or closed: size each shape from points already drawn in its figure, then render and compare with the caption. Chapter 11's two drag-the-curve homework graphs contain size-less shapes, but the homework code redraws those graphs when the page loads, so they need no fix.
 
-2. **Remaining unit-label decisions.** Chapters 13 and 14 in both books still need their title-card labels settled after the current drafts (EDCOR 310 #34 and #53; Econ 150 #40 and #55). Econ 150's Canvas course card also still says "Tradeoffs" and should match the approved subtitle, "The Science of Choice, **Incentives**, and Human Flourishing."
+2. **Remaining unit-label decisions.** Chapters 13 and 14 in both books still need their title-card labels settled: EDCOR 310 in its next Chapters 13–14 pass (see Deferred structural revisions), Econ 150 after its current drafts (#40 and #55). Econ 150's Canvas course card also still says "Tradeoffs" and should match the approved subtitle, "The Science of Choice, **Incentives**, and Human Flourishing."
 
 3. **Save the old Google Site's images (`benjaminpacini-site`).** The archive in `archive/google-site-2026-10-20/` has every page's HTML and every embedded Drive file, but not the pictures shown on the pages. About 40 pages still load their images from Google's servers, so the archive would lose them if the Google Site were deleted. Download the images into the archive, using a browser (Claude's shell can't reach Google Sites), and point the archived pages, or the manifest, at the local copies. **Don't delete the Google Site until this is done.**
 
@@ -321,11 +321,7 @@ These are broken now, so they count as Priority 0. Fix them in the GitHub copies
 
 These items are paused on purpose. Each needs a careful read or a decision, not a quick merge. Leave the pull requests open. Don't close, rewrite, or work around them.
 
-1. **EDCOR 310 Chapter 14 identity material: editorial pass (pull request #34).** Benjamin's call on #34 is still open.
-   - **Decided October 30, 2026:** with pull request #79, Chapter 14 reads "not a philosophical or political position" (reader report textbook-feedback#31), says "sponsors BYU–Idaho, where I teach" instead of "my employer," and links a citation for each Church quote (reader report textbook-feedback#32): "The Family: A Proclamation to the World" (1995) and Dallin H. Oaks, "Stand for Truth" (worldwide devotional for young adults, May 21, 2023).
-   - **When #34 is brought up to date with `main`,** keep those wordings and both citations. #34's rewrite of the faith callout drops the citations and "where I teach." #34 already conflicts with `main`, and #79 adds another conflict in the same file.
-   - **When we edit Chapter 14 (Benjamin will write it):** rewrite the opening hook (reader report textbook-feedback#28). Keep the "Who am I?" paragraph. Replace the walk-through of Erikson's Stage 5, Marcia, Cooley, and Steele with something that draws the reader in, and let each researcher appear first in their own concept section. #34's shorter opening still previews the frameworks, so it doesn't settle this.
-2. **EDCOR 310 Chapters 13–14 practice bank (pull request #53).** Provisional practice questions. Wait until #34 is settled, because both edit Chapters 13–14.
+1. **EDCOR 310 Chapters 13–14: moved to "Deferred structural revisions" (November 2, 2026).** Pull requests #34 (editorial pass) and #53 (practice bank) were closed without merging on October 31. What they and the reader reports settled is now under "EDCOR 310: Next pass on Chapters 13–14" below.
 
 **Both books:**
 
@@ -360,6 +356,17 @@ Right now every chapter is read aloud by the student's own device voice. That's 
 Full details, costs, and file-size limits are in `audio/README.md` under "Stage 2: recordings."
 
 **Status:** Record for later; do not start until the chapters are done being edited. Then go chapter by chapter, starting with the chapters students will be assigned first.
+
+### EDCOR 310: Next pass on Chapters 13–14 (recorded November 2, 2026)
+
+Benjamin will do one more pass on Chapters 13 and 14 later; it isn't scheduled yet. Do this list then, all in that pass. The reader reports behind it are closed, so this list is the record.
+
+1. **Rewrite the Chapter 14 opening hook (Benjamin will write it).** Reader report [textbook-feedback#28](https://github.com/bpacini-alt/textbook-feedback/issues/28): the book's chapter openings are hooks, not content, and this one teaches. Keep paragraph 1 (the "Who am I?" question). Paragraphs 2 and 3 walk through Erikson's Stage 5, Marcia, Cooley, and Steele; replace them with something that draws the reader in, such as one concrete classroom moment (one student, one Monday morning). Let each researcher appear first in their own concept section. Closed pull request #34's shorter opening still previewed the frameworks, so it doesn't settle this.
+2. **Keep the October 30 wording and citations in Chapter 14** (pull request #79, merged): "not a philosophical or political position" (reader report textbook-feedback#31); "sponsors BYU–Idaho, where I teach" rather than "my employer"; and a linked citation for each Church quote (reader report textbook-feedback#32): "The Family: A Proclamation to the World" (1995) and Dallin H. Oaks, "Stand for Truth" (worldwide devotional for young adults, May 21, 2023). If any of #34's rewrite is reused, note that it dropped both citations and "where I teach."
+3. **Reuse from the closed drafts, if wanted.** #34's readable red/green comment shows every proposed Chapter 13–14 edit (separating empirical findings from interpretive frameworks, labeling the author's faith perspective, trimming about 1,500 words). #53 held provisional practice questions for both chapters. Both branches still exist; start from current `main` and copy what's useful.
+4. **Settle the Chapters 13–14 title-card labels** (see "Remaining unit-label decisions" under Known problems).
+
+**Status:** Deferred until Benjamin is ready for the pass.
 
 ### EDCOR 310: Chapter 16 rewrite (recorded October 30, 2026)
 
