@@ -1,31 +1,34 @@
-# Chapter 15 website practice pilot
+# Chapter 15 practice pilot — website handoff
 
-**Review URL after the branch preview deploys:** `site/chapter15-practice-pilot.html`
+## Direct preview
 
-## What is included
+[Open the Chapter 15 practice pilot](https://feat-ch15-precise-practice-first-pass-20261-science-of-learning.bpacini.workers.dev/chapter15-practice-pilot.html)
 
-- Six end-of-concept checkpoints based on the current Chapter 15 concepts.
-- Three computer-scored items per concept: Tier 1 foundation, Tier 2 application, and Tier 3 transfer.
-- An interleaved eight-item chapter readiness sequence.
-- Five-correct-and-understood progression before the advanced section opens.
-- Three short written tasks: Research Detective, Evidence-Based Decision, and Question Forensics.
-- Five-point self-review criteria, illustrative strong responses, and illustrative almost-right responses.
+The preview is on the existing review branch and is intentionally separate from the live textbook.
 
-## What is not changed
+## What to inspect
 
-- `etb-live/chapter15.html` is untouched.
-- The existing retrieval prompts in Chapter 15 are untouched.
-- No generated live page is replaced.
-- No course grade, account state, or mastery claim is recorded.
+1. Open a collapsed concept checkpoint.
+2. Switch among Foundations, Apply, and AP-style.
+3. Change **Practice type** between **Mix it up** and a named format.
+4. Complete enough of a board or round to confirm that feedback remains visible before starting the next one.
+5. Scroll to the chapter-end test-out and confirm that it feels like synthesis across concepts.
+6. Run the five-correct-and-understood path to reveal the three advanced prompts.
 
-## Intended review order
+## What changed from the previous first pass
 
-1. Read the blueprint in `review/CH15-PRECISE-PRACTICE-FIRST-DRAFT.md`.
-2. Open the six concept checkpoints and inspect the item progression.
-3. Complete the mixed readiness sequence, including the understanding confirmation.
-4. Open each advanced task and compare the rubric with the exemplar.
-5. Review the UX and content checklist in `review/CH15-PRACTICE-UX-ITERATION.md`.
+The earlier pass used a single custom response interface for each concept. This iteration keeps the same content direction but uses the platform pattern students know from Econ:
 
-## Known status
+- collapsed concept checkpoints;
+- tier selection;
+- suggested counts of 10 / 5 / 3;
+- a named format selector with **Mix it up**;
+- familiar compact interaction shells;
+- a separate mixed chapter-end test-out;
+- an explicit correct-and-understood gate before advanced reasoning.
 
-This is an instructional and interaction first pass. It still needs instructor review, source-level verification, item-level answer-key review, accessibility/browser QA, and a decision about which specialized practice formats deserve a second pass.
+## Review boundary
+
+This is a review artifact only. It does not modify the live Chapter 15 source, does not connect earlier EDCOR banks, and does not touch the Chapter 16 work in the separate open PR.
+
+Review the interaction architecture and the transfer judgment first. The next decision should be whether this pattern is appropriate for Ed Psych before any production question-bank or platform work begins.

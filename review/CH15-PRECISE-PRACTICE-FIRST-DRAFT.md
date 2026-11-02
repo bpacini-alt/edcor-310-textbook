@@ -1,52 +1,105 @@
-# EDCOR 310 Chapter 15 Precise Practice — first pass
+# Chapter 15 precise practice — first-pass design
 
-**Status:** Review-only instructional pilot. No live chapter source is changed.
+**Status:** review-only pilot on a feature branch. This is a design and interaction test, not a production question bank or a live chapter change.
 
 ## Purpose
 
-This first pass tests whether the current Precise Practice framework transfers appropriately to Chapter 15, Personality Theory, without importing Econ-specific calculations or graph mechanics.
+This pass keeps the strong Chapter 15 end-of-concept checkpoint while moving the interaction model closer to the Econ practice experience:
 
-## Student goal
+- concepts remain collapsed until a student chooses to open one;
+- the student chooses a practice tier;
+- the student chooses a named activity type or selects **Mix it up**;
+- suggested counts guide practice without acting as a grade or mastery gate;
+- a separate chapter-end test-out interleaves the chapter's concepts and unlocks advanced reasoning after a sustained run of correct-and-understood responses.
 
-Students should be able to distinguish popular personality tools from scientifically stronger measurement, interpret the Big Five and HEXACO as dimensional evidence-informed models, reason about biology and change without treating traits as destiny, and make cautious, structural classroom decisions from observed behavior.
+The transfer is deliberately limited. The pilot borrows the navigation and activity shells that students already know from Econ; it does not assume that Econ's calculation, graph, or domain-specific problem structures belong in Educational Psychology.
 
-## Practice shape
+## What students should be able to do after Chapter 15
 
-- Six collapsed concept checkpoints, one for each chapter concept.
-- Each checkpoint contains one Tier 1 foundation item, one Tier 2 interpretation/application item, and one Tier 3 unfamiliar classroom-judgment item.
-- Items are computer-scored single-choice questions in this first pass so the content and progression can be reviewed without introducing a new interaction.
-- The chapter-end readiness check interleaves all six concepts and requires five correct answers plus an explicit understanding confirmation before advanced reasoning is revealed.
-- Advanced work is short constructed response with a five-point self-comparison rubric, an exemplar, and an almost-right answer. It is not automatically scored and does not claim mastery.
+By the end of the chapter, a student should be able to:
 
-## Concept coverage
+1. distinguish a measure that feels personally meaningful from one that is reliable, valid, and appropriate for a decision;
+2. explain why forced personality types can hide continuous differences and create unstable labels;
+3. use the Big Five and related trait evidence as a map while stating what the model does not establish;
+4. connect traits to underlying processes without treating correlations as destiny or mechanism as proof;
+5. reason about development, context, person–environment fit, and the limits of prediction;
+6. make a cautious, evidence-informed recommendation in a new classroom or applied setting.
 
-| Concept | Core capability | First-pass emphasis |
-|---|---|---|
-| Why the Popular Tools Fail | Reliability, validity, continuous dimensions, useful versus valid | Diagnose unstable labels and inappropriate uses |
-| The Most Useful Map We Have | Big Five/OCEAN and conscientiousness | Interpret behavioral patterns without moralizing or overlabeling |
-| Adding the Sixth Dimension | HEXACO, Honesty-Humility, and the Dark Triad | Distinguish related traits and connect evidence to classroom accountability |
-| What Is Happening Underneath | Heritability, biology, stress, and evidence limits | Separate biological contribution from destiny or overconfident mechanism claims |
-| The Maturity Principle and the Open Question | Stability, plasticity, and change through habits | Explain why structure and repeated behavior can matter |
-| Translating Personality Science Into Practice | Evidence-informed classroom judgment | Choose precise supports while avoiding high-stakes personality labeling |
+## Concept checkpoint structure
 
-## Advanced tasks
+The six chapter concepts remain the primary practice units:
 
-1. **Research Detective:** interpret a hypothetical retest comparison between a categorical type measure and a continuous trait measure; identify what the evidence supports and one limitation.
-2. **Evidence-Based Classroom Decision:** evaluate a teacher who treats low conscientiousness as fixed and recommends lowering expectations.
-3. **Question Forensics:** analyze a teacher's use of a personality quiz for grouping and identify the tempting but inappropriate inference.
+| Concept | Practice emphasis |
+| --- | --- |
+| Why the Popular Tools Fail | reliability, validity, labels, and the difference between resonance and evidence |
+| The Most Useful Map We Have | trait dimensions, the Big Five, and why dimensions preserve information |
+| Adding the Sixth Dimension | what conscientiousness and related additions clarify, and what a model still cannot predict |
+| What Is Happening Underneath | processes, mechanisms, correlation, and limits on causal interpretation |
+| The Maturity Principle and the Open Question | development, change, stability, and person–environment interaction |
+| Translating Personality Science Into Practice | cautious application, opportunity, context, and ethical decision-making |
 
-## Deliberate limitations
+Each concept appears as a collapsed end-of-concept checkpoint. Opening it exposes the familiar tier-and-type practice controls.
 
-- This is an item-design and UX pilot, not a validated AP Psychology bank.
-- AP Psychology is used as a rigor benchmark, not as the EDCOR instructional blueprint.
-- Research claims in the chapter and practice items still need source-level review before publication.
-- The first pass deliberately uses one existing response interface. Memory Match, Sorting, Quick Practice, and phrase-tile applications remain promising content formats for later review, but are not forced into this pilot.
-- No live Chapter 15 prose, existing retrieval prompts, persistent analytics, adaptive scheduling, or mastery certification is changed.
+## Practice controls
+
+Suggested counts are a pacing guide: Tier 1 = 10 activities, Tier 2 = 5, Tier 3 = 3. The counter says “A guide, not a grade,” and students can switch tiers or types at any time.
+
+| Tier | Intended work | Available activity shells in this pilot |
+| --- | --- | --- |
+| Tier 1 · Foundations | Build the mental model | Question & response; Memory Match |
+| Tier 2 · Apply | Use the mental model in a concrete case | Question & response; Definition Detective; Sorting; Quick Practice |
+| Tier 3 · AP-style | Make a flexible, evidence-based judgment | Question & response; Sentence Construction |
+
+**Mix it up** rotates through the available types for the selected tier. Selecting a named type holds the practice in that format, so students can get repetitions with a structure before trying another one.
+
+The activity shells are compact ports of familiar Econ interaction patterns:
+
+- **Question & response:** single-choice reasoning with an explanation;
+- **Memory Match:** pair a term with its meaning;
+- **Definition Detective:** classify a claim as accurate, incomplete, or false;
+- **Sorting:** classify examples into evidence-relevant categories;
+- **Quick Practice:** make a rapid distinction from fixed choices;
+- **Sentence Construction:** assemble the essential components of a precise answer.
+
+The shells are not meant to make every Ed Psych objective look like an Econ calculation. Their job is to vary retrieval, discrimination, classification, and explanation while the content carries the discipline-specific reasoning.
+
+## Chapter-end test-out
+
+The end-of-chapter section is separate from the concept checkpoints. It is an optional mixed test-out built from current Chapter 15 items:
+
+- Chapter 15 is selected by default;
+- earlier-chapter banks are shown as unavailable in this first pass because the shared EDCOR bank is not connected yet;
+- items are interleaved across the six concepts;
+- the student must answer correctly and confirm that they could explain why;
+- five correct-and-understood responses unlock three self-reviewed advanced tasks.
+
+The three unlocked tasks ask students to act as a Research Detective, make an Evidence-Based Decision, and perform Question Forensics. They are Tier 4-style reasoning prompts, not automatically scored claims of mastery.
+
+“AP-like” here means the student must interpret a scenario, weigh evidence, justify a conclusion, and transfer a principle. It does not mean that this pilot is an AP Psychology replica or that a single test-out round certifies readiness.
+
+## Pilot inventory
+
+- 6 collapsed concept checkpoints;
+- 3 foundation question items, 3 applied question items, and 3 transfer question items per concept;
+- compact banks for matching, claim classification, sorting, quick practice, and sentence construction;
+- a 12-item mixed Chapter 15 test-out;
+- 3 advanced self-review prompts after the five-correct-and-understood unlock.
+
+## Deliberate limits
+
+This pilot does not:
+
+- change the live Chapter 15 source or textbook chapter;
+- add new question engines to the production platform;
+- connect earlier EDCOR chapter banks;
+- claim that all Econ activity types transfer to Ed Psych;
+- auto-score open-ended advanced reasoning;
+- turn the suggested practice counts into a grade, requirement, or mastery certificate.
 
 ## Review questions
 
-- Are the six concept checkpoints the right conceptual grouping?
-- Do the Tier 1 → Tier 2 → Tier 3 items show a meaningful increase in reasoning rather than merely longer wording?
-- Does the mixed readiness sequence require students to choose among concepts rather than recognize a repeated template?
-- Are the advanced prompts short enough to invite completion while still requiring evidence, limits, judgment, and application?
-- Which items are ambiguous, overclaim the research, or ask for knowledge the chapter has not taught?
+1. Does the concept checkpoint remain visible as the organizing unit after the tier/type controls are added?
+2. Do students understand the difference between choosing a tier and choosing a format?
+3. Does **Mix it up** feel useful, or does it need a clearer explanation?
+4. Does the chapter-end test-out feel like a meaningful synthesis rather than a second copy of concept practice?
+5. Are the advanced prompts appropriately demanding without pretending to be automatically scored?
