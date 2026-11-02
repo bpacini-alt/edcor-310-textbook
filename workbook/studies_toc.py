@@ -7,7 +7,8 @@ EXTRA = """
 .blurb.st { padding: 0 0.2in; }
 .colhead { font-weight: 700; font-size: 12.5px; text-align: center; line-height: 1.3; min-height: 33px; }
 .bar .title { flex: 1; display: flex; align-items: flex-end; gap: 6px; font-weight: 700; font-size: 12.5px; padding: 0 16px 0 18px; }
-.bar .title i { flex: 1; border-bottom: 1px solid #555; height: 1px; margin-bottom: 4px; }
+.bar .title i { flex: 1; border-bottom: 1px solid #555; height: 1px; margin-bottom: 4px; position: relative; }
+.fhw { position: absolute; left: 6px; bottom: 1px; font-family: Kalam, cursive; font-weight: 400; font-size: 15.5px; color: #1d3f73; white-space: nowrap; line-height: 1; }
 .lhead { display: flex; align-items: center; gap: 18px; padding: 4px 2px 2px; }
 .lhead .code { border: 1.6px solid #111; padding: 3px 12px 2px; font-family: RC, sans-serif; font-size: 26px; letter-spacing: .5px; }
 .lhead .code b { font-weight: 400; color: #8a8a8a; }
@@ -27,24 +28,32 @@ def footer(label, pg, week=None):
     return f'<footer><div>{label}</div><div class="mid">{pg}</div><div>{wk}</div></footer>'
 
 
-def studies(week):
-    pg = pg_for('99', week) if week else ''
+def studies(week, ex=None):
+    """One 99 Studies page. ex fills it in as the worked example (see getting_started.py)."""
+    e = ex or {}
+    rows = e.get("studies", [("", "", "", "")] * 3)
+    pg = e.get("pg") or (pg_for('99', week) if week else '')
     boxes = ''
-    for n in (1, 2, 3):
-        cols = ''.join(f'<div class="cell"><div class="colhead">{h}</div>{lines()}</div>' for h in (
-            'Key take-aways for teachers:', 'Implications for life,<br>if applicable?', 'Gospel connections,<br>if applicable?'))
+    for n, (title, teach, life, gospel) in zip((1, 2, 3), rows):
+        cols = ''.join(f'<div class="cell"><div class="colhead">{h}</div>{lines(hw)}</div>' for h, hw in (
+            ('Key take-aways for teachers:', teach), ('Implications for life,<br>if applicable?', life),
+            ('Gospel connections,<br>if applicable?', gospel)))
+        t = f'<b class="fhw">{title}</b>' if title else ''
         boxes += f'''<section class="box grow" style="flex:1 1 0"><div class="bar"><div class="tab">STUDY {n}</div>
-          <div class="title">Title:<i></i></div></div>
+          <div class="title">Title:<i>{t}</i></div></div>
           <div class="cols" style="grid-template-columns:1fr 1fr 1fr">{cols}</div></section>'''
+    tag = '<span class="tag">EXAMPLE</span>' if ex else ''
+    label = "99 Studies &middot; Example" if ex else "99 Studies"
+    right = e.get("when") or (f"Week {week}" if week else BLANK_W)
     return f'''<div class="page"><div class="frame">
-  <h1>99 Studies Frayer Model</h1>
+  <h1>99 Studies Frayer Model{tag}</h1>
   <p class="blurb st">Each week, you will have 9 studies to choose from. Select three of those studies. Then fill out
   the Frayer model below. Study 1 is the first study you chose to read about, Study 2 the second, and so on.
   You are encouraged to process <b>more</b> than this, but this much processing is required for class.
-  <b>Bring this with you to class, too!</b></p>
+  <b>Bring this with you to class, too!</b>{"" if ex else " (See the example on page vii.)"}</p>
   {boxes}
-  {foot("99 Studies", pg, f"Week {week}" if week else BLANK_W)}
-</div></div>'''
+  {foot(label, pg, right)}
+</div>{e.get("callouts", "")}</div>'''
 
 
 TOC_CSS = """
@@ -81,7 +90,7 @@ def toc():
             u = UNIT_END[w]
             rows += (f'<tr class="unit"><td class="wk">Unit {u} Review</td><td colspan="3" class="ul">Brain dump &amp; unit synthesis</td>'
                      f'<td>{PAGE[("review", u, 0)]}&ndash;{PAGE[("review", u, 1)]}</td></tr>')
-    return f'''<div class="page toc"><div class="code">EDCOR <b>310</b></div><h1>Table of Contents</h1><div class="gs"><b>Getting Started</b><span>How to Use This Workbook <i>i</i></span><span>Reading an APA Citation <i>ii</i></span><span>Example Class Notes <i>iii&ndash;iv</i></span></div>
+    return f'''<div class="page toc"><div class="code">EDCOR <b>310</b></div><h1>Table of Contents</h1><div class="gs"><b>Getting Started</b><span>How to Use <i>i</i></span><span>Your Week <i>ii</i></span><span>APA Citations <i>iii</i></span><span>Research Terms <i>iv</i></span><span>Examples <i>v&ndash;viii</i></span></div>
 <table><tr><th class="none"></th><th colspan="2" class="group">Class Notes</th><th class="none"></th><th class="none"></th></tr>
 <tr><th class="wk">Week</th><th>Day 1</th><th>Day 2</th><th>99 Studies</th><th>Paper of<br>the Week</th></tr>{rows}</table>
 <p class="note">Numbers are page numbers. Each class day is a two-page spread.</p>

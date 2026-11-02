@@ -185,8 +185,8 @@ def front(week, day, ex=None):
   <h1>Class Notes{tag}</h1>
   <p class="blurb">You&rsquo;re welcome to take notes however works best for you. This page is here to help: use the parts
   that help you learn and skip the rest. If you only do two things, do the <b>warm-up</b> and the <b>48-hour check</b>;
-  those do the most for your memory. (See the example on pages v&ndash;vi.)</p>
-  {prep(week, int(day) if day else 0, e.get("done", ()))}
+  those do the most for your memory.{"" if ex else " (See the example on pages v&ndash;vi.)"}</p>
+  {prep(e.get("week", week), e.get("day", int(day) if day else 0), e.get("done", ()))}
 
   <section class="box" style="height:1.92in; flex:none">
     <div class="bar"><div class="tab">BEFORE CLASS</div><div class="hint">First few minutes</div>

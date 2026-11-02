@@ -1,6 +1,6 @@
 # EDCOR 310 course workbook
 
-The printed workbook students use alongside *The Science of Learning*: Class Notes for every class day, weekly 99 Studies and Paper of the Week pages, a Unit Review after each unit, a Getting Started section, and a closing Course Synthesis. The current version is `EDCOR310_Workbook.pdf` (93 pages, letter size).
+The printed workbook students use alongside *The Science of Learning*: Class Notes for every class day, weekly 99 Studies and Paper of the Week pages, a Unit Review after each unit, a Getting Started section, and a closing Course Synthesis. The current version is `EDCOR310_Workbook.pdf` (97 pages, letter size).
 
 ## Rebuilding it
 
@@ -17,7 +17,7 @@ The new PDF lands in `out/`. When it's ready to share, copy it over `EDCOR310_Wo
 | `classnotes.py` | Shared page styles, the page order and numbering (`layout()`), and the Class Notes front and back (also used for the filled-in example) |
 | `paper_of_week.py` | Paper of the Week, with the APA citation skeleton |
 | `studies_toc.py` | 99 Studies pages and the Table of Contents |
-| `getting_started.py` | How to Use This Workbook, Reading an APA Citation, and the example Class Notes (pages i–iv) |
+| `getting_started.py` | Getting Started (pages i–viii): How to Use, Your Week, Reading an APA Citation, Research Terms in Plain Words, and worked examples of Class Notes, 99 Studies, and Paper of the Week |
 | `review.py` | Unit Reviews (brain dump + unit synthesis, after Weeks 4, 7, 10, and 13) and the Course Synthesis |
 | `cover.py` | The cover |
 | `purpose.py` | The Purpose of This Workbook (the page after the cover; it also keeps the spreads facing) |
@@ -31,5 +31,7 @@ The new PDF lands in `out/`. When it's ready to share, copy it over `EDCOR310_Wo
 - **Order:** Week 1 is Class Notes only. Weeks 2–13 run Day 1, Day 2, 99 Studies, Paper of the Week. A two-page Unit Review follows Weeks 4, 7, 10, and 13, and the Course Synthesis closes the book. `layout()` in `classnotes.py` is the one place the order lives; page numbers and the contents page come from it. Every section has an even page count, and the unnumbered purpose page after the cover shifts everything by one, so each Class Notes day (and the example, each Unit Review, and the Course Synthesis) opens as a facing spread: A on the left, B on the right. Keep sections even-length, and if the purpose page ever goes, replace it with another single page.
 - **Practice and vocab:** the front's left column holds two tricky practice questions with their answers (students get unlimited practice quizzes), retried at the 48-hour check. Vocab goes in the table on the back.
 - **Unit Reviews:** the brain dump is fast and fragmentary and includes things learned indirectly (teaching methods, a classmate, a friend). Then top ten alone, top five with a group, top three alone again. The back asks how the unit makes students better teachers, disciples, and leaders at home, at church, and in the community, and what they'll do differently. The Course Synthesis asks the same questions about the whole course.
+- **Notes are optional (November 2026 student feedback):** students wanted their own note-taking system, more lined space, and less drawing space. The Class Notes page says notes are optional and the notes area is ruled, not dotted. The layout stayed the same; if feedback still says "too restrictive," the next step is a retrieval page plus a plain lined page per class day.
+- **Weekly rhythm:** reading X.1 (Joy of Learning, about 1 hour) is due before Class 1; reading X.2, the research seminar (about 1 hour: video 15 min, 99 Studies 15 min, Paper of the Week 30 min), before Class 2. Week 1 has no research seminar. Each Class Notes page opens with a "Before this class" checklist built from this; `prep()` in `classnotes.py` holds the wording.
 - **Class Notes:** the boxes are tools, not a form to complete. The page says so, the example leaves boxes blank on purpose, and the self-check asks whether the notes helped students make meaning, remember, and grow, not whether every box is full.
 - **Citations:** students fill in author, year, title, and journal and check that they found the DOI, instead of handwriting a full APA citation.
