@@ -338,7 +338,9 @@ body {{ margin: 0; }}
 # not in manifest.json, so they stay out of the contents and the Previous / Next sequence.
 # Share the link directly. When a draft is approved, it replaces its chapter's file and
 # its entry here is removed.
-DRAFTS = {}
+DRAFTS = {
+    "chapter13-video-prototype.html": ("Adolescent Development & Moral Foundations — Video Research Pilot", "chapter13.html"),
+}
 
 DRAFT_BANNER = """<div style="background:#fff8e6;border-bottom:1px solid #e8c96a;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13px;color:#5a3d00;">
   <div style="max-width:740px;margin:0 auto;padding:.6rem 1rem;"><strong>Draft for review.</strong> This version is not yet part of the book. <a href="/{current}" style="color:#7a5000;">See the current chapter</a>.</div>
