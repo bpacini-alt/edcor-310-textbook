@@ -28,11 +28,11 @@
 .etb-syn-header .etb-listen-here{color:rgba(255,255,255,.45);}
 .etb-syn-header .etb-listen-here:hover,.etb-syn-header .etb-listen-here.is-current{color:#fff;}
 .etb-eq{gap:2px;align-items:flex-end;height:9px;}
-.etb-eq i{display:block;width:2px;height:3px;background:currentColor;border-radius:1px;}
+.etb-eq i{display:block;width:2px;height:9px;background:currentColor;border-radius:1px;transform:scaleY(.33);transform-origin:bottom;}
 .etb-playing .etb-eq i{animation:etbEq 1s ease-in-out infinite;}
 .etb-playing .etb-eq i:nth-child(2){animation-delay:-.4s;}
 .etb-playing .etb-eq i:nth-child(3){animation-delay:-.7s;}
-@keyframes etbEq{0%,100%{height:3px}50%{height:9px}}
+@keyframes etbEq{0%,100%{transform:scaleY(.33)}50%{transform:scaleY(1)}}
 /* Marker on the section being read */
 .etb-audio-current{position:relative;}
 .etb-audio-current::before{content:"";position:absolute;left:-14px;top:.35rem;bottom:2.75rem;width:2px;border-radius:2px;background:#2a7a4f;opacity:.5;}
@@ -132,7 +132,7 @@
   .etb-listen-here .etb-listen-len{display:none;}
   .etb-ap-kicker .etb-ap-ch{display:none;}
 }
-@media (prefers-reduced-motion:reduce){.etb-ap{transition:none}.etb-playing .etb-eq i{animation:none;height:6px}}
+@media (prefers-reduced-motion:reduce){.etb-ap{transition:none}.etb-playing .etb-eq i{animation:none;transform:scaleY(.67)}}
 /* Printing. Hide the player and the bars fixed to the screen (they would print over the text on every page),
    and keep boxes, figures, and tables from splitting across pages. When the text-only version is open,
    print only that, so "Text-only version, then Print" gives a clean copy of the chapter. */
