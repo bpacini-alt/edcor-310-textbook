@@ -12,3 +12,10 @@ To add videos after upload, replace only each `.evr-video` placeholder with a re
 The prototype intentionally avoids a transcript that duplicates the spoken video. The teen-stereotype evidence is rated promising because the experiments are limited to young people's own stereotypes and three days of follow-up. The parenting meta-analyses are more informative for developmental patterns than for causal intervention claims.
 
 **Build:** `python3 build/build_site.py` from the repo root regenerates `site/chapter13-video-prototype.html`. Do not merge until the preview is reviewed and a full build is verified.
+
+## Updated design and video IDs
+
+The prototype now matches the previously approved compact optional video side-quest pattern: calm blue, right-floated beside concept prose on desktop, full width on mobile, with a click-to-expand native `<details>` player and nested sources. Avoids making video mandatory or repeating the entire spoken script. Each video uses a YouTube privacy-enhanced iframe and a direct YouTube fallback link.
+
+- Assumed video-order mapping from the two URLs supplied: `6dsDNHMNc8M` = teenager stereotypes; `hxvtdETIAGs` = parenting teenagers. YouTube metadata and transcripts were not accessible through the available retrieval methods, so verify video titles before merging.
+- Transcripts: not yet inspected. YouTube captions should be verified manually if accessible; don't label the research boxes as transcripts.
