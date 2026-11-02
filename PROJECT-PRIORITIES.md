@@ -123,6 +123,30 @@ At a later stage, establish a consistent, maintainable sourcing system for both 
 
 **Why this is high priority:** Better presentation, trustworthy sourcing, and fewer points of friction benefit every student immediately and multiply the value of every later feature.
 
+#### Deferred feature — Search this chapter and the full book
+
+**Priority:** Medium-high. This would remove a recurring student-navigation problem and make the book more usable, but it should follow the current work on chapter quality, practice, and core navigation.
+
+**Goal:** Give students one trustworthy search tool with two clear scopes:
+
+- **This chapter/page:** Find a term or phrase in the material the student is currently reading.
+- **Entire book:** Search all 26 chapters and jump directly to the relevant passage.
+
+A good version should:
+
+- search headings, chapter text, essential vocabulary, “Also know” terms, retrieval prompts, and expandable content;
+- normalize obvious variants such as self-efficacy and self efficacy;
+- return section-level results with the chapter, section heading, excerpt, and a direct link;
+- rank definitions and primary treatments above incidental mentions;
+- exclude navigation, scripts, and other boilerplate;
+- work well on phones, keyboards, and screen readers; and
+- be generated from the same source as the published pages so the index cannot quietly drift out of date.
+
+**Implementation direction:** Build a static, generated search index rather than a server-side search service. Use section anchors and one search interface with a visible scope toggle. Test it against known student questions and terms, including self-efficacy, cognitive load, retrieval practice, and Bandura.
+
+**Status:** Record for later; approved in principle. Do not implement until a suitable window opens. Design the first version for EDCOR 310, while keeping the search/index architecture reusable for Econ 150 if it proves valuable.
+
+
 ### Priority 2 companion — AP Psychology as an EDCOR 310 rigor benchmark
 
 **Status:** Research and alignment first; secondary reference, not the EDCOR instructional blueprint.
