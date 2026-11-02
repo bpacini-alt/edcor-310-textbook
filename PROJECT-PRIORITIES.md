@@ -56,24 +56,15 @@ These items are complete on `main`. They remain documented here as a record, but
 - **Rebuild Econ 150 Chapter 16 and redistribute the material that belonged in Chapter 12.** Verified by Econ 150 PRs #105 and #106 and `review/CH16-REBUILD.md`.
 - **Replace EDCOR 310 Chapter 16 and complete its matching edits and citation checks.** Verified by EDCOR 310 PR #87, `docs/CHAPTER-16-MATCHING-EDITS.md`, and the current Chapter 16 source.
 
+- **Complete the GitHub security setup (November 2, 2026).** Enabled account security, secret scanning and push protection, `main` rulesets, and Dependabot alerts for both textbook repositories.
+
 ### Deferred branch cleanup
 
 Keep routine branch cleanup report-first and approval-gated. Enable automatic deletion of head branches after merged pull requests where appropriate, but do not delete arbitrary branches merely because they have no open pull request. During the Friday cleanup, inspect branches with no open PR and no known active use, then classify each as **safe to delete**, **needs review**, or **retain**. Before deleting any candidate, re-check for open-PR dependencies and preserve `main`, protected coordination/documentation branches—including `docs/collaborator-coordination-clean-20261021` and Econ 150's `docs/reading-times-note`—as well as any branch containing unique unmerged work or serving an active preview. Record the branch name and head commit SHA before deletion. **Status:** Deferred; do not implement branch deletion automatically yet.
 
 When Claude or another collaborator has recently worked in the repository, first inspect the current state and recent history before cleaning up. Do not mistake unfamiliarity for obsolescence, and do not delete work simply because it is not part of the current preferred workflow.
 
-### Priority 0.5 — Learn and apply GitHub security controls
-
-Before placing course-source material or AI-facing working files in GitHub, learn the repository controls that keep them safe while preserving useful collaboration:
-
-- Decide which repositories should be public and which should be private. The student-facing textbooks can remain public; raw course exports, unpublished slides, student information, credentials, and other working material should not go in them.
-- Protect `main` with pull requests, required checks, no force-push, and no deletion.
-- Use least-privilege access for TAs and AI agents: read access by default; write access only when an agent needs to propose changes through a branch and pull request; never share personal tokens or secrets.
-- Learn how to audit collaborators, deploy keys, Actions secrets, branch rules, and access logs.
-
-**Why this matters:** The repositories should be open enough for collaboration and review without turning unpublished course material or student data into public material.
-
-**Deferred course-source work:**
+### Deferred course-source work:
 
 - **EDCOR 310:** obtain a fresh Canvas LMS export in a later pass, keep it private, and use it alongside the reading calendar and slide decks to make the course easier to improve and maintain for future semesters.
 - **EDCOR 200:** before teaching it again, gather the current course materials into a separate private course archive/repository. This is a future planning item, not current implementation work.
@@ -539,6 +530,12 @@ Possible feedback prompts:
 A first version could use a short, optional end-of-chapter form with a four-point usefulness scale and one or two open-response questions. Aggregate results could help identify chapters for the Chapter Quality Manual, while preserving the distinction between student preference and evidence about learning.
 
 **Status:** Interesting but deferrable; revisit after the core chapter workflow is stable. Protect student privacy, avoid collecting unnecessary identifying information, and do not let ratings replace direct review of accuracy or learning outcomes.
+
+### Low priority — Make the textbook databases inspectable
+
+Identify the Cloudflare-backed databases used by the two textbooks and make it straightforward to see what they contain. Confirm which database stores chapter-rating data, inspect its schema and records through a simple private owner-facing view, and document how to retrieve the ratings for review. Keep student-identifying information protected.
+
+**Status:** Low priority; revisit after higher-impact textbook work.
 
 These are promising possibilities, but they are intentionally near the bottom of the backlog. They should not displace the current work on content quality, practice, accessibility, interactives, author-led video, audio, exports, or the series/front-matter system.
 
