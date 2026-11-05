@@ -283,7 +283,7 @@ async function handleRatings(request, env) {
         'DELETE FROM reading_ratings WHERE book = ? AND reading_id = ? AND semester = ? AND client_id = ?'
       ).bind(book, reading, semester, clientId),
       env.RATINGS_DB.prepare(
-        'INSERT INTO reading_ratings (book, reading_id, semester, rating, client_id, comment) VALUES (?, ?, ?, ?, ?, ?, ?)'
+        'INSERT INTO reading_ratings (book, reading_id, semester, rating, client_id, comment, improvement) VALUES (?, ?, ?, ?, ?, ?, ?)'
       ).bind(book, reading, semester, rating, clientId, comment, improvement),
     ]);
   }
