@@ -159,7 +159,8 @@ def front_pages(units, chapters, supplements):
             {"n": "i", "t": "About this book", "s": "How the book was made, and acknowledgments", "m": "", "href": "/about.html"},
             {"n": "ii", "t": "How to Get the Most Out of This Book", "s": "How to study, practice, and use this book well", "m": "", "href": "/how-to-get-the-most-out-of-this-book.html"},
             {"n": "iii", "t": "Joy of Learning", "s": "The reading menu", "m": "", "href": "/joy-of-learning.html"},
-            {"n": "iv", "t": "Recorded Lectures", "s": "Author-led course videos", "m": "", "href": "/recorded-lectures.html"}
+            {"n": "iv", "t": "Recorded Lectures", "s": "Author-led course videos", "m": "", "href": "/recorded-lectures.html"},
+            {"n": "PDF", "t": "EDCOR 310 Workbook", "s": "Download the student workbook", "m": "", "href": "/downloads/EDCOR310_Workbook.pdf"}
         ],
         "units": [{
             "roman": u["roman"], "kicker": f"{u['label']} · {chapter_range(u)}", "title": u["name"],
