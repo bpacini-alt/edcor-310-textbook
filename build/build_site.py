@@ -430,16 +430,33 @@ def publish_menu():
     )
 
 
+def publish_workbook():
+    """Publish the current generated workbook alongside the student-facing site."""
+    source = ROOT / "workbook" / "EDCOR310_Workbook.pdf"
+    if not source.exists():
+        return
+    destination = OUT / "downloads" / "EDCOR310_Workbook.pdf"
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(source, destination)
+
+
 def main():
     units, chapters, supplements = load_book()
     (OUT / "contents").mkdir(parents=True, exist_ok=True)
     (OUT / "assets").mkdir(parents=True, exist_ok=True)
     build_cover()
+    publish_workbook()
     publish_chapters()
     publish_drafts()
     publish_recorded_lectures()
     publish_menu()
-    for path, content in front_pages(units, chapters, supplements).items():
+    pages = front_pages(units, chapters, supplements)
+    pages["index.html"] = pages["index.html"].replace(
+        '<div class="fm-actions">',
+        '<div class="fm-actions">\\n      <a class="fm-btn fm-btn-quiet" href="/downloads/EDCOR310_Workbook.pdf">Download the course workbook</a>',
+        1,
+    )
+    for path, content in pages.items():
         (OUT / path).write_text(content)
     print(f"{len(units)} units, {len(chapters)} chapters, {len(supplements)} supplements")
     for u in units:
