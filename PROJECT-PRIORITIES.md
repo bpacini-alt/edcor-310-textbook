@@ -44,6 +44,16 @@ The default behavior is **inspect, report, recommend, then act**:
 
 Safe reversible improvements—such as fixing links, clarifying documentation, standardizing names, or reorganizing clearly misplaced files—may be proposed as ordinary maintenance. Deletion is never assumed merely because a file is old.
 
+### Archived exploratory PRs — preserve before closing (November 7, 2026)
+
+These PRs contain useful experiments, but they are not current merge candidates. Before closing them, preserve the following restart points. Any future implementation should begin from current `main`, not from the old branch.
+
+- **EDCOR PR #99 — Chapter 16 Precise Practice draft.** This was a review-only instructional design prototype with six concept coverage targets, foundational and applied examples, short AAQ-inspired Research Detective work, an EBQ-inspired Evidence-Based Decision, five-point exemplary answers, classroom judgment, and a compact chapter-end experience. It did not modify the live chapter. Research summaries require original-source verification. If revived, rebuild from the current Precise Practice design notebook and current Chapter 16.
+- **EDCOR PR #102 — Chapter 15 Precise Practice first pass.** This was a review-only prototype with concept checkpoints, Tier 1–3 items, a mixed chapter readiness check, interleaving, five-correct-and-understood progression, and self-comparison rubrics rather than automated essay scoring. It did not modify the live chapter. Research summaries and items require instructor/content review. Revisit only after the current practice pilots clarify what should scale.
+- **EDCOR PR #111 — Chapter 13 research-to-practice video prototype.** This separate draft explored two research-video boxes, responsive video cards, expandable primary-research links, and a non-indexed prototype page. The live Chapter 13 research-video work has since been handled by PRs #114–#116. Preserve any useful research citations, placement ideas, or side-quest styling, but treat this PR as superseded rather than a second live implementation.
+
+The canonical place for cross-book practice ideas is the [Precise Practice design notebook](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/PRECISE-PRACTICE-DESIGN.md). Closing these PRs means “defer and preserve,” not “reject the ideas.”
+
 ### Completed priorities (recorded October 31, 2026)
 
 These items are complete on `main`. They remain documented here as a record, but are no longer active priorities.
