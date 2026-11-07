@@ -43,7 +43,7 @@ def brain_dump(u):
   <p class="blurb">List everything you learned this unit, in the shortest form you can: bullet points, fragments, terms,
   names, quick sketches. Include what you learned indirectly, too: teaching methods you saw modeled, something a classmate
   said, an idea from a friend. Start without looking at your notes, then flip back and add what you missed.</p>
-  {section("BRAIN DUMP", "Everything from Unit " + str(u) + ", as fast as you can", '<div class="cell fill"><div class="dotgrid" style="margin-top:4px"></div></div>', 'style="flex:1.15 1 0"')}
+  {section("BRAIN DUMP", "Everything from Unit " + str(u) + ", as fast as you can", '<div class="cell fill"><div class="notelines" style="margin-top:4px"></div></div>', 'style="flex:1.15 1 0"')}
   {section("ELABORATE", "Narrow it down, then talk it through",
     '<div class="cols" style="grid-template-columns:1fr 1fr">'
     '<div class="cell fill"><div class="who">On your own</div><div class="q">My top ten most meaningful things from this unit</div>' + nlines(10) + '</div>'

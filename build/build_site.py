@@ -159,7 +159,8 @@ def front_pages(units, chapters, supplements):
             {"n": "i", "t": "About this book", "s": "How the book was made, and acknowledgments", "m": "", "href": "/about.html"},
             {"n": "ii", "t": "How to Get the Most Out of This Book", "s": "How to study, practice, and use this book well", "m": "", "href": "/how-to-get-the-most-out-of-this-book.html"},
             {"n": "iii", "t": "Joy of Learning", "s": "The reading menu", "m": "", "href": "/joy-of-learning.html"},
-            {"n": "iv", "t": "Recorded Lectures", "s": "Author-led course videos", "m": "", "href": "/recorded-lectures.html"}
+            {"n": "iv", "t": "Recorded Lectures", "s": "Author-led course videos", "m": "", "href": "/recorded-lectures.html"},
+            {"n": "PDF", "t": "EDCOR 310 Workbook", "s": "Download the student workbook", "m": "", "href": "/downloads/EDCOR310_Workbook.pdf"}
         ],
         "units": [{
             "roman": u["roman"], "kicker": f"{u['label']} · {chapter_range(u)}", "title": u["name"],
@@ -430,16 +431,33 @@ def publish_menu():
     )
 
 
+def publish_workbook():
+    """Publish the current generated workbook alongside the student-facing site."""
+    source = ROOT / "workbook" / "EDCOR310_Workbook.pdf"
+    if not source.exists():
+        return
+    destination = OUT / "downloads" / "EDCOR310_Workbook.pdf"
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(source, destination)
+
+
 def main():
     units, chapters, supplements = load_book()
     (OUT / "contents").mkdir(parents=True, exist_ok=True)
     (OUT / "assets").mkdir(parents=True, exist_ok=True)
     build_cover()
+    publish_workbook()
     publish_chapters()
     publish_drafts()
     publish_recorded_lectures()
     publish_menu()
-    for path, content in front_pages(units, chapters, supplements).items():
+    pages = front_pages(units, chapters, supplements)
+    pages["index.html"] = pages["index.html"].replace(
+        '<div class="fm-actions">',
+        '<div class="fm-actions">\n      <a class="fm-btn fm-btn-quiet" href="/downloads/EDCOR310_Workbook.pdf">Download the course workbook</a>',
+        1,
+    )
+    for path, content in pages.items():
         (OUT / path).write_text(content)
     print(f"{len(units)} units, {len(chapters)} chapters, {len(supplements)} supplements")
     for u in units:

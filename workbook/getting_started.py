@@ -1,6 +1,9 @@
-"""Front matter: How to Use (i), Reading an APA Citation (ii), Example Class Notes (iii-iv). arg: outdir"""
+"""Getting Started, pages i-viii: How to Use (i), Your Week (ii), Reading an APA Citation (iii),
+Research Terms in Plain Words (iv), and worked examples: Class Notes (v-vi), 99 Studies (vii),
+Paper of the Week (viii). Keep the page count even so the spreads after it still face. arg: outdir"""
 import sys, pathlib
-from classnotes import CSS, SCRIPT, front, back, foot
+from classnotes import CSS, SCRIPT, front, back, foot, VIDEO
+import studies_toc, paper_of_week
 
 FM = """
 .fm h1 { text-align: left; font-size: 44px; margin: 6px 0 2px; }
@@ -33,6 +36,24 @@ FM = """
 .week p { font-size: 13.4px; line-height: 1.45; }
 .spot { border: 1.8px solid #111; border-radius: 11px; padding: 14px 20px 14px; }
 .spot .bad { font-size: 16px; line-height: 2.1; padding-left: 30px; text-indent: -30px; margin: 4px 0 8px; }
+.wk { display: grid; grid-template-columns: 1.05fr 1.6fr 0.75fr; border: 1.8px solid #111; border-radius: 11px; overflow: hidden; }
+.wk > div { padding: 10px 14px; border-top: 1.3px solid #111; font-size: 14.2px; line-height: 1.45; }
+.wk > div:nth-child(-n+3) { border-top: none; background: #111; color: #fff; font-family: RC, sans-serif; font-weight: 700; font-size: 13.5px; letter-spacing: 1px; padding: 7px 14px; }
+.wk > div:nth-child(3n+2) { border-left: 1.3px solid #111; border-right: 1.3px solid #111; }
+.wk .w { font-family: RC, sans-serif; font-weight: 700; font-size: 17px; line-height: 1.2; }
+.wk .w small { display: block; font-family: Lato, sans-serif; font-weight: 400; font-size: 12.5px; color: #555; margin-top: 2px; }
+.wk ul { padding-left: 18px; margin: 3px 0 0; }
+.wk li { font-size: 14px; margin: 0; }
+.wk .t { font-family: RC, sans-serif; font-weight: 700; font-size: 16px; }
+.terms2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 26px; }
+.terms2 > div { break-inside: avoid; border-top: 1.3px solid #bbb; padding-top: 7px; }
+.terms2 b { display: block; font-family: RC, sans-serif; font-weight: 700; font-size: 16.5px; color: #111; }
+.terms2 p { font-size: 13.4px; line-height: 1.45; }
+.terms2 em { color: #555; }
+.ladder { display: flex; align-items: stretch; gap: 0; border: 1.8px solid #111; border-radius: 11px; overflow: hidden; font-size: 12.8px; line-height: 1.3; }
+.ladder > div { flex: 1; padding: 8px 9px; text-align: center; }
+.ladder > div + div { border-left: 1.3px solid #111; }
+.ladder b { display: block; font-family: RC, sans-serif; font-size: 14px; }
 .ans { transform: rotate(180deg); font-size: 12.5px; color: #444; line-height: 1.45; margin-top: 6px; }
 """
 
@@ -57,10 +78,10 @@ HOW = page('''
   </div>
   <div class="two">
     <div>
-      <h2>You don&rsquo;t need to fill every box</h2>
-      <p>The boxes on the Class Notes pages are tools, and different days call for different tools. Use the ones that help you
-      make sense of the day and leave the rest blank. A page with a few thoughtful answers beats a page full of filler.
-      The example on pages iii&ndash;iv shows what that can look like.</p>
+      <h2>Take notes your way</h2>
+      <p>You&rsquo;re welcome to take notes however works best for you: on the Class Notes pages, in a notebook, or on a laptop.
+      The workbook is here to help. Use the boxes that help you make sense of the day and leave the rest blank. A page with
+      a few thoughtful answers beats a page full of filler. The examples on pages v&ndash;viii show what that can look like.</p>
       <h2 style="margin-top:12px">Bring it to every class</h2>
       <p>You&rsquo;ll use it during class, and some days we&rsquo;ll stop and work on one box together.</p>
     </div>
@@ -75,13 +96,8 @@ HOW = page('''
       and grow as a disciple, teacher, and person? Be honest. It&rsquo;s for you.</p>
     </div>
   </div>
-  <h2 style="margin-top:2px">Your week at a glance</h2>
-  <div class="week">
-    <div><div class="st">Step 1</div><div class="ti">Class Day 1</div><p>Warm-up, take notes, then answer one or two After Class prompts.</p></div>
-    <div><div class="st">Step 2</div><div class="ti">Class Day 2</div><p>Same thing on a new page. Before you start, do the 48-hour check for Day 1.</p></div>
-    <div><div class="st">Step 3</div><div class="ti">Before next week</div><p>Do the 48-hour check for Day 2, plus that week&rsquo;s 99 Studies and Paper of the Week.</p></div>
-    <div><div class="st">Step 4</div><div class="ti">Bring it back</div><p>Bring the workbook to class. We&rsquo;ll use your pages in discussion and the jigsaw.</p></div>
-  </div>
+  <div class="note" style="margin-top:6px"><p><b>What&rsquo;s due when?</b> Page ii lays out a normal week, with about how long
+  each piece takes. Each Class Notes page also starts with a short checklist of what to finish before that class.</p></div>
   <div style="flex:1"></div>
 ''', "Getting Started", "i")
 
@@ -117,10 +133,74 @@ APA = page('''
     improves long-term retention. (4) The DOI is missing (and the journal name and volume should be italic).</div>
   </div>
   <div style="flex:1"></div>
+''', "Getting Started", "iii")
+
+WEEK = page(f'''
+  <h1>Your Week</h1>
+  <p class="lede">Every week has two class days and two readings. Reading <b>X.1</b> is due right before the first class of
+  the week, and <b>X.2</b> right before the second. Plan on about two hours of preparation a week.</p>
+  <div class="wk">
+    <div>WHEN</div><div>WHAT TO DO</div><div>ABOUT HOW LONG</div>
+    <div><div class="w">Before Class 1<small>Reading X.1</small></div></div>
+    <div>Read that week&rsquo;s <b>Joy of Learning</b> reading.</div><div class="t">1 hour</div>
+    <div><div class="w">Before Class 2<small>Reading X.2, research seminar</small></div></div>
+    <div><ul><li>Watch the {VIDEO}.</li><li>Fill out your <b>99 Studies</b> page (three studies).</li>
+      <li>Read and fill out the <b>Paper of the Week</b>. Bring both pages to class for the jigsaw.</li></ul></div>
+    <div><div class="t">1 hour</div>15 min<br>15 min<br>30 min</div>
+    <div><div class="w">Two days after each class</div></div>
+    <div>Do the <b>48-hour check</b> on that day&rsquo;s Class Notes, and retry your tricky practice questions.</div><div class="t">A few minutes</div>
+    <div><div class="w">End of each unit<small>After Weeks 4, 7, 10, and 13</small></div></div>
+    <div>Do the <b>Unit Review</b>: brain dump, top ten, five, and three, and the unit synthesis.</div><div class="t">In class</div>
+  </div>
+  <h2 style="margin-top:6px">Good to know</h2>
+  <ul>
+    <li><b>Week 1</b> has reading 1.1 but no research seminar. 99 Studies and Paper of the Week start in Week 2.</li>
+    <li>Each week&rsquo;s 99 Studies and Paper of the Week pages come right after that week&rsquo;s Class Notes.</li>
+    <li>Each Class Notes page starts with a <b>Before this class</b> checklist, so you can check things off as you go.</li>
+    <li>The times are estimates. Some weeks will go faster and some slower. If a week regularly takes you much longer, tell us.</li>
+  </ul>
+  <div style="flex:1"></div>
 ''', "Getting Started", "ii")
+
+TERMS = page('''
+  <h1>Research Terms in Plain Words</h1>
+  <p class="lede">You&rsquo;ll see these in almost every study. You don&rsquo;t need to calculate any of them. You just need to know
+  what they&rsquo;re telling you.</p>
+  <div class="terms2">
+    <div><b>Sample size (n or N)</b><p>How many people were studied. Bigger samples give steadier, more trustworthy results.</p></div>
+    <div><b>Mean (M) and standard deviation (SD)</b><p>The mean is the average. The SD is how spread out the scores are around it.</p></div>
+    <div><b>p-value</b><p>If there were really no effect, how surprising would results like these be? A small p (usually below .05) means
+      &ldquo;probably not just luck.&rdquo; <em>It doesn&rsquo;t tell you how big or important the effect is.</em></p></div>
+    <div><b>Statistically significant</b><p>The result is unlikely to be chance alone, usually meaning p &lt; .05. Significant doesn&rsquo;t
+      mean large or important.</p></div>
+    <div><b>Effect size</b><p>How big the difference or relationship is. This is the number that tells you whether a finding matters
+      in a real classroom.</p></div>
+    <div><b>Cohen&rsquo;s d</b><p>The difference between two groups, in standard deviations. A rough guide: 0.2 is small, 0.5 medium,
+      0.8 large. <em>In schools, even small effects can be worth it if they&rsquo;re cheap and reach many students.</em></p></div>
+    <div><b>Correlation (r)</b><p>How closely two things move together, from &minus;1 to +1. Zero means no relationship.
+      <em>A correlation alone can&rsquo;t show that one thing causes the other.</em></p></div>
+    <div><b>R&sup2; (and &eta;&sup2;)</b><p>The share of the differences in one thing that another thing accounts for, from 0 to 1.
+      An r of .30 gives an R&sup2; of .09, or 9%.</p></div>
+    <div><b>Experiment / randomized controlled trial</b><p>Researchers randomly put people into groups and change one thing. The best
+      design for showing cause and effect.</p></div>
+    <div><b>Control group</b><p>The comparison group that doesn&rsquo;t get the new method. Without one, you can&rsquo;t tell what the method did.</p></div>
+    <div><b>Correlational study</b><p>Researchers measure things as they already are and look for patterns. Useful, but it can&rsquo;t
+      prove cause.</p></div>
+    <div><b>Meta-analysis</b><p>A study that combines the results of many studies on the same question, giving an overall effect size.</p></div>
+    <div><b>Replication</b><p>Repeating a study to see if the result holds up. A finding that replicates is much more trustworthy.</p></div>
+    <div><b>Peer review</b><p>Other experts checked the study before the journal published it. A good sign, but no guarantee.</p></div>
+  </div>
+  <h2 style="margin-top:4px">The hierarchy of evidence</h2>
+  <div class="ladder">
+    <div><b>Weaker</b>Opinions and stories</div><div>Case studies</div><div>Correlational studies</div>
+    <div>Experiments (RCTs)</div><div><b>Stronger</b>Meta-analyses of experiments</div>
+  </div>
+  <div style="flex:1"></div>
+''', "Getting Started", "iv")
 
 # ---------- worked example ----------
 SVG = '''<svg viewBox="0 0 260 150" width="260" height="150" style="position:absolute; right:14px; top:8px" fill="none" stroke="#1d3f73" stroke-linecap="round" stroke-linejoin="round">
+ <rect x="0" y="0" width="260" height="150" fill="#fff" stroke="none"/>
  <path d="M18 8 L18 128 L250 128" stroke-width="2"/>
  <path d="M20 14 C 40 70, 70 100, 245 112" stroke-width="2.2"/>
  <path d="M20 14 C 32 48, 48 62, 62 66 L64 26 C 78 52, 96 58, 112 60 L114 30 C 132 50, 160 54, 190 56 L192 36 C 210 46, 230 48, 246 49" stroke-width="2.2" stroke-dasharray="1 0"/>
@@ -152,7 +232,7 @@ def co(text, top, left, width):
 
 
 EX = dict(
-    pg=("iii", "iv"), when="Week 3 &middot; Day 1", date="Sept 16",
+    pg=("v", "vi"), week=3, day=1, done=("r", "c"), when="Week 3 &middot; Day 1", date="Sept 16",
     warm="schemas = mental frameworks. new stuff\nsticks when it hooks onto what I know.\nassimilation vs. accommodation (?)",
     objective="Why pulling info out of memory beats\nrereading it",
     got="Yes",
@@ -172,16 +252,56 @@ EX = dict(
     h48_date="Sept 18",
     h48="Forgetting curve, R&K, fluency illusion, brain dumps. Got Q2. Missed Q1\nagain (said rereading!), so I reread that part of Ch. 22.",
     rating=[4, 4, 3],
-    callouts_front=(co("Messy is fine. A &ldquo;(?)&rdquo; means &ldquo;check this later.&rdquo;", 2.8, 4.75, 2.45)
-                    + co("Sketches count. Draw it if that helps you think.", 9.25, 4.6, 2.6)
-                    + co("Cover the answers and retry these at your 48-hour check.", 9.98, 0.62, 1.75)),
+    callouts_front=(co("Messy is fine. A &ldquo;(?)&rdquo; means &ldquo;check this later.&rdquo;", 3.13, 4.75, 2.45)
+                    + co("Sketches count. Draw it if that helps you think.", 9.95, 4.6, 2.6)
+                    + co("Cover the answers and retry these at your 48-hour check.", 9.9, 0.62, 1.75)),
     callouts_back=(co("Left blank on purpose. Not every box fits every day.", 5.0, 5.55, 2.25)
                    + co("Three vocab terms is plenty.", 2.25, 5.7, 1.8)
                    + co("Honest beats perfect.", 9.7, 3.95, 1.45)),
 )
 
+EX99 = dict(
+    pg="vii", when="Week 3",
+    studies=[
+        ("The one about spacing your learning",
+         "Spread practice out.\nRevisit old topics in\nwarm-ups instead of\none big review day.",
+         "Study a little each\nday before the exam,\nnot all of it the\nnight before.",
+         "\"Line upon line\"\n(2 Ne. 28:30). We\nlearn in small pieces\nover time."),
+        ("The one about how much we forget",
+         "Kids forget a lot of\na lesson fast unless\nwe come back to it.\nPlan the review in.",
+         "Forgetting my Week 1\nnotes is normal. It\nmeans review, not\nthat I'm bad at this.",
+         "\"Remember, remember\"\n(Hel. 5:12).\nRemembering takes\neffort on purpose."),
+        ("The one about pre-questions",
+         "Ask a question before\nteaching the answer.\nEven wrong guesses\nhelp kids learn it.",
+         "Before I read, look\nat the questions and\nguess first.",
+         ""),
+    ],
+    callouts=(co("Short is fine. A few words per box is plenty.", 3.5, 3.05, 2.1)
+              + co("Left blank on purpose. Not every study has one.", 8.7, 5.65, 2.15)),
+)
+
+EXPOTW = dict(
+    pg="viii", when="Week 3", name="Alex R.",
+    author="Roediger, H. L., III, & Karpicke, J. D.", year="2006",
+    title1="Test-enhanced learning: Taking memory tests improves",
+    title2="long-term retention",
+    journal="Psychological Science", doi=True,
+    method="Two lab experiments with college students",
+    stat="Exp. 1: 120 students (Exp. 2: 180).\nThey report F and t tests; the\nmain results were significant.",
+    prac="After 1 week: 56% recalled after\na practice test vs. 42% after\nrereading. d = 0.83, a large effect.",
+    level=4, why="One lab study, short readings",
+    synth="A practice test helped college students remember a reading a week\nlater much better than rereading it (56% vs. 42%, d = 0.83).\nRereading only won when the final test came 5 minutes later.\nA strong, useful finding, though it was tested in a lab.",
+    lim="Lab, not a real class. College\nstudents, short science passages,\nand only recall was tested.",
+    impl="Quick no-stakes quizzes and\nbrain dumps beat a review\nlecture or rereading.",
+    ques="Why did the students who only\nreread think they'd remember\nmore? Does it work for kids?",
+    vocab="idea units: the small pieces\nof the passage they scored",
+    callouts=(co("The numbers come straight from the results section.", 3.57, 5.55, 2.2)
+              + co("There's no single right dot. Explain your choice.", 6.4, 5.85, 2.1)),
+)
+
 if __name__ == '__main__':
     out = pathlib.Path(sys.argv[1])
-    html = (f"<!doctype html><html><head><meta charset='utf-8'><style>{CSS}{FM}</style></head><body>"
-            + HOW + APA + front(None, None, EX) + back(None, None, EX) + SCRIPT + "</body></html>")
+    html = (f"<!doctype html><html><head><meta charset='utf-8'><style>{CSS}{FM}{studies_toc.EXTRA}{paper_of_week.EXTRA}</style></head><body>"
+            + HOW + WEEK + APA + TERMS + front(None, None, EX) + back(None, None, EX)
+            + studies_toc.studies(None, EX99) + paper_of_week.page(None, EXPOTW) + SCRIPT + "</body></html>")
     (out / 'getting_started.html').write_text(html)

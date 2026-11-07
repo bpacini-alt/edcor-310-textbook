@@ -83,7 +83,7 @@ h1 {{ text-align: center; font-family: RC, sans-serif; font-weight: 700; font-si
 .q {{ font-weight: 700; font-size: 12.5px; line-height: 1.3; }}
 .q small {{ display: block; font-weight: 400; font-style: italic; font-size: 11px; color: #333; margin-top: 1px; }}
 .lines {{ flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }}
-.dotgrid {{ flex: 1 1 auto; margin: 8px 0 2px; background-image: radial-gradient(circle, #7a7a7a 0 1.15px, transparent 1.5px); background-size: 25px 25px; background-position: 0 0; }}
+.notelines {{ flex: 1 1 auto; margin: 6px 0 2px; background-image: repeating-linear-gradient(to bottom, transparent 0 24px, #6a6a6a 24px 25px); background-position: 0 4px; }}
 .lines {{ position: relative; }}
 .tq {{ flex: 1 1 0; display: flex; flex-direction: column; min-height: 0; margin-top: 8px; }}
 .tq + .tq {{ border-top: 1px dashed #999; padding-top: 6px; }}
@@ -99,7 +99,14 @@ h1 {{ text-align: center; font-family: RC, sans-serif; font-weight: 700; font-si
 .rate .sc {{ white-space: nowrap; font-family: RC, sans-serif; font-size: 10.5px; color: #444; text-align: center; }}
 .rate .o {{ width: 15px; height: 15px; border: 1.3px solid #111; border-radius: 50%; justify-self: center; position: relative; font-family: RC, sans-serif; font-size: 9px; line-height: 13px; text-align: center; color: #555; }}
 .rate .o.on {{ border-color: #1d3f73; background: radial-gradient(circle, #1d3f73 0 4.5px, transparent 5px); color: transparent; }}
-.dotgrid {{ position: relative; }}
+.notelines {{ position: relative; }}
+.prep {{ display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 14px; border: 1.5px solid #111; border-radius: 9px; padding: 6px 12px 6px; font-size: 12.3px; line-height: 1.3; }}
+.prep .pl {{ font-family: RC, sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 1px; }}
+.prep span::before {{ content: ""; display: inline-block; width: 10px; height: 10px; border: 1.2px solid #111; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }}
+.prep span.on::before {{ background: #1d3f73; box-shadow: inset 0 0 0 2px #fff; }}
+.prep span.sub {{ margin-left: -4px; }}
+.prep em {{ color: #444; }}
+.prep .none {{ font-style: italic; color: #333; }}
 .tag {{ display: inline-block; vertical-align: middle; margin-left: 12px; font-family: RC, sans-serif; font-size: 14px; letter-spacing: 2px; border: 1.6px solid #006eb6; color: #006eb6; padding: 2px 8px 1px; border-radius: 4px; position: relative; top: -4px; }}
 .callout {{ position: absolute; z-index: 5; font-family: RC, sans-serif; font-size: 12px; line-height: 1.25; background: #eaf3fb; border: 1.5px solid #006eb6; color: #0b3b66; border-radius: 7px; padding: 5px 9px; box-shadow: 0 1px 0 rgba(0,0,0,.08); }}
 .page {{ position: relative; }}
@@ -138,6 +145,26 @@ def footer(side, week, day, ex=None):
     return foot("Class Notes", pg, f"Week {week} &middot; Day {day}")
 
 
+VIDEO = "Bluey or Therapy in a Nutshell video"
+
+
+def prep(week, day, done=()):
+    """The 'Before this class' checklist at the top of each Class Notes page."""
+    def box(label, t, key):
+        return f'<span class="{"on" if key in done else ""}">{label} <em>({t})</em></span>'
+    if not week:
+        items = box("Reading ___", "about 1 hour", "r")
+    elif day == 1:
+        items = box(f"Reading {week}.1: Joy of Learning", "about 1 hour", "r")
+    elif week == 1:
+        items = '<i class="none">No research seminar in Week 1.</i>'
+    else:
+        items = (f'<b style="font-weight:700">Reading {week}.2, research seminar (about 1 hour):</b>'
+                 + box(VIDEO, "15 min", "v") + box("99 Studies", "15 min", "s") + box("Paper of the Week", "30 min", "p"))
+    last = "" if (week == 1 and day == 1) else box("48-hour check from last class", "a few minutes", "c")
+    return f'<div class="prep"><b class="pl">BEFORE THIS CLASS</b>{items}{last}</div>'
+
+
 def tq(n, q="", a=""):
     """One tricky practice question: question lines, then an answer line."""
     return (f'<div class="tq"><div class="tql">Question {n}</div><div class="tqq">{lines(q)}</div>'
@@ -156,11 +183,12 @@ def front(week, day, ex=None):
     return f"""
 <div class="page"><div class="frame">
   <h1>Class Notes{tag}</h1>
-  <p class="blurb">Use this page in whatever way helps you learn. It doesn&rsquo;t need to be neat, and you
-  don&rsquo;t have to answer every question. Skip what doesn&rsquo;t fit today. If you only do two things,
-  do the <b>warm-up</b> and the <b>48-hour check</b>; those do the most for your memory. (See the example at the front of this workbook.)</p>
+  <p class="blurb">You&rsquo;re welcome to take notes however works best for you. This page is here to help: use the parts
+  that help you learn and skip the rest. If you only do two things, do the <b>warm-up</b> and the <b>48-hour check</b>;
+  those do the most for your memory.{"" if ex else " (See the example on pages v&ndash;vi.)"}</p>
+  {prep(e.get("week", week), e.get("day", int(day) if day else 0), e.get("done", ()))}
 
-  <section class="box" style="height:2.05in; flex:none">
+  <section class="box" style="height:1.92in; flex:none">
     <div class="bar"><div class="tab">BEFORE CLASS</div><div class="hint">First few minutes</div>
       <div class="date">Date:{date or '<span></span>'}</div></div>
     <div class="cols" style="grid-template-columns: 1.15fr 1fr">
@@ -171,11 +199,11 @@ def front(week, day, ex=None):
   </section>
 
   <section class="box grow">
-    <div class="bar"><div class="tab">DURING CLASS</div><div class="hint">Take notes on the right. Use the left for tricky practice questions.</div></div>
+    <div class="bar"><div class="tab">DURING CLASS</div><div class="hint">Tricky practice questions on the left; notes on the right if you want them.</div></div>
     <div class="cols" style="grid-template-columns: 2.05in 1fr">
       <div class="cell"><div class="q">Tricky practice questions<small>From your practice quizzes: ones you missed or almost missed. Write the right answer too.</small></div>
         {tq(1, e.get("q1", ""), e.get("a1", ""))}{tq(2, e.get("q2", ""), e.get("a2", ""))}</div>
-      <div class="cell"><div class="q">Notes<small>Write, sketch, map, or draw. Whatever helps you remember.</small></div><div class="dotgrid">{e.get("notes", "")}</div></div>
+      <div class="cell"><div class="q">Notes (optional)<small>Here, in a notebook, or on a laptop: whatever works for you.</small></div><div class="notelines">{e.get("notes", "")}</div></div>
     </div>
   </section>
   {footer("Front", week, day, ex)}
