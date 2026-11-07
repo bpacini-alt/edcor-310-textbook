@@ -453,8 +453,7 @@ def main():
     pages = front_pages(units, chapters, supplements)
     pages["index.html"] = pages["index.html"].replace(
         '<div class="fm-actions">',
-        '<div class="fm-actions">
-      <a class="fm-btn fm-btn-quiet" href="/downloads/EDCOR310_Workbook.pdf">Download the course workbook</a>',
+        '<div class="fm-actions">\n      <a class="fm-btn fm-btn-quiet" href="/downloads/EDCOR310_Workbook.pdf">Download the course workbook</a>',
         1,
     )
     for path, content in pages.items():
