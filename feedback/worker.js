@@ -113,6 +113,11 @@ const RATINGS_SCHEMA = [
   '  semester TEXT NOT NULL,',
   '  rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 4),',
   '  comment TEXT NOT NULL DEFAULT \'\',',
+  '  improvement TEXT NOT NULL DEFAULT \'\',',
+  '  clarity_rating INTEGER CHECK (clarity_rating BETWEEN 1 AND 5),',
+  '  practice_rating INTEGER CHECK (practice_rating BETWEEN 1 AND 5),',
+  '  practice_na INTEGER NOT NULL DEFAULT 0 CHECK (practice_na IN (0, 1)),',
+  '  polish_rating INTEGER CHECK (polish_rating BETWEEN 1 AND 5),',
   '  client_id TEXT NOT NULL,',
   '  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,',
   '  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,',
@@ -159,10 +164,20 @@ function validRatingTarget(book, reading) {
 
 async function ratingMine(db, book, semester, clientId) {
   const rows = await db.prepare(
-    'SELECT reading_id, rating FROM reading_ratings WHERE book = ? AND semester = ? AND client_id = ?'
+    'SELECT reading_id, rating, clarity_rating, practice_rating, practice_na, polish_rating, comment, improvement FROM reading_ratings WHERE book = ? AND semester = ? AND client_id = ?'
   ).bind(book, semester, clientId).all();
   const ratings = {};
-  for (const row of rows.results || []) ratings[row.reading_id] = Number(row.rating);
+  for (const row of rows.results || []) {
+    ratings[row.reading_id] = {
+      rating: Number(row.rating),
+      clarity: row.clarity_rating == null ? null : Number(row.clarity_rating),
+      practice: row.practice_rating == null ? null : Number(row.practice_rating),
+      practice_na: Number(row.practice_na) === 1,
+      polish: row.polish_rating == null ? null : Number(row.polish_rating),
+      comment: row.comment || '',
+      improvement: row.improvement || '',
+    };
+  }
   return { ok: true, book, semester, ratings };
 }
 
@@ -211,84 +226,139 @@ async function ratingSummaries(db, book, semester, clientId) {
   return { ok: true, book, semester, summaries };
 }
 
+function optionalQualityScore(value) {
+  if (value === null || value === undefined || value === '') return null;
+  const score = Number(value);
+  return Number.isInteger(score) && score >= 1 && score <= 5 ? score : undefined;
+}
+
 async function handleRatings(request, env) {
   try {
-  if (!['GET', 'POST'].includes(request.method)) return ratingJson(405, { error: 'method' });
-  const origin = request.headers.get('Origin');
-  if (origin && origin !== new URL(request.url).origin) return ratingJson(403, { error: 'origin' });
-  if (!env.RATINGS_DB) return ratingJson(503, { error: 'ratings_not_configured' });
+    if (!['GET', 'POST'].includes(request.method)) return ratingJson(405, { error: 'method' });
+    const origin = request.headers.get('Origin');
+    if (origin && origin !== new URL(request.url).origin) return ratingJson(403, { error: 'origin' });
 
-  const url = new URL(request.url);
-  let book = clean(url.searchParams.get('book'), 60);
-  let reading = clean(url.searchParams.get('reading'), 100);
-  let rating = null;
-  let comment = '';
-  let improvement = '';
-  const mineRequest = request.method === 'GET' && url.searchParams.get('mine') === '1';
-  const allRequest = request.method === 'GET' && url.searchParams.get('all') === '1';
+    const url = new URL(request.url);
+    let book = clean(url.searchParams.get('book'), 60);
+    let reading = clean(url.searchParams.get('reading'), 100);
+    let rating = null;
+    let comment = '';
+    let improvement = '';
+    let clarity = null;
+    let practice = null;
+    let practiceNA = false;
+    let polish = null;
+    let mineRequest = request.method === 'GET' && url.searchParams.get('mine') === '1';
+    let allRequest = request.method === 'GET' && url.searchParams.get('all') === '1';
 
-  if (request.method === 'POST') {
-    const raw = await request.text();
-    if (raw.length > 4000) return ratingJson(413, { error: 'too_large' });
-    let data;
-    try { data = JSON.parse(raw); } catch { return ratingJson(400, { error: 'bad_json' }); }
-    book = clean(data && data.book, 60);
-    reading = clean(data && data.reading, 100);
-    rating = Number(data && data.rating);
-    comment = clean(data && data.comment, 1000);
-    improvement = clean(data && data.improvement, 1000);
-  }
+    if (request.method === 'POST') {
+      const raw = await request.text();
+      if (raw.length > 4000) return ratingJson(413, { error: 'too_large' });
+      let data;
+      try { data = JSON.parse(raw); } catch { return ratingJson(400, { error: 'bad_json' }); }
+      book = clean(data && data.book, 60);
+      reading = clean(data && data.reading, 100);
+      rating = Number(data && data.rating);
+      comment = clean(data && data.comment, 1000);
+      improvement = clean(data && data.improvement, 1000);
+      clarity = optionalQualityScore(data && data.clarity);
+      practice = optionalQualityScore(data && data.practice);
+      practiceNA = !!(data && (data.practice_na === true || data.practice_na === 1));
+      polish = optionalQualityScore(data && data.polish);
+      if (practiceNA) practice = null;
+    }
 
-  if (mineRequest || allRequest) {
-    if (!RATING_BOOKS.has(book)) return ratingJson(400, { error: 'bad_target' });
-  } else if (!validRatingTarget(book, reading)) return ratingJson(400, { error: 'bad_target' });
-  if (request.method === 'POST' && (!Number.isInteger(rating) || rating < 1 || rating > 4)) {
-    return ratingJson(400, { error: 'bad_rating' });
-  }
+    if (mineRequest || allRequest) {
+      if (!RATING_BOOKS.has(book)) return ratingJson(400, { error: 'bad_target' });
+    } else if (!validRatingTarget(book, reading)) {
+      return ratingJson(400, { error: 'bad_target' });
+    }
 
-  const clientId = getCookie(request, 'bb_client') || crypto.randomUUID();
-  const semester = semesterKey(env);
-  await env.RATINGS_DB.prepare(
-    'CREATE TABLE IF NOT EXISTS reading_ratings (' +
-    'id INTEGER PRIMARY KEY AUTOINCREMENT,' +
-    'book TEXT NOT NULL,' +
-    'reading_id TEXT NOT NULL,' +
-    'semester TEXT NOT NULL,' +
-    'rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 4),' +
-    'comment TEXT NOT NULL DEFAULT \'\',' +
-    'client_id TEXT NOT NULL,' +
-    'created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,' +
-    'updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,' +
-    'UNIQUE (book, reading_id, semester, client_id)' +
-    ')'
-  ).run();
-  await env.RATINGS_DB.prepare(
-    'CREATE INDEX IF NOT EXISTS idx_reading_ratings_lookup ON reading_ratings (book, reading_id, semester)'
-  ).run();
-  const ratingColumns = await env.RATINGS_DB.prepare('PRAGMA table_info(reading_ratings)').all();
-  const columns = ratingColumns.results || [];
-  if (!columns.some(row => row.name === 'comment')) {
-    await env.RATINGS_DB.prepare("ALTER TABLE reading_ratings ADD COLUMN comment TEXT NOT NULL DEFAULT ''").run();
-  }
-  if (!columns.some(row => row.name === 'improvement')) {
-    await env.RATINGS_DB.prepare("ALTER TABLE reading_ratings ADD COLUMN improvement TEXT NOT NULL DEFAULT ''").run();
-  }
+    if (request.method === 'POST' && (!Number.isInteger(rating) || rating < 1 || rating > 4)) {
+      return ratingJson(400, { error: 'bad_rating' });
+    }
+    if (request.method === 'POST' && (clarity === undefined || practice === undefined || polish === undefined)) {
+      return ratingJson(400, { error: 'bad_quality_rating' });
+    }
 
-  if (allRequest) return ratingJson(200, await ratingSummaries(env.RATINGS_DB, book, semester, clientId), clientId);
-  if (mineRequest) return ratingJson(200, await ratingMine(env.RATINGS_DB, book, semester, clientId), clientId);
+    // Worker Previews use this branch and have no D1 binding. Submissions are acknowledged
+    // for interface review only and never reach the shared production database.
+    if (env.RATINGS_PREVIEW_MODE === 'true') {
+      if (request.method === 'GET' && mineRequest) {
+        return ratingJson(200, { ok: true, book, semester: 'preview', ratings: {}, preview: true });
+      }
+      if (request.method === 'GET' && allRequest) {
+        return ratingJson(200, { ok: true, book, semester: 'preview', summaries: {}, preview: true });
+      }
+      if (request.method === 'POST') {
+        return ratingJson(200, { ok: true, book, reading, semester: 'preview', yourRating: rating, preview: true });
+      }
+      return ratingJson(200, {
+        ok: true, book, reading, semester: 'preview',
+        counts: { 1: 0, 2: 0, 3: 0, 4: 0 }, total: 0,
+        percentages: { 1: 0, 2: 0, 3: 0, 4: 0 }, yourRating: null, preview: true,
+      });
+    }
 
-  if (request.method === 'POST') {
-    await env.RATINGS_DB.batch([
-      env.RATINGS_DB.prepare(
-        'DELETE FROM reading_ratings WHERE book = ? AND reading_id = ? AND semester = ? AND client_id = ?'
-      ).bind(book, reading, semester, clientId),
-      env.RATINGS_DB.prepare(
-        'INSERT INTO reading_ratings (book, reading_id, semester, rating, client_id, comment, improvement) VALUES (?, ?, ?, ?, ?, ?, ?)'
-      ).bind(book, reading, semester, rating, clientId, comment, improvement),
-    ]);
-  }
+    if (!env.RATINGS_DB) return ratingJson(503, { error: 'ratings_not_configured' });
 
-  return ratingJson(200, await ratingSummary(env.RATINGS_DB, book, reading, semester, clientId), clientId);  } catch (error) {
+    const clientId = getCookie(request, 'bb_client') || crypto.randomUUID();
+    const semester = semesterKey(env);
+    await env.RATINGS_DB.prepare(
+      'CREATE TABLE IF NOT EXISTS reading_ratings (' +
+      'id INTEGER PRIMARY KEY AUTOINCREMENT,' +
+      'book TEXT NOT NULL,' +
+      'reading_id TEXT NOT NULL,' +
+      'semester TEXT NOT NULL,' +
+      'rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 4),' +
+      'comment TEXT NOT NULL DEFAULT \'\',' +
+      'improvement TEXT NOT NULL DEFAULT \'\',' +
+      'clarity_rating INTEGER CHECK (clarity_rating BETWEEN 1 AND 5),' +
+      'practice_rating INTEGER CHECK (practice_rating BETWEEN 1 AND 5),' +
+      'practice_na INTEGER NOT NULL DEFAULT 0 CHECK (practice_na IN (0, 1)),' +
+      'polish_rating INTEGER CHECK (polish_rating BETWEEN 1 AND 5),' +
+      'client_id TEXT NOT NULL,' +
+      'created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,' +
+      'updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,' +
+      'UNIQUE (book, reading_id, semester, client_id)' +
+      ')'
+    ).run();
+    await env.RATINGS_DB.prepare(
+      'CREATE INDEX IF NOT EXISTS idx_reading_ratings_lookup ON reading_ratings (book, reading_id, semester)'
+    ).run();
+
+    const ratingColumns = await env.RATINGS_DB.prepare('PRAGMA table_info(reading_ratings)').all();
+    const columns = ratingColumns.results || [];
+    const migrations = [
+      ['comment', "ALTER TABLE reading_ratings ADD COLUMN comment TEXT NOT NULL DEFAULT ''"],
+      ['improvement', "ALTER TABLE reading_ratings ADD COLUMN improvement TEXT NOT NULL DEFAULT ''"],
+      ['clarity_rating', 'ALTER TABLE reading_ratings ADD COLUMN clarity_rating INTEGER CHECK (clarity_rating BETWEEN 1 AND 5)'],
+      ['practice_rating', 'ALTER TABLE reading_ratings ADD COLUMN practice_rating INTEGER CHECK (practice_rating BETWEEN 1 AND 5)'],
+      ['practice_na', 'ALTER TABLE reading_ratings ADD COLUMN practice_na INTEGER NOT NULL DEFAULT 0 CHECK (practice_na IN (0, 1))'],
+      ['polish_rating', 'ALTER TABLE reading_ratings ADD COLUMN polish_rating INTEGER CHECK (polish_rating BETWEEN 1 AND 5)'],
+    ];
+    for (const migration of migrations) {
+      if (!columns.some(row => row.name === migration[0])) {
+        await env.RATINGS_DB.prepare(migration[1]).run();
+      }
+    }
+
+    if (allRequest) return ratingJson(200, await ratingSummaries(env.RATINGS_DB, book, semester, clientId), clientId);
+    if (mineRequest) return ratingJson(200, await ratingMine(env.RATINGS_DB, book, semester, clientId), clientId);
+
+    if (request.method === 'POST') {
+      await env.RATINGS_DB.batch([
+        env.RATINGS_DB.prepare(
+          'DELETE FROM reading_ratings WHERE book = ? AND reading_id = ? AND semester = ? AND client_id = ?'
+        ).bind(book, reading, semester, clientId),
+        env.RATINGS_DB.prepare(
+          'INSERT INTO reading_ratings (book, reading_id, semester, rating, client_id, comment, improvement, clarity_rating, practice_rating, practice_na, polish_rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+        ).bind(book, reading, semester, rating, clientId, comment, improvement, clarity, practice, practiceNA ? 1 : 0, polish),
+      ]);
+    }
+
+    return ratingJson(200, await ratingSummary(env.RATINGS_DB, book, reading, semester, clientId), clientId);
+  } catch (error) {
     return ratingJson(500, {
       error: 'ratings_database_error',
       message: error instanceof Error ? error.message : String(error),
