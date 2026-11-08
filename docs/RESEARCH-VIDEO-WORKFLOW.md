@@ -85,6 +85,18 @@ Always explain the reason for the label. For example:
 
 Do not label a claim “strong” merely because it appears in a meta-analysis. Do not label a claim “settled” if the synthesis contains few studies, large heterogeneity, weak designs, or competing explanations.
 
+## Public-facing name and credential
+
+Use **Dr. Benjamin Pacini** in public-facing YouTube copy, on-camera introductions, title cards, and descriptions.
+
+The credential is professional context, not a substitute for evidence. It tells viewers who is speaking and why the video is part of a professional teaching practice; the linked studies, methods, limitations, and evidence calibration should still carry the argument.
+
+Recommended on-camera opening:
+
+> Hi, I’m Dr. Benjamin Pacini. I teach educational psychology and human development, and today I want to show you one research finding I think teachers and parents should know.
+
+Use **Dr. Benjamin Pacini** rather than “Ben Pacini” in the finished video and its public-facing notes. Informal classroom conversation can remain informal; this convention is for the published research-video series.
+
 ## YouTube show notes
 
 YouTube descriptions should be readable on their own. They should not require viewers to have watched the video or opened the textbook.
@@ -152,7 +164,7 @@ Recommended language:
 
     [One-sentence hook.]
 
-    In this short Research Side-Quest, I look at [claim or question]. The video
+    In this short Research Side-Quest, Dr. Benjamin Pacini looks at [claim or question]. The video
     compresses several related findings into a short classroom message.
 
     ## What the research says
