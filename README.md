@@ -10,3 +10,7 @@ The home page, table of contents, and published chapter pages are generated from
     python3 build/build_site.py
 
 Run it after any change to chapter titles, subtitles, unit pages, chapter content, or book order, and commit the updated `site/` files.
+
+## Research videos and book side quests
+
+See [docs/RESEARCH-VIDEO-WORKFLOW.md](docs/RESEARCH-VIDEO-WORKFLOW.md) for the standard workflow for YouTube show notes, evidence calibration, and in-chapter Research Side-Quest boxes.
