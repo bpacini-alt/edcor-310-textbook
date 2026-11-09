@@ -396,6 +396,16 @@ Benjamin will do one more pass on Chapters 13 and 14 later; it isn't scheduled y
 
 **Status:** Deferred until Benjamin is ready for the pass.
 
+### EDCOR 310: Chapters 17–18 rewrite follow-ups (recorded November 9, 2026)
+
+The co-author drafts of Chapters 17 and 18 replaced the earlier versions. These items are still open:
+
+- **Egoistic and altruistic belonging (Chapters 14 and 18).** Benjamin wants a deeper look. Chapter 14 names no source for these terms, a search found no established use of the pair, and Durkheim used "egoistic" and "altruistic" differently. The closest published idea is Prilleltensky's mattering ("feeling valued" and "adding value"). Chapter 14's claim that being needed is sturdier than being seen also has no citation.
+- **Chapter 20 matching edit.** Soften "the devastating effects of social exclusion" in the Maslow table once PR #122 is settled. Both change the same line of the file.
+- **PR #119.** Its accuracy fixes are superseded by the rewrite and can be closed once Benjamin merges it.
+- **Video links.** Confirm the six Learn More videos in Chapters 17 and 18 still match their titles. Their addresses are unchanged from the earlier versions.
+- **Record for later.** Chapter 18's interdependence advice leans on Robbers Cave and the contact research. Classroom evidence on the jigsaw method could strengthen it.
+
 ### EDCOR 310: Chapter 16 rewrite (recorded October 30, 2026)
 
 Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actually Builds It?** (rev. 4, October 30), opening with the self-esteem movement, around six concepts: Self-Esteem, Determinism, Learned Helplessness, Attribution (which now includes feedback and praise), Efficacy Engineering, and Autonomy Support. It replaced the old Chapter 16 ("Agency vs. Determinism") on October 30, after Mayleigh's review.
