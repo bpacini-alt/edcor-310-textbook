@@ -189,11 +189,11 @@ def front(week, day, ex=None):
   {prep(e.get("week", week), e.get("day", int(day) if day else 0), e.get("done", ()))}
 
   <section class="box" style="height:1.92in; flex:none">
-    <div class="bar"><div class="tab">BEFORE CLASS</div><div class="hint">First few minutes</div>
+    <div class="bar"><div class="tab">START OF CLASS</div><div class="hint">Warm-up first, then the objective once it&rsquo;s shown</div>
       <div class="date">Date:{date or '<span></span>'}</div></div>
     <div class="cols" style="grid-template-columns: 1.15fr 1fr">
       <div class="cell"><div class="q">Warm-up: Without looking, what do you remember from last class?</div>{lines(e.get("warm", ""))}</div>
-      <div class="cell"><div class="q">Today&rsquo;s objective, in your own words:</div>{lines(e.get("objective", ""))}
+      <div class="cell"><div class="q">Today&rsquo;s objective, in your own words<small>Write it once it&rsquo;s shown at the start of class.</small></div>{lines(e.get("objective", ""))}
         {checks(["Yes", "Partly", "Not yet"], e.get("got"), lead='<b style="font-weight:700">At the end, did I get there?</b>')}</div>
     </div>
   </section>
