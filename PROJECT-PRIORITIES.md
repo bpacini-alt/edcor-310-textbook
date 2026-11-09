@@ -405,6 +405,11 @@ The co-author drafts of Chapters 17 and 18 replaced the earlier versions. These 
 - **PR #119.** Its accuracy fixes are superseded by the rewrite and can be closed once Benjamin merges it.
 - **Video links.** Confirm the six Learn More videos in Chapters 17 and 18 still match their titles. Their addresses are unchanged from the earlier versions.
 - **Record for later.** Chapter 18's interdependence advice leans on Robbers Cave and the contact research. Classroom evidence on the jigsaw method could strengthen it.
+- **Worth Remembering line needs approval.** Benjamin isn't sure one of the Chapter 17–18 aphorisms has enough power yet. He will say which one.
+- **Chapter 17 recap line.** The end-of-chapter recap still reads "Sometimes. Examine it, then keep the good ones on purpose." The same line in Concept 1 now uses Benjamin's newer wording. Decide whether the recap should match.
+- **Retrieval practice.** The current boxes are mostly quick application checks, so they aren't true retrieval. Standardize retrieval practice to prompts like "What is the word for…" or "Explain in your own words the meaning of…". Quick checks are useful too; they serve a different purpose. Decide whether this applies only to Chapters 17–18 or to the whole book.
+- **Add practice.** Chapters 17 and 18 still need practice.
+- **Two phrasing issues in Chapter 18.** Benjamin has two minor wording fixes to come back to. He will say which.
 
 ### EDCOR 310: Chapter 16 rewrite (recorded October 30, 2026)
 
