@@ -166,6 +166,28 @@ Current working direction: explore student-choice practice with optional test-ou
 
 The immediate goal is not to standardize every chapter. It is to learn from a few careful pilots, then decide what deserves to scale.
 
+### Priority 2 companion — Standard retrieval practice (both books, recorded November 9, 2026)
+
+**Benjamin's direction:** This is important to tackle in both books. Optimize for quality of recall: students recall over and over again. Keep it simple, clear, and direct.
+
+**The problem:** Many Retrieval Practice boxes are really quick application checks. Those are useful, but they serve a different purpose from recalling an idea from memory.
+
+**The work:**
+
+1. Create one standard form for both books. Benjamin approves it after seeing it in one chapter from each book.
+2. Apply it to every chapter in both books.
+3. Keep good application questions, labeled as Quick Checks, so they aren't lost.
+4. Build in repeated recall, so students meet the same ideas again later in the chapter and in later chapters.
+
+**Starting draft of the form (not yet approved):**
+
+- **Name it:** "What is the word for ___?"
+- **Explain it:** "Explain in your own words the meaning of ___."
+- Students answer from memory first, then open the answer.
+- Each prompt asks for one idea.
+
+**Related:** The audio player item under "Known problems" (try first, pause, then hear the answer) should use the same form.
+
 ### Priority 2 — Make every chapter practice-rich
 
 Over time, make chapters more active and practice-rich through retrieval, explanation, application, feedback, and transfer. The exact design remains an open question; see the [Precise Practice design notebook](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/PRECISE-PRACTICE-DESIGN.md) for deliberate brainstorming and prototype ideas.
@@ -407,7 +429,7 @@ The co-author drafts of Chapters 17 and 18 replaced the earlier versions. These 
 - **Record for later.** Chapter 18's interdependence advice leans on Robbers Cave and the contact research. Classroom evidence on the jigsaw method could strengthen it.
 - **Worth Remembering line needs approval.** Benjamin isn't sure one of the Chapter 17–18 aphorisms has enough power yet. He will say which one.
 - **Chapter 17 recap line.** The end-of-chapter recap still reads "Sometimes. Examine it, then keep the good ones on purpose." The same line in Concept 1 now uses Benjamin's newer wording. Decide whether the recap should match.
-- **Retrieval practice.** The current boxes are mostly quick application checks, so they aren't true retrieval. Standardize retrieval practice to prompts like "What is the word for…" or "Explain in your own words the meaning of…". Quick checks are useful too; they serve a different purpose. Decide whether this applies only to Chapters 17–18 or to the whole book.
+- **Retrieval practice.** Now a whole-book item for both books. See "Priority 2 companion — Standard retrieval practice."
 - **Add practice.** Chapters 17 and 18 still need practice.
 - **Two phrasing issues in Chapter 18.** Benjamin has two minor wording fixes to come back to. He will say which.
 
