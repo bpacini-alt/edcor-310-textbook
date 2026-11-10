@@ -49,7 +49,8 @@ These are the questions from the earlier workflow. They reward the student who r
 
 - One question on today's chapter that takes understanding: a calculation, a graph reading in words, or an application to a new case.
 - Build it as a **parallel** to the common quiz item on this chapter's topic: the same skill with a new context and new numbers. Never copy a graded quiz item.
-- Students take it before class, so it must be fair to someone who read the chapter carefully but hasn't been taught it yet. It can be hard; it can't depend on class.
+- Aim it at what the common quiz actually asks about this chapter, and only at material the class has reached by that day. If the chapter goes further than the quiz or than class has gone (in Econ 17, measuring deadweight loss), leave that out of slot 6.
+- Students take it before class, so it must be fair to someone who read the chapter carefully but hasn't been taught it yet. It can be harder than the other slots; it can't depend on class.
 - Make each wrong answer a specific, common mistake (for example: forgetting the ½, or reporting total damage as deadweight loss). Then the answer split tells Benjamin what to teach.
 - This is the only slot where application and calculation belong.
 
@@ -201,4 +202,4 @@ A valid file can still have a content error. Review the answer key yourself, sep
 
 | Date | Course and session | Chapter | Notes |
 |---|---|---|---|
-| November 10, 2026 | Econ 150, Session 17 | 17, Externalities | First quiz in the ten-slot format. Slot 6 is a deadweight-loss calculation parallel to the paper-mill items on the Market Failures common quiz. Retrieval from Ch 15 (elasticity), Ch 7 (tax deadweight loss), and Ch 9 (MC and ATC, the exam's most-missed idea). Import result: to be recorded after class. |
+| November 10, 2026 | Econ 150, Session 17 | 17, Externalities | First quiz in the ten-slot format. Slot 6 is a positive-externality question (direction and size of underproduction, and D2 − D1 as the external benefit), parallel to Market Failures common quiz items 10–11. A first draft asked students to calculate deadweight loss; Benjamin cut it because class hasn't covered that yet, which led to the slot 6 rule about staying within the quiz and class. Retrieval from Ch 15 (elasticity), Ch 7 (tax deadweight loss), and Ch 9 (MC and ATC, the exam's most-missed idea). Import result: to be recorded after class. |
