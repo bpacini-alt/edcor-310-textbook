@@ -1,382 +1,204 @@
-> **Status: Candidate workflow / deliberate brainstorming.**  
-> This is one proposed way to create lightweight reading checks and package them for Top Hat. It is not a permanent assessment protocol. Keep the conceptual distinction between reading checks and deeper application practice, but validate the technical details through an actual Top Hat import before treating this workflow as settled.
+> **Status: Standard for both courses, set by Benjamin on November 10, 2026.**
+> This replaces the earlier five-question reading-check workflow. The first import under this format was the Econ 150 Session 17 pilot (November 10, 2026); see the pilot log at the end. The pedagogy and the ten-slot layout are settled. Re-test the Top Hat import details whenever an import fails or Top Hat changes its importer.
 
-# Reading-Check Quizzes: Pedagogy, Workflow, and Top Hat QTI
+# Class Quizzes in Top Hat: Format, Workflow, and QTI Packaging
 
-This document describes the repeatable process for turning a textbook chapter into a short, importable reading-check quiz.
+This document describes how to build the short Top Hat quiz students take at the start of class, for Econ 150 and EDCOR 310. The same document lives in both textbook repositories; change it in both, in matching pull requests.
 
-The central question is simple:
+## 1. What the quiz is for
 
-> **Did the student read the chapter?**
+Students take the quiz in the first few minutes of class. It used to ask one question: did the student read the chapter? It now does more than that. Each quiz gives students a short round of practice:
 
-These quizzes are not intended to measure sophisticated application, transfer, calculation, or comparative statics. Those belong in class activities, practice sets, exams, and application quizzes. The reading check should reward students who noticed and remembered what the chapter actually said.
+- easy recall of today's vocabulary and concepts, so everyone starts with a few wins;
+- questions that are easy only if you read the chapter, so reading still pays off;
+- one strong question on today's chapter that takes real understanding;
+- retrieval practice on chapters from earlier in the course, drawn from the course's quizzes and practice quizzes, so the Top Hat quiz is also a chance to practice for the quizzes that count; and
+- an honest check on whether the student prepared for class.
 
-## 1. Why use a reading check?
+It is still short and automatically scored. The strong question (slot 6) gives the class something to start from: Top Hat shows how answers split, so class can open by teaching from it.
 
-A reading assignment without retrieval is easy to misunderstand. Students may read the words, recognize the ideas while the text is in front of them, and then retain very little afterward. A short quiz creates a reason to read attentively and gives students a small amount of retrieval practice immediately after reading.
+## 2. The ten slots
 
-The quiz also protects the role of the textbook. If the quiz asks only for generic definitions or requires students to solve novel problems, students can sometimes succeed without reading the chapter. A good reading check makes the chapter's own stories, examples, language, and claims matter.
+Every quiz has exactly ten questions, in this order.
 
-The quiz should therefore be:
+| # | Slot | What it asks | Source | Difficulty |
+|---|---|---|---|---|
+| 1–3 | Vocabulary and concept identification | Name a term from its meaning, or classify a simple example | Today's chapter | Easy |
+| 4–5 | Reading checks | The chapter's own stories, examples, numbers, and claims | Today's chapter; written new | Easy if you read it |
+| 6 | The strong question | One high-quality question that takes understanding, not just recall | Today's chapter; parallel to the common quiz item on this chapter | Harder |
+| 7–9 | Retrieval from earlier chapters | Concepts from earlier chapters and units | The course's quizzes and practice quizzes | Moderate |
+| 10 | Preparation | "Did you fully prepare for class today?" Yes / No | Fixed | Credit for either answer |
 
-- short enough that it does not compete with the chapter;
-- specific enough that reading is rewarded;
-- memorable enough that students remember the chapter's central images and claims;
-- easy to score automatically; and
-- separate from the deeper application work that happens elsewhere.
+## 3. Rules for each slot
 
-## 2. What belongs in the quiz?
+### Slots 1–3: vocabulary and concept identification
 
-The best candidates usually come from the chapter's most memorable material:
+- Use the same form as the books' retrieval practice: "What is the word for…?" or "What is the term for…?", with the meaning in the stem and terms as the choices.
+- One slot may ask students to classify a simple, new example (for instance, which type of externality a situation is). Keep it easy.
+- Distractors are real terms from the same chapter or course, so a student who only half knows them has to think.
 
-- opening stories and hooks;
-- aphorisms, quips, and memorable turns of phrase;
-- names of thinkers, researchers, companies, or historical examples;
-- unusual numbers or comparisons that make an idea concrete;
-- distinctive examples used to explain a concept;
-- important claims made in the chapter's own language;
-- diagrams or narratives that students should recognize; and
-- vocabulary when the chapter gives the term a particularly useful meaning.
+### Slots 4–5: reading checks
 
-The strongest question is often not “Why is this important?” but:
+These are the questions from the earlier workflow. They reward the student who read.
 
-> **Which example, phrase, person, number, or claim did the chapter use?**
+- Pull from the chapter's most memorable material: opening stories and hooks, aphorisms and memorable phrases, named people and examples, unusual numbers, and the chapter's central claims in its own language.
+- Ask which example, phrase, person, number, or claim the chapter used, rather than "why is this important?"
+- No novel scenarios or calculations in these slots.
 
-For example, rather than asking students to apply a general principle to a new housing market, ask them to identify the chapter's explanation of who benefits from restricted housing and who bears the cost. Rather than asking students to solve a new supply-and-demand problem, ask what happened in the chapter's two-city housing story.
+### Slot 6: the strong question
 
-## 3. The standard workflow
+- One question on today's chapter that takes understanding: a calculation, a graph reading in words, or an application to a new case.
+- Build it as a **parallel** to the common quiz item on this chapter's topic: the same skill with a new context and new numbers. Never copy a graded quiz item.
+- Students take it before class, so it must be fair to someone who read the chapter carefully but hasn't been taught it yet. It can be hard; it can't depend on class.
+- Make each wrong answer a specific, common mistake (for example: forgetting the ½, or reporting total damage as deadweight loss). Then the answer split tells Benjamin what to teach.
+- This is the only slot where application and calculation belong.
 
-### Step 1: Gather the chapter
+### Slots 7–9: retrieval from earlier chapters
 
-Use the cleanest available source:
+- One question from **two or three chapters back**, and two from **an earlier unit**, so the spacing widens.
+- Prefer concepts the class is about to review or that students recently missed (check the session slides' agenda and exam notes).
+- Source them from the course's quizzes, practice quizzes, practice banks, and memorization quizzes (see section 4).
+- **Graded quizzes:** write parallel versions only (the same idea with a different example or different numbers). Practice quizzes that mirror a graded quiz word for word count as graded for this rule.
+- **Practice-bank items** written for practice (for example, `practice-engines` items) may be reused word for word when they are single-answer multiple choice. They may keep two or three choices if that is how they were written.
+- Stems may name the chapter ("Back in Chapter 7…") when that helps students place the idea.
 
-1. direct chapter HTML or text when available;
-2. a PDF when the web page is inaccessible; or
-3. pasted text as a fallback.
+### Slot 10: preparation
 
-The chapter should be read as a whole. The goal is not to pull isolated vocabulary from a summary. We want to understand what the author emphasized, what stories carried the chapter, and what claims students are most likely to remember.
+- Always exactly: **"Did you fully prepare for class today?"** with the choices **Yes** and **No**, in that order.
+- Either answer earns the point. An honest "No" should never cost a student, or students learn to click Yes.
+- The QTI import can mark only one answer correct, so the package keys "Yes." After import, open this question in Top Hat and either mark both answers correct or set it to participation credit (see section 8).
 
-If a web page is blocked or returns incomplete content, provide the HTML, PDF, or text rather than relying on a partial scrape. The source supplied for quiz writing should be treated as authoritative.
+## 4. Sources by course
 
-### Step 2: Generate ten candidates
+### Econ 150
 
-For each chapter, generate **10 candidate four-option, single-answer multiple-choice questions**. The candidates should cover the chapter's strongest reading-check material rather than distribute evenly across every paragraph.
+| Source | Where | Use |
+|---|---|---|
+| Chapter pages | `etb-live/ChapterN.html` in this repository | Slots 1–6 |
+| Session slides | Google Drive, "Econ 150 Micro Session N" (find the chapter, agenda, and exam notes for the day) | Choosing the chapter and slots 6–9 |
+| Original common quizzes (graded) | `legacy/econ-150/quiz-sources/original/` in `practice-engines` | Parallel versions only (slots 6–9) |
+| Practice quizzes and answer keys | `legacy/econ-150/quiz-sources/practice/` in `practice-engines` | These mirror the graded quizzes, so parallel versions only |
+| Memorization quizzes (Units 1–4) | `legacy/econ-150/memorization-quizzes/` in `practice-engines` | Vocabulary, rules, and stories for slots 1–3 and 7–9 |
+| Live practice banks | `items/econ-150/` in `practice-engines` | Single-answer items may be reused as written |
 
-The initial set should deliberately include variety:
+Everything in `practice-engines/legacy/` is historical. Check any item against the current chapter before using it.
 
-- a story or opening hook;
-- an aphorism or distinctive phrase;
-- a named thinker, company, or example;
-- a central claim;
-- a concrete number or comparison;
-- a key term in the chapter's own framing; and
-- one or two questions that test the chapter's central narrative.
+### EDCOR 310
 
-The user then selects the preferred questions. The final quiz will often contain five questions, although the number can vary by chapter.
+**Pending.** Benjamin is gathering the EDCOR 310 quizzes and practice quizzes. Until they arrive, build EDCOR quizzes from the chapter for slots 1–6, and for slots 7–9 use earlier chapters and the concept banks in `practice-engines/legacy/edcor-310/supporting/`. When the quiz sources arrive, add them to this table (in both repositories) and clear the matching item in EDCOR 310's `PROJECT-PRIORITIES.md`.
 
-### Step 3: Modify the selected questions
+## 5. The workflow
 
-The first draft is a candidate pool, not the final quiz. During revision:
+1. **Find the day's chapter.** Use the session slides for the class day (they name the chapter and show the agenda). The session number and chapter number often match but don't have to.
+2. **Read the whole chapter**, from this repository's page. Note the vocabulary cards, stories, misconceptions, worked examples, and quiz-watch notes.
+3. **Find the sources for slots 6–9**: the common quiz on this chapter's topic, and two or three earlier topics worth retrieving (section 4).
+4. **Draft candidates.** For a normal build, draft about 14: five vocabulary, five reading checks, and four for slots 6–9. Benjamin picks nine; slot 10 is fixed. When Benjamin asks for a quiz the same day, draft the nine directly and offer swaps.
+5. **Revise** the selected questions: sharpen stems, make sure only one choice is defensible, and keep the language plain.
+6. **Quality-control pass** (section 6).
+7. **Record and package** the quiz (section 7), and validate it.
+8. **Send Benjamin** the zip and a readable copy of the questions with the key.
+9. **Import, fix slot 10, and preview** in Top Hat (section 8).
 
-- sharpen vague stems;
-- make the correct answer express the chapter's actual point;
-- replace “why is this important?” wording with recognition of the chapter's example or claim;
-- remove accidental application or calculation;
-- clarify any pronouns, dates, names, or comparisons;
-- ensure that only one option is defensible; and
-- keep the question readable without making it obvious.
+## 6. Quality control
 
-The user may ask a question to emphasize a particular point. For example, a question about housing can be revised from a broad NIMBYism definition to the more important reading check: **who benefits from restricted housing, and who pays for it?**
+### Content and scope
 
-### Step 4: Perform the quality-control pass
+- Does each answer come directly from the chapter (slots 1–6) or from the course (slots 7–9)?
+- Are slots 1–5 recall and recognition, with no new calculations?
+- Is slot 6 fair to a careful reader who hasn't had class yet?
+- Are slots 7–9 parallel versions, never copies, of graded or mirrored quiz items?
+- Does any question duplicate another too closely?
 
-Before packaging, check every item against the following standards.
+### Answer quality
 
-#### Content and scope
+- Slots 1–9 have exactly four choices, except reused practice-bank items that were written with two or three. Slot 10 has two.
+- Exactly one choice is clearly correct.
+- Distractors are plausible to a student who skimmed or misunderstood, sit in the same category and grammatical form as the answer, and are never silly.
 
-- Does the answer come directly from the chapter?
-- Is this primarily a reading-recall question?
-- Does it avoid novel scenarios, calculations, and comparative statics unless the chapter itself made that exact detail memorable?
-- Does it test something worth remembering from the chapter rather than a minor sentence?
-- Does it duplicate another item too closely?
+### Test-taking cues
 
-#### Answer quality
+- Correct-answer positions across slots 1–9 are varied and roughly balanced (no position more than three times).
+- The correct answer is not predictably the longest, most qualified, or most specific choice.
+- Punctuation, capitalization, and wording don't give the answer away, and no stem gives away its own answer.
 
-- Are there exactly four options?
-- Is exactly one option clearly correct?
-- Are the distractors plausible to a student who skimmed or misunderstood the chapter?
-- Are all options in the same conceptual category and grammatical form?
-- Do the distractors avoid being silly, obviously false, or unrelated?
+## 7. Recording and packaging
 
-#### Test-taking cues
+Each quiz is recorded as a data file, then built into the import package with the shared script:
 
-- Are correct-answer positions varied and reasonably balanced?
-- Has the answer order been randomized intentionally?
-- Is the correct answer always the longest, most qualified, or most specific option?
-- Do punctuation, capitalization, or wording patterns reveal the answer?
-- Does the stem itself accidentally give away the answer?
+```text
+quizzes/top-hat/build_tophat_qti.py            the builder and validator (identical in both repositories)
+quizzes/top-hat/<course>/session-NN.json       one file per class quiz: stems, choices, key, slot, and source
+```
 
-The longest-answer check is especially important. Correct answers often need more qualification than distractors, so they can become visibly longer. After writing the items, compare option lengths and revise distractors or the correct answer so length is not functioning as a clue. The goal is not mathematical equality; the goal is that the correct answer is not predictably the longest answer.
+Run, from the repository root:
 
-## 4. What the final question format is
+```text
+python3 quizzes/top-hat/build_tophat_qti.py quizzes/top-hat/econ-150/session-17.json <output folder>
+```
 
-The default item is:
+The script refuses to build if the quiz breaks the format: not ten questions, slots out of order, a slot 10 that isn't the standard question, choices that aren't four and distinct, a correct answer that is clearly the longest, or answer positions that bunch up. It then builds the zip and checks it (below). Commit the session file, not the zip.
 
-- single-answer multiple choice;
-- exactly four choices labeled A, B, C, and D;
-- one point;
-- one defensible correct answer; and
-- no platform-side answer shuffling after the answer positions have been deliberately randomized.
+### Why the package is Canvas-shaped QTI
 
-This keeps the quizzes easy to import, easy to answer, and easy to score. More complicated question types can be useful elsewhere, but basic single-answer items are the most reliable route for this reading-check workflow.
+Top Hat's import route expects a **QTI package in the form of a standard Canvas export**, not one standalone QTI XML file. A bare QTI file can be valid XML and still fail, because the importer looks for a Common Cartridge-style package with a manifest, Canvas metadata, and expected file paths.
 
-## 5. Why the package is Canvas-shaped QTI
+- **Question import:** Top Hat's educator import tool accepts a `.zip`, scans it, and creates questions. Its support page says QTI import is for classic, single-correct multiple-choice questions, in QTI 1.1.3 format. See [Top Hat's Question Upload guide](https://support.tophat.com/article/Educator-Question-Import).
+- **LMS integration:** Top Hat's Canvas integration handles course launch, rosters, grade sync, and deep links. It is not a way to write questions. See [Top Hat's LMS integration overview](https://tophat.com/features/integrations/).
 
-Top Hat's import route expects a **QTI package in the form of a standard Canvas export**, not simply one standalone QTI XML file.
+There is no Top Hat connector for Claude to create or assign questions directly. Claude prepares and validates the package; a person imports it and previews it.
 
-This distinction matters. A bare IMS QTI file may be valid XML and still fail to import because the platform is looking for a Common Cartridge-style package with a manifest, resource relationships, Canvas metadata, and expected file paths.
+**Version note:** Top Hat's help labels its accepted format QTI 1.1.3, while Canvas-export packages (and this package's XML namespace) are QTI 1.2. Don't treat those as the same. If an import fails, test a one-question package against Top Hat's current documentation and update the script and this guide together.
 
-There are two different Top Hat pathways to keep separate:
-
-- **Question import:** Top Hat's educator import tool accepts a file, scans it, and creates questions in the course. The current support page says that QTI import is for classic, single-correct multiple-choice questions and requires a `.zip` in QTI 1.1.3 format. See [Top Hat's Question Upload guide](https://support.tophat.com/article/Educator-Question-Import).
-- **LMS integration:** Top Hat's Canvas and other LMS integrations handle course launch, roster synchronization, grade synchronization, and—under LTI 1.3—deep links to Top Hat content. They do not turn Top Hat into a general-purpose question-authoring API. See [Top Hat's LMS integration overview](https://tophat.com/features/integrations/).
-
-In this workflow, the QTI package is therefore the bridge between question writing and Top Hat. As of October 26, 2026, there is no Top Hat connector exposed in this ChatGPT workspace that would let the assistant create, edit, or assign Top Hat questions directly. The assistant can prepare, validate, and revise the import package; a person still performs the final Top Hat import and preview.
-
-The working approach is therefore:
-
-1. create the Canvas-export-shaped QTI assessment XML used by this workflow;
-2. place it inside a Canvas/Common Cartridge-style directory structure;
-3. include the manifest and Canvas metadata;
-4. zip the contents with the manifest at the root; and
-5. upload the resulting `.zip` through Top Hat's question-import route.
-
-**Version note:** Top Hat's public help currently labels its accepted QTI import as version 1.1.3, while Canvas-export packages and the XML namespace used in this workflow are commonly described as QTI 1.2. Do not treat those labels as interchangeable. When Top Hat changes its importer—or when an import fails—test a one-question package against the current Top Hat documentation and update the package builder and this guide together.
-
-## 6. Required QTI package structure
-
-The ZIP should have this basic structure:
+### Package structure
 
 ```text
 imsmanifest.xml
-chapter12_factor_markets/
-    assessment_meta.xml
+<assessment id>/
+    <assessment id>.xml
     assessment_qti.xml
-    chapter12_factor_markets.xml
+    assessment_meta.xml
 non_cc_assessments/
-    chapter12_factor_markets.xml.qti
+    <assessment id>.xml.qti
 course_settings/
-    canvas_export.txt
+    canvas_export.txt          contains: common_cartridge
 ```
 
-The folder and assessment names can change by chapter, but the relationships among the files must remain consistent.
+- The manifest declares the assessment as type `imsqti_xmlv1p2`, points it at the main QTI file, and declares a dependency on the metadata resource. Every path in the manifest must exist in the zip.
+- The metadata gives the title, total points (ten), one allowed attempt, and no answer shuffling.
+- The QTI uses the namespace `http://www.imsglobal.org/xsd/ims_qtiasiv1p2`, with `cc_maxattempts`, a `root_section` wrapper, and one chapter section holding the items.
+- Each item is a `multiple_choice_question` worth `1.0` point, with `maxattempts="1"`, single cardinality, one `varequal` key scoring 100, and `<render_choice shuffle="No">`. Answer positions are set while writing the quiz and held fixed.
+- The three QTI copies are byte-for-byte identical, because different importers look in different places.
+- The manifest is at the root of the zip, not inside a top folder.
 
-### `imsmanifest.xml`
+### What the script checks
 
-The manifest is the package's map. It should:
+The zip opens with no corrupt entries; every manifest path exists; the resource type and dependency are right; the XML parses; the item count matches; every item has the right number of choices, exactly one key, and no shuffling; the keyed choice is the intended answer; the item metadata is present; and the QTI copies match.
 
-- declare the IMS Common Cartridge namespace;
-- include `<organizations />`;
-- define an assessment resource with type `imsqti_xmlv1p2`;
-- point that resource to the main QTI XML file;
-- define an associated-content metadata resource; and
-- declare the dependency between the assessment and its metadata resource.
+A valid file can still have a content error. Review the answer key yourself, separately from the XML.
 
-The manifest's file paths must match the ZIP paths exactly. A mismatch between a manifest path and an actual filename can cause an otherwise valid package to fail.
+## 8. Importing into Top Hat
 
-### Assessment metadata
+1. Upload the zip through Top Hat's educator question import. If the course connects through Canvas, use the test or assessment import, not the textbook-reading integration.
+2. Confirm all ten questions arrived, the choice text is intact, each question has one correct answer marked, and the choices are in the expected order.
+3. **Fix slot 10:** open "Did you fully prepare for class today?" and either mark both Yes and No correct or set the question to participation credit.
+4. Preview or take the quiz once before class.
 
-The Canvas-style metadata file identifies the assessment and its settings. It should include:
+## 9. Troubleshooting
 
-- the assessment identifier;
-- the quiz title;
-- the total number of points;
-- one allowed attempt, unless a different setting is intentionally requested; and
-- the assessment's answer-shuffling and navigation settings.
+**"The file is invalid," or the import fails right away.** Check that the upload is a zip, `imsmanifest.xml` is at its root, manifest paths match filenames exactly, the namespace is QTI 1.2, and every XML file is well formed.
 
-The total points should equal the number of one-point questions.
+**The package imports but questions are missing.** Check that the assessment resource points to the right QTI file, that section and item identifiers are unique, that the QTI copies match, and that `non_cc_assessments/` is present.
 
-### QTI assessment XML
+**The choices appear but the wrong answer is marked.** Check the `varequal` in the item's response processing, not the visible order. It must match the label of the intended answer.
 
-The main assessment in the current Canvas-export-shaped package uses this QTI namespace:
+**The choices are shuffled.** Check that the item has `shuffle="No"`.
 
-```xml
-http://www.imsglobal.org/xsd/imsqtiasiv1p2
-```
+**Slot 10 marks "No" wrong.** It wasn't fixed after import. See section 8, step 3.
 
-The assessment should include:
+**The quiz is too easy to guess.** Go back to the quality-control pass: correct answers that are longer, distractors from a different category, unusually precise wording in one choice, a visible pattern in positions, or a stem that repeats the answer.
 
-- `cc_maxattempts` metadata;
-- a root section wrapper;
-- a named chapter section containing the items; and
-- one item for each quiz question.
+## 10. Pilot log
 
-The root section wrapper is important for compatibility with the Canvas-style import path.
-
-### QTI item structure
-
-Each question should include:
-
-- a unique item identifier;
-- `maxattempts="1"`;
-- item metadata declaring `multiple_choice_question`;
-- `points_possible` of `1.0`;
-- an assessment-question reference identifier;
-- a single-cardinality response;
-- `rtiming="No"`;
-- four response labels; and
-- a response-processing rule awarding 100 percent to the correct response.
-
-The response-processing section should use a decimal score variable with a range from 0 to 100. The item metadata handles the one-point Canvas interpretation; the QTI response-processing rule handles correctness.
-
-The response renderer should use:
-
-```xml
-<render_choice shuffle="No">
-```
-
-Answer positions are randomized during quiz construction and then held fixed in the imported item. This prevents Top Hat from changing the carefully checked option order.
-
-### Duplicate QTI copies
-
-The same assessment XML should appear in the expected assessment folder and in `non_cc_assessments/`. A copy should also be available as `assessment_qti.xml` in the associated-content folder.
-
-The copies should be byte-for-byte identical. Different importers and export conventions inspect different paths, so this redundancy improves compatibility.
-
-### `course_settings/canvas_export.txt`
-
-This file should contain:
-
-```text
-common_cartridge
-```
-
-It signals the Canvas/Common Cartridge export convention expected by the import workflow.
-
-## 7. Packaging and import procedure
-
-### Build the package
-
-1. Create the chapter-specific directory structure.
-2. Write the manifest, metadata, QTI assessment, duplicate QTI copies, and Canvas export marker.
-3. Make sure the manifest is at the root of the ZIP.
-4. Do not place the entire build folder inside another top-level folder in the ZIP.
-5. Name the final file clearly, for example:
-
-   ```text
-   econ_chapter12_factor_markets_housing_reading_check_tophat_qti.zip
-   ```
-
-### Validate before uploading
-
-The package should be checked programmatically before import:
-
-- the ZIP opens successfully;
-- the ZIP has no corrupt entries;
-- every manifest path exists;
-- the assessment resource has type `imsqti_xmlv1p2`;
-- the dependency points to the metadata resource;
-- the QTI XML parses successfully;
-- the assessment contains the intended number of items;
-- each item has exactly four choices;
-- every item has exactly one scoring key;
-- the answer positions match the intended answer key;
-- the duplicate QTI files are identical; and
-- the item metadata and response-processing rules are present.
-
-The answer key should also be reviewed independently of the XML. A structurally valid file can still contain a content error if the wrong option was marked correct.
-
-### Upload to Top Hat
-
-Use Top Hat's educator question-import workflow and upload the ZIP package. Top Hat currently documents this route for classic, single-correct multiple-choice questions and QTI 1.1.3 packages; verify the version requirement before each semester. If the course is connected through Canvas, use the institution's Top Hat test or assessment integration rather than the separate textbook-reading integration. The exact label may vary by institution, but the important distinction is that this is a test/question-bank import, not a textbook-content link.
-
-The Canvas connection is optional for creating the questions. It is useful later for course launch, roster sync, deep linking, and grade sync, but it does not replace the question-import step.
-
-After import, spot-check the questions in Top Hat:
-
-1. confirm that all items appeared;
-2. confirm that the option text is intact;
-3. confirm that one answer is marked correct;
-4. confirm that the answer order is the expected order; and
-5. preview or take the quiz once before assigning it to students.
-
-## 8. Troubleshooting guide
-
-### “The file is invalid” or the import fails immediately
-
-Check:
-
-- Is the upload a ZIP rather than a standalone XML file?
-- Is `imsmanifest.xml` at the ZIP root?
-- Is the package actually Canvas/Common Cartridge-shaped?
-- Do all manifest paths match the filenames exactly?
-- Is the QTI namespace QTI 1.2?
-- Are all XML files well formed?
-
-### The package imports but questions are missing
-
-Check:
-
-- whether the assessment resource points to the correct QTI file;
-- whether the section and item identifiers are unique;
-- whether the duplicate QTI files contain the same assessment; and
-- whether the expected `non_cc_assessments` path is present.
-
-### The choices appear but the answer is wrong
-
-Check the response-processing section, not just the visible choice order. The `varequal` response identifier must match the response label containing the intended correct answer.
-
-### The answer choices are unexpectedly shuffled
-
-Check that the imported item uses `shuffle="No"`. If positions were randomized during construction, the platform should not reshuffle them during import or delivery.
-
-### The quiz is too obvious
-
-Return to the content QA pass. Look especially for:
-
-- correct answers that are much longer;
-- distractors that are not from the same conceptual neighborhood;
-- one option that uses unusually precise or qualified language;
-- answer positions that form a visible pattern; and
-- a question that asks for the chapter's main point in a way that repeats the answer.
-
-## 9. Recommended recordkeeping
-
-For each chapter, preserve:
-
-1. the source chapter;
-2. the ten-question candidate set;
-3. the user's selected questions and requested modifications;
-4. the final answer key;
-5. the validated QTI ZIP; and
-6. any Top Hat or Canvas import notes.
-
-Use a descriptive filename that identifies the course, chapter, subject, and platform. Keep the source and the final package together so that a later revision can be traced back to the chapter version used to write it.
-
-## 10. The repeatable standard
-
-The complete process is:
-
-```text
-Read the chapter
-    ↓
-Find the juicy, memorable reading material
-    ↓
-Write 10 direct-recall candidates
-    ↓
-Select the best questions
-    ↓
-Revise for clarity and centrality
-    ↓
-Check distractors, answer positions, and answer lengths
-    ↓
-Build Canvas-export QTI 1.2 package
-    ↓
-Validate XML, manifest, scoring, and ZIP paths
-    ↓
-Import into Top Hat
-    ↓
-Preview before assigning
-```
-
-The goal is a quiz that is modest in scope but high in fidelity: students should be able to answer because they read the chapter, not because they guessed the test-writer's pattern or solved a problem that was never the point of the reading.
+| Date | Course and session | Chapter | Notes |
+|---|---|---|---|
+| November 10, 2026 | Econ 150, Session 17 | 17, Externalities | First quiz in the ten-slot format. Slot 6 is a deadweight-loss calculation parallel to the paper-mill items on the Market Failures common quiz. Retrieval from Ch 15 (elasticity), Ch 7 (tax deadweight loss), and Ch 9 (MC and ATC, the exam's most-missed idea). Import result: to be recorded after class. |
