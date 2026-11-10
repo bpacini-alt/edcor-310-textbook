@@ -148,7 +148,7 @@ Top Hat's import route expects a **QTI package in the form of a standard Canvas 
 
 There is no Top Hat connector for Claude to create or assign questions directly. Claude prepares and validates the package; a person imports it and previews it.
 
-**Version note:** Top Hat's help labels its accepted format QTI 1.1.3, while Canvas-export packages (and this package's XML namespace) are QTI 1.2. Don't treat those as the same. If an import fails, test a one-question package against Top Hat's current documentation and update the script and this guide together.
+**Version note:** Top Hat's help labels its accepted format QTI 1.1.3, while Canvas-export packages (and this package's XML namespace) are QTI 1.2. Don't treat those as the same. The Canvas-shaped 1.2 package built by the script imported cleanly on November 10, 2026. If an import fails, test a one-question package against Top Hat's current documentation and update the script and this guide together.
 
 ### Package structure
 
@@ -202,4 +202,4 @@ A valid file can still have a content error. Review the answer key yourself, sep
 
 | Date | Course and session | Chapter | Notes |
 |---|---|---|---|
-| November 10, 2026 | Econ 150, Session 17 | 17, Externalities | First quiz in the ten-slot format. Slot 6 is a positive-externality question (direction and size of underproduction, and D2 − D1 as the external benefit), parallel to Market Failures common quiz items 10–11. A first draft asked students to calculate deadweight loss; Benjamin cut it because class hasn't covered that yet, which led to the slot 6 rule about staying within the quiz and class. Retrieval from Ch 15 (elasticity), Ch 7 (tax deadweight loss), and Ch 9 (MC and ATC, the exam's most-missed idea). Import result: to be recorded after class. |
+| November 10, 2026 | Econ 150, Session 17 | 17, Externalities | First quiz in the ten-slot format. Slot 6 is a positive-externality question (direction and size of underproduction, and D2 − D1 as the external benefit), parallel to Market Failures common quiz items 10–11. A first draft asked students to calculate deadweight loss; Benjamin cut it because class hasn't covered that yet, which led to the slot 6 rule about staying within the quiz and class. Retrieval from Ch 15 (elasticity), Ch 7 (tax deadweight loss), and Ch 9 (MC and ATC, the exam's most-missed idea). Imported into Top Hat cleanly on the first try (Canvas-shaped QTI 1.2 package, ten items, slot 10 fixed by hand after import). |
