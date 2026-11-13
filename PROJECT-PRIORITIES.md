@@ -79,6 +79,14 @@ When Claude or another collaborator has recently worked in the repository, first
 - **EDCOR 310:** obtain a fresh Canvas LMS export in a later pass, keep it private, and use it alongside the reading calendar and slide decks to make the course easier to improve and maintain for future semesters.
 - **EDCOR 200:** before teaching it again, gather the current course materials into a separate private course archive/repository. This is a future planning item, not current implementation work.
 
+## This round (from November 7, 2026)
+
+Benjamin's working goals for the current round of chapter work. They apply to both books.
+
+1. **Polish the chapters students are about to read.** Each week, review the upcoming chapters in both books for accuracy, clarity, and fit with the course, and get approved fixes live before students reach them.
+2. **Check Econ chapters against the common quizzes.** When an Econ chapter is polished, compare it with the quiz that covers it (the question pools are in `practice-engines/legacy/econ-150/quiz-sources/`). Close gaps in vocabulary, graph labels, and question types so a student who finishes the chapter is ready for the quiz.
+3. **Build practice as part of the round.** Econ 150: every polished chapter gets a practice bank, built in `practice-engines` with the Precise Practice engine and the agreed sequence under Priority 2 (a chapter-owned bank with stable IDs, a quality audit, then `tools/embed_practice.py`), and aligned with the quiz. EDCOR 310: practice is also a goal for this round, but how much to build is still to be decided; start from the EDCOR practice design under Priority 2 rather than scaling chapter by chapter.
+
 ## Strategic order of work
 
 ### Priority 0 — Establish the source of truth and working system
