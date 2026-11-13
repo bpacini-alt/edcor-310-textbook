@@ -76,6 +76,7 @@ When Claude or another collaborator has recently worked in the repository, first
 
 ### Deferred course-source work:
 
+- **EDCOR 310 Top Hat quiz sources (recorded November 10, 2026):** Benjamin is gathering the EDCOR 310 quizzes and practice quizzes. When they arrive, add them to the EDCOR 310 sources table in `READING-CHECK-QUIZ-QTI-WORKFLOW.md` (in both repositories) so slots 7–9 of the class quiz can draw on them. Until then, EDCOR quizzes use the chapters and the concept banks in `practice-engines/legacy/edcor-310/supporting/`.
 - **EDCOR 310:** obtain a fresh Canvas LMS export in a later pass, keep it private, and use it alongside the reading calendar and slide decks to make the course easier to improve and maintain for future semesters.
 - **EDCOR 200:** before teaching it again, gather the current course materials into a separate private course archive/repository. This is a future planning item, not current implementation work.
 
@@ -354,6 +355,7 @@ These items are paused on purpose. Each needs a careful read or a decision, not 
 **Both books:**
 
 - **Practice and assessment documentation (Econ #69/#63; EDCOR #58).** These are being reorganized into one deliberate-brainstorming design notebook plus a separate candidate reading-check workflow. Leave the Econ 15 Tayleigh and Econ 16 Benjamin pilots unchanged.
+  **Update November 10, 2026:** the reading-check workflow is no longer a candidate. Benjamin set a ten-question class quiz standard for Top Hat in both courses (`READING-CHECK-QUIZ-QTI-WORKFLOW.md`, builder in `quizzes/top-hat/`). First pilot: Econ 150 Session 17.
 - **Read answers aloud after a pause** (under Deferred structural revisions below). Benjamin likes the direction but sees it as a bigger change to think through before approving wording and pause lengths.
 
 ## Deferred structural revisions
