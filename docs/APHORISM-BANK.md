@@ -21,9 +21,9 @@ When a good aphorism does not fit the current chapter, keep it here with a note 
 
 ## Current Chapter 11 aphorisms
 
-1. **We build our understanding; teachers choose the materials.**
+1. **We build our understanding.**
 
-   Constructivism’s central idea, paired with the teacher’s responsibility for designing the materials, examples, explanations, and tasks students will use to build that understanding.
+   Constructivism’s central idea: learners actively build understanding as they connect and revise ideas.
 
 2. **Your brain is associative; it thinks in examples, not definitions.**
 
