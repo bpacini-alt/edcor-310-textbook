@@ -452,6 +452,8 @@ Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actua
 
 **Status:** Record for later; start when there is time. EDCOR 310 Chapter 11 is done (once #35 is merged).
 
+**Update, November 15, 2026 (Benjamin):** the label is **Key aphorism** everywhere (**Key aphorisms** for a recap list of several), replacing "Worth remembering" in Chapters 16–19 and "A principle worth keeping" in Chapter 24. Step 1 is done in both books: the box styles live in `aphorism/etb-aphorism.css`, shared and linked by each build, and `aphorism/check_aphorisms.py` warns about wrong labels, recaps that don't match their cards, and leftover per-chapter styles. The cross-book program in the Econ 150 repository is the record of approved lines. Benjamin will review all current aphorisms with Claude next.
+
 ### Both books: Read answers aloud after a pause (recorded October 28, 2026)
 
 **The problem:** the audio player never reads the answers to Retrieval Practice or Quick Checks, even when a student has opened them. Right now it reads a Retrieval Practice question and says "Pause and try answering on your own before you go on." For a Quick Check, it reads the question and then leaves four seconds of quiet. In both cases it moves on without giving the answer. A student who listens instead of reading never hears the answers (reader reports [textbook-feedback#24](https://github.com/bpacini-alt/textbook-feedback/issues/24), [#25](https://github.com/bpacini-alt/textbook-feedback/issues/25), and [#26](https://github.com/bpacini-alt/textbook-feedback/issues/26), all in Econ 150 Chapter 14).
