@@ -411,6 +411,15 @@ The co-author drafts of Chapters 17 and 18 replaced the earlier versions. These 
 - **Add practice.** Chapters 17 and 18 still need practice.
 - **Two phrasing issues in Chapter 18.** Benjamin has two minor wording fixes to come back to. He will say which.
 
+### EDCOR 310: Chapters 19–20 rewrite (recorded November 15, 2026)
+
+Chapter 19 was rebuilt from Benjamin's draft in the Chapter 16–18 component set. Benjamin's direction: Chapter 19 makes the case *for* behaviorism, and Chapter 20 gives the critics their full hearing. Chapter 20 is next, one chapter at a time.
+
+- **Move the drawing study into Chapter 20.** Chapter 19 now only names the overjustification effect and points ahead. Chapter 20 should tell the study: Lepper, Greene, and Nisbett (1973) found preschoolers who liked drawing with markers. Some were told ahead of time they'd earn a "Good Player" certificate, some got it as a surprise, and some got nothing. A week or two later, the children who had expected the certificate drew about half as much in free play; the surprise group didn't lose interest. Bring along the Chapter 19 draft's retrieval question (a PE teacher's prizes for miles run, and what to do instead) and the overjustification video now listed in Chapter 19's Learn More.
+- **Chapter 20 should refer back, not repeat.** Chapter 19 now covers Deci, Koestner, and Ryan (1999) on when rewards are safe. Chapter 20 currently explains overjustification in three places.
+- **Chapter 20 naming.** It calls Pink's framework "Drive Theory," which students will confuse with drive reduction theory (Hull's "drive theory") in Concept 2. Pink himself never used that name.
+- **Retrieval practice in both chapters waits for the book-wide pass** (see the Chapters 17–18 item above).
+
 ### EDCOR 310: Chapter 16 rewrite (recorded October 30, 2026)
 
 Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actually Builds It?** (rev. 4, October 30), opening with the self-esteem movement, around six concepts: Self-Esteem, Determinism, Learned Helplessness, Attribution (which now includes feedback and praise), Efficacy Engineering, and Autonomy Support. It replaced the old Chapter 16 ("Agency vs. Determinism") on October 30, after Mayleigh's review.
