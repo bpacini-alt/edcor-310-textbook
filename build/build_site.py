@@ -17,6 +17,7 @@ import html
 import json
 import re
 import shutil
+import subprocess
 import sys
 import urllib.parse
 from pathlib import Path
@@ -296,6 +297,7 @@ def wrap_chapter_page(title, fragment, nav="", source_path=""):
 <title>{esc(title)} · The Science of Learning</title>
 <link rel="stylesheet" href="/assets/etb-audio.css">
 <link rel="stylesheet" href="/assets/page-rating.css">
+<link rel="stylesheet" href="/assets/etb-aphorism.css">
 <style>
 html {{ background: #f6f7f9; }}
 body {{ margin: 0; }}
@@ -377,6 +379,8 @@ def publish_chapters():
     (OUT / "assets" / "report.js").write_text((ROOT / "feedback" / "report.js").read_text(), encoding="utf-8")
     (OUT / "assets" / "page-rating.js").write_text((ROOT / "feedback" / "page-rating.js").read_text(), encoding="utf-8")
     (OUT / "assets" / "page-rating.css").write_text((ROOT / "feedback" / "page-rating.css").read_text(), encoding="utf-8")
+    # Key aphorism boxes; aphorism/etb-aphorism.css is the one place to style them (shared with Econ 150).
+    (OUT / "assets" / "etb-aphorism.css").write_text((ROOT / "aphorism" / "etb-aphorism.css").read_text(), encoding="utf-8")
     # The chapters' images, copied from EdTechBooks into etb-live/images/ so the site doesn't depend on it.
     if (SRC / "images").is_dir():
         shutil.copytree(SRC / "images", OUT / "images", dirs_exist_ok=True)
@@ -462,6 +466,8 @@ def main():
     print(f"{len(units)} units, {len(chapters)} chapters, {len(supplements)} supplements")
     for u in units:
         print(f"  {u['label']}: {u['name']} | {chapter_range(u)} | {len(u['outcomes'])} outcomes | intro paras {len(u['intro'])}")
+    # Warnings only: aphorism labels, recaps that don't match their cards, and leftover per-chapter aphorism styles.
+    subprocess.run([sys.executable, str(ROOT / "aphorism" / "check_aphorisms.py"), str(SRC)], check=False)
 
 
 if __name__ == "__main__":

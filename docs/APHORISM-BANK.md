@@ -2,6 +2,8 @@
 
 Aphorisms are load-bearing sentences: they compress a chapter’s central insight into a few memorable words. They should not become decorative slogans or recurring section furniture.
 
+> **November 15, 2026:** the label is now **Key aphorism** (or **Key aphorisms** for a recap list), book-wide. Box styles live in `aphorism/etb-aphorism.css`; see AGENTS.md. The cross-book aphorism program and 52-chapter tracker in the Econ 150 repository (`docs/APHORISM-EDITORIAL-PROGRAM.md`, `docs/APHORISM-CANDIDATE-BANK.md`) is the official record; this file will be folded into it once Econ 150 pull request #178 is settled.
+
 ## Working rule
 
 Aim for one or two well-fitting aphorisms per chapter, with three as the maximum. Count existing aphorisms first; do not force additions to meet a quota. Add one only when it:
@@ -51,7 +53,7 @@ Benjamin approved three for EDCOR 19, one over the usual two because each covers
 - **Concept 5, after Planned ignoring:** “Attention is a reward. Spend it on purpose.”
 - **Ending thought, in its own card after the synthesis and again last in the recap:** “The goal isn't students who obey, but students who choose well.” Attributed as adapted from Elder Dale G. Renlund, “Choose You This Day” (October 2018): it condenses his point in the synthesis closing but is not his wording. Benjamin chose the card even though the recap repeats it right after.
 
-Chapter 19 labels these “Worth remembering,” like Chapters 16–18. This bank says “Key aphorism.” Benjamin hasn't decided which label the book should use.
+All now labeled “Key aphorism” (November 15).
 
 Unselected Chapter 19 candidates, **To Review**: “‘Sometimes’ is the strongest schedule there is.” (Concept 3), “Students learn the room before they learn the lesson.” (Concept 2), “Giving in at the peak teaches the peak.” (Concept 3), “Every reward system needs an exit plan.” (Concept 4), and “Every stubborn behavior is getting something. Find out what.” (Concept 6).
 
