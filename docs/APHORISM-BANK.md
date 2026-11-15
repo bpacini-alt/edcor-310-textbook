@@ -45,11 +45,11 @@ These exact lines are approved for the current placement pass:
 
 ## Approved for Chapter 19 — November 15, 2026
 
-Benjamin approved three for EDCOR 19, one over the usual two because each covers a different idea. All three are author-written; none is a quotation.
+Benjamin approved three for EDCOR 19, one over the usual two because each covers a different idea. None is a direct quotation; the third is adapted from Elder Renlund.
 
 - **Concept 1:** “You are going to use behaviorism, so use it skillfully.” Replaces the draft's “You are always using behaviorism. The only question is whether you're using it on purpose.”
 - **Concept 5, after Planned ignoring:** “Attention is a reward. Spend it on purpose.”
-- **Ending thought, last line of the recap:** “The goal isn't students who obey, but students who choose well.” The synthesis closing (the Renlund passage) teaches it, so it appears only in the recap rather than as a separate card just before it.
+- **Ending thought, in its own card after the synthesis and again last in the recap:** “The goal isn't students who obey, but students who choose well.” Attributed as adapted from Elder Dale G. Renlund, “Choose You This Day” (October 2018): it condenses his point in the synthesis closing but is not his wording. Benjamin chose the card even though the recap repeats it right after.
 
 Chapter 19 labels these “Worth remembering,” like Chapters 16–18. This bank says “Key aphorism.” Benjamin hasn't decided which label the book should use.
 
