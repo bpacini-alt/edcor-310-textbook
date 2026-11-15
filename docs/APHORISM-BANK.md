@@ -62,6 +62,15 @@ These are pending decisions, not rejections. The EDCOR 15 line remains in the li
 - **EDCOR 15:** “Feeling seen is not the same as being measured.”
 - Other unselected candidates from this aphorism harvest remain **To Review**, including EDCOR 9 “Nature via Nurture,” EDCOR 17 “The Water We Swim In,” and EDCOR 20 “The Fire, Not the Pail.” Earlier explicit yes/no decisions remain unchanged.
 
+## Approved for Chapter 20 — November 15, 2026
+
+Benjamin approved two for EDCOR 20, both labeled “Key aphorism” and listed together in the recap after the synthesis.
+
+- **Concept 5, “First, do no harm”:** “First, do no (motivational) harm.” Replaces the draft's “You can't make a student care. You can stop making it harder for them to.” An About the Aphorism box explains that the phrase comes from the Hippocratic *Epidemics* (“to help, or at least to do no harm”), not the Oath, and why removing obstacles to motivation is the cheapest win.
+- **Concept 5, after “Hand responsibility back as students grow”:** “The greatest sign of success for a teacher … is to be able to say, ‘The children are now working as if I did not exist.’” A direct quotation from Maria Montessori, *The Absorbent Mind* (1949), chapter 27 (Claremont translation).
+
+Unselected Chapter 20 candidates, **To Review**: “Control leads to compliance; autonomy leads to engagement.” (Daniel Pink, *Drive*, 2009, p. 108; Concept 4), “Don't motivate students. Create the conditions where they motivate themselves.” (adapted from Edward Deci; Concept 1), “Teach it, don't preach it.” (title of Canning & Harackiewicz, 2015; Concept 5), “Interest often follows skill.” (Concept 2), and “Behaviorism builds the house. Intrinsic motivation makes students want to live in it.” (synthesis).
+
 ## Deferred candidates
 
 ### Cognition / Willingham
