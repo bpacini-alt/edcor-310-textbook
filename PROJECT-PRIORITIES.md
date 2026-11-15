@@ -120,6 +120,8 @@ At a later stage, establish a consistent, maintainable sourcing system for both 
 - how to record enough source information to make future updates and corrections practical.
 
 **Why this is deferred:** The books already need better sourcing, but a durable references strategy is a systems decision. It is worth doing once the chapter structure, research boxes, and citation patterns are stable enough to reveal what the books actually need.
+
+**Decision for now (Benjamin, November 15, 2026), both books:** add a "Sources behind the chapter" list to a chapter when it is rebuilt or substantially revised, as a collapsed (click-to-open) section at the end of the chapter. Don't go back to add source lists to chapters that aren't being revised. EDCOR 310 Chapter 19 is the first with the collapsed format; Chapters 16–18 have open lists, which can be collapsed whenever those chapters are next touched.
 - Integrate the chapter-fit readings removed from the student-facing Joy of Econ menu into the relevant Econ 150 chapters. Use the [Joy of Econ chapter-addition backlog](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/menus/joy-of-econ-chapter-additions.md) and classify each item as **add**, **companion**, or **discard**. This is a mid-level quality pass to complete alongside normal chapter revisions.
 
 **Why this is high priority:** Better presentation, trustworthy sourcing, and fewer points of friction benefit every student immediately and multiply the value of every later feature.
@@ -419,6 +421,7 @@ Chapter 19 was rebuilt from Benjamin's draft in the Chapter 16–18 component se
 - **Chapter 20 should refer back, not repeat.** Chapter 19 now covers Deci, Koestner, and Ryan (1999) on when rewards are safe. Chapter 20 currently explains overjustification in three places.
 - **Chapter 20 naming.** It calls Pink's framework "Drive Theory," which students will confuse with drive reduction theory (Hull's "drive theory") in Concept 2. Pink himself never used that name.
 - **Retrieval practice in both chapters waits for the book-wide pass** (see the Chapters 17–18 item above).
+- **Audio skips the inside of collapsed boxes (both books).** The player reads only the title of a click-to-open box, then pauses. That now covers Chapter 19's strategy cards, as well as every Go Deeper and Common Misconception box in the books. Decide whether listeners should hear the inside of these boxes. If so, change the shared player (`audio/player/etb-audio.js`) in matching pull requests, not chapter by chapter.
 
 ### EDCOR 310: Chapter 16 rewrite (recorded October 30, 2026)
 
