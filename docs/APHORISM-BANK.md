@@ -43,6 +43,18 @@ These exact lines are approved for the current placement pass:
 - **EDCOR 24:** “We are all visual learners.” This is a short excerpt from Hattie and Yates (2014, p. 115). Its meaning is shared human capacity for visual and auditory learning, not fixed learning-style types or matched instruction.
 - **EDCOR 26:** “We teach who we are.” This is Parker Palmer's wording from *The Courage to Teach* (1998), chapter 1, “The Heart of a Teacher.”
 
+## Approved for Chapter 19 — November 15, 2026
+
+Benjamin approved three for EDCOR 19, one over the usual two because each covers a different idea. None is a direct quotation; the third is adapted from Elder Renlund.
+
+- **Concept 1:** “You are going to use behaviorism, so use it skillfully.” Replaces the draft's “You are always using behaviorism. The only question is whether you're using it on purpose.”
+- **Concept 5, after Planned ignoring:** “Attention is a reward. Spend it on purpose.”
+- **Ending thought, in its own card after the synthesis and again last in the recap:** “The goal isn't students who obey, but students who choose well.” Attributed as adapted from Elder Dale G. Renlund, “Choose You This Day” (October 2018): it condenses his point in the synthesis closing but is not his wording. Benjamin chose the card even though the recap repeats it right after.
+
+Chapter 19 labels these “Worth remembering,” like Chapters 16–18. This bank says “Key aphorism.” Benjamin hasn't decided which label the book should use.
+
+Unselected Chapter 19 candidates, **To Review**: “‘Sometimes’ is the strongest schedule there is.” (Concept 3), “Students learn the room before they learn the lesson.” (Concept 2), “Giving in at the peak teaches the peak.” (Concept 3), “Every reward system needs an exit plan.” (Concept 4), and “Every stubborn behavior is getting something. Find out what.” (Concept 6).
+
 ## To Review — November 9, 2026
 
 These are pending decisions, not rejections. The EDCOR 15 line remains in the live chapter while it is under review.
