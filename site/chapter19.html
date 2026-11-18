@@ -32,6 +32,52 @@ body:has(.etb-nav) .etb-ap { bottom: 51px; }
 [data-tip].tip-open::after, [data-tip]:focus-visible:not(.tip-hide)::after { opacity: 1; }
 [data-tip].tip-hide::after { opacity: 0 !important; }
 [data-tip]:focus-visible, .etb-ak-item:focus-visible { outline: 2px solid #2a7a4f; outline-offset: 2px; border-radius: 2px; }
+/* Video side quests: compact, optional, text-wrapped, responsive and accessible. */
+.etb-video-research{display:block;float:right;clear:none;width:42%;max-width:360px;margin:.25rem 0 1.25rem 1.5rem;font-family:Arial,sans-serif;box-sizing:border-box;color:#1e3850}
+.etb-video-research *{box-sizing:border-box}
+.etb-video-research .evr-open{background:#f6fafe;border:1px solid #c6d8e8;border-radius:10px;box-shadow:0 2px 8px rgba(22,58,92,.07);overflow:hidden}
+.etb-video-research .evr-open>summary{display:flex;flex-direction:column;gap:6px;padding:16px 17px;cursor:pointer;list-style:none;position:relative}
+.etb-video-research .evr-open>summary::-webkit-details-marker{display:none}
+.etb-video-research .evr-open>summary:focus-visible{outline:3px solid #629bc4;outline-offset:-3px}
+.etb-video-research .evr-kicker{display:block;color:#36688c;font-size:10px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase}
+.etb-video-research .evr-title{display:block;font-family:Georgia,'Times New Roman',serif;font-size:20px;line-height:1.25;font-weight:700;color:#183c5a}
+.etb-video-research .evr-teaser{display:block;font-size:12px;line-height:1.55;color:#4d6170}
+.etb-video-research .evr-watch{display:block;align-self:flex-start;margin-top:3px;border:1px solid #aac9df;border-radius:6px;padding:7px 10px;color:#165582;font-size:11px;font-weight:700;background:#e5f1fa}
+.etb-video-research .evr-open[open] .evr-watch{background:#d9e9f5}
+.etb-video-research .evr-inner{padding:0 14px 15px}
+.etb-video-research .evr-video{aspect-ratio:16/9;position:relative;margin-bottom:10px;background:#142f44;border-radius:6px;overflow:hidden}
+.etb-video-research .evr-video iframe{display:block;width:100%;height:100%;border:0}
+.etb-video-research .evr-youtube{display:inline-block;font-size:11px;margin:0 0 5px}
+.etb-video-research .evr-research-section{margin:9px 0 0;border:1px solid #d5e4ef;border-radius:7px;background:#fff;overflow:hidden}
+.etb-video-research .evr-research-section>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:10px 11px;color:#163e61;font:700 12px/1.4 Arial,sans-serif}
+.etb-video-research .evr-research-section>summary::-webkit-details-marker{display:none}
+.etb-video-research .evr-research-section>summary:focus-visible{outline:2px solid #629bc4;outline-offset:-2px;background:#eaf4fb}
+.etb-video-research .evr-research-section>summary::after{content:"";width:7px;height:7px;margin-left:auto;border-right:2px solid #3a7398;border-bottom:2px solid #3a7398;transform:rotate(45deg);transition:transform .15s ease}
+.etb-video-research .evr-research-section[open]>summary::after{transform:rotate(225deg)}
+.etb-video-research .evr-research-section[open]>summary{background:#eaf4fb}
+.etb-video-research .evr-research-content{padding:10px 12px 12px}
+.etb-video-research .evr-part-n{display:inline-grid;place-items:center;flex:none;width:19px;height:19px;border-radius:50%;color:#fff;background:#3a7398;font:700 10px Arial,sans-serif}
+.etb-video-research .evr-inner p{font:12px/1.58 Arial,sans-serif;color:#2c4355;margin:0 0 8px}
+.etb-video-research .evr-inner p.evr-apply{background:#e9f4fb;border-left:3px solid #5c98bf;padding:9px 10px;margin:5px 0 0}
+.etb-video-research .evr-evidence-map{background:#fff;border:1px solid #dce7ee;border-radius:7px;padding:9px;margin:9px 0 10px;font:11px/1.3 Arial,sans-serif}
+.etb-video-research .evr-map-head{font-weight:700;color:#294b66;margin:0 0 7px}
+.etb-video-research .evr-rung{display:flex;gap:7px;align-items:center;min-height:24px;color:#667a88;border-radius:4px;padding:3px 7px;margin:2px 0;border:1px solid transparent}
+.etb-video-research .evr-rank{width:17px;flex:none;text-align:center;font-size:10px;color:#78909f}
+.etb-video-research .evr-rung-primary{background:#e1effa;border-color:#a7cce7;color:#194d73;font-weight:700}
+.etb-video-research .evr-rung-primary .evr-rank{color:#194d73}
+.etb-video-research .evr-rung-secondary{background:#f1f7fa;border-color:#d2e3ee;color:#426781}
+.etb-video-research .evr-map-tag{margin-left:auto;font-size:10px;color:#1c628b;white-space:nowrap}
+.etb-video-research .evr-map-caveat{margin:7px 0 0!important;color:#5b6871!important;font-size:10px!important;line-height:1.45!important}
+.etb-video-research .evr-sources{border-top:1px solid #d4e1eb;padding-top:11px;margin-top:12px}
+.etb-video-research .evr-sources summary{font:bold 11px/1.5 Arial,sans-serif;color:#1b628a;cursor:pointer}
+.etb-video-research .evr-sources ul{padding-left:18px;margin:8px 0 0;font:11px/1.55 Arial,sans-serif}
+.etb-video-research .evr-sources li{margin:0 0 8px}
+.etb-video-research a{color:#185d87;text-decoration:underline;text-underline-offset:2px}
+.etb-video-research + details.etb-retrieval{clear:both}
+.etb-concept::after{content:"";display:table;clear:both}
+@media(max-width:640px){.etb-video-research{float:none;clear:both;width:100%;margin:18px 0 22px}.etb-video-research .evr-open>summary{padding:16px}.etb-video-research .evr-title{font-size:20px}}
+
+
 </style>
 </head>
 <body>
@@ -138,13 +184,31 @@ body:has(.etb-nav) .etb-ap { bottom: 51px; }
 <li><strong>Surprise rewards are safe too. </strong>A reward that comes after the fact doesn’t change why the student did the work.</li>
 <li><strong>Informational feedback tends to build motivation; controlling rewards tend to undercut it. </strong>Feedback that tells students something real about their work (“Your second paragraph finally makes the argument clear”) builds a sense of competence. Rewards that feel like payment for compliance (“Do this and you’ll get that”) make the activity feel like the teacher’s, not theirs.</li>
 </ul>
-<p>Some researchers, notably Judy Cameron and David Pierce, argue that even these warnings overstate the harm. Where rewards clearly can backfire is when a tangible reward is promised for something students already enjoy. “Read five books and earn a pizza” can turn reading into a chore done for pizza. This is called the<span data-tip="When a promised reward for something a person already enjoys makes them enjoy it less."><strong> overjustification effect</strong></span>, and Chapter 20 looks at it closely.</p>
+<p>Some researchers, notably Judy Cameron and David Pierce, argue that even these warnings overstate the harm. Where rewards clearly can backfire is when a tangible reward is promised for something students already enjoy. “Read five books and earn a pizza” can turn reading into a chore done for pizza. This is called the<span data-tip="When a promised reward for something a person already enjoys makes them enjoy it less."><strong> overjustification effect</strong></span>, and Chapter 20 looks at it closely.</p><aside class="etb-video-research" id="animal-clickers-video" aria-label="Research Side-Quest video and research note">
+ <details class="evr-open">
+  <summary>
+   <span class="evr-kicker">Research Side-Quest:</span>
+   <span class="evr-title">Can Animal Clickers Be Used in Teaching?</span>
+   <span class="evr-teaser">A click can mark the moment a learner does something well. What does the research show about clicker-style feedback?</span>
+   <span class="evr-watch"><span aria-hidden="true">▶ </span>Watch + research notes</span>
+  </summary>
+  <div class="evr-inner">
+   <div class="evr-video"><iframe src="https://www.youtube-nocookie.com/embed/Hp5eTUbQQYo" title="Can Animal Clickers Be Used in Teaching? — Dr. Benjamin Pacini" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+   <a class="evr-youtube" href="https://youtu.be/Hp5eTUbQQYo" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+   <details class="evr-research-section"><summary><span class="evr-part-n">1</span><span>Findings</span></summary><div class="evr-research-content"><p>A click can mark the moment a learner does something well. Small studies have tested clicker-style feedback in a few specialized skill settings, including surgery, ultrasound, and dance.</p><p>In a comparative surgical-skills study, an operant-learning program improved some precision measures for knot tying and low-angle drilling. The program also used scripts, demonstrations, task sequencing, and practice, so the study cannot isolate the clicker&rsquo;s contribution. A prospective randomized ultrasound study enrolled 45 learners (39 were analyzed) and found no significant difference in speed or accuracy between clicker and scripted feedback. This was reported as a university abstract. A multiple-baseline study with four dancers found improved proficiency after TAGteach was introduced.</p></div></details>
+   <details class="evr-research-section"><summary><span class="evr-part-n">2</span><span>Evidence and limits</span></summary><div class="evr-research-content"><p><strong>Evidence strength: preliminary.</strong> The studies are small, focus on specialized motor skills, and do not test classroom teaching with children. One randomized comparison found no significant advantage; positive results came from a multi-part teaching package or a very small single-case study.</p></div></details>
+   <details class="evr-research-section"><summary><span class="evr-part-n">3</span><span>Classroom application</span></summary><div class="evr-research-content"><p class="evr-apply">The practical idea is timely, specific feedback that helps a learner identify what worked. Choose a form that fits the learner and setting and preserves students&rsquo; dignity; this evidence does not recommend using animal clickers with children.</p></div></details>
+   <details class="evr-sources"><summary>Sources, methods, and limitations</summary><ul><li><a href="https://doi.org/10.1007/s11999-015-4555-8" target="_blank" rel="noopener noreferrer">Levy, Pryor, &amp; McKeon (2016).</a></li><li><a href="https://jdc.jefferson.edu/si_me_2022_phase1/24/" target="_blank" rel="noopener noreferrer">Brady et al. (2020), university abstract.</a></li><li><a href="https://doi.org/10.1002/jaba.191" target="_blank" rel="noopener noreferrer">Quinn, Miltenberger, &amp; Fogel (2015).</a></li></ul></details>
+   <p class="evr-note"><strong>Note:</strong> if the video card, description, or closing card look like they&rsquo;re AI, that&rsquo;s because they are. The purpose of these videos is as instructional tools, not as aesthetic masterpieces.</p>
+  </div>
+ </details>
+</aside>
 </div>
 <div class="etb-body">
 <h3>Behavior charts and trackers, explained</h3>
 <p>Most elementary classrooms run some kind of visible system for tracking behavior. They look alike on the wall, but they rest on different principles, and the research on them is very different.</p>
 </div>
-<div class="etb-tablewrap"><table class="etb-compare"><thead><tr><th>System</th><th>How it works</th><th>The principle</th><th>What the research says</th></tr></thead><tbody><tr><td data-label="System">Sticker chart or token system</td><td data-label="How it works">A student earns a sticker, point, or ticket for a specific behavior and trades a set number for a reward.</td><td data-label="The principle">Positive reinforcement, with tokens standing in for the reward (a token economy)</td><td data-label="What the research says">Large improvements in many small studies. Reviewers have questioned how well some of those studies were designed.</td></tr><tr><td data-label="System">Marble jar or whole-class goal</td><td data-label="How it works">The class earns marbles or points together toward a shared reward.</td><td data-label="The principle">Group contingency: one consequence for the whole group</td><td data-label="What the research says">Rated evidence-based by a strict review, especially in general education classrooms. The Good Behavior Game (Concept 5) is one version.</td></tr><tr><td data-label="System">Clip chart or color chart</td><td data-label="How it works">Each student’s clip starts in the middle and moves up or down a public chart during the day.</td><td data-label="The principle">Reinforcement (moving up) and punishment (moving down), all in public</td><td data-label="What the research says">Almost no studies of whether it improves behavior. When researchers ask children about it, many describe embarrassment.</td></tr><tr><td data-label="System">Daily behavior report card</td><td data-label="How it works">The teacher rates two or three target behaviors several times a day, and the card goes home for parents to follow up.</td><td data-label="The principle">Feedback and reinforcement, shared between school and home</td><td data-label="What the research says">Consistent improvement across many studies, strongest when parents are involved. Well supported for students with ADHD.</td></tr></tbody></table></div>
+<div class="etb-tablewrap" style="clear:both"><table class="etb-compare"><thead><tr><th>System</th><th>How it works</th><th>The principle</th><th>What the research says</th></tr></thead><tbody><tr><td data-label="System">Sticker chart or token system</td><td data-label="How it works">A student earns a sticker, point, or ticket for a specific behavior and trades a set number for a reward.</td><td data-label="The principle">Positive reinforcement, with tokens standing in for the reward (a token economy)</td><td data-label="What the research says">Large improvements in many small studies. Reviewers have questioned how well some of those studies were designed.</td></tr><tr><td data-label="System">Marble jar or whole-class goal</td><td data-label="How it works">The class earns marbles or points together toward a shared reward.</td><td data-label="The principle">Group contingency: one consequence for the whole group</td><td data-label="What the research says">Rated evidence-based by a strict review, especially in general education classrooms. The Good Behavior Game (Concept 5) is one version.</td></tr><tr><td data-label="System">Clip chart or color chart</td><td data-label="How it works">Each student’s clip starts in the middle and moves up or down a public chart during the day.</td><td data-label="The principle">Reinforcement (moving up) and punishment (moving down), all in public</td><td data-label="What the research says">Almost no studies of whether it improves behavior. When researchers ask children about it, many describe embarrassment.</td></tr><tr><td data-label="System">Daily behavior report card</td><td data-label="How it works">The teacher rates two or three target behaviors several times a day, and the card goes home for parents to follow up.</td><td data-label="The principle">Feedback and reinforcement, shared between school and home</td><td data-label="What the research says">Consistent improvement across many studies, strongest when parents are involved. Well supported for students with ADHD.</td></tr></tbody></table></div>
 <div class="etb-research"><div class="etb-research-header"><span class="etb-research-badge">Research</span><span class="etb-research-title">What the evidence says about charts</span></div><div class="etb-research-body"><p><strong>Token systems. </strong>Reviews of single-case studies, where researchers track one student or one class closely before and after a change, find large improvements in behavior in both general and special education classrooms (Soares and colleagues, 2016; Kim and colleagues, 2022). A stricter 2011 review by Daniel Maggin and colleagues found that many of those studies weren’t designed well enough to call token economies a proven practice, though well-run programs did appear to work.</p><p><strong>Group rewards. </strong>Here the evidence is stronger. A 2012 review found enough rigorous studies to rate group contingencies evidence-based, and a 2017 update found them generally effective, especially in general education classrooms.</p><p><strong>Daily report cards. </strong>A 2010 analysis of 17 studies found consistent improvement, largest when families were involved and the card was used across the school day. A 2020 analysis of group studies found that report cards reduce ADHD symptoms in the classroom.</p><p><strong>Clip charts. </strong>Researchers have mostly asked children what they think. Third graders in one study described how the chart shaped the way they saw themselves and their classmates. In a small second-grade study, most students said they disliked the chart, and many described feeling embarrassed by it. We found no studies showing that clip charts improve behavior.</p><p>The pattern is worth noticing. The evidence supports the principles: a specific target behavior, quick feedback, reinforcement, and consistency. It doesn’t support putting every student’s standing on public display.</p></div></div>
 <div class="etb-body">
 <h3>Back to the behavior chart</h3>
