@@ -1,46 +1,85 @@
 # Concept title and eyebrow approval tracker
 
-This tracker records the current title/eyebrow pair for each numbered concept in the two live textbook sources, along with approval status, implementation state, and any review batch. The unique key is book + chapter + concept.
+This tracker records the title/eyebrow pair for each numbered concept in the two live textbook sources, along with approval status, implementation state, and review batch. The unique key is book + chapter + concept.
 
 ## Scope and source snapshot
 
 - EDCOR 310: Chapters 1–26, `etb-live/chapterN.html`
 - Econ 150: Chapters 1–26, `etb-live/ChapterN.html`
 - This covers numbered concept sections. It excludes the Econ Chapter 0 math review and chapter-banner title/subtitle text.
-- EDCOR source snapshot: `d55b49b12010c1284c91db787ab42d0a849cd1f5`
+- EDCOR source snapshot: `8cca054a79e5b2e4974f22e3cb0a069c3e2ce999`
 - Econ source snapshot: `dc5c2adebddf7aa0c40caa655924ba2019d9f899`
 - The source scan contains **275 concept pairs**: 140 EDCOR and 135 Econ.
 
+## Capitalization standard
+
+- Concept titles use **Title Case**.
+- Eyebrows use **sentence case**, preserving proper names, acronyms, and named terms such as Rider and Elephant.
+- This standard is applied to EDCOR title-review batches. Econ is untouched until its review.
+
 ## Status meanings
 
-- **Clearly approved**: you explicitly approved the pair, with evidence in a merged title-review PR or a recorded approval. Implementation state is tracked separately; the approved Chapter 8–9 edits are in open PR #143, and the approved Chapter 16.3 eyebrow is in open PR #146.
-- **Needs review**: an explicit proposal is waiting for your decision, or the current pair conflicts with a previously approved wording. It also includes pairs you have specifically flagged for closer review.
-- **Unverified — assume okay**: no row-level approval evidence was located. Under your chosen workflow, keep the current pair and count it as okay unless you flag it.
+- **Clearly approved**: you explicitly approved the pair, with evidence in a merged title-review PR or recorded decision. Chapter 16.3 is live from merged PR #146. Batch 2 edits are in open PR #147; Batch 3 and the Chapter 10 slate are in open PR #149; Econ 17.2 and 19.8 are in open PR #190.
+- **Needs review**: an explicit proposal is waiting for your decision, the current pair conflicts with previously approved wording, or you specifically held it for another pass.
+- **Unverified — assume okay**: no row-level approval evidence was located. Under your workflow, keep the current pair and count it as okay unless you flag it.
 
 ## Progress
 
 | Status | Pairs |
 | --- | ---: |
-| Clearly approved | 187 |
-| Needs review | 7 |
-| Unverified — assume okay | 81 |
+| Clearly approved | 275 |
+| Needs review | 0 |
+| Unverified — assume okay | 0 |
 | **Total** | **275** |
 
-By your default-to-okay rule, **268/275 (97.5%)** are complete; 7 pairs remain in the needs-review queue. Explicitly approved: **187/275 (68.0%)**. These are separate measures: unverified rows count toward completion by default, but not toward explicit approval.
+By your default-to-okay rule, **275/275 (100%)** are complete; no pairs remain in the needs-review queue. Explicitly approved: **275/275 (100%)**.
 
 ## Batch 1 outcome
 
-You approved all 15 EDCOR pairs that had defaulted to okay. Chapter 16.3 keeps the title “Learned Helplessness” and uses the approved eyebrow “Agency grows when effort works”; its implementation is in PR #146. The five EDCOR Chapter 10 proposals remain in the needs-review queue.
+All 15 EDCOR pairs that had defaulted to okay were explicitly approved. Chapter 16.3 is live with the eyebrow “Agency grows when effort works” (merged PR #146). The five Chapter 10 pairs have since been approved; see the latest title-review slate below.
 
-## Batch 2
+## Batch 2 outcome
 
-Batch 2 contains 20 unverified EDCOR pairs: Chapter 1 Concepts 1–6; Chapter 2 Concepts 1–4; Chapter 3 Concepts 1–3; Chapter 16 Concepts 5–6; and Chapter 17 Concepts 1–5. They remain **Unverified — assume okay** until you flag a pair. The Econ Chapter 17 conflicts remain on hold for a later review.
+All 20 EDCOR Batch 2 pairs are approved. Chapter 16.6 is “Autonomy Support — Choice needs structure,” and Chapter 2.2 is “Cognitive Biases — You cannot see a blind spot.” The capitalization changes and approved pair edits are in open PR #147.
+
+## Batch 3 outcome
+
+All 20 EDCOR Batch 3 pairs are approved. Chapter 23.5 is now “The Flynn Effect — Intelligence responds to environment.” The Batch 3 eyebrow updates and newly approved Chapter 10 and 23.5 pairs are in open PR #149.
 
 ## Current review queue
 
-- EDCOR 310: Chapter 10 Concepts 1–5.
-- Econ 150: Chapter 17 Concepts 2 and 5 (current wording differs from older approved wording). These are on hold for later review.
+None. All 275 title/eyebrow pairs now have explicit approval.
+
+## Remaining unverified pairs
+
+None. All 275 pairs are explicitly approved.
+
+## Latest slate outcome
+
+All 22 pairs are now approved, including revised wording for Econ 18.3, 19.7, and 22.4.
+
+## Batch 4 in progress
+
+## Batch 5 in progress
+
+## Batch 5 outcome
+
+All 22 pairs from the final unverified slate are explicitly approved, completing the title/eyebrow review.
+
+## Batch 4 outcome
+
+Nineteen Batch 4 pairs are explicitly approved, including EDCOR 24.3’s finalized “Student Differences — Three ways to choose the right support.” Econ 18.3 was not explicitly approved and remains unverified/default okay; it is included in Batch 5.
+
+## Batch 3 inventory
+
+Batch 3 contains EDCOR Chapter 18 Concepts 1–5; Chapter 19 Concepts 1–6; Chapter 20 Concept 1; Chapter 21 Concepts 1–4; Chapter 23 Concepts 5–6; and Chapter 24 Concepts 1–2.
 
 ## Earlier aggregate count
 
 An earlier chat mentioned 246 pairs and roughly 33 remaining, but no durable row-level list was found to map that estimate to current concepts. The current source scan has 275 pairs, so this tracker uses the current inventory and preserves that older estimate only as context.
+
+
+## Next after title review
+
+- Create an aphorism tracker for Econ 150 and the Learning book.
+- Create a teaching-strategies tracker for the Learning book only.
