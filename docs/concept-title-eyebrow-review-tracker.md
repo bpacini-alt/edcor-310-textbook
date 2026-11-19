@@ -27,12 +27,12 @@ This tracker records the title/eyebrow pair for each numbered concept in the two
 
 | Status | Pairs |
 | --- | ---: |
-| Clearly approved | 252 |
-| Needs review | 1 |
+| Clearly approved | 253 |
+| Needs review | 0 |
 | Unverified — assume okay | 22 |
 | **Total** | **275** |
 
-By your default-to-okay rule, **274/275 (99.6%)** are complete; 1 pair remains in the needs-review queue. Explicitly approved: **252/275 (91.6%)**. These measures are separate: unverified rows count toward completion by default, but not toward explicit approval.
+By your default-to-okay rule, **275/275 (100%)** are complete; no pairs remain in the needs-review queue. Explicitly approved: **253/275 (92.0%)**. These measures are separate: unverified rows count toward completion by default, but not toward explicit approval.
 
 ## Batch 1 outcome
 
@@ -48,19 +48,25 @@ All 20 EDCOR Batch 3 pairs are approved. Chapter 23.5 is now “The Flynn Effect
 
 ## Current review queue
 
-- EDCOR 310: Chapter 24 Concept 3. The current pair is “Readiness Gaps, Clinical Needs, and Context — Three Types of Student Differences.” A simpler proposal is “Student Differences — Readiness, clinical needs, and context”; an alternative is “Three Kinds of Student Differences — What students need and how to support them.”
+None. EDCOR 24.3 has been finalized; the remaining 22 pairs are presented in Batch 5 with current wording proposed unchanged.
 
 ## Remaining unverified pairs
 
-There are 22 unverified pairs: Econ 18.3 was not explicitly approved in Batch 4 and remains defaulted to okay; 21 others remain for later batches.
+All 22 unverified pairs are included in Batch 5.
 
 ## Latest slate outcome
 
-Approved: EDCOR 2.2; EDCOR 10.1–10.5; EDCOR 23.5; Econ 17.2 and 19.8; EDCOR 24.4–24.6 and 26.5; Econ 3.4–3.5, 15.3–15.7, 16.1–16.4, 17.5, and 18.1–18.2. Econ 18.3 remains unverified/default okay. The sole needs-review item is EDCOR 24.3.
+Approved in Batch 4: EDCOR 24.3–24.6 and 26.5; Econ 3.4–3.5, 15.3–15.7, 16.1–16.4, 17.5, and 18.1–18.2. Econ 18.3 remains unverified and defaults to okay.
 
 ## Batch 4 in progress
 
-Eighteen Batch 4 pairs are explicitly approved. EDCOR 24.3 is held for simpler wording. Econ 18.3 was not explicitly approved and remains unverified under the default-to-okay workflow.
+## Batch 5 in progress
+
+All remaining 22 unverified pairs are presented with their current titles and eyebrows proposed unchanged. User review is pending; the rows remain unverified until approved or flagged.
+
+## Batch 4 outcome
+
+Nineteen Batch 4 pairs are explicitly approved, including EDCOR 24.3’s finalized “Student Differences — Three ways to choose the right support.” Econ 18.3 was not explicitly approved and remains unverified/default okay; it is included in Batch 5.
 
 ## Batch 3 inventory
 
