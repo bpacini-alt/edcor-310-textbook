@@ -27,12 +27,12 @@ This tracker records the title/eyebrow pair for each numbered concept in the two
 
 | Status | Pairs |
 | --- | ---: |
-| Clearly approved | 253 |
-| Needs review | 0 |
-| Unverified — assume okay | 22 |
+| Clearly approved | 272 |
+| Needs review | 3 |
+| Unverified — assume okay | 0 |
 | **Total** | **275** |
 
-By your default-to-okay rule, **275/275 (100%)** are complete; no pairs remain in the needs-review queue. Explicitly approved: **253/275 (92.0%)**. These measures are separate: unverified rows count toward completion by default, but not toward explicit approval.
+By your default-to-okay rule, **272/275 (98.9%)** are complete; 3 pairs remain in the needs-review queue. Explicitly approved: **272/275 (98.9%)**. These measures are separate: unverified rows count toward completion by default, but not toward explicit approval.
 
 ## Batch 1 outcome
 
@@ -48,21 +48,25 @@ All 20 EDCOR Batch 3 pairs are approved. Chapter 23.5 is now “The Flynn Effect
 
 ## Current review queue
 
-None. EDCOR 24.3 has been finalized; the remaining 22 pairs are presented in Batch 5 with current wording proposed unchanged.
+- Econ 150: Chapter 18 Concept 3, “The Incentive to Overuse” — held for a clearer title.
+- Econ 150: Chapter 19 Concept 7, “The Pigouvian Catch” — held to clarify the eyebrow.
+- Econ 150: Chapter 22 Concept 4, “Antitrust, the Contested Remedy” — held to shorten the eyebrow.
 
 ## Remaining unverified pairs
 
-All 22 unverified pairs are included in Batch 5.
+None. All previously unverified pairs now have a disposition; 3 are held for wording review.
 
 ## Latest slate outcome
 
-Approved in Batch 4: EDCOR 24.3–24.6 and 26.5; Econ 3.4–3.5, 15.3–15.7, 16.1–16.4, 17.5, and 18.1–18.2. Econ 18.3 remains unverified and defaults to okay.
+Approved: Econ 18.4–18.5, 19.1–19.6, 20.6–20.7, 21.1–21.6, and 22.1–22.3. Needs review: Econ 18.3, 19.7, and 22.4.
 
 ## Batch 4 in progress
 
 ## Batch 5 in progress
 
-All remaining 22 unverified pairs are presented with their current titles and eyebrows proposed unchanged. User review is pending; the rows remain unverified until approved or flagged.
+## Batch 5 outcome
+
+Nineteen pairs are explicitly approved. Econ 18.3, 19.7, and 22.4 remain in the needs-review queue.
 
 ## Batch 4 outcome
 
