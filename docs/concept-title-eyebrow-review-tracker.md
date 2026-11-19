@@ -27,12 +27,12 @@ This tracker records the title/eyebrow pair for each numbered concept in the two
 
 | Status | Pairs |
 | --- | ---: |
-| Clearly approved | 272 |
-| Needs review | 3 |
+| Clearly approved | 275 |
+| Needs review | 0 |
 | Unverified — assume okay | 0 |
 | **Total** | **275** |
 
-By your default-to-okay rule, **272/275 (98.9%)** are complete; 3 pairs remain in the needs-review queue. Explicitly approved: **272/275 (98.9%)**. These measures are separate: unverified rows count toward completion by default, but not toward explicit approval.
+By your default-to-okay rule, **275/275 (100%)** are complete; no pairs remain in the needs-review queue. Explicitly approved: **275/275 (100%)**.
 
 ## Batch 1 outcome
 
@@ -48,17 +48,15 @@ All 20 EDCOR Batch 3 pairs are approved. Chapter 23.5 is now “The Flynn Effect
 
 ## Current review queue
 
-- Econ 150: Chapter 18 Concept 3, “The Incentive to Overuse” — held for a clearer title.
-- Econ 150: Chapter 19 Concept 7, “The Pigouvian Catch” — held to clarify the eyebrow.
-- Econ 150: Chapter 22 Concept 4, “Antitrust, the Contested Remedy” — held to shorten the eyebrow.
+None. All 275 title/eyebrow pairs now have explicit approval.
 
 ## Remaining unverified pairs
 
-None. All previously unverified pairs now have a disposition; 3 are held for wording review.
+None. All 275 pairs are explicitly approved.
 
 ## Latest slate outcome
 
-Approved: Econ 18.4–18.5, 19.1–19.6, 20.6–20.7, 21.1–21.6, and 22.1–22.3. Needs review: Econ 18.3, 19.7, and 22.4.
+All 22 pairs are now approved, including revised wording for Econ 18.3, 19.7, and 22.4.
 
 ## Batch 4 in progress
 
@@ -66,7 +64,7 @@ Approved: Econ 18.4–18.5, 19.1–19.6, 20.6–20.7, 21.1–21.6, and 22.1–22
 
 ## Batch 5 outcome
 
-Nineteen pairs are explicitly approved. Econ 18.3, 19.7, and 22.4 remain in the needs-review queue.
+All 22 pairs from the final unverified slate are explicitly approved, completing the title/eyebrow review.
 
 ## Batch 4 outcome
 
