@@ -343,6 +343,7 @@ body {{ margin: 0; }}
 # its entry here is removed.
 DRAFTS = {
     "chapter21a.html": ("Chapter 21 (draft): Executive Function & ADHD", "chapter21.html"),
+    "chapter22a.html": ("Chapter 22 (draft): Attention, Memory & Cognitive Load", "chapter22.html"),
 }
 
 DRAFT_BANNER = """<div style="background:#fff8e6;border-bottom:1px solid #e8c96a;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13px;color:#5a3d00;">
