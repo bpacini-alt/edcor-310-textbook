@@ -7,7 +7,7 @@ This tracker records the title/eyebrow pair for each numbered concept in the two
 - EDCOR 310: Chapters 1–26, `etb-live/chapterN.html`
 - Econ 150: Chapters 1–26, `etb-live/ChapterN.html`
 - This covers numbered concept sections. It excludes the Econ Chapter 0 math review and chapter-banner title/subtitle text.
-- EDCOR source snapshot: `3397bb04676b8950b8783b34a88eafe7ce06697e`
+- EDCOR source snapshot: `8cca054a79e5b2e4974f22e3cb0a069c3e2ce999`
 - Econ source snapshot: `dc5c2adebddf7aa0c40caa655924ba2019d9f899`
 - The source scan contains **275 concept pairs**: 140 EDCOR and 135 Econ.
 
