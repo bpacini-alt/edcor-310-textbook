@@ -73,6 +73,26 @@ Benjamin approved two for EDCOR 20, both labeled “Key aphorism” and listed t
 
 Unselected Chapter 20 candidates, **To Review**: “Control leads to compliance; autonomy leads to engagement.” (Daniel Pink, *Drive*, 2009, p. 108; Concept 4), “Don't motivate students. Create the conditions where they motivate themselves.” (adapted from Edward Deci; Concept 1), “Teach it, don't preach it.” (title of Canning & Harackiewicz, 2015; Concept 5), “Interest often follows skill.” (Concept 2), and “Behaviorism builds the house. Intrinsic motivation makes students want to live in it.” (synthesis).
 
+## Approved for Chapters 21 and 22 — November 19, 2026
+
+Benjamin approved these with Mayleigh’s Chapter 21 revision (issue #141) and the Chapter 22 update, merged in pull request #150. Each is labeled “Key aphorism,” and each chapter lists its pair in the recap after the synthesis.
+
+**EDCOR 21, Executive Function & ADHD**
+
+- **Concept 1, after the development table:** “Kids do well if they can.” Ross Greene, *Lost at School* (2008), title of Chapter 2. It was To Review for catchiness; Benjamin chose it once it sat beside the chapter’s “can’t or won’t?” question. An About the Aphorism box says the book borrows Greene’s starting assumption, not his case for replacing rewards and consequences, because the chapter’s strongest evidence (point systems, the Daily Report Card) is behavioral.
+- **Concept 4, after self-monitoring:** “Lend them your systems until they can run their own.” Original to the book, from Mayleigh’s draft. No About box (Benjamin cut it as thin).
+- **Not a card:** “Can’t or won’t?” stays the chapter’s running question in the prose (hook, big picture, Concept 1, closing). Mayleigh’s card version, “Before you decide what to do, ask: can’t, or won’t?”, was not used.
+
+**EDCOR 22, Attention, Memory & Cognitive Load**
+
+- **Concept 4 opener:** “The brain is not designed for thinking. It’s designed to save you from having to think.” Daniel Willingham, *Why Don’t Students Like School?* (2009), exact book wording (his 2009 *American Educator* article title says “mind”). Replaces the old paraphrase “the brain, given the choice, prefers not to think hard,” followed by a short applying paragraph.
+- **Concept 4, next:** “Memory is the residue of thought.” Willingham. The existing prose occurrence became the card, so the line is not repeated. An About the Aphorism box cites his *American Educator* column “What Will Improve a Student’s Memory?” (Winter 2008–2009) and notes the limit: retrieval, spacing, and prior knowledge also shape what lasts.
+- **In the text only, not cards:**
+  - “Practice until you are perfect and you will be perfect only briefly.” Willingham, “Practice Makes Perfect—But Only If You Practice beyond the Point of Perfection,” *American Educator*, Spring 2004 (source verified). It sits in the Spaced Practice section. Chapter 11’s spiral curriculum section was considered and declined; use the line in one chapter only.
+  - “Feeling familiar isn’t the same as knowing it.” Benjamin’s idea, tightened from “Learning doesn’t feel like familiarity; it feels like work.” “Feels like work” was dropped because it can read as “harder is always better,” which conflicts with the chapter’s cognitive load section. It sits in Concept 4 after the rereading sentence.
+
+Unselected Chapter 21 candidates, **To Review**: “A behavior is a clue, not a diagnosis.”, “Look for the missing skill before blaming the will.”, and “A student who can’t plan may need a plan, not another warning.” Benjamin likes “Nets are greater than poles” and “Routines eat willpower for breakfast” but wants them in other chapters. The Willingham deferral below (“Your brain avoids thinking…”) is now covered in Chapter 22 by Willingham’s exact line; keep the deferred wording only if another chapter needs a teacher-facing version.
+
 ## Deferred candidates
 
 ### Cognition / Willingham
