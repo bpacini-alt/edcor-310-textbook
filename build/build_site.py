@@ -341,10 +341,7 @@ body {{ margin: 0; }}
 # not in manifest.json, so they stay out of the contents and the Previous / Next sequence.
 # Share the link directly. When a draft is approved, it replaces its chapter's file and
 # its entry here is removed.
-DRAFTS = {
-    "chapter21a.html": ("Chapter 21 (draft): Executive Function & ADHD", "chapter21.html"),
-    "chapter22a.html": ("Chapter 22 (draft): Attention, Memory & Cognitive Load", "chapter22.html"),
-}
+DRAFTS = {}
 
 DRAFT_BANNER = """<div style="background:#fff8e6;border-bottom:1px solid #e8c96a;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13px;color:#5a3d00;">
   <div style="max-width:740px;margin:0 auto;padding:.6rem 1rem;"><strong>Draft for review.</strong> This version is not yet part of the book. <a href="/{current}" style="color:#7a5000;">See the current chapter</a>.</div>
