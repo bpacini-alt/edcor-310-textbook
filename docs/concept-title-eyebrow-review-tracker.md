@@ -27,12 +27,12 @@ This tracker records the title/eyebrow pair for each numbered concept in the two
 
 | Status | Pairs |
 | --- | ---: |
-| Clearly approved | 225 |
-| Needs review | 9 |
-| Unverified — assume okay | 41 |
+| Clearly approved | 252 |
+| Needs review | 1 |
+| Unverified — assume okay | 22 |
 | **Total** | **275** |
 
-By your default-to-okay rule, **275/275 (100%)** are complete; no pairs remain in the needs-review queue. Explicitly approved: **234/275 (85.1%)**. These measures are separate: unverified rows count toward completion by default, but not toward explicit approval.
+By your default-to-okay rule, **274/275 (99.6%)** are complete; 1 pair remains in the needs-review queue. Explicitly approved: **252/275 (91.6%)**. These measures are separate: unverified rows count toward completion by default, but not toward explicit approval.
 
 ## Batch 1 outcome
 
@@ -48,22 +48,20 @@ All 20 EDCOR Batch 3 pairs are approved. Chapter 23.5 is now “The Flynn Effect
 
 ## Current review queue
 
-None. All explicitly flagged items have been resolved; 41 unverified pairs remain defaulted to okay.
+- EDCOR 310: Chapter 24 Concept 3. The current pair is “Readiness Gaps, Clinical Needs, and Context — Three Types of Student Differences.” A simpler proposal is “Student Differences — Readiness, clinical needs, and context”; an alternative is “Three Kinds of Student Differences — What students need and how to support them.”
 
 ## Remaining unverified pairs
 
-There are 41 unverified rows: 20 are in Batch 4 and 21 remain for later batches.
+There are 22 unverified pairs: Econ 18.3 was not explicitly approved in Batch 4 and remains defaulted to okay; 21 others remain for later batches.
 
 ## Latest slate outcome
 
-Approved: EDCOR 2.2; EDCOR 10.1–10.5; EDCOR 23.5; Econ 17.2; and Econ 19.8, “The Coase Theorem — Bargaining can (theoretically) lead to efficient outcomes.” Econ 17.5 is a separate “Measuring Deadweight Loss” section and defaults to okay.
-
-Batch 4 contains five EDCOR pairs (24.3–24.6 and 26.5) and fifteen Econ pairs (3.4–3.5, 15.3–15.7, 16.1–16.4, 17.5, and 18.1–18.3). The other 21 unverified pairs remain for later batches.
-
+Approved: EDCOR 2.2; EDCOR 10.1–10.5; EDCOR 23.5; Econ 17.2 and 19.8; EDCOR 24.4–24.6 and 26.5; Econ 3.4–3.5, 15.3–15.7, 16.1–16.4, 17.5, and 18.1–18.2. Econ 18.3 remains unverified/default okay. The sole needs-review item is EDCOR 24.3.
 
 ## Batch 4 in progress
 
-Twenty unverified pairs are presented in Batch 4 with the current title and eyebrow proposed unchanged. User review is pending; the pairs remain unverified until approved or flagged.
+Eighteen Batch 4 pairs are explicitly approved. EDCOR 24.3 is held for simpler wording. Econ 18.3 was not explicitly approved and remains unverified under the default-to-okay workflow.
+
 ## Batch 3 inventory
 
 Batch 3 contains EDCOR Chapter 18 Concepts 1–5; Chapter 19 Concepts 1–6; Chapter 20 Concept 1; Chapter 21 Concepts 1–4; Chapter 23 Concepts 5–6; and Chapter 24 Concepts 1–2.
