@@ -52,11 +52,13 @@ None. All explicitly flagged items have been resolved; 41 unverified pairs remai
 
 ## Remaining unverified pairs
 
+There are 41 unverified rows: 20 are in Batch 4 and 21 remain for later batches.
+
 ## Latest slate outcome
 
 Approved: EDCOR 2.2; EDCOR 10.1–10.5; EDCOR 23.5; Econ 17.2; and Econ 19.8, “The Coase Theorem — Bargaining can (theoretically) lead to efficient outcomes.” Econ 17.5 is a separate “Measuring Deadweight Loss” section and defaults to okay.
 
-After Batch 3, five unverified EDCOR pairs remain outside a batch. The remaining Econ unverified rows default to okay under your workflow.
+Batch 4 contains five EDCOR pairs (24.3–24.6 and 26.5) and fifteen Econ pairs (3.4–3.5, 15.3–15.7, 16.1–16.4, 17.5, and 18.1–18.3). The other 21 unverified pairs remain for later batches.
 
 
 ## Batch 4 in progress
