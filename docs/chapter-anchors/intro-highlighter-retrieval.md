@@ -1,0 +1,36 @@
+# Opening study guide — The highlighter and the blank page
+
+- **Book / page:** Joy of Learning, How to Get the Most Out of This Book! (before Chapter 1).
+- **Source:** [`etb-live/how-to-get-the-most-out-of-this-book.html`](../../etb-live/how-to-get-the-most-out-of-this-book.html), “The curious case of the highlighter — How Learning Works,” checked against main `52460a03cc6c5fb4a430063c690c220bc00dd6c5`.
+- **Central idea:** Familiarity with a highlighted page does not establish durable retrieval, explanation or application.
+- **Scene mapping:** Heavily highlighted pages and a vivid highlighter contrast with an almost blank recall sheet, a stalled pen, and a puzzled student.
+- **Guardrail:** Highlighting can never be useful, or the student is permanently unable to learn. The guide explicitly recommends adding explanation and retrieval.
+- **Image status:** Approved. Benjamin approved both exact v2 images: “Both approved! You can give me a PR to place them!”
+- **Approved asset:** [`intro-highlighter-retrieval.png`](../../etb-live/images/chapter-anchors/intro-highlighter-retrieval.png), original v2 PNG, 1672 × 941; Git blob `07f305008e20926948f4faa34cf4a43fb8935d58`.
+- **Placement:** After the paragraph describing the visible evidence left by highlighting, in “How Learning Works.”
+- **Approved revision:** Rescaled the book, recall paper, marker and pen as ordinary student stationery, preserving the visible failed-retrieval contrast.
+- **Generation:** Built-in imagegen; original bright, warm, colorful, painterly realistic-cartoon artwork consistent with the approved Learning baseball and curb-ramp illustrations.
+- **Preservation:** The approved PNG is included unchanged, without cropping or recompression, in the source and generated image folders.
+
+## Original generation prompt
+
+```text
+Use case: illustration-story.
+Asset type: original wide 16:9 chapter mental-anchor illustration for the opening study guide in Joy of Learning, an educational psychology textbook for college students.
+Primary request: show the illusion of learning from highlighting alone: a visibly over-highlighted textbook beside an almost blank attempt to explain its ideas from memory.
+Scene and composition: one ordinary college-age student with dark curly hair and a teal sweater seated at a simple wooden study desk, viewed from an elevated three-quarter angle so the face, book pages, and writing page are all clearly visible. At the left of the desk is a textbook lying open, with most lines on both visible pages covered in vivid yellow highlighter strokes. A plain uncapped yellow chisel-tip highlighter lies diagonally across one lower corner of those pages, clear and recognizable at a glance. The student has stopped highlighting and turned attention toward a separate large cream-white sheet directly in front of them. Their writing hand holds one ordinary pen poised motionless above that sheet. The sheet is almost completely blank, with only one tiny abandoned crossed-out scribble near its top. The other hand rests at their temple. Their expression is thoughtful and unmistakably stuck: a slightly furrowed brow, eyes searching the blank paper, mild puzzled frustration, trying to remember but unable to get an explanation started. This is a specific failed retrieval attempt, not a student cheerfully preparing to begin. Their gaze is fixed on the blank sheet rather than reading the open book; the book is set aside beyond the writing area and angled toward the viewer.
+Visual hierarchy: the bright over-highlighted pages and the conspicuously blank recall sheet form the central contrast, connected by the student's stalled pen and puzzled face. Make both surfaces large enough to read visually when the image is reduced in a textbook. Keep desk objects to the one book, highlighter, writing sheet and pen. A simple softly painted warm study background with a window and muted teal walls is enough.
+Style: warm, bright and lively realistic cartoon editorial illustration with visible painterly gouache-like brush texture, believable expressive adult faces and natural human anatomy. Rich teal and blue shadows, warm golden daylight, yellow highlights and warm wood. Match the approachable colorful painterly realism of this book's approved baseball-study and curb-ramp illustrations. Detailed enough to feel tangible but clearly illustrated rather than photographed. No 3D plastic rendering, no anime, no flat vector graphics.
+Conceptual accuracy: highlighting can create familiarity without making an idea retrievable or usable; the student is capable and can learn by changing study practices. Do not imply a permanently empty mind, low intelligence, or an inability to learn. Show no exam grade, ticking clock or panic. No thought bubbles, empty-head icons, crossed-out brains, decorative symbols, split panels or collage.
+Text constraints: no readable text, titles, labels, numbers, speech bubbles, captions, logos or watermark. Book print may be represented only as tiny indistinct gray line texture beneath the yellow highlighting; the abandoned mark on the recall page must not be readable words. Natural physically plausible hands, pen grip, book spine and pages.
+```
+
+## Approved revision prompt
+
+```text
+Use case: precise-object-edit.
+Input: the supplied highlighter-study illustration is the EDIT TARGET.
+Requested edit: correct the exaggerated proportions of the desk objects relative to the adult student. The book currently reads as a huge folio and the recall sheet as an oversized poster. Make them ordinary student stationery in a physically coherent perspective.
+Scale corrections: make the open textbook about 25 percent smaller overall, like a normal textbook approximately 21 by 27 cm when closed and 42 by 27 cm opened. Make the separate recall sheet about 35 percent smaller overall, like a single A4 sheet, approximately 21 by 30 cm. At similar depth on the desk, the full open book should be roughly twice the width of the single writing sheet. Reduce the yellow highlighter about 30 percent to the size of an ordinary 13 cm marker, and make the writing pen a normal slim 14 cm pen. Keep the book and writing sheet at roughly comparable desk depth so extreme foreground enlargement does not distort their relative scale. Adjust the student's writing hand and forearm slightly if necessary so the poised pen still rests naturally over the smaller recall sheet. Keep hands and forearms natural in scale relative to the face. Reconstruct the vacated areas as ordinary continuous wooden desktop.
+Preserve: the same college-age student, dark curls, teal sweater, face and puzzled stuck expression, seated pose with the other hand at the temple, golden window light, teal room, warm wooden furniture, painterly realistic cartoon style, rich colors, and 16:9 framing. Keep the visible contrast of heavily yellow-highlighted textbook pages versus an almost blank recall sheet with one tiny crossed-out abandoned scribble. The student is trying and failing to retrieve an explanation, not just preparing to write. Both book and paper must remain clearly visible and legible as shapes, but belong at believable everyday scale. No additional objects, text, labels, captions, logos, watermark, thought bubbles or diagrams. Keep book print indistinct and unreadable.
+```
