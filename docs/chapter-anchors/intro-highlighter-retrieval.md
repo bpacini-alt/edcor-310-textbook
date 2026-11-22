@@ -4,7 +4,7 @@
 - **Source:** [`etb-live/how-to-get-the-most-out-of-this-book.html`](../../etb-live/how-to-get-the-most-out-of-this-book.html), “The curious case of the highlighter — How Learning Works,” checked against main `52460a03cc6c5fb4a430063c690c220bc00dd6c5`.
 - **Central idea:** Familiarity with a highlighted page does not establish durable retrieval, explanation or application.
 - **Scene mapping:** Heavily highlighted pages and a vivid highlighter contrast with an almost blank recall sheet, a stalled pen, and a puzzled student.
-- **Guardrail:** Highlighting can never be useful, or the student is permanently unable to learn. The guide explicitly recommends adding explanation and retrieval.
+- **Guardrail:** Avoid implying that highlighting can never be useful or that the student is permanently unable to learn. The guide explicitly recommends adding explanation and retrieval.
 - **Image status:** Approved. Benjamin approved both exact v2 images: “Both approved! You can give me a PR to place them!”
 - **Approved asset:** [`intro-highlighter-retrieval.png`](../../etb-live/images/chapter-anchors/intro-highlighter-retrieval.png), original v2 PNG, 1672 × 941; Git blob `07f305008e20926948f4faa34cf4a43fb8935d58`.
 - **Placement:** After the paragraph describing the visible evidence left by highlighting, in “How Learning Works.”

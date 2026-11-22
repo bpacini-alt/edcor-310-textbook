@@ -4,11 +4,11 @@
 - **Source:** [`etb-live/chapter2.html`](../../etb-live/chapter2.html), “Major concept 1 · The Rider believes it steers — Dual-Process Theory; Jonathan Haidt's elephant-and-rider metaphor,” checked against main `52460a03cc6c5fb4a430063c690c220bc00dd6c5`.
 - **Central idea:** Fast intuitive responses can lead judgment while deliberate reasoning confidently explains or endorses the result; both systems need training and integration.
 - **Scene mapping:** A confident small rider points toward the left branch of a path while a large calm elephant walks onto the right branch.
-- **Guardrail:** Intuition is always bad, reason is useless, or good thinking requires suppressing emotion. This is a metaphor, not a literal anatomical map.
+- **Guardrail:** Avoid implying that intuition is always bad, reason is useless, or good thinking requires suppressing emotion. This is a metaphor, not a literal anatomical map.
 - **Image status:** Approved. Benjamin approved both exact v2 images: “Both approved! You can give me a PR to place them!”
 - **Approved asset:** [`ch02-elephant-rider.png`](../../etb-live/images/chapter-anchors/ch02-elephant-rider.png), original v2 PNG, 1671 × 941; Git blob `b655073b6c7f714e7a8bd617b321071470a897ce`.
 - **Placement:** Immediately after Haidt's elephant-and-rider explanation, before the moral-dumbfounding research box.
-- **Approved revision:** Exploratory fable treatment: replaced jeans, overshirt and boots with a plain tunic, loose trousers and simple shoes; softened distant scenery and removed saddle-pad patterning. This is a visual direction for author review, not a claim of universal cultural neutrality.
+- **Approved revision:** Replaced jeans, overshirt and boots with a plain tunic, loose trousers and simple shoes; softened distant scenery and removed saddle-pad patterning. Benjamin approved this exact v2 fable treatment.
 - **Generation:** Built-in imagegen; original bright, warm, colorful, painterly realistic-cartoon artwork consistent with the approved Learning baseball and curb-ramp illustrations.
 - **Preservation:** The approved PNG is included unchanged, without cropping or recompression, in the source and generated image folders.
 
