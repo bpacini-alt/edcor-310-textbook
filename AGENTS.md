@@ -9,6 +9,13 @@ This file is for every collaborator, human or AI (Claude, ChatGPT/Codex). Read i
 
 `PROJECT-PRIORITIES.md` is each book's own list of what it needs. The goal is that each book's file lists everything that book needs, not that the two files match. When an item applies to both books (the shared design and tools, decisions about the series, work planned for both), put it in both files, in matching pull requests. When it applies to only one book, put it only in that book's file. Expect the two files to differ more over time.
 
+
+## Chapter mental-anchor images
+
+For chapter-anchor work, read [the shared workflow](docs/CHAPTER-ANCHOR-WORKFLOW.md), the [current cross-book handoff](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/CHAPTER-ANCHOR-HANDOFF.md), and the [chapter ledger](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/CHAPTER-MENTAL-ANCHOR-TRACKER.md). They record Benjamin's approved visual styles, image-version decisions, GitHub filing direction, build/PR requirements, and the next work. Keep the shared workflow identical in both repositories.
+
+For this workflow, when the available tools cannot promote a draft and Benjamin has requested a mergeable PR, prepare and verify the branch before opening one ready-for-review PR. This is the chapter-anchor exception to early draft-claim timing here and in `REPOSITORY-HOUSEKEEPING.md`; avoid duplicate draft/final PRs.
+
 ## The short version
 
 1. Start from the current `main`. Check open pull requests and the last few merges for the same task.
