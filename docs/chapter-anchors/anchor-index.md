@@ -1,6 +1,6 @@
 # Learning chapter-anchor approvals
 
-**Verified on main:** `f7545879f1287b9b714a87ed91ee00beb5ed8f2b` (November 22, 2026). These approved assets and placements are published. Recheck GitHub before reporting future PR status.
+**Last audited on main:** `e4bdb36f7bef8c1e9a5d09d5bd7ee05e68ff8dc8` (November 22, 2026). Approved images are listed with their placement records; changes in an open PR are not published until that PR merges.
 
 Read [the shared workflow](../CHAPTER-ANCHOR-WORKFLOW.md), the [cross-book handoff](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/CHAPTER-ANCHOR-HANDOFF.md), and the [complete chapter ledger](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/CHAPTER-MENTAL-ANCHOR-TRACKER.md).
 
@@ -12,6 +12,7 @@ Read [the shared workflow](../CHAPTER-ANCHOR-WORKFLOW.md), the [cross-book hando
 | [11 · Constructivism](../../etb-live/chapter11.html) | [Baseball prior-knowledge study](../../etb-live/images/chapter-anchors/ch11-baseball-prior-knowledge.png) | [PR #157](https://github.com/bpacini-alt/edcor-310-textbook/pull/157); keep the study in Chapter 11 |
 | [12 · Social Learning Theory](../../etb-live/chapter12.html) | [Bobo doll](../../etb-live/images/chapter-anchors/ch12-bobo-observational-learning.webp) | [PR #155](https://github.com/bpacini-alt/edcor-310-textbook/pull/155); existing observational-learning illustration |
 | [20 · Intrinsic Motivation](../../etb-live/chapter20.html) | [Candle puzzle](../../etb-live/images/chapter-anchors/ch20-candle-problem-unsolved.webp) · [Solution](../../etb-live/images/chapter-anchors/ch20-candle-problem-solution.webp) | [Assets, PR #161](https://github.com/bpacini-alt/edcor-310-textbook/pull/161); [opening placement, PR #163](https://github.com/bpacini-alt/edcor-310-textbook/pull/163). Preserve puzzle-before-solution order. |
+| [22 · Attention, Memory & Cognitive Load](../../etb-live/chapter22.html) | [Pass-counting task](../../etb-live/images/chapter-anchors/ch22-selective-attention-task.png) · [Gorilla reveal](../../etb-live/images/chapter-anchors/ch22-inattentional-blindness-reveal.png) | Placement PR: this change; [source and prompts](ch22-selective-attention.md) |
 | [23 · Intelligence & IQ](../../etb-live/chapter23.html) | [Army intelligence-test room](../../etb-live/images/chapter-anchors/ch23-intelligence-test-recruits.png) | [PR #154](https://github.com/bpacini-alt/edcor-310-textbook/pull/154) |
 | [24 · Learner Differences](../../etb-live/chapter24.html) | [Curb ramp](../../etb-live/images/chapter-anchors/ch24-curb-cut-access.png) | [PR #157](https://github.com/bpacini-alt/edcor-310-textbook/pull/157); approved relaxed smile/thumbs-up revision |
 
