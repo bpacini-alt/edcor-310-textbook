@@ -1,7 +1,7 @@
 # Chapter Anchor Workflow
 
 **Applies to:** Joy of Economics and Joy of Learning.  
-**Author direction recorded:** November 22, 2026. Keep this file identical in both repositories.
+**Author direction recorded:** November 22, 2026. **Opening-placement standard approved:** November 23, 2026. Keep this file identical in both repositories.
 
 ## Start here
 
@@ -79,7 +79,7 @@ Save versioned candidates and their prompts/source notes. Keep original and revi
 
 After explicit image approval, proceed with the requested placement/PR work. Preserve the exact approved artwork and record which version was approved. Any later visual modification requires an image decision again.
 
-## 6. File in GitHub and place beside the relevant passage
+## 6. File in GitHub and place chapter anchors at the opening
 
 **Benjamin's current destination is the textbook repositories, with chapter figures and merge PRs.** Library folders are an optional archive. Older cached Chapter Anchor Studio instructions describing Library-only filing or read-only repository work do not reflect his later explicit GitHub direction. Do not require Library access or claim Library filing without verification.
 
@@ -98,7 +98,11 @@ Use a semantic `figure` with:
 - Lazy loading where appropriate.
 - A stable figure ID for direct preview links.
 
-Place it where the relevant story or explanation occurs. Some anchors belong near the opening; others belong beside a later concept. For a puzzle pair, preserve the opportunity to attempt the puzzle before revealing its solution. Source notes and generation details belong in documentation, not in the student flow.
+For each approved chapter-anchor entry with a title card, place the opening figure immediately after the card (after its title, subtitle, and metadata) and before the opening hook. The image and caption should orient the reader to the chapter's central idea before the prose begins. Apply the same rule to an approved titled pre-chapter page such as the study guide.
+
+Keep ordinary charts, diagrams, research evidence figures, and other supporting visuals beside the passage they explain; they are not chapter-opening anchors.
+
+For an anchor designed as a task and reveal pair, place the unsolved task immediately after the title card and keep the solution or reveal beside its explanation later in the chapter. Do not expose the answer before the attempt. Record any other author-approved placement exception and its learning reason in the chapter note and cross-book tracker. Source notes and generation details belong in documentation, not in the student flow.
 
 For each new approval, add or update `docs/chapter-anchors/<concept>.md` with the source/commit, mapping, misconception, exact filename/version, approval record, original prompt, and edit prompts. Keep an approval index or ledger link nearby. If an older image's original prompt is unavailable, say so rather than inventing a reproduction record.
 
