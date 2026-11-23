@@ -1,6 +1,6 @@
 # Robbers Cave: Eagles and Rattlers
 
-**Decision:** Benjamin approved this exact image on November 22, 2026. The Learning placement is under review in the linked pull request; it is not published until that pull request merges.
+**Decision:** Benjamin approved this exact image on November 22, 2026. The Learning placement is under review in [PR #168](https://github.com/bpacini-alt/edcor-310-textbook/pull/168); it is not published until that pull request merges.
 
 ## Source and placement
 
