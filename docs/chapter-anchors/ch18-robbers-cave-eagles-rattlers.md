@@ -15,6 +15,11 @@ The two flags and the matching pennants make group membership immediately legibl
 
 The blue and amber color coding is an illustration choice, not a claim about the historical groups’ colors. The historically grounded markers are the team names and the flags and shirts described in the chapter.
 
+## Cross-book continuity
+
+- The Econ handoff update is in [PR #210](https://github.com/bpacini-alt/Econ-150-textbook/pull/210).
+- The shared tracker entry is waiting on coordination about Econ [PR #200](https://github.com/bpacini-alt/Econ-150-textbook/pull/200), which adds the same tracker file on an open branch. This Learning PR leaves that file untouched.
+
 ## Approved asset
 
 - **Exact approved file:** `etb-live/images/chapter-anchors/ch18-robbers-cave-eagles-rattlers.png`
