@@ -6,7 +6,7 @@ Aphorisms are load-bearing sentences: they compress a chapter’s central insigh
 
 ## Learning 25 placement pass — November 22, 2026
 
-Benjamin approved Richard Feynman's “The first principle is that you must not fool yourself—and you are the easiest person to fool.” for Chapter 25's discussion of resistance to evidence. Source: [“Cargo Cult Science,” Caltech commencement address (1974)](https://calteches.library.caltech.edu/51/2/CargoCult.htm). The paired Econ placement PR records the cross-book selections. The card and its source context are being placed in Chapter 25 using the shared Key aphorism style.
+Benjamin approved Richard Feynman's “The first principle is that you must not fool yourself—and you are the easiest person to fool.” for Chapter 25's discussion of resistance to evidence. Source: [“Cargo Cult Science,” Caltech commencement address (1974)](https://calteches.library.caltech.edu/51/2/CargoCult.htm). The paired Econ placement PR records the cross-book selections. The card is placed after the Soft-Adjust explanation in Concept 6, with a separate source/context accordion after the following discussion. Source and generated HTML are included in [Learning #170](https://github.com/bpacini-alt/edcor-310-textbook/pull/170), pending merge. This is the chapter’s first card; a second remains open. The existing Semmelweis anchor from merged #169 is preserved. The canonical [cross-book coverage tracker](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/APHORISM-COVERAGE-TRACKER.md) records the 20–26 status alongside [Econ #215](https://github.com/bpacini-alt/Econ-150-textbook/pull/215).
 
 ## Working rule
 
