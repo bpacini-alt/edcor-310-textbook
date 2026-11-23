@@ -1,13 +1,14 @@
 # Robbers Cave: Eagles and Rattlers
 
-**Decision:** Benjamin approved this exact image on November 22, 2026. The Learning placement is under review in [PR #168](https://github.com/bpacini-alt/edcor-310-textbook/pull/168); it is not published until that pull request merges.
+**Decision:** Benjamin approved this exact image on November 22, 2026. Learning [PR #168](https://github.com/bpacini-alt/edcor-310-textbook/pull/168) merged November 23 and published it. This standardization moves the figure from after the opening hook to immediately after the title card; the hook still recounts the Robbers Cave story.
 
 ## Source and placement
 
 - **Book / repository:** *Joy of Learning*, `bpacini-alt/edcor-310-textbook`.
 - **Chapter source:** [`etb-live/chapter18.html`](../../etb-live/chapter18.html), reviewed at `772e43195579a2734f1744fbc443e4bec8e39daa`.
-- **Passage:** Opening hook, “Belonging, Social Structure & Tribalism,” before “The big picture.”
-- **Chapter evidence:** The hook recounts Sherif and colleagues’ Robbers Cave field study; the chapter cites Sherif et al. (1961) and Perry (2018).
+- **Passage:** The opening hook, “Belonging, Social Structure & Tribalism,” retells Sherif and colleagues’ Robbers Cave field study.
+- **Placement:** Immediately after the Chapter 18 title card and before the opening hook.
+- **Chapter evidence:** The chapter cites Sherif et al. (1961) and Perry (2018).
 
 ## How the scene carries the idea
 
@@ -17,8 +18,7 @@ The blue and amber color coding is an illustration choice, not a claim about the
 
 ## Cross-book continuity
 
-- The Econ handoff update is in [PR #210](https://github.com/bpacini-alt/Econ-150-textbook/pull/210).
-- The shared tracker entry is waiting on coordination about Econ [PR #200](https://github.com/bpacini-alt/Econ-150-textbook/pull/200), which adds the same tracker file on an open branch. This Learning PR leaves that file untouched.
+- The cross-book placement standard and tracker update are recorded in companion Econ [PR #223](https://github.com/bpacini-alt/Econ-150-textbook/pull/223); the Learning placement change is in [PR #175](https://github.com/bpacini-alt/edcor-310-textbook/pull/175).
 
 ## Approved asset
 

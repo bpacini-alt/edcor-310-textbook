@@ -7,7 +7,7 @@
 - **Guardrail:** Avoid implying that intuition is always bad, reason is useless, or good thinking requires suppressing emotion. This is a metaphor, not a literal anatomical map.
 - **Image status:** Approved. Benjamin approved both exact v2 images: “Both approved! You can give me a PR to place them!”
 - **Approved asset:** [`ch02-elephant-rider.png`](../../etb-live/images/chapter-anchors/ch02-elephant-rider.png), original v2 PNG, 1671 × 941; Git blob `b655073b6c7f714e7a8bd617b321071470a897ce`.
-- **Placement:** Immediately after Haidt's elephant-and-rider explanation, before the moral-dumbfounding research box.
+- **Placement:** Immediately after the title card and before the opening hook. The caption names the elephant-and-rider metaphor so the image can orient readers before the explanation.
 - **Approved revision:** Replaced jeans, overshirt and boots with a plain tunic, loose trousers and simple shoes; softened distant scenery and removed saddle-pad patterning. Benjamin approved this exact v2 fable treatment.
 - **Generation:** Built-in imagegen; original bright, warm, colorful, painterly realistic-cartoon artwork consistent with the approved Learning baseball and curb-ramp illustrations.
 - **Preservation:** The approved PNG is included unchanged, without cropping or recompression, in the source and generated image folders.

@@ -7,7 +7,7 @@
 - **Guardrail:** Avoid implying that highlighting can never be useful or that the student is permanently unable to learn. The guide explicitly recommends adding explanation and retrieval.
 - **Image status:** Approved. Benjamin approved both exact v2 images: “Both approved! You can give me a PR to place them!”
 - **Approved asset:** [`intro-highlighter-retrieval.png`](../../etb-live/images/chapter-anchors/intro-highlighter-retrieval.png), original v2 PNG, 1672 × 941; Git blob `07f305008e20926948f4faa34cf4a43fb8935d58`.
-- **Placement:** After the paragraph describing the visible evidence left by highlighting, in “How Learning Works.”
+- **Placement:** Immediately after the study-guide title card and before its opening hook, under the November 23 opening-placement standard.
 - **Approved revision:** Rescaled the book, recall paper, marker and pen as ordinary student stationery, preserving the visible failed-retrieval contrast.
 - **Generation:** Built-in imagegen; original bright, warm, colorful, painterly realistic-cartoon artwork consistent with the approved Learning baseball and curb-ramp illustrations.
 - **Preservation:** The approved PNG is included unchanged, without cropping or recompression, in the source and generated image folders.
