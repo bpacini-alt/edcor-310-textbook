@@ -1384,7 +1384,24 @@
        "hook": "Why do goals stall?",
        "blurb": "How to ADHD and coach Alan Graham on why goals fall apart and how to set ones that get done. Translate one idea into a classroom support that builds independence rather than simply removing the task.",
        "source": "How to ADHD — watch the whole thing.",
-       "id": "why-its-so-hard-to-achieve-a-goal"
+       "id": "why-its-so-hard-to-achieve-a-goal",
+       "pairs": [
+        "your-3-big-rocks-how-to-live-with-resolution-every-day"
+       ]
+      },
+      {
+       "title": "Your 3 Big Rocks: How To Live With Resolution Every Day",
+       "url": "https://benfranklincircles.org/resolution/your-3-big-rocks-how-to-live-with-resolution-every-day",
+       "minutes": 5,
+       "format": "read",
+       "topic": "Executive function / self-management",
+       "hook": "What would make today worthwhile before your inbox fills it?",
+       "blurb": "Each morning I choose three “big rocks”—the few things that will make the day worthwhile—before email and other urgent demands take over. I explain how this simple practice helps me live Franklin’s virtue of resolution, and why one of those priorities can be savoring a hug from my son, not just completing a task at work. As you read, consider what your own three big rocks might be.",
+       "source": "Ben Franklin Circles — read for about 5 minutes.",
+       "id": "your-3-big-rocks-how-to-live-with-resolution-every-day",
+       "pairs": [
+        "why-its-so-hard-to-achieve-a-goal"
+       ]
       },
       {
        "title": "What Is Executive Function and Why Do We Need It?",
