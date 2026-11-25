@@ -1233,6 +1233,17 @@
        "blurb": "Scott Alexander uses forgiveness, tolerance, political tribes, and filter bubbles to examine how outgroups are formed and why our compassion can become selective. Read critically: the essay is provocative and includes political and religious content.",
        "source": "Slate Star Codex — read for about 30 minutes.",
        "id": "i-can-tolerate-anything-except-the-outgroup"
+      },
+      {
+       "title": "The Social Dimensions of Rationality",
+       "url": "https://scholarship.claremont.edu/cgu_fac_pub/466/",
+       "minutes": 20,
+       "format": "read",
+       "topic": "Scholarship / tribalism",
+       "hook": "How much of what we call objective reality is shaped by our social communities?",
+       "blurb": "Richard Lyman Bushman, Columbia’s Gouverneur Morris Professor Emeritus of History and an eminent historian of early America and Latter-day Saint history, argues that knowledge is not objective; indeed, it is strongly shaped by our social tribes. Psychologists have studied for decades how group identity and social interaction shape judgment. If even our search for truth is socially situated, what does that mean for a believing Latter-day Saint—and for anyone who thinks their own view is independent of their tribe?",
+       "source": "Claremont Graduate University Faculty Publications — read for about 20 minutes.",
+       "id": "the-social-dimensions-of-rationality"
       }
      ]
     },
@@ -1373,7 +1384,24 @@
        "hook": "Why do goals stall?",
        "blurb": "How to ADHD and coach Alan Graham on why goals fall apart and how to set ones that get done. Translate one idea into a classroom support that builds independence rather than simply removing the task.",
        "source": "How to ADHD — watch the whole thing.",
-       "id": "why-its-so-hard-to-achieve-a-goal"
+       "id": "why-its-so-hard-to-achieve-a-goal",
+       "pairs": [
+        "your-3-big-rocks-how-to-live-with-resolution-every-day"
+       ]
+      },
+      {
+       "title": "Your 3 Big Rocks: How To Live With Resolution Every Day",
+       "url": "https://benfranklincircles.org/resolution/your-3-big-rocks-how-to-live-with-resolution-every-day",
+       "minutes": 5,
+       "format": "read",
+       "topic": "Executive function / self-management",
+       "hook": "What would make today worthwhile before your inbox fills it?",
+       "blurb": "Each morning I choose three “big rocks”—the few things that will make the day worthwhile—before email and other urgent demands take over. I explain how this simple practice helps me live Franklin’s virtue of resolution, and why one of those priorities can be savoring a hug from my son, not just completing a task at work. As you read, consider what your own three big rocks might be.",
+       "source": "Ben Franklin Circles — read for about 5 minutes.",
+       "id": "your-3-big-rocks-how-to-live-with-resolution-every-day",
+       "pairs": [
+        "why-its-so-hard-to-achieve-a-goal"
+       ]
       },
       {
        "title": "What Is Executive Function and Why Do We Need It?",
