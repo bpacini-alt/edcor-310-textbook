@@ -14,6 +14,10 @@
 
 ## Image prompts
 
+### Reorganization review drafts — November 26, 2026
+
+**Current placement (November 26, 2026, PR #182):** the Chapters 21–22 reorganization moved attention into Chapter 21. Both images now live in `chapter21.html`: the task image opens Concept 2, Attention, and the reveal stays beside the gorilla explanation. Chapter 22 (Memory and Cognitive Load) has no opening artwork. File names keep the `ch22-` prefix. Still to do: update the cross-book ledger in the Econ 150 repository.
+
 **Opening, gorilla-free edit:**
 
 > Use case: precise-object-edit. Asset type: opening illustration for a textbook chapter on attention. Edit target: the attached warm, colorful editorial illustration of a psychology participant counting basketball passes on a CRT television. Remove only the gorilla from the basketball footage on the CRT screen, so this is the pre-reveal opening image. Fill that spot naturally with open court and a plausible basketball player continuing the ordinary pass-counting task. Keep the participant, observer with clipboard, tallying, CRT and its remaining basketball footage, room, composition, camera angle, proportions, lighting, color palette, and painterly style unchanged. Do not add headphones, text, labels, numbers, logos, or watermarks. No gorilla or gorilla-like mascot anywhere in the image.
