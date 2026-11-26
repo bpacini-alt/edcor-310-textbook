@@ -104,7 +104,7 @@ Add candidates here as Benjamin submits them. Keep the source and claim visible 
 
 | ID | Candidate / source | Exact claim or question | Why now / audience hook | Evidence to check | Possible student week | Decision |
 |---|---|---|---|---|---|---|
-| CT-01 | Awaiting Benjamin's first candidate batch | — | — | — | — | Intake pending |
+| CT-01 | Facebook Reel by Evidence Based Kate ([source](https://www.facebook.com/reel/1672917090888335)) | Is John Hattie the “new Lucy Calkins”? Clarify exactly what the comparison means and which claims it rests on. | Provocative comparison opens a timely discussion of how educators evaluate influential research claims; keep the analogy as a question until investigated. | Verify the Reel’s exact wording and cited sources; identify what the comparison implies about Hattie/Visible Learning and Lucy Calkins/Units of Study; compare the underlying evidence, methods, claims, reach, and implementation context. | TBD | Explore |
 
 Suggested decision labels: **Explore**, **Research needed**, **Ready to outline**, **Hold**, **Pass**, **Selected**.
 
@@ -114,7 +114,7 @@ Create a detailed episode brief only after a candidate is selected. Keep the can
 
 | ID | Working title | Status | Research note | Outline | Recorded | YouTube URL / date | Student reading |
 |---|---|---|---|---|---|---|---|
-| CT-01 | — | Awaiting candidate selection | — | — | — | — | Undecided |
+| — | No episode selected yet | Intake pending | — | — | — | — | Undecided |
 
 Suggested episode statuses: **Selected**, **Researching**, **Outlining**, **Ready for Benjamin**, **Ready to record**, **Recorded**, **Published**, **Reading-menu review**, **Complete**.
 
