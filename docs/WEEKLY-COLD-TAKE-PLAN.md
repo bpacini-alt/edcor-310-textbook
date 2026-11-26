@@ -24,13 +24,67 @@ The episodes are public work first. They may also become optional Joy of Learnin
 
 1. **Collect candidates.** Benjamin submits several possible topics. Capture the source or example that prompted each idea, without treating a viral claim as established fact.
 2. **Triage the batch.** For each candidate, assess clarity, audience interest, evidence quality, freshness, distinctiveness, and likely student relevance. Note where a topic needs more research or is not yet ready.
-3. **Choose and order a first run.** Select a manageable set from the batch, then order it for variety and a coherent publishing rhythm. Keep the weekly cadence; decide the batch size after seeing the candidates.
+3. **Choose and order a first run.** Select a manageable set from the batch, then order it for variety and a coherent publishing rhythm. Weekly is the intended rhythm, not a reason to publish a weaker episode or a supposed algorithm requirement; choose the batch size after seeing the candidates.
 4. **Build a research note.** Record the exact claim, the best evidence for and against it, what remains uncertain, and source links with short notes on what each source supports.
-5. **Draft the episode plan.** Use the outline below. The goal is a clear argument Benjamin can deliver naturally on camera, not a polished script unless he wants one.
+5. **Draft the episode plan.** Use the outline below as speaking beats. Aim for a clear argument Benjamin can deliver naturally on camera; a full script is optional.
 6. **Review for accuracy and fairness.** Check claims against sources, identify overstatement or missing context, and mark any line that should be updated before recording.
 7. **Record and publish.** Benjamin records the video and publishes it to YouTube. Prepare a title, description, source list, and captions/transcript; review auto-captions for names and technical terms when available.
 8. **Decide on student use.** If the episode supports a specific week, prepare a short reading-menu blurb with a realistic time estimate and a clear stopping point if the full video is longer than the assigned portion. Add it to the Joy of Learning menu only after the episode is published and the fit is clear.
 9. **Update the tracker.** Record the YouTube URL, publication date, transcript/caption status, student-reading decision, and any follow-up or correction.
+
+## Lean format: reach, attention, and accuracy
+
+### Recommended starting format
+
+- **One episode, one claim, one answer.** Aim for about **5–7 minutes** for the first run when the topic allows it. If the argument needs more room, keep the necessary nuance and let the video run longer; if it contains multiple questions, split the questions rather than rushing through them.
+- **Open with the issue and the provisional answer.** In the first 20–30 seconds, name the claim, say why an educator might care, and preview the evidence-based conclusion. Skip a long branded intro. The title and thumbnail should make the same promise that the opening fulfills.
+- **Use an informal, direct-to-camera setup.** A clear close shot, good sound, and natural delivery are enough. Add one chart, quote, or simple on-screen label only when it makes the evidence easier to understand. Avoid a full slide deck, elaborate b-roll, or heavy editing by default.
+- **Use speaking beats rather than a word-for-word script.** Keep a short source note and the core sequence—claim, evidence, caveat, takeaway—in view while recording. Do a second take only when a factual error, unclear explanation, or major stumble warrants it.
+- **Make the title specific and the thumbnail simple.** Use a real question or surprising but defensible conclusion. Make both accurate, legible on a phone, and consistent with the first 30 seconds. Don't spend time on keyword tags; YouTube says tags mainly help with common misspellings.
+- **Make the description useful.** Put a short episode summary and links to the sources that support the central claims near the top. Add reviewed captions/transcript when available.
+
+### Evidence behind these choices—and its limits
+
+A large observational study of 6.9 million viewing sessions across four 2012 edX courses found that shorter course videos held attention better; the median time watched was at most six minutes across its length categories. The authors recommended planning short segments. They also found more engagement with some informal, close-up instructor videos than with slides alone, and reported that pre-production planning mattered. This is a useful reason to try concise, planned episodes and a conversational setup. It is **not** a universal six-minute law: the study measured course-video engagement in four math/science MOOCs, not contemporary YouTube reach or podcast audience preferences. Treat 5–7 minutes as a pilot target, then adjust using this show's own retention data. ([Guo, Kim, & Rubin, 2014](https://doi.org/10.1145/2556325.2566239))
+
+YouTube's own guidance emphasizes whether viewers choose a video and find it satisfying, whether the title/thumbnail accurately represent it, and how the audience responds after publication. Its retention report specifically tracks who remains after the first 30 seconds, and recommends matching the opening to the title/thumbnail promise. Its FAQ says weekly uploading is not required for recommendations and that length should fit the content. So keep the weekly rhythm as an audience habit and personal goal, not as an algorithm hack. ([YouTube performance FAQ](https://support.google.com/youtube/answer/141805?hl=en); [audience retention guidance](https://support.google.com/youtube/answer/9314415))
+
+### Timebox the work
+
+For ordinary, well-bounded topics, use this as an initial production budget to test—not a quality quota:
+
+| Step | Working limit |
+|---|---:|
+| Candidate triage and source check | 60–75 minutes |
+| Speaking outline and source notes | 20–30 minutes |
+| Record, with one planned retry if needed | 30–45 minutes |
+| Basic edit, title, thumbnail template, description, and captions check | 30–45 minutes |
+| **Target total** | **About 2.5–3 hours** |
+
+Keep one reusable thumbnail and description format, and record two prepared episodes in one session when convenient. If a topic cannot be responsibly checked within the research window, mark it **Research needed** or choose a narrower claim. Don't save time by skipping a source check or flattening uncertainty. Complex or high-stakes topics can take longer, be postponed, or be passed over.
+
+### Accuracy and trust checks
+
+Before recording, write a one-page claim note:
+
+- **Claim:** What exactly is being said, and by whom or in what context?
+- **Best evidence:** What are the most relevant studies, reviews, or authoritative sources?
+- **Counterevidence and limits:** What would make this take less certain? What is the evidence not measuring?
+- **Conclusion:** What can we fairly say, and what remains unknown?
+- **Source trail:** Which link supports each key factual statement?
+
+In the episode, distinguish research findings from interpretation and personal or professional judgment. Represent the strongest fair version of a position before evaluating it. If the evidence is mixed, say so plainly. If the episode corrects a false claim, state the accurate account clearly and explain the reason for the correction; research reviews find factual corrections generally improve belief accuracy, while commonly feared backfire effects are rare. Keep the source links and any substantive correction visible in the YouTube description.
+
+### Learn from the first run
+
+After the first four published episodes, take one short review pass in YouTube Studio:
+
+- **Reach:** impressions and click-through rate; ask whether the topic, title, and thumbnail invited the intended audience.
+- **Opening:** the share still watching at 30 seconds; check whether the opening delivered the promise.
+- **Attention:** average view duration and retention dips/spikes; note where viewers stayed, left, rewatched, or shared.
+- **Quality signal:** read a small sample of comments and student feedback for questions, misunderstandings, and useful follow-ups.
+
+Look for patterns across several episodes, not a verdict from one upload. Don't treat click-through rate or raw views alone as success; the goal is the right viewers choosing the episode and finding the answer worth their time. YouTube's highlighted retention moments may only appear after a video reaches 100 views, so use whatever data is available and keep the review lightweight. ([YouTube retention report](https://support.google.com/youtube/answer/9314415))
 
 ## Episode outline
 
@@ -110,4 +164,4 @@ When a segment is more suitable than the full episode, identify the exact start 
 
 ## Next step
 
-Benjamin submits the first batch of candidate topics (with links, examples, or the claim that prompted each one). Review the full batch, recommend a sequence, and turn the selected first episode into a research note and outline before any recording work begins.
+Benjamin submits the first batch of candidate topics (with links, examples, or the claim that prompted each one). Review the full batch, recommend a sequence, and turn the selected first episode into a research note and outline before any recording work begins. After four episodes are published, review the production time and audience signals and revise this plan where the evidence warrants it.
