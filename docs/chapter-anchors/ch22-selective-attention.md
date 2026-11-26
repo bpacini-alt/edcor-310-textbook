@@ -14,6 +14,10 @@
 
 ## Image prompts
 
+### Reorganization review drafts — November 26, 2026
+
+In `chapter21a.html`, the approved task image opens Concept 2, Attention, and the reveal stays beside the explanation. The Fryer illustration remains that draft's chapter opener. Draft `chapter22a.html` has no new opening artwork. This implements Benjamin's requested review outline; current numbered Chapters 21 and 22 retain the published placements described above. Update this record and the cross-book ledger when the approved drafts replace those chapters.
+
 **Opening, gorilla-free edit:**
 
 > Use case: precise-object-edit. Asset type: opening illustration for a textbook chapter on attention. Edit target: the attached warm, colorful editorial illustration of a psychology participant counting basketball passes on a CRT television. Remove only the gorilla from the basketball footage on the CRT screen, so this is the pre-reveal opening image. Fill that spot naturally with open court and a plausible basketball player continuing the ordinary pass-counting task. Keep the participant, observer with clipboard, tallying, CRT and its remaining basketball footage, room, composition, camera angle, proportions, lighting, color palette, and painterly style unchanged. Do not add headphones, text, labels, numbers, logos, or watermarks. No gorilla or gorilla-like mascot anywhere in the image.
