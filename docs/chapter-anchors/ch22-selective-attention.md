@@ -16,7 +16,7 @@
 
 ### Reorganization review drafts — November 26, 2026
 
-In `chapter21a.html`, the approved task image opens Concept 2, Attention, and the reveal stays beside the explanation. The Fryer illustration remains that draft's chapter opener. Draft `chapter22a.html` has no new opening artwork. This implements Benjamin's requested review outline; current numbered Chapters 21 and 22 retain the published placements described above. Update this record and the cross-book ledger when the approved drafts replace those chapters.
+**Current placement (November 26, 2026, PR #182):** the Chapters 21–22 reorganization moved attention into Chapter 21. Both images now live in `chapter21.html`: the task image opens Concept 2, Attention, and the reveal stays beside the gorilla explanation. Chapter 22 (Memory and Cognitive Load) has no opening artwork. File names keep the `ch22-` prefix. Still to do: update the cross-book ledger in the Econ 150 repository.
 
 **Opening, gorilla-free edit:**
 

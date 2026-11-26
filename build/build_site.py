@@ -342,8 +342,6 @@ body {{ margin: 0; }}
 # Share the link directly. When a draft is approved, it replaces its chapter's file and
 # its entry here is removed.
 DRAFTS = {
-    "chapter21a.html": ("Attention, Executive Function & ADHD (draft)", "chapter21.html"),
-    "chapter22a.html": ("Working Memory & Long-Term Memory (draft)", "chapter22.html"),
 }
 
 DRAFT_BANNER = """<div style="background:#fff8e6;border-bottom:1px solid #e8c96a;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13px;color:#5a3d00;">

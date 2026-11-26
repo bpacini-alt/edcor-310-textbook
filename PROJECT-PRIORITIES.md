@@ -423,6 +423,17 @@ Chapter 19 was rebuilt from Benjamin's draft in the Chapter 16–18 component se
 - **Retrieval practice in both chapters waits for the book-wide pass** (see the Chapters 17–18 item above).
 - **Audio skips the inside of collapsed boxes (both books).** The player reads only the title of a click-to-open box, then pauses. That now covers Chapter 19's strategy cards, as well as every Go Deeper and Common Misconception box in the books. Decide whether listeners should hear the inside of these boxes. If so, change the shared player (`audio/player/etb-audio.js`) in matching pull requests, not chapter by chapter.
 
+### EDCOR 310: Chapters 21–22 reorganization follow-ups (recorded November 26, 2026)
+
+PR #182 replaced Chapters 21 and 22. Chapter 21 is now Attention, Executive Function & ADHD (4 concepts), and Chapter 22 is Memory and Cognitive Load (4 concepts). The review notes are in `docs/CHAPTERS-21-22-DRAFT-REVIEW.md`. Still to do:
+
+- **Course materials keyed to concept numbers:** Canvas item-bank concept labels, Top Hat quizzes, and slides for both chapters. Chapter 21 went from 6 concepts to 4, Chapter 22 from 5 to 4, and attention moved from 22 to 21.
+- **Aphorism bank (Econ 150 repository):** record "Clear their path, but make them climb." (Benjamin's wording, approved November 26) as Chapter 22's card. Note that "Memory is the residue of thought" now sits in Concept 3 and "The brain is not designed for thinking…" in Concept 4. Update the bank entry that says "Practice until you are perfect…" is in Spaced Practice: it is now in Concept 2, Principle 2.
+- **Cross-book anchor ledger (Econ 150 repository):** the selective-attention images now appear in Chapter 21, Concept 2.
+- **Chapter 22 recorded audio** (`audio/ch22/`, a preview only, not live) was made from the old text. Regenerate it when narration reaches Chapter 22.
+- **Practice sort** (intrinsic vs. extraneous load) for Chapter 22, Concept 2, during the practice-items work.
+- **Chapter 22 references:** the chapter has no reference list (see the references workstream above).
+
 ### EDCOR 310: Chapter 16 rewrite (recorded October 30, 2026)
 
 Benjamin and Claude rewrote Chapter 16 as **Agency and Self-Belief · What Actually Builds It?** (rev. 4, October 30), opening with the self-esteem movement, around six concepts: Self-Esteem, Determinism, Learned Helplessness, Attribution (which now includes feedback and praise), Efficacy Engineering, and Autonomy Support. It replaced the old Chapter 16 ("Agency vs. Determinism") on October 30, after Mayleigh's review.
@@ -587,7 +598,7 @@ A consistent opener image for each unit in both books (8 in all). Benjamin wants
 
 ### Found October 24, 2026
 
-1. **EDCOR 310: Add the forgetting curve (Benjamin asked October 24). Done November 22, 2026, in PR #160** (Chapter 22, Concept 4: explanation, figure, and the tie to the warm-up and 48-hour check). The book doesn't mention Ebbinghaus or the forgetting curve anywhere, though retrieval practice and spacing come up in nearly every chapter. The new course workbook's example Class Notes page is built around it, so students will meet it there first. Add it to Chapter 22 (Attention, Memory, and Cognitive Load): a short explanation, a simple figure showing memory falling quickly without review and the curve flattening with each review, and a sentence tying it to the workbook's warm-up and 48-hour check. Verify the claims against the original research and current replications before writing, since popular versions often overstate the exact percentages.
+1. **EDCOR 310: Add the forgetting curve (Benjamin asked October 24). Done November 22, 2026, in PR #160** (Chapter 22, Concept 4: explanation, figure, and the tie to the warm-up and 48-hour check; since the November 26 reorganization in PR #182 it sits in Concept 3, Retention and Transfer). The book doesn't mention Ebbinghaus or the forgetting curve anywhere, though retrieval practice and spacing come up in nearly every chapter. The new course workbook's example Class Notes page is built around it, so students will meet it there first. Add it to Chapter 22 (Attention, Memory, and Cognitive Load): a short explanation, a simple figure showing memory falling quickly without review and the curve flattening with each review, and a sentence tying it to the workbook's warm-up and 48-hour check. Verify the claims against the original research and current replications before writing, since popular versions often overstate the exact percentages.
 
 ### EDCOR 310: Supplemental essay, "The Intuitionist Approach to Education" (recorded October 24, 2026)
 

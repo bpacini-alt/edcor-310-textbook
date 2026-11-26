@@ -93,3 +93,7 @@ The move from six concepts to four (Chapter 21) changes concept numbers for item
 - **Additions:** a load-examples table (intrinsic vs. extraneous), new retrieval questions on calibration (metacognition), vocabulary cards for seductive details and metacognition, and "Teach a spot in the room" as a fourth retrieval routine.
 - **Length:** visible text, not counting Learn More, went from about 6,770 to 7,480 words. The added material (map, principles, examples, metacognition concept) outweighs the cuts. If shorter is better, the likeliest places to trim are "Explain it to learn it" and the interleaving evidence paragraph.
 - **Still open:** Chapter 22 has no reference list, on `main` or here. References are a deferred workstream in `PROJECT-PRIORITIES.md`. Log "Clear their path, but make them climb." in the cross-book aphorism bank (Econ 150 repository; this session has read-only access to it).
+
+## Swap (November 26, 2026)
+
+Benjamin approved both drafts and asked for them to be merged. The draft text replaced `chapter21.html` and `chapter22.html`, the `DRAFTS` entries and draft pages were removed, and the manifest titles were updated. Chapter 24's perceptual-load pointer now says Chapter 21. The concept title/eyebrow tracker, anchor records, and forgetting-curve priority note were also updated. Out-of-repo follow-ups are listed in `PROJECT-PRIORITIES.md` under "Chapters 21–22 reorganization follow-ups."
