@@ -72,7 +72,7 @@ Benjamin's review: the chapters are good but repetitive, and they spend too much
 - **Collapsible notes** (these two chapters only): side notes are closed by default. The professional-line box is collapsible but starts open.
 - **Length:** visible text, not counting references, went from about 10,100 to 9,200 words. Concept text went from 8,330 to 7,310. The default reading path, with notes closed, is shorter still.
 
-### Chapter 22a (next)
+### Chapter 22a (done in this revision; plan as agreed)
 
 - Title: **Memory and Cognitive Load**. The big picture says the teacher's goal is long-term memory.
 - Concepts: 1. Memory (full learning map; Miller's 1956 paper told straight, then why "seven" stuck, with the phone-number claim checked against the paper; chunking with a two-meanings box that points back to Fryer's steps; schemas point back to Chapter 11; fluency defined as a skill running with little working memory because long-term memory supplies it) · 2. Cognitive Load Theory (intrinsic vs. extraneous; no germane box; "Putting memory to work: Implications of Cognitive Load Theory" with five principles: ruthlessly cut extraneous load, with seductive details promoted and defined; practice beyond mastery; build an intuition for how much to teach at once, with the curse of knowledge pointing back to Chapter 2; adjust based on mastery, with worked examples; put everything in one place) · 3. Retention and Transfer (opens with desirable difficulties, pointing back to Chapter 1 and named as the turning point after CLT; residue of thought; forgetting curve; retrieval routines including "teach a spot in the room," a directed brain dump; spacing; interleaving reframed as learning to recognize the kind of problem; explaining and teaching activities moved here from CLT) · 4. Metacognition (eyebrow: "The rider teaches the elephant." The text says the feeling of familiarity doesn't go away; the rider learns not to trust it and builds habits).
@@ -83,3 +83,13 @@ Benjamin's review: the chapters are good but repetitive, and they spend too much
 ### Swap implications
 
 The move from six concepts to four (Chapter 21) changes concept numbers for item-bank labels, Top Hat quizzes, and slides. Add this to the swap checklist above.
+
+### Chapter 22a: build notes
+
+- **Miller check:** the 1956 paper never mentions telephone numbers. The hook says only what Miller argued. "How small is working memory?" explains why "seven" stuck (the title, everyday seven-digit numbers) and quotes Miller's own doubt ("only a pernicious, Pythagorean coincidence").
+- **Restored a missing line:** Willingham's "Practice until you are perfect and you will be perfect only briefly" (Willingham, 2004). The aphorism bank records it in Chapter 22's Spaced Practice prose, but it was in neither `main` nor the draft. It now sits in Principle 2.
+- **Fixed the side-quest layout:** the floating video cards were followed by a heading and table that clear floats, which left a blank gap. Both cards now sit beside prose: "Active learning" in Retention and Transfer, and "Best learning doesn't feel like learning" in Metacognition.
+- **Principle 5 (split attention)** cites Chandler & Sweller (1991).
+- **Additions:** a load-examples table (intrinsic vs. extraneous), new retrieval questions on calibration (metacognition), vocabulary cards for seductive details and metacognition, and "Teach a spot in the room" as a fourth retrieval routine.
+- **Length:** visible text, not counting Learn More, went from about 6,770 to 7,480 words. The added material (map, principles, examples, metacognition concept) outweighs the cuts. If shorter is better, the likeliest places to trim are "Explain it to learn it" and the interleaving evidence paragraph.
+- **Still open:** Chapter 22 has no reference list, on `main` or here. References are a deferred workstream in `PROJECT-PRIORITIES.md`. Log "Clear their path, but make them climb." in the cross-book aphorism bank (Econ 150 repository; this session has read-only access to it).
