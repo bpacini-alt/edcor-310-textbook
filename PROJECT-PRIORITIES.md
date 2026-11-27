@@ -432,7 +432,7 @@ PR #182 (November 26) split the chapters into attention and executive function, 
 
 Quizzes pair Chapters 21 and 22, so the moves between the two chapters don't change which quiz covers what. Still to do:
 
-- **Chapter 22 hook:** Miller's "magical number" hook was kept on hold. Its working-memory material is now mostly in Chapter 21. A Rubik's Cube hook would match the new opening image and the closing paragraph.
+- **Chapter 22 hook: done November 27, 2026.** Miller stays, now with his idea of chunks and a Rubik’s Cube paragraph that sets up long-term memory. The old “Four slots isn’t much room…” paragraph was cut because cognitive load now lives in Chapter 21.
 - **Course materials keyed to concept numbers:** Canvas item-bank concept labels and slides for both chapters.
 - **Aphorism bank (Econ 150 repository):** Chapter 21 now holds "Clear their path, but make them climb." (Concept 3) and "Memory is the residue of thought." (Concept 4). Chapter 22 holds "The brain is not designed for thinking…" (Concept 3), "Kids do well if they can." (Concept 4), and "Lend them your systems until they can run their own." (Concept 5). "Practice until you are perfect…" is in Chapter 21, Concept 3, Principle 2.
 - **Cross-book anchor ledger (Econ 150 repository):** the selective-attention images stay in Chapter 21, Concept 2. Chapter 22's new anchor is the animated Rubik's Cube solve (`ch22-rubiks-cube-solve.gif`, with a still for reduced motion). Its generation prompt still needs to be recorded in `docs/chapter-anchors/ch22-rubiks-cube-solve.md`.
