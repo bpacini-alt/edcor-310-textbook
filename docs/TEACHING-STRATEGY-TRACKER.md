@@ -66,6 +66,6 @@ No strategy candidates have been recorded yet. Add one row per strategy as ideas
 
 Keep the chapter ledger’s placed count synchronized with the entry log. Optional strategies need their own learner action and a distinct instructional purpose; small variations of one activity do not count as separate strategies.
 
-## Mental anchor question
+## Mental anchor tracker
 
-Whether every chapter should also have a mental anchor remains an open design question. It is recorded in the [cross-book aphorism program](https://github.com/bpacini-alt/Econ-150-textbook/blob/main/docs/APHORISM-EDITORIAL-PROGRAM.md) and is not part of this tracker’s current goal or completion percentage.
+Chapter-level mental-anchor ideas and image decisions are tracked separately in the [cross-book Chapter Mental Anchor Tracker](https://github.com/bpacini-alt/Econ-150-textbook/pull/200). The tracker includes every chapter in both books, keeps concept selection separate from approval of an exact image, and does not change this teaching-strategy tracker’s goal or completion count.
