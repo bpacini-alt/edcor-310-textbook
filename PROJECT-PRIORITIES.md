@@ -423,16 +423,22 @@ Chapter 19 was rebuilt from Benjamin's draft in the Chapter 16–18 component se
 - **Retrieval practice in both chapters waits for the book-wide pass** (see the Chapters 17–18 item above).
 - **Audio skips the inside of collapsed boxes (both books).** The player reads only the title of a click-to-open box, then pauses. That now covers Chapter 19's strategy cards, as well as every Go Deeper and Common Misconception box in the books. Decide whether listeners should hear the inside of these boxes. If so, change the shared player (`audio/player/etb-audio.js`) in matching pull requests, not chapter by chapter.
 
-### EDCOR 310: Chapters 21–22 reorganization follow-ups (recorded November 26, 2026)
+### EDCOR 310: Chapters 21–22 reorganization follow-ups (updated November 27, 2026)
 
-PR #182 replaced Chapters 21 and 22. Chapter 21 is now Attention, Executive Function & ADHD (4 concepts), and Chapter 22 is Memory and Cognitive Load (4 concepts). The review notes are in `docs/CHAPTERS-21-22-DRAFT-REVIEW.md`. Still to do:
+PR #182 (November 26) split the chapters into attention and executive function, then memory. PR #185 (November 27) reorganized them again, in the order of the learning process, as **How the Brain Learns, Part I** (Chapter 21) and **Part II** (Chapter 22). Executive function opens Part I as the CEO over the process and returns at the end of Part II.
 
-- **Course materials keyed to concept numbers:** Canvas item-bank concept labels, Top Hat quizzes, and slides for both chapters. Chapter 21 went from 6 concepts to 4, Chapter 22 from 5 to 4, and attention moved from 22 to 21.
-- **Aphorism bank (Econ 150 repository):** record "Clear their path, but make them climb." (Benjamin's wording, approved November 26) as Chapter 22's card. Note that "Memory is the residue of thought" now sits in Concept 3 and "The brain is not designed for thinking…" in Concept 4. Update the bank entry that says "Practice until you are perfect…" is in Spaced Practice: it is now in Concept 2, Principle 2.
-- **Cross-book anchor ledger (Econ 150 repository):** the selective-attention images now appear in Chapter 21, Concept 2.
+- **Chapter 21, Part I · Clear Their Path, but Make Them Climb:** 1 Executive Function (with the learning map), 2 Perception and Attention, 3 Working Memory and Cognitive Load, 4 Encoding.
+- **Chapter 22, Part II · Lend Them Your Systems:** 1 Long-Term Memory (chunking, fluency, forgetting), 2 Desirable Difficulties (retrieval, spacing, interleaving), 3 Metacognition, 4 Executive Dysfunction and ADHD, 5 Building and Supporting Executive Function (one evidence table for every support).
+
+Quizzes pair Chapters 21 and 22, so the moves between the two chapters don't change which quiz covers what. Still to do:
+
+- **Chapter 22 hook:** Miller's "magical number" hook was kept on hold. Its working-memory material is now mostly in Chapter 21. A Rubik's Cube hook would match the new opening image and the closing paragraph.
+- **Course materials keyed to concept numbers:** Canvas item-bank concept labels and slides for both chapters.
+- **Aphorism bank (Econ 150 repository):** Chapter 21 now holds "Clear their path, but make them climb." (Concept 3) and "Memory is the residue of thought." (Concept 4). Chapter 22 holds "The brain is not designed for thinking…" (Concept 3), "Kids do well if they can." (Concept 4), and "Lend them your systems until they can run their own." (Concept 5). "Practice until you are perfect…" is in Chapter 21, Concept 3, Principle 2.
+- **Cross-book anchor ledger (Econ 150 repository):** the selective-attention images stay in Chapter 21, Concept 2. Chapter 22's new anchor is the animated Rubik's Cube solve (`ch22-rubiks-cube-solve.gif`, with a still for reduced motion). Its generation prompt still needs to be recorded in `docs/chapter-anchors/ch22-rubiks-cube-solve.md`.
 - **Chapter 22 recorded audio** (`audio/ch22/`, a preview only, not live) was made from the old text. Regenerate it when narration reaches Chapter 22.
-- **Practice sort** (intrinsic vs. extraneous load) for Chapter 22, Concept 2, during the practice-items work.
-- **Chapter 22 references:** the chapter has no reference list (see the references workstream above).
+- **Practice sort** (intrinsic vs. extraneous load) for Chapter 21, Concept 3, during the practice-items work.
+- **References:** the material that came from the old Chapter 22 (memory, cognitive load, encoding, desirable difficulties, metacognition) still has no reference entries in either chapter (see the references workstream above).
 
 ### EDCOR 310: Chapter 16 rewrite (recorded October 30, 2026)
 
