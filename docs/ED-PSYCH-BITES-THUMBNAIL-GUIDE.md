@@ -11,12 +11,21 @@ This guide records the visual approach for the short Ed Psych Bites videos.
 - Use one simple visual cue only when it helps explain the video's idea. Leave it out when it adds clutter.
 - Keep the overall look clean, professional, and approachable. Avoid clickbait, excessive text emphasis, and unnecessary decorative effects.
 
-## Portrait and pose
+## Host portrait badge
+
+For Ben's Ed Psych Bites thumbnails, use a small circular host portrait as a recurring channel signature when a suitable photo is available.
+
+- Place the portrait near the lower-right corner, at roughly 13–16% of the canvas width.
+- Use a clean white border with a restrained blue outer accent.
+- Keep the title hook in the left two-thirds and the topic cue on the right; the portrait should not cover either.
+- Crop to the face and upper shoulders. A general site portrait is a likeness reference, not a claim that the video was filmed in the clothing shown.
+- If no suitable photo is available, preserve the layout and use the topic cue without forcing a portrait.
+
+## Portrait source and pose
 
 - Use a clear user-supplied photo as the likeness reference. AI-generated faces can drift; compare the result with the reference and revise if it looks like a lookalike.
-- Use a still from the specific video to match the clothing and pose. Do not let a previous generated thumbnail determine the user's face.
-- Choose an expression that fits the message. For affirming content about teens, use a warm, confident, direct expression rather than a skeptical or uncertain look.
-- Use a gesture only when it connects directly to the video's content, such as raising a hand for a video about students raising their hands. Otherwise, keep hands out of frame to avoid awkward poses.
+- A still from the specific video can guide clothing and expression when those details matter. Do not let a previous generated thumbnail determine the user's face.
+- Keep the expression natural, warm, and direct. Choose a gesture only when it connects to the video's content; otherwise, keep hands out of frame to avoid awkward poses.
 
 ## Copy and layout
 
@@ -30,6 +39,15 @@ This guide records the visual approach for the short Ed Psych Bites videos.
 - Math-drill timers: **DO TIMERS HELP?** with a raised-hand cue.
 - Adolescence: **ADOLESCENCE CAN BE HARD, BUT TEENS ARE GREAT.**
 - Teens' needs: **TEENS NEED:** autonomy, structure, and warm relationships.
+
+## Ed Psych Bites host-portrait standard
+
+Adopted November 18, 2026, after the two motivation videos below established the format.
+
+- **Clear Feedback Helps** — a clicker cue and circular host portrait.
+- **When Rewards Backfire** — a drawing cue and circular host portrait.
+
+These examples set the recurring composition: blue-and-white field, small series label, concise hook, one topic cue, and a small circular portrait of the instructor.
 
 ## Closing end screen — proposed, not settled
 
