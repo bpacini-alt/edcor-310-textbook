@@ -36,7 +36,7 @@ When a good aphorism does not fit the current chapter, keep it here with a note 
 
 - Put each aphorism card inside the chapter prose, after students have encountered the idea it condenses. Do not place one in a title card or at the beginning of a chapter before the relevant explanation.
 - Use the live Chapter 11 card structure: a label, one aphorism line, and a short explanatory subtext. For this placement pass, use **Key aphorism** as the label.
-- When a source, fuller meaning, or qualification needs more room, use a separate collapsed **About the Aphorism** accordion farther along in the relevant prose. Keep it nearby, but do not stack it directly with the aphorism card.
+- When a source, fuller meaning, or qualification needs more room, put it in a collapsed **Learn more** toggle inside the card, as its last child: `<details class="etb-aphorism-more" id="aph-…-about" data-narrate="skip"><summary>Learn more</summary><div class="etb-aphorism-more-body"><p>…</p></div></details>`. Benjamin adopted this on November 27, 2026, replacing the separate **About the Aphorism** accordion so the context can't drift away from its line. Chapters that still have separate boxes keep them until the chapter is next revised; convert them then, not in a sweep. The full rule is in the Econ 150 repository's `docs/APHORISM-EDITORIAL-PROGRAM.md`.
 
 ## Current Chapter 11 aphorisms
 

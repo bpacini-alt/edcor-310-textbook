@@ -24,3 +24,16 @@ details.etb-about-aphorism[open]>summary{border-bottom:1px solid #c7d7e2;}
 .etb-about-aphorism-body p{margin:0 0 .65rem;}
 .etb-about-aphorism-body p:last-child{margin:0;}
 .etb-about-aphorism-body a{color:#1a3a5c;}
+/* "Learn more": a line's source or fuller meaning, folded inside the card itself so the two can't drift apart.
+   Adopted November 27, 2026 as the rule for new and revised chapters. The older separate "About the Aphorism"
+   box above stays styled until each chapter is converted during its own revision. */
+details.etb-aphorism-more{margin:.7rem auto 0;max-width:36rem;text-align:left;}
+details.etb-aphorism-more>summary{display:block;width:max-content;margin:0 auto;list-style:none;cursor:pointer;font-family:sans-serif;font-size:12px;font-weight:700;letter-spacing:.04em;color:#2a7a4f;padding:.2rem .45rem;border-radius:4px;}
+details.etb-aphorism-more>summary::-webkit-details-marker{display:none;}
+details.etb-aphorism-more>summary::after{content:" \25B8";}
+details.etb-aphorism-more[open]>summary::after{content:" \25B4";}
+details.etb-aphorism-more>summary:hover{text-decoration:underline;}
+.etb-aphorism-more-body{margin-top:.5rem;padding:.75rem 1rem;background:#f4f7fa;border-left:3px solid #2a7a4f;border-radius:0 6px 6px 0;font-family:sans-serif;font-size:13px;line-height:1.65;color:#293b4b;}
+div.etb-aphorism .etb-aphorism-more-body p{margin:0 0 .6rem;}
+div.etb-aphorism .etb-aphorism-more-body p:last-child{margin:0;}
+.etb-aphorism-more-body a{color:#1a3a5c;}
