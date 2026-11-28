@@ -4,6 +4,10 @@ Aphorisms are load-bearing sentences: they compress a chapter’s central insigh
 
 > **November 15, 2026:** the label is now **Key aphorism** (or **Key aphorisms** for a recap list), book-wide. Box styles live in `aphorism/etb-aphorism.css`; see AGENTS.md. The cross-book aphorism program and 52-chapter tracker in the Econ 150 repository (`docs/APHORISM-EDITORIAL-PROGRAM.md`, `docs/APHORISM-CANDIDATE-BANK.md`) is the official record; this file will be folded into it once Econ 150 pull request #178 is settled.
 
+## Learning 23 — Boring card reworded as a paraphrase, November 28, 2026
+
+Benjamin replaced the Boring excerpt with his own plain-language paraphrase: “Intelligence is whatever intelligence tests are testing.” The card's sub-line labels it as paraphrased from Edwin G. Boring, “Intelligence as the Tests Test It” (1923), p. 35, and its Learn more toggle quotes Boring's full sentence, including “until further scientific observation allows us to extend the definition.” The card keeps the id `aph-learning23-boring`, opens Concept 1 (“The case for g”), and Hawking stays in Concept 2. This is in the Chapter 23 review draft (`chapter23a.html`, [Learning #194](https://github.com/bpacini-alt/edcor-310-textbook/pull/194)) and goes live when the draft replaces the chapter. The cross-book records in Econ 150 should note the change then.
+
 ## Additional approvals — Boring and Boser/McDaniels, November 22, 2026
 
 Benjamin explicitly requested these two additions. Both exact excerpts were checked against the original works and are implemented in the existing [Learning #171](https://github.com/bpacini-alt/edcor-310-textbook/pull/171), which now covers Chapters 23 and 25. [Econ #216](https://github.com/bpacini-alt/Econ-150-textbook/pull/216) updates the cross-book approval and coverage records. All new cards remain pending merge.
